@@ -12,60 +12,73 @@ const WalletSection = ({ balance, isVisible, onDeposit, onWithdraw, onToggleVisi
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-3">
-          <div className="p-3 bg-indigo-100 rounded-xl">
-            <Wallet className="w-6 h-6 text-indigo-600" />
+    <div className="bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 backdrop-blur-sm rounded-3xl p-8 shadow-xl border-2 border-blue-200/30 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-20" style={{
+        backgroundImage: `
+          radial-gradient(circle at 25% 25%, #3b82f6 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%, #06b6d4 1px, transparent 1px)
+        `,
+        backgroundSize: '24px 24px'
+      }}></div>
+      
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center space-x-4">
+            <div className="p-4 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl shadow-lg">
+              <Wallet className="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-900 text-xl">Wallet Balance</h3>
+              <p className="text-gray-600 font-medium">Available funds</p>
+            </div>
           </div>
-          <div>
-            <h3 className="font-semibold text-gray-900">Wallet Balance</h3>
-            <p className="text-sm text-gray-500">Available funds</p>
-          </div>
-        </div>
-        
-        <button className="p-2 text-gray-400 hover:text-indigo-600 transition-colors duration-200">
-          <RefreshCw className="w-5 h-5" />
-        </button>
-      </div>
-
-      <div className="mb-6">
-        <div className="flex items-center space-x-3">
-          <span className="text-3xl font-bold text-gray-900">
-            {isVisible ? formatBalance(balance) : '••••••'}
-          </span>
-          <button
-            onClick={onToggleVisibility}
-            className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
-          >
-            {isVisible ? (
-              <EyeOff className="w-5 h-5 text-gray-400" />
-            ) : (
-              <Eye className="w-5 h-5 text-gray-400" />
-            )}
+          
+          <button className="p-3 text-gray-400 hover:text-blue-600 transition-colors duration-200 hover:bg-white/50 rounded-xl">
+            <RefreshCw className="w-6 h-6" />
           </button>
         </div>
-        <p className="text-sm text-green-600 mt-1">
-          +2.5% from last month
-        </p>
-      </div>
 
-      <div className="grid grid-cols-2 gap-3">
-        <button
-          onClick={onDeposit}
-          className="flex items-center justify-center space-x-2 bg-indigo-600 text-white py-3 px-4 rounded-xl hover:bg-indigo-700 transition-all duration-200 transform hover:scale-105"
-        >
-          <Plus className="w-4 h-4" />
-          <span className="font-medium">Deposit</span>
-        </button>
-        
-        <button
-          onClick={onWithdraw}
-          className="flex items-center justify-center space-x-2 bg-gray-100 text-gray-700 py-3 px-4 rounded-xl hover:bg-gray-200 transition-all duration-200 transform hover:scale-105"
-        >
-          <Minus className="w-4 h-4" />
-          <span className="font-medium">Withdraw</span>
-        </button>
+        <div className="mb-8 p-6 bg-white/60 rounded-2xl backdrop-blur-sm border border-white/40">
+          <div className="flex items-center space-x-4">
+            <span className="text-4xl font-bold text-gray-900">
+              {isVisible ? formatBalance(balance) : '••••••'}
+            </span>
+            <button
+              onClick={onToggleVisibility}
+              className="p-3 rounded-full hover:bg-gray-100 transition-colors duration-200 border border-gray-200"
+            >
+              {isVisible ? (
+                <EyeOff className="w-6 h-6 text-gray-400" />
+              ) : (
+                <Eye className="w-6 h-6 text-gray-400" />
+              )}
+            </button>
+          </div>
+          <p className="text-sm text-green-600 mt-2 font-semibold">
+            +2.5% from last month
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <button
+            onClick={onDeposit}
+            className="group flex items-center justify-center space-x-3 bg-gradient-to-br from-green-500 to-emerald-600 text-white py-4 px-6 rounded-2xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <Plus className="w-6 h-6 relative z-10" />
+            <span className="font-bold text-lg relative z-10">Deposit</span>
+          </button>
+          
+          <button
+            onClick={onWithdraw}
+            className="group flex items-center justify-center space-x-3 bg-gradient-to-br from-orange-500 to-red-600 text-white py-4 px-6 rounded-2xl hover:from-orange-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <Minus className="w-6 h-6 relative z-10" />
+            <span className="font-bold text-lg relative z-10">Withdraw</span>
+          </button>
+        </div>
       </div>
     </div>
   );

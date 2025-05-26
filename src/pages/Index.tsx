@@ -201,81 +201,96 @@ const Index = () => {
                 isVisible={isBalanceVisible}
                 onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
               />
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">Quick Actions</h3>
-                  <Plus className="w-5 h-5 text-indigo-500" />
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <button 
-                    onClick={() => setActiveModal('deposit')}
-                    className="p-4 text-center bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-colors duration-200"
-                  >
-                    <Plus className="w-6 h-6 text-indigo-600 mx-auto mb-2" />
-                    <span className="text-sm font-medium text-indigo-900">Deposit</span>
-                  </button>
-                  <button 
-                    onClick={() => setActiveModal('linkStudent')}
-                    className="p-4 text-center bg-green-50 hover:bg-green-100 rounded-xl transition-colors duration-200"
-                  >
-                    <Users className="w-6 h-6 text-green-600 mx-auto mb-2" />
-                    <span className="text-sm font-medium text-green-900">Link Student</span>
-                  </button>
+              <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-orange-200/30 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-yellow-500/5 to-green-500/5"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-bold text-gray-900 text-lg">Quick Actions</h3>
+                    <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
+                      <Plus className="w-5 h-5 text-white" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <button 
+                      onClick={() => setActiveModal('deposit')}
+                      className="group p-6 text-center bg-gradient-to-br from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Plus className="w-8 h-8 mx-auto mb-3 relative z-10" />
+                      <span className="text-sm font-bold relative z-10">Deposit</span>
+                    </button>
+                    <button 
+                      onClick={() => setActiveModal('linkStudent')}
+                      className="group p-6 text-center bg-gradient-to-br from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <Users className="w-8 h-8 mx-auto mb-3 relative z-10" />
+                      <span className="text-sm font-bold relative z-10">Link Student</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="space-y-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">This Month</h3>
-                  <TrendingUp className="w-5 h-5 text-green-500" />
-                </div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Total Spent</span>
-                    <span className="font-semibold text-lg">12,500 RWF</span>
+              <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-teal-200/30 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-teal-500/5 to-blue-500/5"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="font-bold text-gray-900 text-lg">This Month</h3>
+                    <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-white" />
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Deposits</span>
-                    <span className="font-semibold text-lg text-green-600">+75,000 RWF</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Current Balance</span>
-                    <span className="font-semibold text-lg text-blue-600">
-                      {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
-                    </span>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium">Total Spent</span>
+                      <span className="font-bold text-xl text-red-600">12,500 RWF</span>
+                    </div>
+                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium">Deposits</span>
+                      <span className="font-bold text-xl text-green-600">+75,000 RWF</span>
+                    </div>
+                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium">Current Balance</span>
+                      <span className="font-bold text-xl text-blue-600">
+                        {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-                <h3 className="font-semibold text-gray-900 mb-4">Recent Activity</h3>
-                <div className="space-y-3">
-                  {transactions.slice(0, 3).map((transaction) => (
-                    <div key={transaction.id} className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                          transaction.type === 'deposit' ? 'bg-green-100' : 
-                          transaction.type === 'withdraw' ? 'bg-red-100' : 'bg-blue-100'
+              <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-purple-200/30 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-rose-500/5"></div>
+                <div className="relative z-10">
+                  <h3 className="font-bold text-gray-900 mb-6 text-lg">Recent Activity</h3>
+                  <div className="space-y-4">
+                    {transactions.slice(0, 3).map((transaction) => (
+                      <div key={transaction.id} className="flex items-center justify-between p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
+                        <div className="flex items-center space-x-4">
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg ${
+                            transaction.type === 'deposit' ? 'bg-gradient-to-br from-green-500 to-emerald-600' : 
+                            transaction.type === 'withdraw' ? 'bg-gradient-to-br from-red-500 to-rose-600' : 'bg-gradient-to-br from-blue-500 to-cyan-600'
+                          }`}>
+                            {transaction.type === 'deposit' ? 
+                              <TrendingUp className="w-6 h-6 text-white" /> :
+                              transaction.type === 'withdraw' ?
+                              <TrendingDown className="w-6 h-6 text-white" /> :
+                              <ShoppingCart className="w-6 h-6 text-white" />
+                            }
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-gray-900">{transaction.title}</p>
+                            <p className="text-xs text-gray-600">{transaction.date}</p>
+                          </div>
+                        </div>
+                        <span className={`text-sm font-bold ${
+                          transaction.amount > 0 ? 'text-green-600' : 'text-red-600'
                         }`}>
-                          {transaction.type === 'deposit' ? 
-                            <TrendingUp className="w-4 h-4 text-green-600" /> :
-                            transaction.type === 'withdraw' ?
-                            <TrendingDown className="w-4 h-4 text-red-600" /> :
-                            <ShoppingCart className="w-4 h-4 text-blue-600" />
-                          }
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium">{transaction.title}</p>
-                          <p className="text-xs text-gray-500">{transaction.date}</p>
-                        </div>
+                          {transaction.amount > 0 ? '+' : ''}{Math.abs(transaction.amount).toLocaleString()} RWF
+                        </span>
                       </div>
-                      <span className={`text-sm font-semibold ${
-                        transaction.amount > 0 ? 'text-green-600' : 'text-red-600'
-                      }`}>
-                        {transaction.amount > 0 ? '+' : ''}{Math.abs(transaction.amount).toLocaleString()} RWF
-                      </span>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -323,46 +338,61 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex flex-col">
-      <Header onMenuClick={() => {}} />
-      
-      {/* Welcome Section */}
-      <div className="container mx-auto px-4 py-4">
-        <div className="text-center">
-          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Welcome back, Parent!</h1>
-          <p className="text-gray-600">Manage your children's school finances with ease</p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-50 via-green-50 to-blue-100 flex flex-col relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-red-300/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-bl from-yellow-300/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-to-tr from-green-300/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-tl from-blue-300/20 to-transparent rounded-full blur-3xl"></div>
       </div>
-
-      {/* Tab Navigation */}
-      <div className="container mx-auto px-4">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 mb-4">
-          <div className="flex overflow-x-auto">
-            {tabs.map((tab) => {
-              const IconComponent = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 min-w-0 flex items-center justify-center space-x-2 py-4 px-3 text-sm font-medium transition-all duration-200 ${
-                    activeTab === tab.id
-                      ? 'text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50/50'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50/50'
-                  }`}
-                >
-                  <IconComponent className="w-5 h-5" />
-                  <span className="hidden sm:inline">{tab.label}</span>
-                </button>
-              );
-            })}
+      
+      <div className="relative z-10">
+        <Header onMenuClick={() => {}} />
+        
+        {/* Welcome Section */}
+        <div className="container mx-auto px-4 py-6">
+          <div className="text-center">
+            <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
+              Welcome back, Parent!
+            </h1>
+            <p className="text-gray-700 text-lg font-medium">Manage your children's school finances with ease</p>
           </div>
         </div>
-      </div>
 
-      {/* Tab Content */}
-      <div className="flex-1 container mx-auto px-4 pb-6">
-        <div className="h-full">
-          {renderTabContent()}
+        {/* Tab Navigation */}
+        <div className="container mx-auto px-4">
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border-2 border-white/40 mb-6 overflow-hidden">
+            <div className="flex overflow-x-auto">
+              {tabs.map((tab) => {
+                const IconComponent = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex-1 min-w-0 flex items-center justify-center space-x-3 py-6 px-4 text-sm font-bold transition-all duration-300 relative overflow-hidden ${
+                      activeTab === tab.id
+                        ? 'text-white bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 shadow-lg'
+                        : 'text-gray-600 hover:text-gray-800 hover:bg-gradient-to-r hover:from-red-50 hover:via-yellow-50 hover:via-green-50 hover:to-blue-50'
+                    }`}
+                  >
+                    <IconComponent className="w-6 h-6" />
+                    <span className="hidden sm:inline">{tab.label}</span>
+                    {activeTab === tab.id && (
+                      <div className="absolute inset-0 bg-white/10 animate-pulse"></div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Tab Content */}
+        <div className="flex-1 container mx-auto px-4 pb-8">
+          <div className="h-full">
+            {renderTabContent()}
+          </div>
         </div>
       </div>
 
@@ -408,7 +438,7 @@ const Index = () => {
                 type="password"
                 name="pin"
                 required
-                maxLength="4"
+                maxLength={4}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
@@ -459,7 +489,7 @@ const Index = () => {
                 type="password"
                 name="pin"
                 required
-                maxLength="4"
+                maxLength={4}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
@@ -534,7 +564,7 @@ const Index = () => {
                 type="password"
                 name="pin"
                 required
-                maxLength="4"
+                maxLength={4}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
