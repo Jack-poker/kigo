@@ -30,11 +30,15 @@ import TransactionsSection from '../components/TransactionsSection';
 import Modal from '../components/Modal';
 import Toast from '../components/Toast';
 import AdBanner from '../components/AdBanner';
+import ScrollNavigation from '../components/ScrollNavigation';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Index = () => {
+  const { t } = useLanguage();
   const [balance, setBalance] = useState(125000);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+
   const [students, setStudents] = useState([
     {
       id: '1',
@@ -111,7 +115,6 @@ const Index = () => {
   const handleDeposit = async (data) => {
     setIsLoading(true);
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       setBalance(prev => prev + Number(data.amount));
       const newTransaction = {
@@ -125,9 +128,9 @@ const Index = () => {
       };
       setTransactions(prev => [newTransaction, ...prev]);
       setActiveModal(null);
-      showToast(`Successfully deposited ${Number(data.amount)} RWF`);
+      showToast(`${t('messages.depositSuccess')} ${Number(data.amount)} RWF`);
     } catch (error) {
-      showToast('Deposit failed. Please try again.', 'error');
+      showToast(t('messages.error'), 'error');
     }
     setIsLoading(false);
   };
@@ -136,7 +139,7 @@ const Index = () => {
     setIsLoading(true);
     try {
       if (Number(data.amount) > balance) {
-        throw new Error('Insufficient balance');
+        throw new Error(t('messages.insufficientBalance'));
       }
       await new Promise(resolve => setTimeout(resolve, 2000));
       setBalance(prev => prev - Number(data.amount));
@@ -151,9 +154,9 @@ const Index = () => {
       };
       setTransactions(prev => [newTransaction, ...prev]);
       setActiveModal(null);
-      showToast(`Successfully withdrew ${Number(data.amount)} RWF`);
+      showToast(`${t('messages.withdrawSuccess')} ${Number(data.amount)} RWF`);
     } catch (error) {
-      showToast(error.message || 'Withdrawal failed. Please try again.', 'error');
+      showToast(error.message || t('messages.error'), 'error');
     }
     setIsLoading(false);
   };
@@ -176,9 +179,9 @@ const Index = () => {
       };
       setStudents(prev => [...prev, newStudent]);
       setActiveModal(null);
-      showToast(`Successfully linked ${data.name}`);
+      showToast(`${t('messages.linkSuccess')} ${data.name}`);
     } catch (error) {
-      showToast('Failed to link student. Please try again.', 'error');
+      showToast(t('messages.error'), 'error');
     }
     setIsLoading(false);
   };
@@ -194,7 +197,7 @@ const Index = () => {
     switch (activeTab) {
       case 'overview':
         return (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+          <div id="section-overview" className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
             <div className="space-y-6">
               <VirtualCard 
                 balance={balance}
@@ -205,7 +208,7 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-yellow-500/5 to-green-500/5"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-bold text-gray-900 text-lg">Quick Actions</h3>
+                    <h3 className="font-bold text-gray-900 text-lg">Ibikorwa Byihuse</h3>
                     <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
                       <Plus className="w-5 h-5 text-white" />
                     </div>
@@ -217,7 +220,7 @@ const Index = () => {
                     >
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Plus className="w-8 h-8 mx-auto mb-3 relative z-10" />
-                      <span className="text-sm font-bold relative z-10">Deposit</span>
+                      <span className="text-sm font-bold relative z-10">{t('actions.deposit')}</span>
                     </button>
                     <button 
                       onClick={() => setActiveModal('linkStudent')}
@@ -225,7 +228,7 @@ const Index = () => {
                     >
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Users className="w-8 h-8 mx-auto mb-3 relative z-10" />
-                      <span className="text-sm font-bold relative z-10">Link Student</span>
+                      <span className="text-sm font-bold relative z-10">{t('actions.linkStudent')}</span>
                     </button>
                   </div>
                 </div>
@@ -236,22 +239,22 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-teal-500/5 to-blue-500/5"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="font-bold text-gray-900 text-lg">This Month</h3>
+                    <h3 className="font-bold text-gray-900 text-lg">Ukwezi Gushize</h3>
                     <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center">
                       <TrendingUp className="w-5 h-5 text-white" />
                     </div>
                   </div>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">Total Spent</span>
+                      <span className="text-gray-700 font-medium">{t('labels.totalSpent')}</span>
                       <span className="font-bold text-xl text-red-600">12,500 RWF</span>
                     </div>
                     <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">Deposits</span>
+                      <span className="text-gray-700 font-medium">{t('labels.deposits')}</span>
                       <span className="font-bold text-xl text-green-600">+75,000 RWF</span>
                     </div>
                     <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">Current Balance</span>
+                      <span className="text-gray-700 font-medium">{t('labels.currentBalance')}</span>
                       <span className="font-bold text-xl text-blue-600">
                         {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
                       </span>
@@ -262,7 +265,7 @@ const Index = () => {
               <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-purple-200/30 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-rose-500/5"></div>
                 <div className="relative z-10">
-                  <h3 className="font-bold text-gray-900 mb-6 text-lg">Recent Activity</h3>
+                  <h3 className="font-bold text-gray-900 mb-6 text-lg">Ibikorwa bya Vuba</h3>
                   <div className="space-y-4">
                     {transactions.slice(0, 3).map((transaction) => (
                       <div key={transaction.id} className="flex items-center justify-between p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
@@ -298,7 +301,7 @@ const Index = () => {
         );
       case 'wallet':
         return (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+          <div id="section-wallet" className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
             <VirtualCard 
               balance={balance}
               isVisible={isBalanceVisible}
@@ -315,7 +318,7 @@ const Index = () => {
         );
       case 'students':
         return (
-          <div className="h-full">
+          <div id="section-students" className="h-full">
             <StudentsSection 
               students={students}
               onViewTransactions={(student) => setActiveModal('studentTransactions')}
@@ -325,7 +328,7 @@ const Index = () => {
         );
       case 'transactions':
         return (
-          <div className="h-full">
+          <div id="section-transactions" className="h-full">
             <TransactionsSection 
               transactions={transactions}
               onViewAll={() => setActiveModal('allTransactions')}
@@ -350,13 +353,13 @@ const Index = () => {
       <div className="relative z-10">
         <Header onMenuClick={() => {}} />
         
-        {/* Welcome Section */}
+        {/* Welcome Section with translated content */}
         <div className="container mx-auto px-4 py-6">
           <div className="text-center">
             <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
-              Welcome back, Parent!
+              {t('app.welcome')}
             </h1>
-            <p className="text-gray-700 text-lg font-medium">Manage your children's school finances with ease</p>
+            <p className="text-gray-700 text-lg font-medium">{t('app.subtitle')}</p>
           </div>
         </div>
 
@@ -365,32 +368,9 @@ const Index = () => {
           <AdBanner />
         </div>
 
-        {/* Tab Navigation */}
+        {/* Enhanced Tab Navigation with auto-scroll */}
         <div className="container mx-auto px-4">
-          <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border-2 border-white/40 mb-6 overflow-hidden">
-            <div className="flex overflow-x-auto">
-              {tabs.map((tab) => {
-                const IconComponent = tab.icon;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 min-w-0 flex items-center justify-center space-x-3 py-6 px-4 text-sm font-bold transition-all duration-300 relative overflow-hidden ${
-                      activeTab === tab.id
-                        ? 'text-white bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 shadow-lg'
-                        : 'text-gray-600 hover:text-gray-800 hover:bg-gradient-to-r hover:from-red-50 hover:via-yellow-50 hover:via-green-50 hover:to-blue-50'
-                    }`}
-                  >
-                    <IconComponent className="w-6 h-6" />
-                    <span className="hidden sm:inline">{tab.label}</span>
-                    {activeTab === tab.id && (
-                      <div className="absolute inset-0 bg-white/10 animate-pulse"></div>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          <ScrollNavigation activeTab={activeTab} onTabChange={setActiveTab} />
         </div>
 
         {/* Tab Content */}
@@ -401,10 +381,10 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Modals */}
+      {/* Enhanced Modals with translations */}
       {activeModal === 'deposit' && (
         <Modal
-          title="Deposit Funds"
+          title={t('actions.deposit')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleDeposit}
           isLoading={isLoading}
@@ -412,7 +392,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Phone Number
+                {t('labels.phoneNumber')}
               </label>
               <input
                 type="tel"
@@ -424,7 +404,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Amount (RWF)
+                {t('labels.amount')}
               </label>
               <input
                 type="number"
@@ -437,7 +417,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                PIN
+                {t('labels.pin')}
               </label>
               <input
                 type="password"
@@ -454,7 +434,7 @@ const Index = () => {
 
       {activeModal === 'withdraw' && (
         <Modal
-          title="Withdraw Funds"
+          title={t('actions.withdraw')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleWithdraw}
           isLoading={isLoading}
@@ -462,7 +442,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Phone Number
+                {t('labels.phoneNumber')}
               </label>
               <input
                 type="tel"
@@ -474,7 +454,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Amount (RWF)
+                {t('labels.amount')}
               </label>
               <input
                 type="number"
@@ -488,7 +468,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                PIN
+                {t('labels.pin')}
               </label>
               <input
                 type="password"
@@ -505,7 +485,7 @@ const Index = () => {
 
       {activeModal === 'linkStudent' && (
         <Modal
-          title="Link New Student"
+          title={t('actions.linkStudent')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleLinkStudent}
           isLoading={isLoading}
@@ -513,7 +493,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Student ID
+                {t('labels.studentId')}
               </label>
               <input
                 type="text"
@@ -525,7 +505,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Student Name
+                {t('labels.studentName')}
               </label>
               <input
                 type="text"
@@ -538,7 +518,7 @@ const Index = () => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Grade
+                  {t('labels.grade')}
                 </label>
                 <input
                   type="text"
@@ -550,7 +530,7 @@ const Index = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Class
+                  {t('labels.class')}
                 </label>
                 <input
                   type="text"
@@ -563,7 +543,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                PIN for Student Purchases
+                {t('labels.pin')}
               </label>
               <input
                 type="password"

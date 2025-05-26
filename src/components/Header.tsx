@@ -1,12 +1,20 @@
-
 import React, { useState } from 'react';
 import { Globe, User, Bell, Settings, LogOut, Menu, X } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Header = ({ onMenuClick }) => {
+  const { language, setLanguage, t } = useLanguage();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const languages = [
+    { code: 'rw', name: 'Kinyarwanda', flag: '🇷🇼' },
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' }
+  ];
+
+  const currentLanguage = languages.find(lang => lang.code === language);
 
   const shimmerClass = "relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent";
 
@@ -37,11 +45,11 @@ const Header = ({ onMenuClick }) => {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-2xl font-black bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
-                ikaramuWallet
+                {t('app.name')}
               </h1>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <p className="text-sm text-gray-600 font-bold">Parent Portal - Always Secure</p>
+                <p className="text-sm text-gray-600 font-bold">{t('app.tagline')}</p>
               </div>
             </div>
           </div>
@@ -58,41 +66,35 @@ const Header = ({ onMenuClick }) => {
                 {/* Pulsing Ring */}
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-400 rounded-full animate-ping opacity-75"></div>
               </button>
-              <div className="absolute top-full right-0 mt-2 w-80 bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border-2 border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                <div className="p-6">
-                  <h3 className="font-bold text-gray-900 mb-4 text-lg">Recent Notifications</h3>
-                  <div className="space-y-3">
-                    <div className="p-3 bg-green-50 rounded-xl border border-green-200">
-                      <p className="text-sm font-semibold text-green-800">Alice made a purchase - 2,500 RWF</p>
-                      <p className="text-xs text-green-600">2 minutes ago</p>
-                    </div>
-                    <div className="p-3 bg-blue-50 rounded-xl border border-blue-200">
-                      <p className="text-sm font-semibold text-blue-800">Weekly limit reminder for Bob</p>
-                      <p className="text-xs text-blue-600">1 hour ago</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            {/* Enhanced Language Selector */}
+            {/* Enhanced Language Selector with larger buttons for elderly users */}
             <div className="relative">
               <button
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                className={`flex items-center space-x-3 px-6 py-3 text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-white/60 backdrop-blur-sm font-bold ${shimmerClass}`}
+                className={`flex items-center space-x-3 px-8 py-4 text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-white/60 backdrop-blur-sm font-bold text-lg ${shimmerClass}`}
               >
-                <Globe className="w-5 h-5" />
-                <span className="text-sm">EN</span>
+                <Globe className="w-6 h-6" />
+                <span className="text-base">{currentLanguage?.flag} {currentLanguage?.code.toUpperCase()}</span>
               </button>
               
               {isLanguageOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border-2 border-gray-100 py-3 z-50">
-                  <button className="w-full px-6 py-3 text-left text-sm hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-200 font-semibold">
-                    🇺🇸 English
-                  </button>
-                  <button className="w-full px-6 py-3 text-left text-sm hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 transition-all duration-200 font-semibold">
-                    🇷🇼 Kinyarwanda
-                  </button>
+                <div className="absolute right-0 mt-2 w-64 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border-2 border-gray-100 py-3 z-50">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setLanguage(lang.code as 'rw' | 'en' | 'fr');
+                        setIsLanguageOpen(false);
+                      }}
+                      className={`w-full px-6 py-4 text-left text-base hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-200 font-semibold flex items-center space-x-3 ${
+                        language === lang.code ? 'bg-blue-100 text-blue-800' : ''
+                      }`}
+                    >
+                      <span className="text-2xl">{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
@@ -107,8 +109,8 @@ const Header = ({ onMenuClick }) => {
                   <User className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-left hidden lg:block">
-                  <p className="text-sm font-bold text-gray-900">Loving Parent</p>
-                  <p className="text-xs text-gray-600 font-medium">Always caring ❤️</p>
+                  <p className="text-sm font-bold text-gray-900">Umubyeyi w'Urukundo</p>
+                  <p className="text-xs text-gray-600 font-medium">Uwitaho buri gihe ❤️</p>
                 </div>
               </button>
 
@@ -120,25 +122,25 @@ const Header = ({ onMenuClick }) => {
                         <User className="w-8 h-8 text-white" />
                       </div>
                       <div>
-                        <p className="text-lg font-bold text-gray-900">Loving Parent</p>
+                        <p className="text-lg font-bold text-gray-900">Umubyeyi w'Urukundo</p>
                         <p className="text-sm text-gray-600">parent@example.com</p>
-                        <p className="text-xs text-green-600 font-semibold">💚 Trusted Guardian</p>
+                        <p className="text-xs text-green-600 font-semibold">💚 Umurinda Wizera</p>
                       </div>
                     </div>
                   </div>
                   <div className="py-3">
                     <button className="w-full flex items-center space-x-4 px-6 py-3 text-left text-sm hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-200 font-semibold">
                       <User className="w-5 h-5 text-blue-500" />
-                      <span>Profile Settings</span>
+                      <span>{t('navigation.profile')}</span>
                     </button>
                     <button className="w-full flex items-center space-x-4 px-6 py-3 text-left text-sm hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 transition-all duration-200 font-semibold">
                       <Settings className="w-5 h-5 text-purple-500" />
-                      <span>Account Settings</span>
+                      <span>{t('navigation.settings')}</span>
                     </button>
                     <hr className="my-3 border-gray-200" />
                     <button className="w-full flex items-center space-x-4 px-6 py-3 text-left text-sm text-red-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-rose-50 transition-all duration-200 font-semibold">
                       <LogOut className="w-5 h-5" />
-                      <span>Sign Out Safely</span>
+                      <span>{t('navigation.logout')}</span>
                     </button>
                   </div>
                 </div>
@@ -163,29 +165,33 @@ const Header = ({ onMenuClick }) => {
                 <User className="w-8 h-8 text-white" />
               </div>
               <div>
-                <p className="font-bold text-gray-900 text-lg">Loving Parent</p>
+                <p className="font-bold text-gray-900 text-lg">Umubyeyi w'Urukundo</p>
                 <p className="text-sm text-gray-600">parent@example.com</p>
-                <p className="text-xs text-green-600 font-semibold">💚 Trusted Guardian</p>
+                <p className="text-xs text-green-600 font-semibold">💚 Umurinda Wizera</p>
               </div>
             </div>
             
             <div className="space-y-3 px-6">
               <button className="w-full flex items-center space-x-4 py-4 text-left bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl px-4 font-semibold">
                 <Bell className="w-6 h-6 text-blue-500" />
-                <span>Notifications</span>
+                <span>{t('navigation.notifications')}</span>
                 <span className="ml-auto w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span>
               </button>
-              <button className="w-full flex items-center space-x-4 py-4 text-left bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl px-4 font-semibold">
+              <button 
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                className="w-full flex items-center space-x-4 py-4 text-left bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl px-4 font-semibold"
+              >
                 <Globe className="w-6 h-6 text-green-500" />
-                <span>Language</span>
+                <span>{t('navigation.language')}</span>
+                <span className="ml-auto text-sm">{currentLanguage?.flag}</span>
               </button>
               <button className="w-full flex items-center space-x-4 py-4 text-left bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl px-4 font-semibold">
                 <Settings className="w-6 h-6 text-purple-500" />
-                <span>Settings</span>
+                <span>{t('navigation.settings')}</span>
               </button>
               <button className="w-full flex items-center space-x-4 py-4 text-left bg-gradient-to-r from-red-50 to-rose-50 rounded-2xl px-4 text-red-600 font-semibold">
                 <LogOut className="w-6 h-6" />
-                <span>Sign Out Safely</span>
+                <span>{t('navigation.logout')}</span>
               </button>
             </div>
           </div>
