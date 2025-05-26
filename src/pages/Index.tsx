@@ -409,7 +409,7 @@ const Index = () => {
       <div className="relative z-10">
         <Header onMenuClick={() => {}} />
         
-        {/* Admin Ads/Announcements Banner - Now Sticky */}
+        {/* Admin Ads/Announcements Banner */}
         <AdBanner />
         
         {/* Welcome Section */}
@@ -673,7 +673,7 @@ const Index = () => {
       )}
 
       {/* Toast Container */}
-      <div className="fixed bottom-20 right-4 space-y-2 z-50">
+      <div className="fixed bottom-4 right-4 space-y-2 z-50">
         {toasts.map(toast => (
           <Toast
             key={toast.id}
