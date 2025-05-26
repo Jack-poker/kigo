@@ -30,16 +30,11 @@ import TransactionsSection from '../components/TransactionsSection';
 import Modal from '../components/Modal';
 import Toast from '../components/Toast';
 import AdBanner from '../components/AdBanner';
-import ScrollNavigation from '../components/ScrollNavigation';
-import StudentQRModal from '../components/StudentQRModal';
-import { useLanguage } from '../contexts/LanguageContext';
 
 const Index = () => {
-  const { t } = useLanguage();
   const [balance, setBalance] = useState(125000);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
-
   const [students, setStudents] = useState([
     {
       id: '1',
@@ -98,7 +93,6 @@ const Index = () => {
   ]);
 
   const [activeModal, setActiveModal] = useState(null);
-  const [selectedStudent, setSelectedStudent] = useState(null);
   const [toasts, setToasts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -117,6 +111,7 @@ const Index = () => {
   const handleDeposit = async (data) => {
     setIsLoading(true);
     try {
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       setBalance(prev => prev + Number(data.amount));
       const newTransaction = {
@@ -130,9 +125,9 @@ const Index = () => {
       };
       setTransactions(prev => [newTransaction, ...prev]);
       setActiveModal(null);
-      showToast(`${t('messages.depositSuccess')} ${Number(data.amount)} RWF`);
+      showToast(`Successfully deposited ${Number(data.amount)} RWF`);
     } catch (error) {
-      showToast(t('messages.error'), 'error');
+      showToast('Deposit failed. Please try again.', 'error');
     }
     setIsLoading(false);
   };
@@ -141,7 +136,7 @@ const Index = () => {
     setIsLoading(true);
     try {
       if (Number(data.amount) > balance) {
-        throw new Error(t('messages.insufficientBalance'));
+        throw new Error('Insufficient balance');
       }
       await new Promise(resolve => setTimeout(resolve, 2000));
       setBalance(prev => prev - Number(data.amount));
@@ -156,9 +151,9 @@ const Index = () => {
       };
       setTransactions(prev => [newTransaction, ...prev]);
       setActiveModal(null);
-      showToast(`${t('messages.withdrawSuccess')} ${Number(data.amount)} RWF`);
+      showToast(`Successfully withdrew ${Number(data.amount)} RWF`);
     } catch (error) {
-      showToast(error.message || t('messages.error'), 'error');
+      showToast(error.message || 'Withdrawal failed. Please try again.', 'error');
     }
     setIsLoading(false);
   };
@@ -181,16 +176,11 @@ const Index = () => {
       };
       setStudents(prev => [...prev, newStudent]);
       setActiveModal(null);
-      showToast(`${t('messages.linkSuccess')} ${data.name}`);
+      showToast(`Successfully linked ${data.name}`);
     } catch (error) {
-      showToast(t('messages.error'), 'error');
+      showToast('Failed to link student. Please try again.', 'error');
     }
     setIsLoading(false);
-  };
-
-  const handleShowQR = (student) => {
-    setSelectedStudent(student);
-    setActiveModal('studentQR');
   };
 
   const tabs = [
@@ -204,96 +194,96 @@ const Index = () => {
     switch (activeTab) {
       case 'overview':
         return (
-          <div id="section-overview" className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-full">
-            <div className="space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+            <div className="space-y-6">
               <VirtualCard 
                 balance={balance}
                 isVisible={isBalanceVisible}
                 onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
               />
-              <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-orange-200/30 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-orange-200/30 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-yellow-500/5 to-green-500/5"></div>
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-medium text-gray-900 text-sm">Ibikorwa Byihuse</h3>
-                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
-                      <Plus className="w-4 h-4 text-white" />
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-bold text-gray-900 text-lg">Quick Actions</h3>
+                    <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
+                      <Plus className="w-5 h-5 text-white" />
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-4">
                     <button 
                       onClick={() => setActiveModal('deposit')}
-                      className="group p-4 text-center bg-gradient-to-br from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative overflow-hidden"
+                      className="group p-6 text-center bg-gradient-to-br from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl relative overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Plus className="w-6 h-6 mx-auto mb-2 relative z-10" />
-                      <span className="text-xs font-medium relative z-10">{t('actions.deposit')}</span>
+                      <Plus className="w-8 h-8 mx-auto mb-3 relative z-10" />
+                      <span className="text-sm font-bold relative z-10">Deposit</span>
                     </button>
                     <button 
                       onClick={() => setActiveModal('linkStudent')}
-                      className="group p-4 text-center bg-gradient-to-br from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative overflow-hidden"
+                      className="group p-6 text-center bg-gradient-to-br from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl relative overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Users className="w-6 h-6 mx-auto mb-2 relative z-10" />
-                      <span className="text-xs font-medium relative z-10">{t('actions.linkStudent')}</span>
+                      <Users className="w-8 h-8 mx-auto mb-3 relative z-10" />
+                      <span className="text-sm font-bold relative z-10">Link Student</span>
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="space-y-4">
-              <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-teal-200/30 relative overflow-hidden">
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-teal-200/30 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-teal-500/5 to-blue-500/5"></div>
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-medium text-gray-900 text-sm">Ukwezi Gushize</h3>
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center">
-                      <TrendingUp className="w-4 h-4 text-white" />
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="font-bold text-gray-900 text-lg">This Month</h3>
+                    <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-white" />
                     </div>
                   </div>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-white/60 rounded-lg backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium text-sm">{t('labels.totalSpent')}</span>
-                      <span className="font-bold text-lg text-red-600">12,500 RWF</span>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium">Total Spent</span>
+                      <span className="font-bold text-xl text-red-600">12,500 RWF</span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-white/60 rounded-lg backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium text-sm">{t('labels.deposits')}</span>
-                      <span className="font-bold text-lg text-green-600">+75,000 RWF</span>
+                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium">Deposits</span>
+                      <span className="font-bold text-xl text-green-600">+75,000 RWF</span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-white/60 rounded-lg backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium text-sm">{t('labels.currentBalance')}</span>
-                      <span className="font-bold text-lg text-blue-600">
+                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium">Current Balance</span>
+                      <span className="font-bold text-xl text-blue-600">
                         {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-purple-200/30 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-purple-200/30 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-rose-500/5"></div>
                 <div className="relative z-10">
-                  <h3 className="font-medium text-gray-900 mb-4 text-sm">Ibikorwa bya Vuba</h3>
-                  <div className="space-y-3">
+                  <h3 className="font-bold text-gray-900 mb-6 text-lg">Recent Activity</h3>
+                  <div className="space-y-4">
                     {transactions.slice(0, 3).map((transaction) => (
-                      <div key={transaction.id} className="flex items-center justify-between p-3 bg-white/60 rounded-lg backdrop-blur-sm border border-white/40">
-                        <div className="flex items-center space-x-3">
-                          <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-md ${
+                      <div key={transaction.id} className="flex items-center justify-between p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
+                        <div className="flex items-center space-x-4">
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg ${
                             transaction.type === 'deposit' ? 'bg-gradient-to-br from-green-500 to-emerald-600' : 
                             transaction.type === 'withdraw' ? 'bg-gradient-to-br from-red-500 to-rose-600' : 'bg-gradient-to-br from-blue-500 to-cyan-600'
                           }`}>
                             {transaction.type === 'deposit' ? 
-                              <TrendingUp className="w-5 h-5 text-white" /> :
+                              <TrendingUp className="w-6 h-6 text-white" /> :
                               transaction.type === 'withdraw' ?
-                              <TrendingDown className="w-5 h-5 text-white" /> :
-                              <ShoppingCart className="w-5 h-5 text-white" />
+                              <TrendingDown className="w-6 h-6 text-white" /> :
+                              <ShoppingCart className="w-6 h-6 text-white" />
                             }
                           </div>
                           <div>
-                            <p className="text-xs font-medium text-gray-900">{transaction.title}</p>
+                            <p className="text-sm font-semibold text-gray-900">{transaction.title}</p>
                             <p className="text-xs text-gray-600">{transaction.date}</p>
                           </div>
                         </div>
-                        <span className={`text-xs font-bold ${
+                        <span className={`text-sm font-bold ${
                           transaction.amount > 0 ? 'text-green-600' : 'text-red-600'
                         }`}>
                           {transaction.amount > 0 ? '+' : ''}{Math.abs(transaction.amount).toLocaleString()} RWF
@@ -308,7 +298,7 @@ const Index = () => {
         );
       case 'wallet':
         return (
-          <div id="section-wallet" className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
             <VirtualCard 
               balance={balance}
               isVisible={isBalanceVisible}
@@ -325,18 +315,17 @@ const Index = () => {
         );
       case 'students':
         return (
-          <div id="section-students" className="h-full">
+          <div className="h-full">
             <StudentsSection 
               students={students}
               onViewTransactions={(student) => setActiveModal('studentTransactions')}
               onSetLimits={(student) => setActiveModal('spendingLimits')}
-              onShowQR={handleShowQR}
             />
           </div>
         );
       case 'transactions':
         return (
-          <div id="section-transactions" className="h-full">
+          <div className="h-full">
             <TransactionsSection 
               transactions={transactions}
               onViewAll={() => setActiveModal('allTransactions')}
@@ -361,49 +350,59 @@ const Index = () => {
       <div className="relative z-10">
         <Header onMenuClick={() => {}} />
         
-        {/* Welcome Section with translated content */}
-        <div className="container mx-auto px-4 py-4">
+        {/* Admin Ads/Announcements Banner - Now Sticky */}
+        <AdBanner />
+        
+        {/* Welcome Section */}
+        <div className="container mx-auto px-4 py-4 sm:py-6">
           <div className="text-center">
-            <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-1">
-              {t('app.welcome')}
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
+              Welcome back, Parent!
             </h1>
-            <p className="text-gray-700 text-sm font-medium">{t('app.subtitle')}</p>
+            <p className="text-gray-700 text-base sm:text-lg font-medium">Manage your children's school finances with ease</p>
           </div>
         </div>
 
-        {/* Admin Ads/Announcements Banner */}
+        {/* Tab Navigation */}
         <div className="container mx-auto px-4">
-          <AdBanner />
-        </div>
-
-        {/* Enhanced Tab Navigation with auto-scroll */}
-        <div className="container mx-auto px-4">
-          <ScrollNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border-2 border-white/40 mb-4 sm:mb-6 overflow-hidden">
+            <div className="flex overflow-x-auto">
+              {tabs.map((tab) => {
+                const IconComponent = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex-1 min-w-0 flex items-center justify-center space-x-2 sm:space-x-3 py-4 sm:py-6 px-3 sm:px-4 text-xs sm:text-sm font-bold transition-all duration-300 relative overflow-hidden ${
+                      activeTab === tab.id
+                        ? 'text-white bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 shadow-lg'
+                        : 'text-gray-600 hover:text-gray-800 hover:bg-gradient-to-r hover:from-red-50 hover:via-yellow-50 hover:via-green-50 hover:to-blue-50'
+                    }`}
+                  >
+                    <IconComponent className="w-4 h-4 sm:w-6 sm:h-6" />
+                    <span className="hidden sm:inline">{tab.label}</span>
+                    {activeTab === tab.id && (
+                      <div className="absolute inset-0 bg-white/10 animate-pulse"></div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Tab Content */}
-        <div className="flex-1 container mx-auto px-4 pb-6">
+        <div className="flex-1 container mx-auto px-4 pb-6 sm:pb-8">
           <div className="h-full">
             {renderTabContent()}
           </div>
         </div>
       </div>
 
-      {/* Student QR Modal */}
-      {activeModal === 'studentQR' && selectedStudent && (
-        <StudentQRModal
-          student={selectedStudent}
-          onClose={() => {
-            setActiveModal(null);
-            setSelectedStudent(null);
-          }}
-        />
-      )}
-
-      {/* Enhanced Modals with translations */}
+      {/* Modals */}
       {activeModal === 'deposit' && (
         <Modal
-          title={t('actions.deposit')}
+          title="Deposit Funds"
           onClose={() => setActiveModal(null)}
           onSubmit={handleDeposit}
           isLoading={isLoading}
@@ -411,7 +410,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.phoneNumber')}
+                Phone Number
               </label>
               <input
                 type="tel"
@@ -423,7 +422,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.amount')}
+                Amount (RWF)
               </label>
               <input
                 type="number"
@@ -436,7 +435,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.pin')}
+                PIN
               </label>
               <input
                 type="password"
@@ -453,7 +452,7 @@ const Index = () => {
 
       {activeModal === 'withdraw' && (
         <Modal
-          title={t('actions.withdraw')}
+          title="Withdraw Funds"
           onClose={() => setActiveModal(null)}
           onSubmit={handleWithdraw}
           isLoading={isLoading}
@@ -461,7 +460,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.phoneNumber')}
+                Phone Number
               </label>
               <input
                 type="tel"
@@ -473,7 +472,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.amount')}
+                Amount (RWF)
               </label>
               <input
                 type="number"
@@ -487,7 +486,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.pin')}
+                PIN
               </label>
               <input
                 type="password"
@@ -504,7 +503,7 @@ const Index = () => {
 
       {activeModal === 'linkStudent' && (
         <Modal
-          title={t('actions.linkStudent')}
+          title="Link New Student"
           onClose={() => setActiveModal(null)}
           onSubmit={handleLinkStudent}
           isLoading={isLoading}
@@ -512,7 +511,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.studentId')}
+                Student ID
               </label>
               <input
                 type="text"
@@ -524,7 +523,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.studentName')}
+                Student Name
               </label>
               <input
                 type="text"
@@ -537,7 +536,7 @@ const Index = () => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('labels.grade')}
+                  Grade
                 </label>
                 <input
                   type="text"
@@ -549,7 +548,7 @@ const Index = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('labels.class')}
+                  Class
                 </label>
                 <input
                   type="text"
@@ -562,7 +561,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('labels.pin')}
+                PIN for Student Purchases
               </label>
               <input
                 type="password"
