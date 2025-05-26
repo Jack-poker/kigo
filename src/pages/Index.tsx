@@ -350,22 +350,24 @@ const Index = () => {
       <div className="relative z-10">
         <Header onMenuClick={() => {}} />
         
-        {/* Admin Ads/Announcements Banner - Now Sticky */}
-        <AdBanner />
-        
         {/* Welcome Section */}
-        <div className="container mx-auto px-4 py-4 sm:py-6">
+        <div className="container mx-auto px-4 py-6">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
               Welcome back, Parent!
             </h1>
-            <p className="text-gray-700 text-base sm:text-lg font-medium">Manage your children's school finances with ease</p>
+            <p className="text-gray-700 text-lg font-medium">Manage your children's school finances with ease</p>
           </div>
+        </div>
+
+        {/* Admin Ads/Announcements Banner */}
+        <div className="container mx-auto px-4">
+          <AdBanner />
         </div>
 
         {/* Tab Navigation */}
         <div className="container mx-auto px-4">
-          <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border-2 border-white/40 mb-4 sm:mb-6 overflow-hidden">
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border-2 border-white/40 mb-6 overflow-hidden">
             <div className="flex overflow-x-auto">
               {tabs.map((tab) => {
                 const IconComponent = tab.icon;
@@ -373,13 +375,13 @@ const Index = () => {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 min-w-0 flex items-center justify-center space-x-2 sm:space-x-3 py-4 sm:py-6 px-3 sm:px-4 text-xs sm:text-sm font-bold transition-all duration-300 relative overflow-hidden ${
+                    className={`flex-1 min-w-0 flex items-center justify-center space-x-3 py-6 px-4 text-sm font-bold transition-all duration-300 relative overflow-hidden ${
                       activeTab === tab.id
                         ? 'text-white bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 shadow-lg'
                         : 'text-gray-600 hover:text-gray-800 hover:bg-gradient-to-r hover:from-red-50 hover:via-yellow-50 hover:via-green-50 hover:to-blue-50'
                     }`}
                   >
-                    <IconComponent className="w-4 h-4 sm:w-6 sm:h-6" />
+                    <IconComponent className="w-6 h-6" />
                     <span className="hidden sm:inline">{tab.label}</span>
                     {activeTab === tab.id && (
                       <div className="absolute inset-0 bg-white/10 animate-pulse"></div>
@@ -392,7 +394,7 @@ const Index = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="flex-1 container mx-auto px-4 pb-6 sm:pb-8">
+        <div className="flex-1 container mx-auto px-4 pb-8">
           <div className="h-full">
             {renderTabContent()}
           </div>
