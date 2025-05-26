@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { 
   Wallet, 
@@ -18,7 +19,9 @@ import {
   Search,
   X,
   Check,
-  AlertCircle
+  AlertCircle,
+  Home,
+  Activity
 } from 'lucide-react';
 import Header from '../components/Header';
 import VirtualCard from '../components/VirtualCard';
@@ -31,6 +34,7 @@ import Toast from '../components/Toast';
 const Index = () => {
   const [balance, setBalance] = useState(125000);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const [activeTab, setActiveTab] = useState('overview');
   const [students, setStudents] = useState([
     {
       id: '1',
@@ -121,7 +125,7 @@ const Index = () => {
       };
       setTransactions(prev => [newTransaction, ...prev]);
       setActiveModal(null);
-      showToast(`Successfully deposited ${data.amount} RWF`);
+      showToast(`Successfully deposited ${Number(data.amount)} RWF`);
     } catch (error) {
       showToast('Deposit failed. Please try again.', 'error');
     }
@@ -147,7 +151,7 @@ const Index = () => {
       };
       setTransactions(prev => [newTransaction, ...prev]);
       setActiveModal(null);
-      showToast(`Successfully withdrew ${data.amount} RWF`);
+      showToast(`Successfully withdrew ${Number(data.amount)} RWF`);
     } catch (error) {
       showToast(error.message || 'Withdrawal failed. Please try again.', 'error');
     }
@@ -179,30 +183,112 @@ const Index = () => {
     setIsLoading(false);
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-      <Header onMenuClick={() => {}} />
-      
-      <main className="container mx-auto px-4 py-6 space-y-6">
-        {/* Welcome Section */}
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900">Welcome back, Parent!</h1>
-          <p className="text-gray-600">Manage your children's school finances with ease</p>
-        </div>
+  const tabs = [
+    { id: 'overview', label: 'Overview', icon: Home },
+    { id: 'wallet', label: 'My Wallet', icon: Wallet },
+    { id: 'students', label: 'Students', icon: Users },
+    { id: 'transactions', label: 'Transactions', icon: Activity }
+  ];
 
-        {/* Dashboard Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Virtual Card */}
-          <div className="lg:col-span-1">
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'overview':
+        return (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+            <div className="space-y-6">
+              <VirtualCard 
+                balance={balance}
+                isVisible={isBalanceVisible}
+                onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-gray-900">Quick Actions</h3>
+                  <Plus className="w-5 h-5 text-indigo-500" />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <button 
+                    onClick={() => setActiveModal('deposit')}
+                    className="p-4 text-center bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-colors duration-200"
+                  >
+                    <Plus className="w-6 h-6 text-indigo-600 mx-auto mb-2" />
+                    <span className="text-sm font-medium text-indigo-900">Deposit</span>
+                  </button>
+                  <button 
+                    onClick={() => setActiveModal('linkStudent')}
+                    className="p-4 text-center bg-green-50 hover:bg-green-100 rounded-xl transition-colors duration-200"
+                  >
+                    <Users className="w-6 h-6 text-green-600 mx-auto mb-2" />
+                    <span className="text-sm font-medium text-green-900">Link Student</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-gray-900">This Month</h3>
+                  <TrendingUp className="w-5 h-5 text-green-500" />
+                </div>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Total Spent</span>
+                    <span className="font-semibold text-lg">12,500 RWF</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Deposits</span>
+                    <span className="font-semibold text-lg text-green-600">+75,000 RWF</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Current Balance</span>
+                    <span className="font-semibold text-lg text-blue-600">
+                      {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+                <h3 className="font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                <div className="space-y-3">
+                  {transactions.slice(0, 3).map((transaction) => (
+                    <div key={transaction.id} className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                          transaction.type === 'deposit' ? 'bg-green-100' : 
+                          transaction.type === 'withdraw' ? 'bg-red-100' : 'bg-blue-100'
+                        }`}>
+                          {transaction.type === 'deposit' ? 
+                            <TrendingUp className="w-4 h-4 text-green-600" /> :
+                            transaction.type === 'withdraw' ?
+                            <TrendingDown className="w-4 h-4 text-red-600" /> :
+                            <ShoppingCart className="w-4 h-4 text-blue-600" />
+                          }
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium">{transaction.title}</p>
+                          <p className="text-xs text-gray-500">{transaction.date}</p>
+                        </div>
+                      </div>
+                      <span className={`text-sm font-semibold ${
+                        transaction.amount > 0 ? 'text-green-600' : 'text-red-600'
+                      }`}>
+                        {transaction.amount > 0 ? '+' : ''}{Math.abs(transaction.amount).toLocaleString()} RWF
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      case 'wallet':
+        return (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
             <VirtualCard 
               balance={balance}
               isVisible={isBalanceVisible}
               onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
             />
-          </div>
-
-          {/* Wallet Section */}
-          <div className="lg:col-span-1">
             <WalletSection 
               balance={balance}
               isVisible={isBalanceVisible}
@@ -211,70 +297,74 @@ const Index = () => {
               onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
             />
           </div>
+        );
+      case 'students':
+        return (
+          <div className="h-full">
+            <StudentsSection 
+              students={students}
+              onViewTransactions={(student) => setActiveModal('studentTransactions')}
+              onSetLimits={(student) => setActiveModal('spendingLimits')}
+            />
+          </div>
+        );
+      case 'transactions':
+        return (
+          <div className="h-full">
+            <TransactionsSection 
+              transactions={transactions}
+              onViewAll={() => setActiveModal('allTransactions')}
+            />
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
-          {/* Quick Stats */}
-          <div className="lg:col-span-1 space-y-4">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">This Month</h3>
-                <TrendingUp className="w-5 h-5 text-green-500" />
-              </div>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Total Spent</span>
-                  <span className="font-semibold">12,500 RWF</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Deposits</span>
-                  <span className="font-semibold text-green-600">+75,000 RWF</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Savings</span>
-                  <span className="font-semibold text-blue-600">62,500 RWF</span>
-                </div>
-              </div>
-            </div>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex flex-col">
+      <Header onMenuClick={() => {}} />
+      
+      {/* Welcome Section */}
+      <div className="container mx-auto px-4 py-4">
+        <div className="text-center">
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Welcome back, Parent!</h1>
+          <p className="text-gray-600">Manage your children's school finances with ease</p>
+        </div>
+      </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Quick Actions</h3>
-                <Plus className="w-5 h-5 text-indigo-500" />
-              </div>
-              <div className="space-y-2">
-                <button 
-                  onClick={() => setActiveModal('linkStudent')}
-                  className="w-full p-3 text-left bg-indigo-50 hover:bg-indigo-100 rounded-xl transition-colors duration-200"
+      {/* Tab Navigation */}
+      <div className="container mx-auto px-4">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 mb-4">
+          <div className="flex overflow-x-auto">
+            {tabs.map((tab) => {
+              const IconComponent = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex-1 min-w-0 flex items-center justify-center space-x-2 py-4 px-3 text-sm font-medium transition-all duration-200 ${
+                    activeTab === tab.id
+                      ? 'text-indigo-600 border-b-2 border-indigo-600 bg-indigo-50/50'
+                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50/50'
+                  }`}
                 >
-                  <div className="flex items-center space-x-3">
-                    <Users className="w-4 h-4 text-indigo-600" />
-                    <span className="text-sm font-medium text-indigo-900">Link New Student</span>
-                  </div>
+                  <IconComponent className="w-5 h-5" />
+                  <span className="hidden sm:inline">{tab.label}</span>
                 </button>
-                <button className="w-full p-3 text-left bg-green-50 hover:bg-green-100 rounded-xl transition-colors duration-200">
-                  <div className="flex items-center space-x-3">
-                    <Settings className="w-4 h-4 text-green-600" />
-                    <span className="text-sm font-medium text-green-900">Spending Limits</span>
-                  </div>
-                </button>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
+      </div>
 
-        {/* Students and Transactions */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <StudentsSection 
-            students={students}
-            onViewTransactions={(student) => setActiveModal('studentTransactions')}
-            onSetLimits={(student) => setActiveModal('spendingLimits')}
-          />
-          
-          <TransactionsSection 
-            transactions={transactions}
-            onViewAll={() => setActiveModal('allTransactions')}
-          />
+      {/* Tab Content */}
+      <div className="flex-1 container mx-auto px-4 pb-6">
+        <div className="h-full">
+          {renderTabContent()}
         </div>
-      </main>
+      </div>
 
       {/* Modals */}
       {activeModal === 'deposit' && (
