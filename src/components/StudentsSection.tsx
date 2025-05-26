@@ -1,8 +1,11 @@
 
 import React from 'react';
-import { Users, Settings, Eye, MoreVertical, AlertCircle } from 'lucide-react';
+import { Users, Settings, Eye, AlertCircle } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
+  const { t } = useLanguage();
+  
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('rw-RW', {
       style: 'currency',
@@ -19,8 +22,10 @@ const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
             <Users className="w-6 h-6 text-green-600" />
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900">Linked Students</h3>
-            <p className="text-sm text-gray-500">{students.length} student{students.length !== 1 ? 's' : ''}</p>
+            <h3 className="font-semibold text-gray-900">{t('linkedStudents')}</h3>
+            <p className="text-sm text-gray-500">
+              {students.length} {students.length === 1 ? t('student') : t('students_plural')}
+            </p>
           </div>
         </div>
       </div>
@@ -53,12 +58,14 @@ const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
                       <button
                         onClick={() => onViewTransactions(student)}
                         className="p-1 text-gray-400 hover:text-indigo-600 transition-colors duration-200"
+                        title="View Transactions"
                       >
                         <Eye className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => onSetLimits(student)}
                         className="p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                        title={t('setSpendingLimits')}
                       >
                         <Settings className="w-4 h-4" />
                       </button>
@@ -83,7 +90,7 @@ const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
                   
                   {isOverLimit && (
                     <p className="text-xs text-red-600 mt-1 font-medium">
-                      Daily limit exceeded
+                      {t('dailyLimitExceeded')}
                     </p>
                   )}
                 </div>
@@ -95,8 +102,8 @@ const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
         {students.length === 0 && (
           <div className="text-center py-8">
             <Users className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500">No students linked yet</p>
-            <p className="text-sm text-gray-400">Add your first student to get started</p>
+            <p className="text-gray-500">{t('noStudentsLinked')}</p>
+            <p className="text-sm text-gray-400">{t('addFirstStudent')}</p>
           </div>
         )}
       </div>

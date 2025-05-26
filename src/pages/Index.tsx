@@ -1,27 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Wallet, 
-  CreditCard, 
   Users, 
   Plus, 
-  RefreshCw, 
   TrendingUp, 
   TrendingDown, 
   ShoppingCart,
-  Settings,
   Eye,
-  EyeOff,
-  Globe,
-  User,
-  LogOut,
-  Bell,
-  Search,
-  X,
-  Check,
-  AlertCircle,
   Home,
   Activity
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
 import VirtualCard from '../components/VirtualCard';
 import WalletSection from '../components/WalletSection';
@@ -30,8 +19,10 @@ import TransactionsSection from '../components/TransactionsSection';
 import Modal from '../components/Modal';
 import Toast from '../components/Toast';
 import AdBanner from '../components/AdBanner';
+import SpendingLimitsModal from '../components/SpendingLimitsModal';
 
 const Index = () => {
+  const { t } = useLanguage();
   const [balance, setBalance] = useState(125000);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
@@ -46,7 +37,9 @@ const Index = () => {
       dailyLimit: 5000,
       weeklyLimit: 25000,
       monthlyLimit: 100000,
-      todaySpent: 2500
+      todaySpent: 2500,
+      allowedDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+      allowedHours: { from: '07:00', to: '18:00' }
     },
     {
       id: '2',
@@ -58,7 +51,9 @@ const Index = () => {
       dailyLimit: 7000,
       weeklyLimit: 35000,
       monthlyLimit: 140000,
-      todaySpent: 1200
+      todaySpent: 1200,
+      allowedDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+      allowedHours: { from: '07:00', to: '18:00' }
     }
   ]);
   
@@ -66,7 +61,7 @@ const Index = () => {
     {
       id: '1',
       type: 'payment',
-      title: 'Cafeteria Purchase',
+      title: t('cafeteriaPurchase'),
       student: 'Alice Uwimana',
       amount: -2500,
       date: '2 minutes ago',
@@ -75,7 +70,7 @@ const Index = () => {
     {
       id: '2',
       type: 'deposit',
-      title: 'Mobile Money Deposit',
+      title: t('mobileMoneyDeposit'),
       student: null,
       amount: 50000,
       date: '1 hour ago',
@@ -84,7 +79,7 @@ const Index = () => {
     {
       id: '3',
       type: 'payment',
-      title: 'Stationery Purchase',
+      title: t('stationeryPurchase'),
       student: 'Bob Nkurunziza',
       amount: -1200,
       date: '3 hours ago',
@@ -93,8 +88,15 @@ const Index = () => {
   ]);
 
   const [activeModal, setActiveModal] = useState(null);
+  const [selectedStudent, setSelectedStudent] = useState(null);
   const [toasts, setToasts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Refs for smooth scrolling
+  const overviewRef = useRef(null);
+  const walletRef = useRef(null);
+  const studentsRef = useRef(null);
+  const transactionsRef = useRef(null);
 
   const showToast = (message, type = 'success') => {
     const toast = {
@@ -108,16 +110,48 @@ const Index = () => {
     }, 4000);
   };
 
+  // Smooth scroll function
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  // Handle tab change with smooth scrolling
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    
+    // Small delay to ensure content is rendered before scrolling
+    setTimeout(() => {
+      switch (tabId) {
+        case 'overview':
+          scrollToSection(overviewRef);
+          break;
+        case 'wallet':
+          scrollToSection(walletRef);
+          break;
+        case 'students':
+          scrollToSection(studentsRef);
+          break;
+        case 'transactions':
+          scrollToSection(transactionsRef);
+          break;
+      }
+    }, 100);
+  };
+
   const handleDeposit = async (data) => {
     setIsLoading(true);
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       setBalance(prev => prev + Number(data.amount));
       const newTransaction = {
         id: Date.now().toString(),
         type: 'deposit',
-        title: 'Mobile Money Deposit',
+        title: t('mobileMoneyDeposit'),
         student: null,
         amount: Number(data.amount),
         date: 'Just now',
@@ -172,7 +206,9 @@ const Index = () => {
         dailyLimit: 5000,
         weeklyLimit: 25000,
         monthlyLimit: 100000,
-        todaySpent: 0
+        todaySpent: 0,
+        allowedDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+        allowedHours: { from: '07:00', to: '18:00' }
       };
       setStudents(prev => [...prev, newStudent]);
       setActiveModal(null);
@@ -183,18 +219,41 @@ const Index = () => {
     setIsLoading(false);
   };
 
+  const handleSetLimits = (student) => {
+    setSelectedStudent(student);
+    setActiveModal('spendingLimits');
+  };
+
+  const handleSaveLimits = async (limits) => {
+    setIsLoading(true);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setStudents(prev => prev.map(student => 
+        student.id === selectedStudent.id 
+          ? { ...student, ...limits }
+          : student
+      ));
+      setActiveModal(null);
+      setSelectedStudent(null);
+      showToast(`Spending limits updated for ${selectedStudent.name}`);
+    } catch (error) {
+      showToast('Failed to update limits. Please try again.', 'error');
+    }
+    setIsLoading(false);
+  };
+
   const tabs = [
-    { id: 'overview', label: 'Overview', icon: Home },
-    { id: 'wallet', label: 'My Wallet', icon: Wallet },
-    { id: 'students', label: 'Students', icon: Users },
-    { id: 'transactions', label: 'Transactions', icon: Activity }
+    { id: 'overview', label: t('overview'), icon: Home },
+    { id: 'wallet', label: t('wallet'), icon: Wallet },
+    { id: 'students', label: t('students'), icon: Users },
+    { id: 'transactions', label: t('transactions'), icon: Activity }
   ];
 
   const renderTabContent = () => {
     switch (activeTab) {
       case 'overview':
         return (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+          <div ref={overviewRef} className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
             <div className="space-y-6">
               <VirtualCard 
                 balance={balance}
@@ -205,7 +264,7 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-yellow-500/5 to-green-500/5"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-bold text-gray-900 text-lg">Quick Actions</h3>
+                    <h3 className="font-bold text-gray-900 text-lg">{t('quickActions')}</h3>
                     <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
                       <Plus className="w-5 h-5 text-white" />
                     </div>
@@ -217,7 +276,7 @@ const Index = () => {
                     >
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Plus className="w-8 h-8 mx-auto mb-3 relative z-10" />
-                      <span className="text-sm font-bold relative z-10">Deposit</span>
+                      <span className="text-sm font-bold relative z-10">{t('deposit')}</span>
                     </button>
                     <button 
                       onClick={() => setActiveModal('linkStudent')}
@@ -225,7 +284,7 @@ const Index = () => {
                     >
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Users className="w-8 h-8 mx-auto mb-3 relative z-10" />
-                      <span className="text-sm font-bold relative z-10">Link Student</span>
+                      <span className="text-sm font-bold relative z-10">{t('linkStudent')}</span>
                     </button>
                   </div>
                 </div>
@@ -236,22 +295,22 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-teal-500/5 to-blue-500/5"></div>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="font-bold text-gray-900 text-lg">This Month</h3>
+                    <h3 className="font-bold text-gray-900 text-lg">{t('thisMonth')}</h3>
                     <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center">
                       <TrendingUp className="w-5 h-5 text-white" />
                     </div>
                   </div>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">Total Spent</span>
+                      <span className="text-gray-700 font-medium">{t('totalSpent')}</span>
                       <span className="font-bold text-xl text-red-600">12,500 RWF</span>
                     </div>
                     <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">Deposits</span>
+                      <span className="text-gray-700 font-medium">{t('deposits')}</span>
                       <span className="font-bold text-xl text-green-600">+75,000 RWF</span>
                     </div>
                     <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">Current Balance</span>
+                      <span className="text-gray-700 font-medium">{t('currentBalance')}</span>
                       <span className="font-bold text-xl text-blue-600">
                         {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
                       </span>
@@ -262,7 +321,7 @@ const Index = () => {
               <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-purple-200/30 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-rose-500/5"></div>
                 <div className="relative z-10">
-                  <h3 className="font-bold text-gray-900 mb-6 text-lg">Recent Activity</h3>
+                  <h3 className="font-bold text-gray-900 mb-6 text-lg">{t('recentActivity')}</h3>
                   <div className="space-y-4">
                     {transactions.slice(0, 3).map((transaction) => (
                       <div key={transaction.id} className="flex items-center justify-between p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
@@ -298,7 +357,7 @@ const Index = () => {
         );
       case 'wallet':
         return (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+          <div ref={walletRef} className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
             <VirtualCard 
               balance={balance}
               isVisible={isBalanceVisible}
@@ -315,17 +374,17 @@ const Index = () => {
         );
       case 'students':
         return (
-          <div className="h-full">
+          <div ref={studentsRef} className="h-full">
             <StudentsSection 
               students={students}
               onViewTransactions={(student) => setActiveModal('studentTransactions')}
-              onSetLimits={(student) => setActiveModal('spendingLimits')}
+              onSetLimits={handleSetLimits}
             />
           </div>
         );
       case 'transactions':
         return (
-          <div className="h-full">
+          <div ref={transactionsRef} className="h-full">
             <TransactionsSection 
               transactions={transactions}
               onViewAll={() => setActiveModal('allTransactions')}
@@ -357,9 +416,9 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 sm:py-6">
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
-              Welcome back, Parent!
+              {t('welcome')}
             </h1>
-            <p className="text-gray-700 text-base sm:text-lg font-medium">Manage your children's school finances with ease</p>
+            <p className="text-gray-700 text-base sm:text-lg font-medium">{t('subtitle')}</p>
           </div>
         </div>
 
@@ -372,7 +431,7 @@ const Index = () => {
                 return (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
+                    onClick={() => handleTabChange(tab.id)}
                     className={`flex-1 min-w-0 flex items-center justify-center space-x-2 sm:space-x-3 py-4 sm:py-6 px-3 sm:px-4 text-xs sm:text-sm font-bold transition-all duration-300 relative overflow-hidden ${
                       activeTab === tab.id
                         ? 'text-white bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 shadow-lg'
@@ -399,10 +458,35 @@ const Index = () => {
         </div>
       </div>
 
+      {/* Fixed Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t-2 border-gray-200 z-40 shadow-2xl">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-around py-3">
+            {tabs.map((tab) => {
+              const IconComponent = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabChange(tab.id)}
+                  className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-xl transition-all duration-300 min-w-0 flex-1 ${
+                    activeTab === tab.id
+                      ? 'text-white bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 shadow-lg transform scale-105'
+                      : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'
+                  }`}
+                >
+                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="text-xs font-bold truncate">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* Modals */}
       {activeModal === 'deposit' && (
         <Modal
-          title="Deposit Funds"
+          title={t('depositFunds')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleDeposit}
           isLoading={isLoading}
@@ -410,7 +494,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Phone Number
+                {t('phoneNumber')}
               </label>
               <input
                 type="tel"
@@ -422,7 +506,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Amount (RWF)
+                {t('amount')}
               </label>
               <input
                 type="number"
@@ -435,7 +519,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                PIN
+                {t('pin')}
               </label>
               <input
                 type="password"
@@ -452,7 +536,7 @@ const Index = () => {
 
       {activeModal === 'withdraw' && (
         <Modal
-          title="Withdraw Funds"
+          title={t('withdrawFunds')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleWithdraw}
           isLoading={isLoading}
@@ -460,7 +544,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Phone Number
+                {t('phoneNumber')}
               </label>
               <input
                 type="tel"
@@ -472,7 +556,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Amount (RWF)
+                {t('amount')}
               </label>
               <input
                 type="number"
@@ -486,7 +570,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                PIN
+                {t('pin')}
               </label>
               <input
                 type="password"
@@ -503,7 +587,7 @@ const Index = () => {
 
       {activeModal === 'linkStudent' && (
         <Modal
-          title="Link New Student"
+          title={t('linkNewStudent')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleLinkStudent}
           isLoading={isLoading}
@@ -511,7 +595,7 @@ const Index = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Student ID
+                {t('studentId')}
               </label>
               <input
                 type="text"
@@ -523,7 +607,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Student Name
+                {t('studentName')}
               </label>
               <input
                 type="text"
@@ -536,7 +620,7 @@ const Index = () => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Grade
+                  {t('grade')}
                 </label>
                 <input
                   type="text"
@@ -548,7 +632,7 @@ const Index = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Class
+                  {t('class')}
                 </label>
                 <input
                   type="text"
@@ -561,7 +645,7 @@ const Index = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                PIN for Student Purchases
+                {t('pinForPurchases')}
               </label>
               <input
                 type="password"
@@ -576,8 +660,20 @@ const Index = () => {
         </Modal>
       )}
 
+      {activeModal === 'spendingLimits' && selectedStudent && (
+        <SpendingLimitsModal
+          student={selectedStudent}
+          onClose={() => {
+            setActiveModal(null);
+            setSelectedStudent(null);
+          }}
+          onSave={handleSaveLimits}
+          isLoading={isLoading}
+        />
+      )}
+
       {/* Toast Container */}
-      <div className="fixed bottom-4 right-4 space-y-2 z-50">
+      <div className="fixed bottom-20 right-4 space-y-2 z-50">
         {toasts.map(toast => (
           <Toast
             key={toast.id}
