@@ -31,6 +31,7 @@ import Modal from '../components/Modal';
 import Toast from '../components/Toast';
 import AdBanner from '../components/AdBanner';
 import ScrollNavigation from '../components/ScrollNavigation';
+import StudentQRModal from '../components/StudentQRModal';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Index = () => {
@@ -97,6 +98,7 @@ const Index = () => {
   ]);
 
   const [activeModal, setActiveModal] = useState(null);
+  const [selectedStudent, setSelectedStudent] = useState(null);
   const [toasts, setToasts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -186,6 +188,11 @@ const Index = () => {
     setIsLoading(false);
   };
 
+  const handleShowQR = (student) => {
+    setSelectedStudent(student);
+    setActiveModal('studentQR');
+  };
+
   const tabs = [
     { id: 'overview', label: 'Overview', icon: Home },
     { id: 'wallet', label: 'My Wallet', icon: Wallet },
@@ -197,96 +204,96 @@ const Index = () => {
     switch (activeTab) {
       case 'overview':
         return (
-          <div id="section-overview" className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
-            <div className="space-y-6">
+          <div id="section-overview" className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-full">
+            <div className="space-y-4">
               <VirtualCard 
                 balance={balance}
                 isVisible={isBalanceVisible}
                 onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
               />
-              <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-orange-200/30 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-orange-200/30 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-yellow-500/5 to-green-500/5"></div>
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-bold text-gray-900 text-lg">Ibikorwa Byihuse</h3>
-                    <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
-                      <Plus className="w-5 h-5 text-white" />
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-medium text-gray-900 text-sm">Ibikorwa Byihuse</h3>
+                    <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
+                      <Plus className="w-4 h-4 text-white" />
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3">
                     <button 
                       onClick={() => setActiveModal('deposit')}
-                      className="group p-6 text-center bg-gradient-to-br from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl relative overflow-hidden"
+                      className="group p-4 text-center bg-gradient-to-br from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Plus className="w-8 h-8 mx-auto mb-3 relative z-10" />
-                      <span className="text-sm font-bold relative z-10">{t('actions.deposit')}</span>
+                      <Plus className="w-6 h-6 mx-auto mb-2 relative z-10" />
+                      <span className="text-xs font-medium relative z-10">{t('actions.deposit')}</span>
                     </button>
                     <button 
                       onClick={() => setActiveModal('linkStudent')}
-                      className="group p-6 text-center bg-gradient-to-br from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl relative overflow-hidden"
+                      className="group p-4 text-center bg-gradient-to-br from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Users className="w-8 h-8 mx-auto mb-3 relative z-10" />
-                      <span className="text-sm font-bold relative z-10">{t('actions.linkStudent')}</span>
+                      <Users className="w-6 h-6 mx-auto mb-2 relative z-10" />
+                      <span className="text-xs font-medium relative z-10">{t('actions.linkStudent')}</span>
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="space-y-6">
-              <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-teal-200/30 relative overflow-hidden">
+            <div className="space-y-4">
+              <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-teal-200/30 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-teal-500/5 to-blue-500/5"></div>
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="font-bold text-gray-900 text-lg">Ukwezi Gushize</h3>
-                    <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center">
-                      <TrendingUp className="w-5 h-5 text-white" />
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-medium text-gray-900 text-sm">Ukwezi Gushize</h3>
+                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center">
+                      <TrendingUp className="w-4 h-4 text-white" />
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">{t('labels.totalSpent')}</span>
-                      <span className="font-bold text-xl text-red-600">12,500 RWF</span>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 bg-white/60 rounded-lg backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium text-sm">{t('labels.totalSpent')}</span>
+                      <span className="font-bold text-lg text-red-600">12,500 RWF</span>
                     </div>
-                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">{t('labels.deposits')}</span>
-                      <span className="font-bold text-xl text-green-600">+75,000 RWF</span>
+                    <div className="flex justify-between items-center p-3 bg-white/60 rounded-lg backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium text-sm">{t('labels.deposits')}</span>
+                      <span className="font-bold text-lg text-green-600">+75,000 RWF</span>
                     </div>
-                    <div className="flex justify-between items-center p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                      <span className="text-gray-700 font-medium">{t('labels.currentBalance')}</span>
-                      <span className="font-bold text-xl text-blue-600">
+                    <div className="flex justify-between items-center p-3 bg-white/60 rounded-lg backdrop-blur-sm border border-white/40">
+                      <span className="text-gray-700 font-medium text-sm">{t('labels.currentBalance')}</span>
+                      <span className="font-bold text-lg text-blue-600">
                         {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-2 border-purple-200/30 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-purple-200/30 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-rose-500/5"></div>
                 <div className="relative z-10">
-                  <h3 className="font-bold text-gray-900 mb-6 text-lg">Ibikorwa bya Vuba</h3>
-                  <div className="space-y-4">
+                  <h3 className="font-medium text-gray-900 mb-4 text-sm">Ibikorwa bya Vuba</h3>
+                  <div className="space-y-3">
                     {transactions.slice(0, 3).map((transaction) => (
-                      <div key={transaction.id} className="flex items-center justify-between p-4 bg-white/60 rounded-xl backdrop-blur-sm border border-white/40">
-                        <div className="flex items-center space-x-4">
-                          <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg ${
+                      <div key={transaction.id} className="flex items-center justify-between p-3 bg-white/60 rounded-lg backdrop-blur-sm border border-white/40">
+                        <div className="flex items-center space-x-3">
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-md ${
                             transaction.type === 'deposit' ? 'bg-gradient-to-br from-green-500 to-emerald-600' : 
                             transaction.type === 'withdraw' ? 'bg-gradient-to-br from-red-500 to-rose-600' : 'bg-gradient-to-br from-blue-500 to-cyan-600'
                           }`}>
                             {transaction.type === 'deposit' ? 
-                              <TrendingUp className="w-6 h-6 text-white" /> :
+                              <TrendingUp className="w-5 h-5 text-white" /> :
                               transaction.type === 'withdraw' ?
-                              <TrendingDown className="w-6 h-6 text-white" /> :
-                              <ShoppingCart className="w-6 h-6 text-white" />
+                              <TrendingDown className="w-5 h-5 text-white" /> :
+                              <ShoppingCart className="w-5 h-5 text-white" />
                             }
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-gray-900">{transaction.title}</p>
+                            <p className="text-xs font-medium text-gray-900">{transaction.title}</p>
                             <p className="text-xs text-gray-600">{transaction.date}</p>
                           </div>
                         </div>
-                        <span className={`text-sm font-bold ${
+                        <span className={`text-xs font-bold ${
                           transaction.amount > 0 ? 'text-green-600' : 'text-red-600'
                         }`}>
                           {transaction.amount > 0 ? '+' : ''}{Math.abs(transaction.amount).toLocaleString()} RWF
@@ -301,7 +308,7 @@ const Index = () => {
         );
       case 'wallet':
         return (
-          <div id="section-wallet" className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+          <div id="section-wallet" className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-full">
             <VirtualCard 
               balance={balance}
               isVisible={isBalanceVisible}
@@ -323,6 +330,7 @@ const Index = () => {
               students={students}
               onViewTransactions={(student) => setActiveModal('studentTransactions')}
               onSetLimits={(student) => setActiveModal('spendingLimits')}
+              onShowQR={handleShowQR}
             />
           </div>
         );
@@ -354,12 +362,12 @@ const Index = () => {
         <Header onMenuClick={() => {}} />
         
         {/* Welcome Section with translated content */}
-        <div className="container mx-auto px-4 py-6">
+        <div className="container mx-auto px-4 py-4">
           <div className="text-center">
-            <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
+            <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-1">
               {t('app.welcome')}
             </h1>
-            <p className="text-gray-700 text-lg font-medium">{t('app.subtitle')}</p>
+            <p className="text-gray-700 text-sm font-medium">{t('app.subtitle')}</p>
           </div>
         </div>
 
@@ -374,12 +382,23 @@ const Index = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="flex-1 container mx-auto px-4 pb-8">
+        <div className="flex-1 container mx-auto px-4 pb-6">
           <div className="h-full">
             {renderTabContent()}
           </div>
         </div>
       </div>
+
+      {/* Student QR Modal */}
+      {activeModal === 'studentQR' && selectedStudent && (
+        <StudentQRModal
+          student={selectedStudent}
+          onClose={() => {
+            setActiveModal(null);
+            setSelectedStudent(null);
+          }}
+        />
+      )}
 
       {/* Enhanced Modals with translations */}
       {activeModal === 'deposit' && (

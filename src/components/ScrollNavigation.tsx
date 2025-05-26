@@ -34,7 +34,7 @@ const ScrollNavigation: React.FC<ScrollNavigationProps> = ({ activeTab, onTabCha
   };
 
   return (
-    <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border-2 border-white/40 mb-8 overflow-hidden">
+    <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-white/40 mb-6 overflow-hidden">
       <div className="flex overflow-x-auto">
         {tabs.map((tab) => {
           const IconComponent = tab.icon;
@@ -42,14 +42,14 @@ const ScrollNavigation: React.FC<ScrollNavigationProps> = ({ activeTab, onTabCha
             <button
               key={tab.id}
               onClick={() => scrollToSection(tab.id)}
-              className={`flex-1 min-w-0 flex items-center justify-center space-x-3 py-8 px-6 text-base font-bold transition-all duration-300 relative overflow-hidden ${
+              className={`flex-1 min-w-0 flex items-center justify-center space-x-2 py-4 px-4 text-sm font-medium transition-all duration-300 relative overflow-hidden ${
                 activeTab === tab.id
-                  ? 'text-white bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 shadow-lg'
+                  ? 'text-white bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 shadow-md'
                   : 'text-gray-600 hover:text-gray-800 hover:bg-gradient-to-r hover:from-red-50 hover:via-yellow-50 hover:via-green-50 hover:to-blue-50'
               }`}
             >
-              <IconComponent className="w-7 h-7" />
-              <span className="hidden sm:inline text-lg">{tab.label}</span>
+              <IconComponent className="w-5 h-5" />
+              <span className="hidden sm:inline text-sm">{tab.label}</span>
               {activeTab === tab.id && (
                 <div className="absolute inset-0 bg-white/10 animate-pulse"></div>
               )}
