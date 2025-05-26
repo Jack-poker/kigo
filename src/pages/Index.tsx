@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   Wallet, 
@@ -110,13 +109,13 @@ const Index = () => {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
-      setBalance(prev => prev + parseFloat(data.amount));
+      setBalance(prev => prev + Number(data.amount));
       const newTransaction = {
         id: Date.now().toString(),
         type: 'deposit',
         title: 'Mobile Money Deposit',
         student: null,
-        amount: parseFloat(data.amount),
+        amount: Number(data.amount),
         date: 'Just now',
         status: 'completed'
       };
@@ -132,17 +131,17 @@ const Index = () => {
   const handleWithdraw = async (data) => {
     setIsLoading(true);
     try {
-      if (parseFloat(data.amount) > balance) {
+      if (Number(data.amount) > balance) {
         throw new Error('Insufficient balance');
       }
       await new Promise(resolve => setTimeout(resolve, 2000));
-      setBalance(prev => prev - parseFloat(data.amount));
+      setBalance(prev => prev - Number(data.amount));
       const newTransaction = {
         id: Date.now().toString(),
         type: 'withdraw',
         title: 'Mobile Money Withdrawal',
         student: null,
-        amount: -parseFloat(data.amount),
+        amount: -Number(data.amount),
         date: 'Just now',
         status: 'completed'
       };

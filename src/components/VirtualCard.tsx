@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Eye, EyeOff, Chip } from 'lucide-react';
+import { Eye, EyeOff, CreditCard } from 'lucide-react';
 
 const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
   const formatBalance = (amount) => {
@@ -33,7 +33,7 @@ const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
           </div>
           
           <div className="w-12 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-            <Chip className="w-6 h-6 text-white/80" />
+            <CreditCard className="w-6 h-6 text-white/80" />
           </div>
         </div>
 
