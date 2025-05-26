@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   Wallet, 
@@ -30,6 +29,7 @@ import StudentsSection from '../components/StudentsSection';
 import TransactionsSection from '../components/TransactionsSection';
 import Modal from '../components/Modal';
 import Toast from '../components/Toast';
+import AdBanner from '../components/AdBanner';
 
 const Index = () => {
   const [balance, setBalance] = useState(125000);
@@ -358,6 +358,11 @@ const Index = () => {
             </h1>
             <p className="text-gray-700 text-lg font-medium">Manage your children's school finances with ease</p>
           </div>
+        </div>
+
+        {/* Admin Ads/Announcements Banner */}
+        <div className="container mx-auto px-4">
+          <AdBanner />
         </div>
 
         {/* Tab Navigation */}
