@@ -7,6 +7,7 @@ import {
   TrendingDown, 
   ShoppingCart,
   Eye,
+  EyeOff,
   Home,
   Activity,
   BarChart3,
