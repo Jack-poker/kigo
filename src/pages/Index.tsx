@@ -105,6 +105,12 @@ const Index = () => {
   const studentsRef = useRef(null);
   const transactionsRef = useRef(null);
 
+  // Toast function
+  const showToast = (message, type = 'success') => {
+    const id = Date.now().toString();
+    setToasts(prev => [...prev, { id, message, type }]);
+  };
+
   // Smooth scroll function
   const scrollToSection = (ref) => {
     if (ref.current) {
@@ -235,6 +241,10 @@ const Index = () => {
       showToast('Failed to update limits. Please try again.', 'error');
     }
     setIsLoading(false);
+  };
+
+  const handleSettings = () => {
+    setActiveModal('settings');
   };
 
   const tabs = [
@@ -442,7 +452,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Fixed Header */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 backdrop-blur-xl bg-white/80">
+      <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center space-x-6">
             <h1 className="text-gray-900 font-bold text-xl">iKaramu</h1>
@@ -474,7 +484,10 @@ const Index = () => {
             >
               {isBalanceVisible ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
             </button>
-            <button className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200">
+            <button 
+              onClick={handleSettings}
+              className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
+            >
               <Settings className="w-5 h-5" />
             </button>
           </div>
@@ -489,7 +502,7 @@ const Index = () => {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 backdrop-blur-xl bg-white/80">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
         <div className="flex items-center justify-around py-2">
           {tabs.map((tab) => {
             const IconComponent = tab.icon;
@@ -683,6 +696,44 @@ const Index = () => {
                 className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
+            </div>
+          </div>
+        </VercelModal>
+      )}
+
+      {activeModal === 'settings' && (
+        <VercelModal
+          title="Settings"
+          onClose={() => setActiveModal(null)}
+          onSubmit={() => setActiveModal(null)}
+          isLoading={false}
+        >
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="text-sm font-medium text-gray-900">Notifications</h4>
+                <p className="text-sm text-gray-500">Receive transaction alerts</p>
+              </div>
+              <button className="w-12 h-6 bg-blue-600 rounded-full relative">
+                <div className="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5"></div>
+              </button>
+            </div>
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="text-sm font-medium text-gray-900">Dark Mode</h4>
+                <p className="text-sm text-gray-500">Switch to dark theme</p>
+              </div>
+              <button className="w-12 h-6 bg-gray-300 rounded-full relative">
+                <div className="w-5 h-5 bg-white rounded-full absolute left-0.5 top-0.5"></div>
+              </button>
+            </div>
+            <div className="border-t pt-4">
+              <h4 className="text-sm font-medium text-gray-900 mb-2">Language</h4>
+              <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                <option>English</option>
+                <option>Kinyarwanda</option>
+                <option>French</option>
+              </select>
             </div>
           </div>
         </VercelModal>
