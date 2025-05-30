@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface AdContent {
   id: string;
@@ -38,6 +39,7 @@ const mockAds: AdContent[] = [
 ];
 
 const AdBanner = () => {
+  const { isDark } = useTheme();
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -62,10 +64,8 @@ const AdBanner = () => {
       const currentScrollY = window.scrollY;
       
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down - hide banner
         setIsScrollHidden(true);
       } else if (currentScrollY < lastScrollY) {
-        // Scrolling up - show banner
         setIsScrollHidden(false);
       }
       
@@ -91,72 +91,114 @@ const AdBanner = () => {
   if (!isVisible || mockAds.length === 0) return null;
 
   return (
-    <div className={`sticky top-0 z-40 transition-transform duration-300 ${isScrollHidden ? '-translate-y-full' : 'translate-y-0'}`}>
-      <div className="relative w-full bg-gradient-to-r from-red-50 via-yellow-50 via-green-50 to-blue-50 backdrop-blur-sm border-2 border-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-blue-200 rounded-none sm:rounded-3xl shadow-2xl overflow-hidden mb-2 sm:mb-6 mx-0 sm:mx-4">
-        {/* Shimmer Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-red-100/30 via-yellow-100/30 via-green-100/30 to-blue-100/30 animate-pulse"></div>
+    <div className={`sticky top-0 z-40 transition-all duration-500 ease-in-out ${isScrollHidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
+      <div className={`relative w-full mx-4 mb-6 rounded-2xl overflow-hidden backdrop-blur-md transition-all duration-300 hover:shadow-2xl group ${
+        isDark 
+          ? 'bg-gray-900/40 border border-gray-700/50 shadow-xl' 
+          : 'bg-white/60 border border-gray-200/50 shadow-lg'
+      }`}>
         
+        {/* Animated Background Gradient */}
+        <div className={`absolute inset-0 transition-opacity duration-700 ${
+          isDark 
+            ? 'bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-indigo-900/20' 
+            : 'bg-gradient-to-br from-blue-50/60 via-purple-50/60 to-indigo-50/60'
+        }`}></div>
+        
+        {/* Shimmer Effect */}
+        <div className={`absolute inset-0 opacity-30 ${
+          isDark 
+            ? 'bg-gradient-to-r from-transparent via-white/5 to-transparent' 
+            : 'bg-gradient-to-r from-transparent via-white/40 to-transparent'
+        } animate-shimmer`}></div>
+
         {/* Loading State */}
         {isLoading && (
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse rounded-none sm:rounded-3xl"></div>
+          <div className={`absolute inset-0 rounded-2xl animate-pulse ${
+            isDark ? 'bg-gray-800/50' : 'bg-gray-200/50'
+          }`}></div>
         )}
 
         {/* Close Button */}
         <button
           onClick={() => setIsVisible(false)}
-          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-6 h-6 sm:w-8 sm:h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-600 hover:text-red-500 hover:bg-white transition-all duration-300 shadow-lg group"
+          className={`absolute top-4 right-4 z-20 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm group/close ${
+            isDark 
+              ? 'bg-gray-800/60 text-gray-300 hover:bg-red-600/80 hover:text-white border border-gray-600/30' 
+              : 'bg-white/70 text-gray-600 hover:bg-red-500/80 hover:text-white border border-gray-300/30'
+          }`}
         >
-          <X className="w-3 h-3 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform duration-200" />
+          <X className="w-4 h-4 group-hover/close:scale-110 transition-transform duration-200" />
         </button>
 
-        {/* Navigation Arrows (only show if multiple ads) */}
+        {/* Navigation Arrows */}
         {mockAds.length > 1 && (
           <>
             <button
               onClick={prevAd}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-600 hover:text-blue-500 hover:bg-white transition-all duration-300 shadow-lg group"
+              className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm group/nav ${
+                isDark 
+                  ? 'bg-gray-800/60 text-gray-300 hover:bg-blue-600/80 hover:text-white border border-gray-600/30' 
+                  : 'bg-white/70 text-gray-600 hover:bg-blue-500/80 hover:text-white border border-gray-300/30'
+              }`}
             >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-200" />
+              <ChevronLeft className="w-5 h-5 group-hover/nav:scale-110 transition-transform duration-200" />
             </button>
             <button
               onClick={nextAd}
-              className="absolute right-8 sm:right-16 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-600 hover:text-blue-500 hover:bg-white transition-all duration-300 shadow-lg group"
+              className={`absolute right-16 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm group/nav ${
+                isDark 
+                  ? 'bg-gray-800/60 text-gray-300 hover:bg-blue-600/80 hover:text-white border border-gray-600/30' 
+                  : 'bg-white/70 text-gray-600 hover:bg-blue-500/80 hover:text-white border border-gray-300/30'
+              }`}
             >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-200" />
+              <ChevronRight className="w-5 h-5 group-hover/nav:scale-110 transition-transform duration-200" />
             </button>
           </>
         )}
 
         {/* Ad Content */}
-        <div className="relative z-10 p-3 sm:p-6">
-          <div className="flex flex-col sm:flex-row lg:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6">
+        <div className="relative z-10 p-6">
+          <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
             {/* Ad Image */}
-            <div className="flex-shrink-0 w-full sm:w-32 lg:w-48 h-24 sm:h-20 lg:h-24 rounded-xl sm:rounded-2xl overflow-hidden shadow-xl relative">
+            <div className="flex-shrink-0 w-full sm:w-48 h-28 rounded-xl overflow-hidden shadow-xl relative group/image">
               <img
                 src={currentAd.src}
                 alt={currentAd.alt}
                 onLoad={handleImageLoad}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-500 group-hover/image:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60"></div>
             </div>
 
             {/* Ad Text Content */}
             <div className="flex-1 text-center sm:text-left">
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-red-600 via-yellow-600 via-green-600 to-blue-600 bg-clip-text text-transparent mb-1 sm:mb-2">
+              <h3 className={`text-xl lg:text-2xl font-bold mb-2 transition-colors duration-300 ${
+                isDark 
+                  ? 'text-white' 
+                  : 'text-gray-800'
+              }`}>
                 {currentAd.title}
               </h3>
               {currentAd.subtitle && (
-                <p className="text-gray-700 font-medium mb-2 sm:mb-4 text-xs sm:text-sm lg:text-base">
+                <p className={`font-medium mb-4 text-sm lg:text-base transition-colors duration-300 ${
+                  isDark 
+                    ? 'text-gray-300' 
+                    : 'text-gray-600'
+                }`}>
                   {currentAd.subtitle}
                 </p>
               )}
               {currentAd.ctaText && (
                 <button
                   onClick={() => currentAd.ctaLink && window.open(currentAd.ctaLink, '_blank')}
-                  className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-bold rounded-xl sm:rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl relative overflow-hidden group text-sm sm:text-base"
+                  className={`inline-flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 relative overflow-hidden group/cta ${
+                    isDark 
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg' 
+                      : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg'
+                  }`}
                 >
-                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10">{currentAd.ctaText}</span>
                 </button>
               )}
@@ -164,17 +206,17 @@ const AdBanner = () => {
           </div>
         </div>
 
-        {/* Progress Indicators (only show if multiple ads) */}
+        {/* Progress Indicators */}
         {mockAds.length > 1 && (
-          <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1 sm:space-x-2 z-20">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
             {mockAds.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentAdIndex(index)}
-                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentAdIndex
-                    ? 'bg-gradient-to-r from-red-500 to-blue-500 w-4 sm:w-6'
-                    : 'bg-white/60 hover:bg-white/80'
+                    ? `w-6 ${isDark ? 'bg-blue-400' : 'bg-blue-500'}`
+                    : `w-2 ${isDark ? 'bg-gray-600 hover:bg-gray-500' : 'bg-gray-300 hover:bg-gray-400'}`
                 }`}
               />
             ))}
@@ -182,8 +224,12 @@ const AdBanner = () => {
         )}
 
         {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-16 h-16 sm:w-32 sm:h-32 bg-gradient-to-br from-red-300/20 to-transparent rounded-full blur-xl sm:blur-2xl"></div>
-        <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-32 sm:h-32 bg-gradient-to-tl from-blue-300/20 to-transparent rounded-full blur-xl sm:blur-2xl"></div>
+        <div className={`absolute top-0 left-0 w-32 h-32 rounded-full blur-2xl opacity-20 ${
+          isDark ? 'bg-blue-500' : 'bg-blue-300'
+        }`}></div>
+        <div className={`absolute bottom-0 right-0 w-32 h-32 rounded-full blur-2xl opacity-20 ${
+          isDark ? 'bg-purple-500' : 'bg-purple-300'
+        }`}></div>
       </div>
     </div>
   );
