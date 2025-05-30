@@ -13,7 +13,8 @@ import {
   BarChart3,
   PieChart,
   Settings,
-  Menu
+  Menu,
+  Loader2
 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
@@ -21,8 +22,9 @@ import VirtualCard from '../components/VirtualCard';
 import WalletSection from '../components/WalletSection';
 import StudentsSection from '../components/StudentsSection';
 import TransactionsSection from '../components/TransactionsSection';
-import Modal from '../components/Modal';
-import Toast from '../components/Toast';
+import VercelModal from '../components/VercelModal';
+import VercelToast from '../components/VercelToast';
+import BinanceLoader from '../components/BinanceLoader';
 import AdBanner from '../components/AdBanner';
 import SpendingLimitsModal from '../components/SpendingLimitsModal';
 
@@ -102,18 +104,6 @@ const Index = () => {
   const walletRef = useRef(null);
   const studentsRef = useRef(null);
   const transactionsRef = useRef(null);
-
-  const showToast = (message, type = 'success') => {
-    const toast = {
-      id: Date.now(),
-      message,
-      type
-    };
-    setToasts(prev => [...prev, toast]);
-    setTimeout(() => {
-      setToasts(prev => prev.filter(t => t.id !== toast.id));
-    }, 4000);
-  };
 
   // Smooth scroll function
   const scrollToSection = (ref) => {
@@ -258,70 +248,70 @@ const Index = () => {
     switch (activeTab) {
       case 'overview':
         return (
-          <div ref={overviewRef} className="space-y-6">
+          <div ref={overviewRef} className="space-y-8">
             {/* Portfolio Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-400 text-sm">Total Balance</p>
-                    <p className="text-white text-2xl font-bold">
+                    <p className="text-gray-500 text-sm font-medium">Total Balance</p>
+                    <p className="text-gray-900 text-2xl font-bold mt-1">
                       {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
                     </p>
                   </div>
-                  <div className="p-3 bg-green-500/10 rounded-lg">
-                    <Wallet className="w-6 h-6 text-green-500" />
+                  <div className="p-3 bg-green-50 rounded-xl">
+                    <Wallet className="w-6 h-6 text-green-600" />
                   </div>
                 </div>
-                <div className="flex items-center mt-4 text-green-500 text-sm">
+                <div className="flex items-center mt-4 text-green-600 text-sm font-medium">
                   <TrendingUp className="w-4 h-4 mr-1" />
                   <span>+2.5% from last month</span>
                 </div>
               </div>
 
-              <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-400 text-sm">Active Students</p>
-                    <p className="text-white text-2xl font-bold">{students.length}</p>
+                    <p className="text-gray-500 text-sm font-medium">Active Students</p>
+                    <p className="text-gray-900 text-2xl font-bold mt-1">{students.length}</p>
                   </div>
-                  <div className="p-3 bg-blue-500/10 rounded-lg">
-                    <Users className="w-6 h-6 text-blue-500" />
+                  <div className="p-3 bg-blue-50 rounded-xl">
+                    <Users className="w-6 h-6 text-blue-600" />
                   </div>
                 </div>
-                <div className="flex items-center mt-4 text-blue-500 text-sm">
+                <div className="flex items-center mt-4 text-blue-600 text-sm font-medium">
                   <Plus className="w-4 h-4 mr-1" />
                   <span>Ready to link more</span>
                 </div>
               </div>
 
-              <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-400 text-sm">This Month Spent</p>
-                    <p className="text-white text-2xl font-bold">12,500 RWF</p>
+                    <p className="text-gray-500 text-sm font-medium">This Month Spent</p>
+                    <p className="text-gray-900 text-2xl font-bold mt-1">12,500 RWF</p>
                   </div>
-                  <div className="p-3 bg-orange-500/10 rounded-lg">
-                    <ShoppingCart className="w-6 h-6 text-orange-500" />
+                  <div className="p-3 bg-orange-50 rounded-xl">
+                    <ShoppingCart className="w-6 h-6 text-orange-600" />
                   </div>
                 </div>
-                <div className="flex items-center mt-4 text-orange-500 text-sm">
+                <div className="flex items-center mt-4 text-orange-600 text-sm font-medium">
                   <TrendingDown className="w-4 h-4 mr-1" />
                   <span>-15% vs last month</span>
                 </div>
               </div>
 
-              <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-400 text-sm">Today's Activity</p>
-                    <p className="text-white text-2xl font-bold">3</p>
+                    <p className="text-gray-500 text-sm font-medium">Today's Activity</p>
+                    <p className="text-gray-900 text-2xl font-bold mt-1">3</p>
                   </div>
-                  <div className="p-3 bg-purple-500/10 rounded-lg">
-                    <Activity className="w-6 h-6 text-purple-500" />
+                  <div className="p-3 bg-purple-50 rounded-xl">
+                    <Activity className="w-6 h-6 text-purple-600" />
                   </div>
                 </div>
-                <div className="flex items-center mt-4 text-purple-500 text-sm">
+                <div className="flex items-center mt-4 text-purple-600 text-sm font-medium">
                   <PieChart className="w-4 h-4 mr-1" />
                   <span>Transactions today</span>
                 </div>
@@ -329,7 +319,7 @@ const Index = () => {
             </div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Virtual Card */}
               <div className="lg:col-span-1">
                 <VirtualCard 
@@ -341,31 +331,31 @@ const Index = () => {
 
               {/* Quick Actions */}
               <div className="lg:col-span-1">
-                <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 h-full">
-                  <h3 className="text-white font-semibold text-lg mb-6">{t('quickActions')}</h3>
-                  <div className="space-y-4">
+                <div className="bg-white border border-gray-200 rounded-xl p-6 h-full">
+                  <h3 className="text-gray-900 font-semibold text-lg mb-6">{t('quickActions')}</h3>
+                  <div className="space-y-3">
                     <button 
                       onClick={() => setActiveModal('deposit')}
-                      className="w-full flex items-center justify-center space-x-3 bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-lg transition-colors"
+                      className="w-full flex items-center justify-center space-x-3 bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <Plus className="w-5 h-5" />
-                      <span className="font-medium">{t('deposit')}</span>
+                      <span>{t('deposit')}</span>
                     </button>
                     
                     <button 
                       onClick={() => setActiveModal('withdraw')}
-                      className="w-full flex items-center justify-center space-x-3 bg-red-600 hover:bg-red-700 text-white py-4 px-6 rounded-lg transition-colors"
+                      className="w-full flex items-center justify-center space-x-3 bg-red-600 hover:bg-red-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <TrendingDown className="w-5 h-5" />
-                      <span className="font-medium">{t('withdraw')}</span>
+                      <span>{t('withdraw')}</span>
                     </button>
                     
                     <button 
                       onClick={() => setActiveModal('linkStudent')}
-                      className="w-full flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg transition-colors"
+                      className="w-full flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <Users className="w-5 h-5" />
-                      <span className="font-medium">{t('linkStudent')}</span>
+                      <span>{t('linkStudent')}</span>
                     </button>
                   </div>
                 </div>
@@ -373,30 +363,30 @@ const Index = () => {
 
               {/* Recent Activity */}
               <div className="lg:col-span-1">
-                <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 h-full">
-                  <h3 className="text-white font-semibold text-lg mb-6">{t('recentActivity')}</h3>
+                <div className="bg-white border border-gray-200 rounded-xl p-6 h-full">
+                  <h3 className="text-gray-900 font-semibold text-lg mb-6">{t('recentActivity')}</h3>
                   <div className="space-y-4">
                     {transactions.slice(0, 4).map((transaction) => (
                       <div key={transaction.id} className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
-                          <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                            transaction.type === 'deposit' ? 'bg-green-500/10' : 
-                            transaction.type === 'withdraw' ? 'bg-red-500/10' : 'bg-blue-500/10'
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                            transaction.type === 'deposit' ? 'bg-green-50' : 
+                            transaction.type === 'withdraw' ? 'bg-red-50' : 'bg-blue-50'
                           }`}>
                             {transaction.type === 'deposit' ? 
-                              <TrendingUp className={`w-5 h-5 ${transaction.type === 'deposit' ? 'text-green-500' : 'text-blue-500'}`} /> :
+                              <TrendingUp className={`w-5 h-5 ${transaction.type === 'deposit' ? 'text-green-600' : 'text-blue-600'}`} /> :
                               transaction.type === 'withdraw' ?
-                              <TrendingDown className="w-5 h-5 text-red-500" /> :
-                              <ShoppingCart className="w-5 h-5 text-blue-500" />
+                              <TrendingDown className="w-5 h-5 text-red-600" /> :
+                              <ShoppingCart className="w-5 h-5 text-blue-600" />
                             }
                           </div>
                           <div>
-                            <p className="text-white text-sm font-medium">{transaction.title}</p>
-                            <p className="text-gray-400 text-xs">{transaction.date}</p>
+                            <p className="text-gray-900 text-sm font-medium">{transaction.title}</p>
+                            <p className="text-gray-500 text-xs">{transaction.date}</p>
                           </div>
                         </div>
-                        <span className={`text-sm font-medium ${
-                          transaction.amount > 0 ? 'text-green-500' : 'text-red-500'
+                        <span className={`text-sm font-semibold ${
+                          transaction.amount > 0 ? 'text-green-600' : 'text-red-600'
                         }`}>
                           {transaction.amount > 0 ? '+' : ''}{Math.abs(transaction.amount).toLocaleString()} RWF
                         </span>
@@ -410,7 +400,7 @@ const Index = () => {
         );
       case 'wallet':
         return (
-          <div ref={walletRef} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div ref={walletRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <VirtualCard 
               balance={balance}
               isVisible={isBalanceVisible}
@@ -450,23 +440,23 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="min-h-screen bg-gray-50">
       {/* Fixed Header */}
-      <div className="sticky top-0 z-50 bg-gray-900 border-b border-gray-800">
+      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 backdrop-blur-xl bg-white/80">
         <div className="flex items-center justify-between px-6 py-4">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-white font-bold text-xl">iKaramu</h1>
-            <div className="hidden md:flex items-center space-x-1 bg-gray-800 rounded-lg p-1">
+          <div className="flex items-center space-x-6">
+            <h1 className="text-gray-900 font-bold text-xl">iKaramu</h1>
+            <div className="hidden md:flex items-center space-x-1 bg-gray-100 rounded-lg p-1">
               {tabs.map((tab) => {
                 const IconComponent = tab.icon;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => handleTabChange(tab.id)}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                       activeTab === tab.id
-                        ? 'bg-yellow-500 text-black'
-                        : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
                     }`}
                   >
                     <IconComponent className="w-4 h-4" />
@@ -477,14 +467,14 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <button
               onClick={() => setIsBalanceVisible(!isBalanceVisible)}
-              className="p-2 text-gray-400 hover:text-white transition-colors"
+              className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
             >
               {isBalanceVisible ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
             </button>
-            <button className="p-2 text-gray-400 hover:text-white transition-colors">
+            <button className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200">
               <Settings className="w-5 h-5" />
             </button>
           </div>
@@ -499,7 +489,7 @@ const Index = () => {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-800 z-50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 backdrop-blur-xl bg-white/80">
         <div className="flex items-center justify-around py-2">
           {tabs.map((tab) => {
             const IconComponent = tab.icon;
@@ -507,10 +497,10 @@ const Index = () => {
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-lg transition-colors ${
+                className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-lg transition-all duration-200 ${
                   activeTab === tab.id
-                    ? 'text-yellow-500'
-                    : 'text-gray-400 hover:text-white'
+                    ? 'text-blue-600'
+                    : 'text-gray-500 hover:text-gray-900'
                 }`}
               >
                 <IconComponent className="w-5 h-5" />
@@ -523,7 +513,7 @@ const Index = () => {
 
       {/* Modals */}
       {activeModal === 'deposit' && (
-        <Modal
+        <VercelModal
           title={t('depositFunds')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleDeposit}
@@ -531,19 +521,19 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('phoneNumber')}
               </label>
               <input
                 type="tel"
                 name="phone"
                 required
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="078XXXXXXX"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('amount')}
               </label>
               <input
@@ -551,12 +541,12 @@ const Index = () => {
                 name="amount"
                 required
                 min="1000"
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="10,000"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('pin')}
               </label>
               <input
@@ -564,16 +554,16 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
           </div>
-        </Modal>
+        </VercelModal>
       )}
 
       {activeModal === 'withdraw' && (
-        <Modal
+        <VercelModal
           title={t('withdrawFunds')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleWithdraw}
@@ -581,19 +571,19 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('phoneNumber')}
               </label>
               <input
                 type="tel"
                 name="phone"
                 required
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="078XXXXXXX"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('amount')}
               </label>
               <input
@@ -602,12 +592,12 @@ const Index = () => {
                 required
                 min="1000"
                 max={balance}
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="10,000"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('pin')}
               </label>
               <input
@@ -615,16 +605,16 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
           </div>
-        </Modal>
+        </VercelModal>
       )}
 
       {activeModal === 'linkStudent' && (
-        <Modal
+        <VercelModal
           title={t('linkNewStudent')}
           onClose={() => setActiveModal(null)}
           onSubmit={handleLinkStudent}
@@ -632,57 +622,57 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('studentId')}
               </label>
               <input
                 type="text"
                 name="studentId"
                 required
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="STU003"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('studentName')}
               </label>
               <input
                 type="text"
                 name="name"
                 required
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Full Name"
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-3">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   {t('grade')}
                 </label>
                 <input
                   type="text"
                   name="grade"
                   required
-                  className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="Grade 10"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-3">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   {t('class')}
                 </label>
                 <input
                   type="text"
                   name="class"
                   required
-                  className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="10A"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {t('pinForPurchases')}
               </label>
               <input
@@ -690,12 +680,12 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-4 rounded-2xl border border-white/20 bg-black/40 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-xl"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
           </div>
-        </Modal>
+        </VercelModal>
       )}
 
       {activeModal === 'spendingLimits' && selectedStudent && (
@@ -711,9 +701,9 @@ const Index = () => {
       )}
 
       {/* Toast Container */}
-      <div className="fixed bottom-20 md:bottom-4 right-4 space-y-2 z-50">
+      <div className="fixed top-20 right-4 space-y-2 z-50">
         {toasts.map(toast => (
-          <Toast
+          <VercelToast
             key={toast.id}
             message={toast.message}
             type={toast.type}
@@ -721,6 +711,9 @@ const Index = () => {
           />
         ))}
       </div>
+
+      {/* Global Loader */}
+      {isLoading && <BinanceLoader />}
     </div>
   );
 };
