@@ -1,0 +1,6 @@
+Budibase Error
+time="2025-05-29T18:10:53Z" level=warning msg="The \"BB_ADMIN_USER_EMAIL\" variable is not set. Defaulting to a blank string."
+time="2025-05-29T18:10:53Z" level=warning msg="The \"BB_ADMIN_USER_PASSWORD\" variable is not set. Defaulting to a blank string."
+time="2025-05-29T18:10:53Z" level=warning msg="The \"PLUGINS_DIR\" variable is not set. Defaulting to a blank string."
+time="2025-05-29T18:10:53Z" level=warning msg="C:\\Users\\tuyis\\Desktop\\MouseWithoutBorders\\learningNodejs\\developemt\\infinixeye\\infinixeye\\docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+error during connect: Get "http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.46/containers/json?all=1&filters=%7B%22label%22%3A%7B%22com.docker.compose.config-hash%22%3Atrue%2C%22com.docker.compose.project%3Dinfinixeye%22%3Atrue%7D%7D": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
