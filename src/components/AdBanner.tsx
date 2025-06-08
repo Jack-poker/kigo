@@ -19,7 +19,7 @@ const mockAds: AdContent[] = [
   {
     id: '1',
     type: 'image',
-    src: '/api/placeholder/800/200',
+    src: '/banner.png',
     alt: 'School Lunch Program',
     title: 'New Healthy Lunch Menu! 🍎',
     subtitle: 'Nutritious meals starting next week',
@@ -29,7 +29,7 @@ const mockAds: AdContent[] = [
   {
     id: '2',
     type: 'image',
-    src: '/api/placeholder/800/200',
+     src: '/banner.png',
     alt: 'Parent Meeting',
     title: 'Parent-Teacher Conference 📚',
     subtitle: 'Schedule your meeting today',
