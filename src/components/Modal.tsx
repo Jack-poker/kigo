@@ -12,7 +12,7 @@ const Modal = ({ title, children, onClose, onSubmit, isLoading }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-hidden shadow-2xl">
+      <div className="bg-white  rounded-2xl max-w-md w-full max-h-[90vh] overflow-hidden shadow-2xl">
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
           <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
           <button

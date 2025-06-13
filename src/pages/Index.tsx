@@ -278,11 +278,11 @@ const Index = () => {
           <div ref={overviewRef} className="space-y-8">
             {/* Portfolio Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
+              <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Balance</p>
-                    <p className="text-gray-900 dark:text-white text-2xl font-bold mt-1">
+                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">Total Balance</p>
+                    <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">
                       {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
                     </p>
                   </div>
@@ -296,11 +296,11 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
+              <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">Active Students</p>
-                    <p className="text-gray-900 dark:text-white text-2xl font-bold mt-1">{students.length}</p>
+                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">Active Students</p>
+                    <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">{students.length}</p>
                   </div>
                   <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
                     <Users className="w-6 h-6 text-blue-600 dark:text-blue-400" />
@@ -312,11 +312,11 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
+              <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">This Month Spent</p>
-                    <p className="text-gray-900 dark:text-white text-2xl font-bold mt-1">12,500 RWF</p>
+                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">This Month Spent</p>
+                    <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">12,500 RWF</p>
                   </div>
                   <div className="p-3 bg-orange-50 dark:bg-orange-900/30 rounded-xl">
                     <ShoppingCart className="w-6 h-6 text-orange-600 dark:text-orange-400" />
@@ -328,11 +328,11 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
+              <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">Today's Activity</p>
-                    <p className="text-gray-900 dark:text-white text-2xl font-bold mt-1">3</p>
+                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">Today's Activity</p>
+                    <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">3</p>
                   </div>
                   <div className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-xl">
                     <Activity className="w-6 h-6 text-purple-600 dark:text-purple-400" />
@@ -358,12 +358,12 @@ const Index = () => {
 
               {/* Quick Actions */}
               <div className="lg:col-span-1">
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 h-full">
-                  <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-6">{t('quickActions')}</h3>
+                <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 h-full">
+                  <h3 className="text-white-950 dark:text-white font-semibold text-lg mb-6">{t('quickActions')}</h3>
                   <div className="space-y-3">
                     <button 
                       onClick={() => setActiveModal('deposit')}
-                      className="w-full flex items-center justify-center space-x-3 bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 bg-green-700  border-green-200 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <Plus className="w-5 h-5" />
                       <span>{t('deposit')}</span>
@@ -390,8 +390,8 @@ const Index = () => {
 
               {/* Recent Activity */}
               <div className="lg:col-span-1">
-                <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 h-full">
-                  <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-6">{t('recentActivity')}</h3>
+                <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 h-full">
+                  <h3 className="text-white-950 dark:text-white font-semibold text-lg mb-6">{t('recentActivity')}</h3>
                   <div className="space-y-4">
                     {transactions.slice(0, 4).map((transaction) => (
                       <div key={transaction.id} className="flex items-center justify-between">
@@ -408,8 +408,8 @@ const Index = () => {
                             }
                           </div>
                           <div>
-                            <p className="text-gray-900 dark:text-white text-sm font-medium">{transaction.title}</p>
-                            <p className="text-gray-500 dark:text-gray-400 text-xs">{transaction.date}</p>
+                            <p className="text-white-950 dark:text-white text-sm font-medium">{transaction.title}</p>
+                            <p className="text-green-500 dark:text-green-400 text-xs">{transaction.date}</p>
                           </div>
                         </div>
                         <span className={`text-sm font-semibold ${
@@ -467,19 +467,27 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 dark:bg-[hsl(var(--primary))] transition-colors duration-200">
       {/* Binance-style Header */}
-      <div className="sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+      <div className="sticky top-0 z-50 bg-white dark:bg-white-950 border-b border-green-200 dark:border-green-700 shadow-sm">
         <div className="flex items-center justify-between px-6 py-4">
           {/* Left Section */}
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
+             
+            <img 
+              src="/assets/logo.png" 
+              alt="iKaramu Logo" 
+              className="w-40  rounded-lg object-contain"
+            />
+             
+             
+              {/* <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">iK</span>
-              </div>
-              <h1 className="text-gray-900 dark:text-white font-bold text-xl">iKaramu</h1>
+              </div> */}
+              {/* <h1 className="text-white-950 dark:text-white font-bold text-xl">iKaramu</h1> */}
             </div>
-            <div className="hidden md:flex items-center space-x-1 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+            <div className="hidden md:flex items-center space-x-1 bg-green-100 dark:bg-green-700 rounded-lg p-1">
               {tabs.map((tab) => {
                 const IconComponent = tab.icon;
                 return (
@@ -488,8 +496,8 @@ const Index = () => {
                     onClick={() => handleTabChange(tab.id)}
                     className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                       activeTab === tab.id
-                        ? 'bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm'
-                        : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-600/50'
+                        ? 'bg-white dark:bg-green-600 text-white-950 dark:text-white shadow-sm'
+                        : 'text-green-600 dark:text-green-300 hover:text-white-950 dark:hover:text-white hover:bg-white/50 dark:hover:bg-green-600/50'
                     }`}
                   >
                     <IconComponent className="w-4 h-4" />
@@ -505,7 +513,7 @@ const Index = () => {
             {/* Balance Visibility Toggle */}
             <button
               onClick={() => setIsBalanceVisible(!isBalanceVisible)}
-              className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-200"
+              className="p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
             >
               {isBalanceVisible ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
             </button>
@@ -513,7 +521,7 @@ const Index = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-200"
+              className="p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -522,14 +530,14 @@ const Index = () => {
             <div className="relative">
               <button
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-                className="flex items-center space-x-2 p-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-200"
+                className="flex items-center space-x-2 p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
               >
                 <Globe className="w-5 h-5" />
                 <span className="text-sm font-medium">{currentLanguage?.flag}</span>
               </button>
               
               {showLanguageDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 py-2 z-50">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
@@ -537,8 +545,8 @@ const Index = () => {
                         setLanguage(lang.code as any);
                         setShowLanguageDropdown(false);
                       }}
-                      className={`w-full px-4 py-2 text-left text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 font-medium flex items-center space-x-3 ${
-                        language === lang.code ? 'bg-gray-50 dark:bg-gray-700 text-yellow-600 dark:text-yellow-400' : 'text-gray-700 dark:text-gray-300'
+                      className={`w-full px-4 py-2 text-left text-sm hover:bg-green-50 dark:hover:bg-green-700 transition-all duration-200 font-medium flex items-center space-x-3 ${
+                        language === lang.code ? 'bg-green-50 dark:bg-green-700 text-yellow-600 dark:text-yellow-400' : 'text-green-700 dark:text-green-300'
                       }`}
                     >
                       <span className="text-lg">{lang.flag}</span>
@@ -553,16 +561,16 @@ const Index = () => {
             <div className="relative">
               <button
                 onClick={() => setShowNotificationDropdown(!showNotificationDropdown)}
-                className="relative p-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-200"
+                className="relative p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
               >
                 <Bell className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </button>
               
               {showNotificationDropdown && (
-                <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-50">
-                  <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Notifications</h3>
+                <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 z-50">
+                  <div className="p-4 border-b border-green-200 dark:border-green-700">
+                    <h3 className="font-semibold text-white-950 dark:text-white">Notifications</h3>
                   </div>
                   <div className="p-4 space-y-3">
                     <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded-lg">
@@ -582,7 +590,7 @@ const Index = () => {
             <div className="relative">
               <button
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-                className="flex items-center space-x-2 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-200"
+                className="flex items-center space-x-2 p-2 hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
               >
                 <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
                   <User className="w-4 h-4 text-white" />
@@ -590,15 +598,15 @@ const Index = () => {
               </button>
 
               {showProfileDropdown && (
-                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
-                  <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 py-2 z-50">
+                  <div className="px-4 py-3 border-b border-green-200 dark:border-green-700">
                     <div className="flex items-center space-x-3">
                       <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
                         <User className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900 dark:text-white">Loving Parent</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">parent@example.com</p>
+                        <p className="font-medium text-white-950 dark:text-white">Loving Parent</p>
+                        <p className="text-sm text-green-500 dark:text-green-400">parent@example.com</p>
                       </div>
                     </div>
                   </div>
@@ -608,7 +616,7 @@ const Index = () => {
                         setActiveModal('profile');
                         setShowProfileDropdown(false);
                       }}
-                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200"
+                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-green-700 dark:text-green-300 hover:bg-green-50 dark:hover:bg-green-700 transition-all duration-200"
                     >
                       <User className="w-4 h-4" />
                       <span>Profile Settings</span>
@@ -618,12 +626,12 @@ const Index = () => {
                         setActiveModal('settings');
                         setShowProfileDropdown(false);
                       }}
-                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200"
+                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-green-700 dark:text-green-300 hover:bg-green-50 dark:hover:bg-green-700 transition-all duration-200"
                     >
                       <Settings className="w-4 h-4" />
                       <span>Settings</span>
                     </button>
-                    <hr className="my-2 border-gray-200 dark:border-gray-700" />
+                    <hr className="my-2 border-green-200 dark:border-green-700" />
                     <button className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition-all duration-200">
                       <LogOut className="w-4 h-4" />
                       <span>Sign Out</span>
@@ -647,7 +655,7 @@ const Index = () => {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-white-950 border-t border-green-200 dark:border-green-700 z-50">
         <div className="flex items-center justify-around py-2">
           {tabs.map((tab) => {
             const IconComponent = tab.icon;
@@ -658,7 +666,7 @@ const Index = () => {
                 className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-lg transition-all duration-200 ${
                   activeTab === tab.id
                     ? 'text-yellow-600 dark:text-yellow-400'
-                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    : 'text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white'
                 }`}
               >
                 <IconComponent className="w-5 h-5" />
@@ -683,19 +691,19 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('phoneNumber')}
               </label>
               <input
                 type="tel"
                 name="phone"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="078XXXXXXX"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('amount')}
               </label>
               <input
@@ -703,12 +711,12 @@ const Index = () => {
                 name="amount"
                 required
                 min="1000"
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="10,000"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('pin')}
               </label>
               <input
@@ -716,7 +724,7 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
@@ -733,19 +741,19 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('phoneNumber')}
               </label>
               <input
                 type="tel"
                 name="phone"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="078XXXXXXX"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('amount')}
               </label>
               <input
@@ -754,12 +762,12 @@ const Index = () => {
                 required
                 min="1000"
                 max={balance}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="10,000"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('pin')}
               </label>
               <input
@@ -767,7 +775,7 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
@@ -784,57 +792,57 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('studentId')}
               </label>
               <input
                 type="text"
                 name="studentId"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="STU003"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('studentName')}
               </label>
               <input
                 type="text"
                 name="name"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Full Name"
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                   {t('grade')}
                 </label>
                 <input
                   type="text"
                   name="grade"
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="Grade 10"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                   {t('class')}
                 </label>
                 <input
                   type="text"
                   name="class"
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="10A"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
                 {t('pinForPurchases')}
               </label>
               <input
@@ -842,7 +850,7 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
@@ -860,8 +868,8 @@ const Index = () => {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-sm font-medium text-gray-900 dark:text-white">Notifications</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Receive transaction alerts</p>
+                <h4 className="text-sm font-medium text-white-950 dark:text-white">Notifications</h4>
+                <p className="text-sm text-green-500 dark:text-green-400">Receive transaction alerts</p>
               </div>
               <button className="w-12 h-6 bg-blue-600 rounded-full relative">
                 <div className="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5"></div>
@@ -869,22 +877,22 @@ const Index = () => {
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-sm font-medium text-gray-900 dark:text-white">Dark Mode</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Switch to dark theme</p>
+                <h4 className="text-sm font-medium text-white-950 dark:text-white">Dark Mode</h4>
+                <p className="text-sm text-green-500 dark:text-green-400">Switch to dark theme</p>
               </div>
               <button 
                 onClick={toggleTheme}
-                className={`w-12 h-6 rounded-full relative transition-colors ${isDark ? 'bg-blue-600' : 'bg-gray-300'}`}
+                className={`w-12 h-6 rounded-full relative transition-colors ${isDark ? 'bg-blue-600' : 'bg-green-300'}`}
               >
                 <div className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform ${isDark ? 'right-0.5' : 'left-0.5'}`}></div>
               </button>
             </div>
-            <div className="border-t dark:border-gray-700 pt-4">
-              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">Language</h4>
+            <div className="border-t dark:border-green-700 pt-4">
+              <h4 className="text-sm font-medium text-white-950 dark:text-white mb-2">Language</h4>
               <select 
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as any)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg"
+                className="w-full px-3 py-2 border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white rounded-lg"
               >
                 {languages.map(lang => (
                   <option key={lang.code} value={lang.code}>{lang.flag} {lang.name}</option>

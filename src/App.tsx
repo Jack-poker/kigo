@@ -8,6 +8,10 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import LoginPage  from "./pages/Auth/login";
+import SignupForm from "./pages/Auth/signup";
+import MessageCard from "./components/MessageCard";
+import MessageGenerator from "./pages/MessageGenerator";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +24,10 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Index />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/dashboard" element={<Index />} />
+              <Route path="/signup" element = {<SignupForm/>} />
+               <Route path="/message" element = {<MessageGenerator/>} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

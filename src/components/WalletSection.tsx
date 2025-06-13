@@ -12,12 +12,12 @@ const WalletSection = ({ balance, isVisible, onDeposit, onWithdraw, onToggleVisi
   };
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 backdrop-blur-sm rounded-3xl p-8 shadow-xl border-2 border-blue-200/30 relative overflow-hidden">
+    <div className="bg-gradient-to-br bg-purple-50 dark:bg-zinc-950 backdrop-blur-sm rounded-3xl p-8 shadow-xl border-2 border-blue-200/10 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: `
-          radial-gradient(circle at 25% 25%, #3b82f6 1px, transparent 1px),
-          radial-gradient(circle at 75% 75%, #06b6d4 1px, transparent 1px)
+          radial-gradient(circle at 25% 25%,rgba(255, 255, 255, 0.23) 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%,rgba(255, 255, 255, 0.38) 1px, transparent 1px)
         `,
         backgroundSize: '24px 24px'
       }}></div>
@@ -25,12 +25,12 @@ const WalletSection = ({ balance, isVisible, onDeposit, onWithdraw, onToggleVisi
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
-            <div className="p-4 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl shadow-lg">
+            <div className="p-4 bg-gradient-to-br from-yellow-700 to-zinc-950 rounded-2xl shadow-lg">
               <Wallet className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 text-xl">Wallet Balance</h3>
-              <p className="text-gray-600 font-medium">Available funds</p>
+              <h3 className="font-bold text-white-900 text-xl">Wallet Balance</h3>
+              <p className="text-white-600 font-medium">Available funds</p>
             </div>
           </div>
           
@@ -39,9 +39,9 @@ const WalletSection = ({ balance, isVisible, onDeposit, onWithdraw, onToggleVisi
           </button>
         </div>
 
-        <div className="mb-8 p-6 bg-white/60 rounded-2xl backdrop-blur-sm border border-white/40">
+        <div className="mb-8 p-6 bg-zinc-990 rounded-2xl backdrop-blur-sm border border-white/10">
           <div className="flex items-center space-x-4">
-            <span className="text-4xl font-bold text-gray-900">
+            <span className="text-4xl font-bold text-white-900">
               {isVisible ? formatBalance(balance) : '••••••'}
             </span>
             <button

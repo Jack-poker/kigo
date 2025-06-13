@@ -15,14 +15,14 @@ const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+    <div className="bg-white-950 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white-500/20">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
           <div className="p-3 bg-green-100 rounded-xl">
             <Users className="w-6 h-6 text-green-600" />
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900">{t('linkedStudents')}</h3>
+            <h3 className="font-semibold text-white-900">{t('linkedStudents')}</h3>
             <p className="text-sm text-gray-500">
               {students.length} {students.length === 1 ? t('student') : t('students_plural')}
             </p>
@@ -36,13 +36,13 @@ const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
           const isOverLimit = student.todaySpent > student.dailyLimit;
           
           return (
-            <div key={student.id} className="p-4 bg-gray-50/50 rounded-xl hover:bg-gray-100/50 transition-colors duration-200">
+            <div key={student.id} className="p-4 bg-white border border-white-500/500 rounded-xl  transition-colors duration-200">
               <div className="flex items-center space-x-4">
                 <div className="relative">
                   <img
-                    src={student.photo || '/api/placeholder/48/48'}
+                    src={student.photo || '/example/ads.png'}
                     alt={student.name}
-                    className="w-12 h-12 rounded-full object-cover"
+                    className="w-20 h-20 rounded-full object-cover border border-white-950"
                   />
                   {isOverLimit && (
                     <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
@@ -53,7 +53,7 @@ const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
                 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-1">
-                    <h4 className="font-medium text-gray-900 truncate">{student.name}</h4>
+                    <h4 className="font-medium text-white-900 truncate">{student.name}</h4>
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => onViewTransactions(student)}
@@ -79,7 +79,7 @@ const StudentsSection = ({ students, onViewTransactions, onSetLimits }) => {
                     </span>
                   </div>
                   
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-zinc-900 border border-white-90 rounded-full h-2">
                     <div
                       className={`h-2 rounded-full transition-all duration-300 ${
                         isOverLimit ? 'bg-red-500' : spendingPercentage > 80 ? 'bg-yellow-500' : 'bg-green-500'

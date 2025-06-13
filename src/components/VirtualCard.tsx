@@ -14,10 +14,10 @@ const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
   return (
     <div className="relative group perspective-1000">
       {/* Card Glow Effect */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-green-300 to-emerald-500 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
       
       {/* Main Card */}
-      <div className="relative bg-gradient-to-br from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-3xl p-8 text-white shadow-2xl transform group-hover:scale-105 transition-all duration-500 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-emerald-500 via-green-400 to-emerald-600 rounded-3xl p-8 text-white shadow-2xl transform group-hover:scale-105 transition-all duration-500 overflow-hidden">
         {/* Knitted Texture Overlay */}
         <div className="absolute inset-0 opacity-20" style={{
           backgroundImage: `
@@ -64,7 +64,7 @@ const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
           {/* Brand Logo Area */}
           <div className="w-16 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/30">
             <div className="w-8 h-8 bg-gradient-to-br from-white/80 to-white/60 rounded-lg flex items-center justify-center">
-              <CreditCard className="w-5 h-5 text-gray-700" />
+              <CreditCard className="w-5 h-5 text-emerald-700" />
             </div>
           </div>
         </div>
