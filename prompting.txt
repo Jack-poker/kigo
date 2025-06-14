@@ -1,0 +1,198 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "students"
+      },
+      "name": "Get Students",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 100]
+    },
+    {
+      "parameters": {
+        "functionCode": "return [\n  {\n    json: [\n      { name: \"Alice\", studentId: \"S001\", grade: \"A\", class: \"10A\" },\n      { name: \"Bob\", studentId: \"S002\", grade: \"B\", class: \"10B\" }\n    ]\n  }\n];"
+      },
+      "name": "Mock Get Students",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [300, 100]
+    },
+    {
+      "parameters": {},
+      "name": "Respond Get Students",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [500, 100]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "students"
+      },
+      "name": "Add Student",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 200]
+    },
+    {
+      "parameters": {
+        "functionCode": "const body = $json.body || {};\nreturn [\n  {\n    json: {\n      message: \"Student added successfully\",\n      student: {\n        name: body.name || \"Unknown\",\n        studentId: body.studentId || \"Unknown\",\n        grade: body.grade || \"N/A\",\n        class: body.class || \"N/A\"\n      }\n    }\n  }\n];"
+      },
+      "name": "Mock Add Student",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [300, 200]
+    },
+    {
+      "parameters": {},
+      "name": "Respond Add Student",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [500, 200]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "wallet/balance"
+      },
+      "name": "Get Balance",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "return [\n  {\n    json: {\n      walletId: \"W001\",\n      balance: 150.75\n    }\n  }\n];"
+      },
+      "name": "Mock Get Balance",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [300, 300]
+    },
+    {
+      "parameters": {},
+      "name": "Respond Get Balance",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wallet/deposit"
+      },
+      "name": "Deposit",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 400]
+    },
+    {
+      "parameters": {
+        "functionCode": "const body = $json.body || {};\nreturn [\n  {\n    json: {\n      walletId: body.walletId || \"W001\",\n      balance: body.newBalance || 200.75,\n      message: \"Deposit successful\"\n    }\n  }\n];"
+      },
+      "name": "Mock Deposit",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [300, 400]
+    },
+    {
+      "parameters": {},
+      "name": "Respond Deposit",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [500, 400]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "transactions"
+      },
+      "name": "Get Transactions",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 500]
+    },
+    {
+      "parameters": {
+        "functionCode": "return [\n  {\n    json: [\n      { type: \"deposit\", amount: 50, student: \"S001\", date: \"2025-06-10\" },\n      { type: \"withdrawal\", amount: 20, student: \"S002\", date: \"2025-06-12\" }\n    ]\n  }\n];"
+      },
+      "name": "Mock Get Transactions",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [300, 500]
+    },
+    {
+      "parameters": {},
+      "name": "Respond Get Transactions",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [500, 500]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "transactions"
+      },
+      "name": "Add Transaction",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 600]
+    },
+    {
+      "parameters": {
+        "functionCode": "const body = $json.body || {};\nreturn [\n  {\n    json: {\n      message: \"Transaction added successfully\",\n      transaction: {\n        type: body.type || \"deposit\",\n        amount: body.amount || 0,\n        student: body.student || \"Unknown\",\n        date: body.date || new Date().toISOString().split('T')[0]\n      }\n    }\n  }\n];"
+      },
+      "name": "Mock Add Transaction",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [300, 600]
+    },
+    {
+      "parameters": {},
+      "name": "Respond Add Transaction",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [500, 600]
+    }
+  ],
+  "connections": {
+    "Get Students": {
+      "main": [[["Mock Get Students", 0]]]
+    },
+    "Mock Get Students": {
+      "main": [[["Respond Get Students", 0]]]
+    },
+    "Add Student": {
+      "main": [[["Mock Add Student", 0]]]
+    },
+    "Mock Add Student": {
+      "main": [[["Respond Add Student", 0]]]
+    },
+    "Get Balance": {
+      "main": [[["Mock Get Balance", 0]]]
+    },
+    "Mock Get Balance": {
+      "main": [[["Respond Get Balance", 0]]]
+    },
+    "Deposit": {
+      "main": [[["Mock Deposit", 0]]]
+    },
+    "Mock Deposit": {
+      "main": [[["Respond Deposit", 0]]]
+    },
+    "Get Transactions": {
+      "main": [[["Mock Get Transactions", 0]]]
+    },
+    "Mock Get Transactions": {
+      "main": [[["Respond Get Transactions", 0]]]
+    },
+    "Add Transaction": {
+      "main": [[["Mock Add Transaction", 0]]]
+    },
+    "Mock Add Transaction": {
+      "main": [[["Respond Add Transaction", 0]]]
+    }
+  }
+}

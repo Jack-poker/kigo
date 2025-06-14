@@ -12,8 +12,11 @@ import LoginPage  from "./pages/Auth/login";
 import SignupForm from "./pages/Auth/signup";
 import MessageCard from "./components/MessageCard";
 import MessageGenerator from "./pages/MessageGenerator";
+import WhatsAppChat from "./pages/WhatsAppChat";
+import AdminPanel from "./pages/AdminPanel";
 
 const queryClient = new QueryClient();
+
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -28,6 +31,8 @@ const App = () => (
               <Route path="/dashboard" element={<Index />} />
               <Route path="/signup" element = {<SignupForm/>} />
                <Route path="/message" element = {<MessageGenerator/>} />
+               <Route path="/chat" element={<WhatsAppChat />} />
+              <Route path="/admin" element={<AdminPanel />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
@@ -37,5 +42,6 @@ const App = () => (
     </ThemeProvider>
   </QueryClientProvider>
 );
+
 
 export default App;

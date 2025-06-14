@@ -1,31 +1,80 @@
-import React, { useState, useRef } from 'react';
-import { ArrowLeft, Download, Share2, Copy, MessageSquare, Shield } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import MessageCard from '@/components/MessageCard';
+
+import React, { useState, useRef, useEffect } from 'react';
+import { ArrowLeft, Download, Share2, Copy, MessageSquare, Shield, Palette } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import WhatsAppTemplate from '@/components/templates/WhatsAppTemplate';
+import EmailTemplate from '@/components/templates/EmailTemplate';
+import OTPTemplate from '@/components/templates/OTPTemplate';
+// import NotificationTemplate from '@/components/templates/NotificationTemplate';
+// import BusinessTemplate from '@/components/templates/BusinessTemplate';
+// import SocialTemplate from '@/components/templates/SocialTemplate';
 
 interface MessageData {
-  type: 'message' | 'otp';
+  type: 'whatsapp' | 'email' | 'otp' | 'notification' | 'business' | 'social';
   title?: string;
   content: string;
   recipient?: string;
   brand?: string;
   code?: string;
   expiry?: string;
+  color?: string;
+  avatar?: string;
+  timestamp?: string;
+  phone?: string;
+  email?: string;
+  companyLogo?: string;
+  buttonText?: string;
+  buttonUrl?: string;
 }
 
+const templates = [
+  { id: 'whatsapp', name: 'WhatsApp', icon: MessageSquare, component: WhatsAppTemplate },
+  { id: 'email', name: 'Email', icon: MessageSquare, component: EmailTemplate },
+  { id: 'otp', name: 'OTP Code', icon: Shield, component: OTPTemplate },
+//   { id: 'notification', name: 'Notification', icon: MessageSquare, component: NotificationTemplate },
+//   { id: 'business', name: 'Business', icon: MessageSquare, component: BusinessTemplate },
+//   { id: 'social', name: 'Social Media', icon: Palette, component: SocialTemplate },
+];
+
 const MessageGenerator = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [messageData, setMessageData] = useState<MessageData>({
-    type: 'message',
+    type: 'whatsapp',
     content: '',
     recipient: '',
     brand: 'Your Brand',
-    title: 'New Message'
+    title: 'New Message',
+    color: '#25D366',
+    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
   });
   
   const [isGenerating, setIsGenerating] = useState(false);
+  const [screenshotMode, setScreenshotMode] = useState(false);
   const messageRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+
+  // Load data from URL parameters on component mount
+  useEffect(() => {
+    const urlParams = Object.fromEntries(searchParams.entries());
+    
+    if (Object.keys(urlParams).length > 0) {
+      setMessageData(prev => ({
+        ...prev,
+        ...urlParams,
+        type: (urlParams.type as MessageData['type']) || 'whatsapp',
+      }));
+      
+      // Enable screenshot mode if 'screenshot' parameter is present
+      if (urlParams.screenshot === 'true') {
+        setScreenshotMode(true);
+        // Auto-generate after a short delay to ensure rendering
+        setTimeout(() => {
+          handleGenerate();
+        }, 500);
+      }
+    }
+  }, [searchParams]);
 
   const handleGenerate = async () => {
     if (!messageData.content.trim()) {
@@ -40,68 +89,66 @@ const MessageGenerator = () => {
     setIsGenerating(true);
     
     try {
-      // Simulate generation process
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      toast({
-        title: "Message Generated!",
-        description: "Your beautiful message is ready to share",
-      });
+      if (!screenshotMode) {
+        toast({
+          title: "Message Generated!",
+          description: "Your beautiful message is ready to share",
+        });
+      }
     } catch (error) {
-      toast({
-        title: "Generation Failed",
-        description: "Please try again",
-        variant: "destructive",
-      });
+      if (!screenshotMode) {
+        toast({
+          title: "Generation Failed",
+          description: "Please try again",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsGenerating(false);
     }
   };
 
-  const handleDownload = async () => {
-    if (!messageRef.current) return;
-
-    try {
-      // In a real implementation, you would send this to your backend
-      // which would use Puppeteer to screenshot the message
-      const response = await fetch('/api/generate-screenshot', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          messageData,
-          elementHtml: messageRef.current.outerHTML
-        }),
-      });
-
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `message-${Date.now()}.png`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+  const updateUrlParams = (newData: Partial<MessageData>) => {
+    const updatedData = { ...messageData, ...newData };
+    setMessageData(updatedData);
+    
+    // Update URL parameters
+    const params = new URLSearchParams();
+    Object.entries(updatedData).forEach(([key, value]) => {
+      if (value && value !== '') {
+        params.set(key, value.toString());
       }
-    } catch (error) {
-      toast({
-        title: "Download Failed",
-        description: "Unable to generate screenshot",
-        variant: "destructive",
-      });
-    }
+    });
+    setSearchParams(params);
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(messageData.content);
+  const copyUrlToClipboard = () => {
+    const url = new URL(window.location.href);
+    navigator.clipboard.writeText(url.toString());
     toast({
-      title: "Copied!",
-      description: "Message content copied to clipboard",
+      title: "URL Copied!",
+      description: "Share this URL to reproduce the same message",
     });
   };
+
+  const getCurrentTemplate = () => {
+    const template = templates.find(t => t.id === messageData.type);
+    return template?.component || WhatsAppTemplate;
+  };
+
+  const TemplateComponent = getCurrentTemplate();
+
+  if (screenshotMode) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center p-4" style={{ width: '400px', margin: '0 auto' }}>
+        <div ref={messageRef} className="w-full">
+          <TemplateComponent messageData={messageData} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50">
@@ -119,16 +166,18 @@ const MessageGenerator = () => {
             </div>
             <div className="flex items-center space-x-2">
               <button
-                onClick={copyToClipboard}
+                onClick={copyUrlToClipboard}
                 className="p-2 hover:bg-emerald-100 rounded-xl transition-colors text-emerald-600"
+                title="Copy shareable URL"
               >
                 <Copy className="w-5 h-5" />
               </button>
               <button
-                onClick={handleDownload}
+                onClick={() => navigator.clipboard.writeText(messageData.content)}
                 className="p-2 hover:bg-emerald-100 rounded-xl transition-colors text-emerald-600"
+                title="Copy message content"
               >
-                <Download className="w-5 h-5" />
+                <MessageSquare className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -142,34 +191,29 @@ const MessageGenerator = () => {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-emerald-100 shadow-lg">
               <h2 className="text-xl font-bold text-emerald-800 mb-6">Message Settings</h2>
               
-              {/* Message Type */}
+              {/* Template Selection */}
               <div className="mb-6">
                 <label className="block text-sm font-semibold text-emerald-700 mb-3">
-                  Message Type
+                  Template
                 </label>
                 <div className="grid grid-cols-2 gap-3">
-                  <button
-                    onClick={() => setMessageData(prev => ({ ...prev, type: 'message' }))}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 flex items-center space-x-3 ${
-                      messageData.type === 'message'
-                        ? 'border-emerald-400 bg-emerald-50'
-                        : 'border-gray-200 hover:border-emerald-200'
-                    }`}
-                  >
-                    <MessageSquare className="w-5 h-5 text-emerald-600" />
-                    <span className="font-medium">Message</span>
-                  </button>
-                  <button
-                    onClick={() => setMessageData(prev => ({ ...prev, type: 'otp' }))}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 flex items-center space-x-3 ${
-                      messageData.type === 'otp'
-                        ? 'border-emerald-400 bg-emerald-50'
-                        : 'border-gray-200 hover:border-emerald-200'
-                    }`}
-                  >
-                    <Shield className="w-5 h-5 text-emerald-600" />
-                    <span className="font-medium">OTP</span>
-                  </button>
+                  {templates.map((template) => {
+                    const IconComponent = template.icon;
+                    return (
+                      <button
+                        key={template.id}
+                        onClick={() => updateUrlParams({ type: template.id as MessageData['type'] })}
+                        className={`p-4 rounded-xl border-2 transition-all duration-200 flex items-center space-x-3 ${
+                          messageData.type === template.id
+                            ? 'border-emerald-400 bg-emerald-50'
+                            : 'border-gray-200 hover:border-emerald-200'
+                        }`}
+                      >
+                        <IconComponent className="w-5 h-5 text-emerald-600" />
+                        <span className="font-medium text-sm">{template.name}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -180,30 +224,28 @@ const MessageGenerator = () => {
                 </label>
                 <input
                   type="text"
-                  value={messageData.brand}
-                  onChange={(e) => setMessageData(prev => ({ ...prev, brand: e.target.value }))}
+                  value={messageData.brand || ''}
+                  onChange={(e) => updateUrlParams({ brand: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200"
                   placeholder="Your Brand"
                 />
               </div>
 
-              {/* Title (for regular messages) */}
-              {messageData.type === 'message' && (
-                <div className="mb-4">
-                  <label className="block text-sm font-semibold text-emerald-700 mb-2">
-                    Message Title
-                  </label>
-                  <input
-                    type="text"
-                    value={messageData.title}
-                    onChange={(e) => setMessageData(prev => ({ ...prev, title: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200"
-                    placeholder="Enter message title"
-                  />
-                </div>
-              )}
+              {/* Recipient */}
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-emerald-700 mb-2">
+                  Recipient Name
+                </label>
+                <input
+                  type="text"
+                  value={messageData.recipient || ''}
+                  onChange={(e) => updateUrlParams({ recipient: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200"
+                  placeholder="John Doe"
+                />
+              </div>
 
-              {/* OTP Code (for OTP messages) */}
+              {/* Dynamic Fields Based on Template */}
               {messageData.type === 'otp' && (
                 <div className="mb-4">
                   <label className="block text-sm font-semibold text-emerald-700 mb-2">
@@ -211,11 +253,26 @@ const MessageGenerator = () => {
                   </label>
                   <input
                     type="text"
-                    value={messageData.code}
-                    onChange={(e) => setMessageData(prev => ({ ...prev, code: e.target.value }))}
+                    value={messageData.code || ''}
+                    onChange={(e) => updateUrlParams({ code: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200 text-center text-2xl font-mono tracking-widest"
                     placeholder="123456"
                     maxLength={6}
+                  />
+                </div>
+              )}
+
+              {(messageData.type === 'business' || messageData.type === 'email') && (
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold text-emerald-700 mb-2">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    value={messageData.title || ''}
+                    onChange={(e) => updateUrlParams({ title: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200"
+                    placeholder="Enter message title"
                   />
                 </div>
               )}
@@ -227,27 +284,29 @@ const MessageGenerator = () => {
                 </label>
                 <textarea
                   value={messageData.content}
-                  onChange={(e) => setMessageData(prev => ({ ...prev, content: e.target.value }))}
+                  onChange={(e) => updateUrlParams({ content: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200 h-32 resize-none"
-                  placeholder={messageData.type === 'otp' 
-                    ? "Enter your verification instructions..." 
-                    : "Enter your message content..."
-                  }
+                  placeholder="Enter your message content..."
                 />
               </div>
 
-              {/* Recipient */}
-              <div className="mb-6">
+              {/* Color Theme */}
+              <div className="mb-4">
                 <label className="block text-sm font-semibold text-emerald-700 mb-2">
-                  Recipient (Optional)
+                  Color Theme
                 </label>
-                <input
-                  type="text"
-                  value={messageData.recipient}
-                  onChange={(e) => setMessageData(prev => ({ ...prev, recipient: e.target.value }))}
-                  className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200"
-                  placeholder="John Doe"
-                />
+                <div className="flex space-x-2">
+                  {['#25D366', '#007bff', '#dc3545', '#ffc107', '#6f42c1', '#20c997'].map((color) => (
+                    <button
+                      key={color}
+                      onClick={() => updateUrlParams({ color })}
+                      className={`w-8 h-8 rounded-full border-2 transition-all ${
+                        messageData.color === color ? 'border-gray-400 scale-110' : 'border-gray-200'
+                      }`}
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
+                </div>
               </div>
 
               {/* Generate Button */}
@@ -265,6 +324,14 @@ const MessageGenerator = () => {
                   </>
                 )}
               </button>
+
+              {/* URL Example */}
+              <div className="mt-4 p-4 bg-emerald-50 rounded-xl">
+                <p className="text-sm text-emerald-700 font-medium mb-2">Shareable URL Example:</p>
+                <code className="text-xs text-emerald-600 break-all">
+                  {window.location.origin}/message-generator?type={messageData.type}&content={encodeURIComponent(messageData.content.substring(0, 20))}...
+                </code>
+              </div>
             </div>
           </div>
 
@@ -272,8 +339,8 @@ const MessageGenerator = () => {
           <div className="space-y-6">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-emerald-100 shadow-lg">
               <h2 className="text-xl font-bold text-emerald-800 mb-6">Preview</h2>
-              <div ref={messageRef}>
-                <MessageCard messageData={messageData} />
+              <div ref={messageRef} className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <TemplateComponent messageData={messageData} />
               </div>
             </div>
           </div>

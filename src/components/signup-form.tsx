@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 export function SignupForm({
@@ -11,7 +11,78 @@ export function SignupForm({
   ...props
 }: React.ComponentProps<"div">) {
 
-  const [is_LoginComplete] =  useState(false)
+
+  const baseurl = "https://auto.kaascan.com/webhook"
+  const [is_SignupComplete] =  useState(false)
+  const  [isSubmitted,setSubmitted] = useState(false)
+  const  [phonenumber,setPhonenumber] = useState("")
+  const  [password,setPassword] = useState("")
+
+
+
+  function signup_submit()
+  {
+    setSubmitted(true)
+  }
+
+  useEffect(()=>{
+
+  if (!isSubmitted) return
+
+   async function signup()
+    {
+      const signupreq = await fetch(`${baseurl}/signup`,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+         body:JSON.stringify({
+
+          "phonenumber":phonenumber,
+          "password":password
+          
+        })
+       
+      })
+
+      const response = await signupreq.json()
+
+
+        console.log(phonenumber)
+
+      if(response.status==false)
+      {
+        is_SignupComplete(false);
+        setSubmitted(false)
+        setPhonenumber("")
+        setPassword("")
+     
+        console.log("[❌] Login Failed");
+
+      }else if(response.status==true){
+
+        is_SignupComplete(true)
+        setSubmitted(false)
+        setPhonenumber("")
+        setPassword("")
+        console.log("[✅] Login Successfull");
+
+      }
+
+     
+
+
+
+
+      
+    }
+
+    
+
+
+    signup()
+
+  },[isSubmitted,phonenumber,password])
 
   return (
     
@@ -26,14 +97,14 @@ export function SignupForm({
           <form className="p-6 md:p-8">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-               {is_LoginComplete ? (
+               {is_SignupComplete ? (
                  <h1 className="text-2xl font-bold">Enter Otp Code</h1>
                ):( <h1 className="text-2xl font-bold">Welcome back</h1>)}
                 <p className="text-balance text-muted-foreground">
                   Login to your Acme Inc account
                 </p>
               </div>
-                {is_LoginComplete ? (
+                {is_SignupComplete ? (
                 <>
                   <div className="grid gap-2">
                   <Label htmlFor="otp">Enter OTP Code</Label>
@@ -59,6 +130,8 @@ export function SignupForm({
                     className="bg-white-900 text-white"
                     id="phone"
                     type="tel"
+                    value={phonenumber}
+                    onChange={(e)=>setPhonenumber(e.target.value)}
                     placeholder="Phone number"
                     required
                   />
@@ -73,9 +146,10 @@ export function SignupForm({
                     Forgot your password?
                     </a>
                   </div>
-                  <Input className="bg-white-900 text-white" placeholder="Password" id="password" type="password" required />
+                  <Input className="bg-white-900 text-white" value={password}
+                    onChange={(e)=>setPassword(e.target.value)} placeholder="Password" id="password" type="password" required />
                   </div>
-                  <Button type="submit" className="w-full bg-amber-400 hover:bg-amber-400">
+                  <Button type="button" onClick={(e)=>signup_submit()} className="w-full bg-amber-400 hover:bg-amber-400">
                   Login
                   </Button>
                 </>
