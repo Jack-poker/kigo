@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Wallet, 
-  Users, 
-  Plus, 
-  TrendingUp, 
-  TrendingDown, 
+import {
+  Wallet,
+  Users,
+  Plus,
+  TrendingUp,
+  TrendingDown,
   ShoppingCart,
   Eye,
   EyeOff,
@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Header from '../components/Header';
 import VirtualCard from '../components/VirtualCard';
 import WalletSection from '../components/WalletSection';
@@ -32,7 +34,6 @@ import TransactionsSection from '../components/TransactionsSection';
 import VercelModal from '../components/VercelModal';
 import VercelToast from '../components/VercelToast';
 import BinanceLoader from '../components/BinanceLoader';
-import BinanceConfirmationModal from '../components/BinanceConfirmationModal';
 import ProfileModal from '../components/ProfileModal';
 import AdBanner from '../components/AdBanner';
 import SpendingLimitsModal from '../components/SpendingLimitsModal';
@@ -40,70 +41,12 @@ import SpendingLimitsModal from '../components/SpendingLimitsModal';
 const Index = () => {
   const { t, language, setLanguage } = useLanguage();
   const { isDark, toggleTheme } = useTheme();
-  const [balance, setBalance] = useState(125000);
+  const navigate = useNavigate();
+  const [balance, setBalance] = useState(0);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
-  const [students, setStudents] = useState([
-    {
-      id: '1',
-      name: 'Alice Uwimana',
-      studentId: 'STU001',
-      grade: 'Grade 9',
-      class: '9A',
-      photo: '/api/placeholder/48/48',
-      dailyLimit: 5000,
-      weeklyLimit: 25000,
-      monthlyLimit: 100000,
-      todaySpent: 2500,
-      allowedDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-      allowedHours: { from: '07:00', to: '18:00' }
-    },
-    {
-      id: '2',
-      name: 'Bob Nkurunziza',
-      studentId: 'STU002',
-      grade: 'Grade 11',
-      class: '11B',
-      photo: '/api/placeholder/48/48',
-      dailyLimit: 7000,
-      weeklyLimit: 35000,
-      monthlyLimit: 140000,
-      todaySpent: 1200,
-      allowedDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-      allowedHours: { from: '07:00', to: '18:00' }
-    }
-  ]);
-  
-  const [transactions, setTransactions] = useState([
-    {
-      id: '1',
-      type: 'payment',
-      title: t('cafeteriaPurchase'),
-      student: 'Alice Uwimana',
-      amount: -2500,
-      date: '2 minutes ago',
-      status: 'completed'
-    },
-    {
-      id: '2',
-      type: 'deposit',
-      title: t('mobileMoneyDeposit'),
-      student: null,
-      amount: 50000,
-      date: '1 hour ago',
-      status: 'completed'
-    },
-    {
-      id: '3',
-      type: 'payment',
-      title: t('stationeryPurchase'),
-      student: 'Bob Nkurunziza',
-      amount: -1200,
-      date: '3 hours ago',
-      status: 'completed'
-    }
-  ]);
-
+  const [students, setStudents] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   const [activeModal, setActiveModal] = useState(null);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [toasts, setToasts] = useState([]);
@@ -111,126 +54,188 @@ const Index = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
+  const [csrfToken, setCsrfToken] = useState('');
 
-  // Refs for smooth scrolling
   const overviewRef = useRef(null);
   const walletRef = useRef(null);
   const studentsRef = useRef(null);
   const transactionsRef = useRef(null);
 
-  // Toast function
+  const API_URL = 'http://localhost:8000';
+
   const showToast = (message, type = 'success') => {
     const id = Date.now().toString();
     setToasts(prev => [...prev, { id, message, type }]);
   };
 
-  // Smooth scroll function
   const scrollToSection = (ref) => {
     if (ref.current) {
-      ref.current.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
-  // Handle tab change with smooth scrolling
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
-    
-    // Small delay to ensure content is rendered before scrolling
     setTimeout(() => {
       switch (tabId) {
-        case 'overview':
-          scrollToSection(overviewRef);
-          break;
-        case 'wallet':
-          scrollToSection(walletRef);
-          break;
-        case 'students':
-          scrollToSection(studentsRef);
-          break;
-        case 'transactions':
-          scrollToSection(transactionsRef);
-          break;
+        case 'overview': scrollToSection(overviewRef); break;
+        case 'wallet': scrollToSection(walletRef); break;
+        case 'students': scrollToSection(studentsRef); break;
+        case 'transactions': scrollToSection(transactionsRef); break;
       }
     }, 100);
   };
 
+  const fetchCsrfToken = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/get-csrf-token`);
+      setCsrfToken(response.data.csrf_token);
+      return response.data.csrf_token;
+    } catch (err) {
+      console.error('Failed to fetch CSRF token:', err);
+      showToast(t('serverError'), 'error');
+    }
+  };
+
+  const fetchDashboardData = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const headers = { Authorization: `Bearer ${token}` };
+
+      // Fetch wallet balance
+      const balanceResponse = await axios.get(`${API_URL}/wallet/balance`, { headers });
+      setBalance(balanceResponse.data.balance);
+
+      // Fetch linked students
+      const studentsResponse = await axios.get(`${API_URL}/students/linked`, { headers });
+      setStudents(studentsResponse.data.students.map(student => ({
+        id: student.student_id,
+        name: student.student_name,
+        studentId: student.student_id,
+        grade: student.grade || 'N/A',
+        class: student.class || 'N/A',
+        photo: '/api/placeholder/48/48',
+        dailyLimit: student.spending_limit || 0,
+        weeklyLimit: (student.spending_limit || 0) * 7,
+        monthlyLimit: (student.spending_limit || 0) * 30,
+        todaySpent: student.spent_amount || 0,
+        allowedDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+        allowedHours: { from: '07:00', to: '18:00' }
+      })));
+
+      // Fetch recent transactions
+      const transactionsResponse = await axios.get(`${API_URL}/transactions/recent`, { headers });
+      setTransactions(transactionsResponse.data.transactions.map(tx => ({
+        id: tx.transaction_id,
+        type: tx.is_deposit ? 'deposit' : 'payment',
+        title: tx.description || t('unknownTransaction'),
+        student: tx.student_name || null,
+        amount: tx.is_deposit ? tx.amount : -tx.amount,
+        date: new Date(tx.timestamp).toLocaleString(),
+        status: 'completed'
+      })));
+    } catch (err) {
+      console.error('Failed to fetch dashboard data:', err);
+      if (err.response?.status === 401) {
+        localStorage.removeItem('token');
+        navigate('/login');
+      } else {
+        showToast(t('serverError'), 'error');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDashboardData();
+    fetchCsrfToken();
+  }, []);
+
   const handleDeposit = async (data) => {
     setIsLoading(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setBalance(prev => prev + Number(data.amount));
-      const newTransaction = {
-        id: Date.now().toString(),
-        type: 'deposit',
-        title: t('mobileMoneyDeposit'),
-        student: null,
-        amount: Number(data.amount),
-        date: 'Just now',
-        status: 'completed'
-      };
-      setTransactions(prev => [newTransaction, ...prev]);
+      const token = localStorage.getItem('token');
+      const csrf = csrfToken || await fetchCsrfToken();
+      await axios.post(
+        `${API_URL}/wallet/deposit`,
+        {
+          amount: Number(data.amount),
+          phone_number: data.phone,
+          pin: data.pin,
+          csrf_token: csrf
+        },
+        { headers: { Authorization: `Bearer ${token}`, 'X-CSRF-Token': csrf } }
+      );
+      await fetchDashboardData();
       setActiveModal(null);
       showToast(`Successfully deposited ${Number(data.amount)} RWF`);
-    } catch (error) {
-      showToast('Deposit failed. Please try again.', 'error');
+    } catch (err) {
+      console.error('Deposit failed:', err);
+      showToast(err.response?.data?.detail || t('depositError'), 'error');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const handleWithdraw = async (data) => {
     setIsLoading(true);
     try {
-      if (Number(data.amount) > balance) {
-        throw new Error('Insufficient balance');
-      }
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setBalance(prev => prev - Number(data.amount));
-      const newTransaction = {
-        id: Date.now().toString(),
-        type: 'withdraw',
-        title: 'Mobile Money Withdrawal',
-        student: null,
-        amount: -Number(data.amount),
-        date: 'Just now',
-        status: 'completed'
-      };
-      setTransactions(prev => [newTransaction, ...prev]);
+      const token = localStorage.getItem('token');
+      const csrf = csrfToken || await fetchCsrfToken();
+      await axios.post(
+        `${API_URL}/wallet/withdraw`,
+        {
+          amount: Number(data.amount),
+          phone_number: data.phone,
+          pin: data.pin,
+          csrf_token: csrf
+        },
+        { headers: { Authorization: `Bearer ${token}`, 'X-CSRF-Token': csrf } }
+      );
+      await fetchDashboardData();
       setActiveModal(null);
       showToast(`Successfully withdrew ${Number(data.amount)} RWF`);
-    } catch (error) {
-      showToast(error.message || 'Withdrawal failed. Please try again.', 'error');
+    } catch (err) {
+      console.error('Withdraw failed:', err);
+      showToast(err.response?.data?.detail || t('withdrawError'), 'error');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const handleLinkStudent = async (data) => {
     setIsLoading(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      const newStudent = {
-        id: Date.now().toString(),
-        name: data.name,
-        studentId: data.studentId,
-        grade: data.grade,
-        class: data.class,
-        photo: '/api/placeholder/48/48',
-        dailyLimit: 5000,
-        weeklyLimit: 25000,
-        monthlyLimit: 100000,
-        todaySpent: 0,
-        allowedDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-        allowedHours: { from: '07:00', to: '18:00' }
-      };
-      setStudents(prev => [...prev, newStudent]);
+      const token = localStorage.getItem('token');
+      const csrf = csrfToken || await fetchCsrfToken();
+      await axios.post(
+        `${API_URL}/link-student`,
+        {
+          student_id: data.studentId,
+          student_name: data.name,
+          grade: data.grade,
+          class_name: data.class,
+          pin: data.pin,
+          csrf_token: csrf
+        },
+        { headers: { Authorization: `Bearer ${token}`, 'X-CSRF-Token': csrf } }
+      );
+      await fetchDashboardData();
       setActiveModal(null);
       showToast(`Successfully linked ${data.name}`);
-    } catch (error) {
-      showToast('Failed to link student. Please try again.', 'error');
+    } catch (err) {
+      console.error('Link student failed:', err);
+      showToast(err.response?.data?.detail || t('linkStudentError'), 'error');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const handleSetLimits = (student) => {
@@ -241,19 +246,33 @@ const Index = () => {
   const handleSaveLimits = async (limits) => {
     setIsLoading(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setStudents(prev => prev.map(student => 
-        student.id === selectedStudent.id 
-          ? { ...student, ...limits }
-          : student
-      ));
+      const token = localStorage.getItem('token');
+      const csrf = csrfToken || await fetchCsrfToken();
+      await axios.post(
+        `${API_URL}/set-spending-limit`,
+        {
+          student_id: selectedStudent.id,
+          spending_limit: Number(limits.dailyLimit) || 0,
+          limit_period_days: 1,
+          csrf_token: csrf
+        },
+        { headers: { Authorization: `Bearer ${token}`, 'X-CSRF-Token': csrf } }
+      );
+      await fetchDashboardData();
       setActiveModal(null);
       setSelectedStudent(null);
       showToast(`Spending limits updated for ${selectedStudent.name}`);
-    } catch (error) {
-      showToast('Failed to update limits. Please try again.', 'error');
+    } catch (err) {
+      console.error('Set limits failed:', err);
+      showToast(err.response?.data?.detail || t('setLimitsError'), 'error');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   const languages = [
@@ -276,12 +295,11 @@ const Index = () => {
       case 'overview':
         return (
           <div ref={overviewRef} className="space-y-8">
-            {/* Portfolio Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">Total Balance</p>
+                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">{t('totalBalance')}</p>
                     <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">
                       {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
                     </p>
@@ -292,14 +310,13 @@ const Index = () => {
                 </div>
                 <div className="flex items-center mt-4 text-green-600 dark:text-green-400 text-sm font-medium">
                   <TrendingUp className="w-4 h-4 mr-1" />
-                  <span>+2.5% from last month</span>
+                  <span>+2.5% {t('fromLastMonth')}</span>
                 </div>
               </div>
-
               <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">Active Students</p>
+                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">{t('activeStudents')}</p>
                     <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">{students.length}</p>
                   </div>
                   <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
@@ -308,15 +325,16 @@ const Index = () => {
                 </div>
                 <div className="flex items-center mt-4 text-blue-600 dark:text-blue-400 text-sm font-medium">
                   <Plus className="w-4 h-4 mr-1" />
-                  <span>Ready to link more</span>
+                  <span>{t('readyToLink')}</span>
                 </div>
               </div>
-
               <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">This Month Spent</p>
-                    <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">12,500 RWF</p>
+                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">{t('thisMonthSpent')}</p>
+                    <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">
+                      {isBalanceVisible ? `${students.reduce((sum, s) => sum + s.todaySpent, 0).toLocaleString()} RWF` : '••••••'}
+                    </p>
                   </div>
                   <div className="p-3 bg-orange-50 dark:bg-orange-900/30 rounded-xl">
                     <ShoppingCart className="w-6 h-6 text-orange-600 dark:text-orange-400" />
@@ -324,15 +342,14 @@ const Index = () => {
                 </div>
                 <div className="flex items-center mt-4 text-orange-600 dark:text-orange-400 text-sm font-medium">
                   <TrendingDown className="w-4 h-4 mr-1" />
-                  <span>-15% vs last month</span>
+                  <span>-15% {t('vsLastMonth')}</span>
                 </div>
               </div>
-
               <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">Today's Activity</p>
-                    <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">3</p>
+                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">{t('todayActivity')}</p>
+                    <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">{transactions.length}</p>
                   </div>
                   <div className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-xl">
                     <Activity className="w-6 h-6 text-purple-600 dark:text-purple-400" />
@@ -340,44 +357,37 @@ const Index = () => {
                 </div>
                 <div className="flex items-center mt-4 text-purple-600 dark:text-purple-400 text-sm font-medium">
                   <PieChart className="w-4 h-4 mr-1" />
-                  <span>Transactions today</span>
+                  <span>{t('transactionsToday')}</span>
                 </div>
               </div>
             </div>
-
-            {/* Main Content Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Virtual Card */}
               <div className="lg:col-span-1">
-                <VirtualCard 
+                <VirtualCard
                   balance={balance}
                   isVisible={isBalanceVisible}
                   onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
                 />
               </div>
-
-              {/* Quick Actions */}
               <div className="lg:col-span-1">
                 <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 h-full">
                   <h3 className="text-white-950 dark:text-white font-semibold text-lg mb-6">{t('quickActions')}</h3>
                   <div className="space-y-3">
-                    <button 
+                    <button
                       onClick={() => setActiveModal('deposit')}
-                      className="w-full flex items-center justify-center space-x-3 bg-green-700  border-green-200 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 bg-green-700 hover:bg-green-800 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <Plus className="w-5 h-5" />
                       <span>{t('deposit')}</span>
                     </button>
-                    
-                    <button 
+                    <button
                       onClick={() => setActiveModal('withdraw')}
                       className="w-full flex items-center justify-center space-x-3 bg-red-600 hover:bg-red-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <TrendingDown className="w-5 h-5" />
                       <span>{t('withdraw')}</span>
                     </button>
-                    
-                    <button 
+                    <button
                       onClick={() => setActiveModal('linkStudent')}
                       className="w-full flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
@@ -387,8 +397,6 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Recent Activity */}
               <div className="lg:col-span-1">
                 <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 h-full">
                   <h3 className="text-white-950 dark:text-white font-semibold text-lg mb-6">{t('recentActivity')}</h3>
@@ -397,11 +405,11 @@ const Index = () => {
                       <div key={transaction.id} className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                           <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                            transaction.type === 'deposit' ? 'bg-green-50 dark:bg-green-900/30' : 
+                            transaction.type === 'deposit' ? 'bg-green-50 dark:bg-green-900/30' :
                             transaction.type === 'withdraw' ? 'bg-red-50 dark:bg-red-900/30' : 'bg-blue-50 dark:bg-blue-900/30'
                           }`}>
-                            {transaction.type === 'deposit' ? 
-                              <TrendingUp className={`w-5 h-5 ${transaction.type === 'deposit' ? 'text-green-600 dark:text-green-400' : 'text-blue-600 dark:text-blue-400'}`} /> :
+                            {transaction.type === 'deposit' ?
+                              <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" /> :
                               transaction.type === 'withdraw' ?
                               <TrendingDown className="w-5 h-5 text-red-600 dark:text-red-400" /> :
                               <ShoppingCart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
@@ -428,12 +436,12 @@ const Index = () => {
       case 'wallet':
         return (
           <div ref={walletRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <VirtualCard 
+            <VirtualCard
               balance={balance}
               isVisible={isBalanceVisible}
               onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
             />
-            <WalletSection 
+            <WalletSection
               balance={balance}
               isVisible={isBalanceVisible}
               onDeposit={() => setActiveModal('deposit')}
@@ -445,9 +453,12 @@ const Index = () => {
       case 'students':
         return (
           <div ref={studentsRef}>
-            <StudentsSection 
+            <StudentsSection
               students={students}
-              onViewTransactions={(student) => setActiveModal('studentTransactions')}
+              onViewTransactions={(student) => {
+                setSelectedStudent(student);
+                setActiveModal('studentTransactions');
+              }}
               onSetLimits={handleSetLimits}
             />
           </div>
@@ -455,7 +466,7 @@ const Index = () => {
       case 'transactions':
         return (
           <div ref={transactionsRef}>
-            <TransactionsSection 
+            <TransactionsSection
               transactions={transactions}
               onViewAll={() => setActiveModal('allTransactions')}
             />
@@ -468,24 +479,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 dark:bg-[hsl(var(--primary))] transition-colors duration-200">
-      {/* Binance-style Header */}
       <div className="sticky top-0 z-50 bg-white dark:bg-white-950 border-b border-green-200 dark:border-green-700 shadow-sm">
         <div className="flex items-center justify-between px-6 py-4">
-          {/* Left Section */}
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-3">
-             
-            <img 
-              src="/assets/logo.png" 
-              alt="iKaramu Logo" 
-              className="w-40  rounded-lg object-contain"
-            />
-             
-             
-              {/* <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">iK</span>
-              </div> */}
-              {/* <h1 className="text-white-950 dark:text-white font-bold text-xl">iKaramu</h1> */}
+              <img src="/assets/logo.png" alt="kaascan Logo" className="w-40 rounded-lg object-contain" />
             </div>
             <div className="hidden md:flex items-center space-x-1 bg-green-100 dark:bg-green-700 rounded-lg p-1">
               {tabs.map((tab) => {
@@ -507,26 +505,19 @@ const Index = () => {
               })}
             </div>
           </div>
-          
-          {/* Right Section */}
           <div className="flex items-center space-x-3">
-            {/* Balance Visibility Toggle */}
             <button
               onClick={() => setIsBalanceVisible(!isBalanceVisible)}
               className="p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
             >
               {isBalanceVisible ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
             </button>
-
-            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className="p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-
-            {/* Language Selector */}
             <div className="relative">
               <button
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
@@ -535,7 +526,6 @@ const Index = () => {
                 <Globe className="w-5 h-5" />
                 <span className="text-sm font-medium">{currentLanguage?.flag}</span>
               </button>
-              
               {showLanguageDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 py-2 z-50">
                   {languages.map((lang) => (
@@ -556,8 +546,6 @@ const Index = () => {
                 </div>
               )}
             </div>
-
-            {/* Notifications */}
             <div className="relative">
               <button
                 onClick={() => setShowNotificationDropdown(!showNotificationDropdown)}
@@ -566,27 +554,24 @@ const Index = () => {
                 <Bell className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </button>
-              
               {showNotificationDropdown && (
                 <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 z-50">
                   <div className="p-4 border-b border-green-200 dark:border-green-700">
-                    <h3 className="font-semibold text-white-950 dark:text-white">Notifications</h3>
+                    <h3 className="font-semibold text-white-950 dark:text-white">{t('notifications')}</h3>
                   </div>
                   <div className="p-4 space-y-3">
                     <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded-lg">
-                      <p className="text-sm font-medium text-green-800 dark:text-green-200">Alice made a purchase - 2,500 RWF</p>
-                      <p className="text-xs text-green-600 dark:text-green-400">2 minutes ago</p>
+                      <p className="text-sm font-medium text-green-800 dark:text-green-200">{t('alicePurchase')}</p>
+                      <p className="text-xs text-green-600 dark:text-green-400">{t('twoMinutesAgo')}</p>
                     </div>
                     <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-                      <p className="text-sm font-medium text-blue-800 dark:text-blue-200">Weekly limit reminder for Bob</p>
-                      <p className="text-xs text-blue-600 dark:text-blue-400">1 hour ago</p>
+                      <p className="text-sm font-medium text-blue-800 dark:text-blue-200">{t('bobLimitReminder')}</p>
+                      <p className="text-xs text-blue-600 dark:text-blue-400">{t('oneHourAgo')}</p>
                     </div>
                   </div>
                 </div>
               )}
             </div>
-
-            {/* Profile Menu */}
             <div className="relative">
               <button
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
@@ -596,7 +581,6 @@ const Index = () => {
                   <User className="w-4 h-4 text-white" />
                 </div>
               </button>
-
               {showProfileDropdown && (
                 <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 py-2 z-50">
                   <div className="px-4 py-3 border-b border-green-200 dark:border-green-700">
@@ -605,7 +589,7 @@ const Index = () => {
                         <User className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="font-medium text-white-950 dark:text-white">Loving Parent</p>
+                        <p className="font-medium text-white-950 dark:text-white">{t('lovingParent')}</p>
                         <p className="text-sm text-green-500 dark:text-green-400">parent@example.com</p>
                       </div>
                     </div>
@@ -619,7 +603,7 @@ const Index = () => {
                       className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-green-700 dark:text-green-300 hover:bg-green-50 dark:hover:bg-green-700 transition-all duration-200"
                     >
                       <User className="w-4 h-4" />
-                      <span>Profile Settings</span>
+                      <span>{t('profileSettings')}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -629,12 +613,15 @@ const Index = () => {
                       className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-green-700 dark:text-green-300 hover:bg-green-50 dark:hover:bg-green-700 transition-all duration-200"
                     >
                       <Settings className="w-4 h-4" />
-                      <span>Settings</span>
+                      <span>{t('settings')}</span>
                     </button>
                     <hr className="my-2 border-green-200 dark:border-green-700" />
-                    <button className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition-all duration-200">
+                    <button
+                      onClick={handleLogout}
+                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition-all duration-200"
+                    >
                       <LogOut className="w-4 h-4" />
-                      <span>Sign Out</span>
+                      <span>{t('signOut')}</span>
                     </button>
                   </div>
                 </div>
@@ -643,18 +630,10 @@ const Index = () => {
           </div>
         </div>
       </div>
-
-      {/* Ad Banner */}
       <AdBanner />
-
-      {/* Main Content */}
       <div className="flex-1 p-6">
-        <div className="max-w-7xl mx-auto">
-          {renderTabContent()}
-        </div>
+        <div className="max-w-7xl mx-auto">{renderTabContent()}</div>
       </div>
-
-      {/* Mobile Bottom Navigation */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-white-950 border-t border-green-200 dark:border-green-700 z-50">
         <div className="flex items-center justify-around py-2">
           {tabs.map((tab) => {
@@ -676,12 +655,7 @@ const Index = () => {
           })}
         </div>
       </div>
-
-      {/* Modals */}
-      {activeModal === 'profile' && (
-        <ProfileModal onClose={() => setActiveModal(null)} />
-      )}
-
+      {activeModal === 'profile' && <ProfileModal onClose={() => setActiveModal(null)} />}
       {activeModal === 'deposit' && (
         <VercelModal
           title={t('depositFunds')}
@@ -731,7 +705,6 @@ const Index = () => {
           </div>
         </VercelModal>
       )}
-
       {activeModal === 'withdraw' && (
         <VercelModal
           title={t('withdraw')}
@@ -782,7 +755,6 @@ const Index = () => {
           </div>
         </VercelModal>
       )}
-
       {activeModal === 'linkStudent' && (
         <VercelModal
           title={t('linkNewStudent')}
@@ -857,10 +829,9 @@ const Index = () => {
           </div>
         </VercelModal>
       )}
-
       {activeModal === 'settings' && (
         <VercelModal
-          title="Settings"
+          title={t('settings')}
           onClose={() => setActiveModal(null)}
           onSubmit={() => setActiveModal(null)}
           isLoading={false}
@@ -868,8 +839,8 @@ const Index = () => {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-sm font-medium text-white-950 dark:text-white">Notifications</h4>
-                <p className="text-sm text-green-500 dark:text-green-400">Receive transaction alerts</p>
+                <h4 className="text-sm font-medium text-white-950 dark:text-white">{t('notifications')}</h4>
+                <p className="text-sm text-green-500 dark:text-green-400">{t('receiveAlerts')}</p>
               </div>
               <button className="w-12 h-6 bg-blue-600 rounded-full relative">
                 <div className="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5"></div>
@@ -877,10 +848,10 @@ const Index = () => {
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-sm font-medium text-white-950 dark:text-white">Dark Mode</h4>
-                <p className="text-sm text-green-500 dark:text-green-400">Switch to dark theme</p>
+                <h4 className="text-sm font-medium text-white-950 dark:text-white">{t('darkMode')}</h4>
+                <p className="text-sm text-green-500 dark:text-green-400">{t('switchTheme')}</p>
               </div>
-              <button 
+              <button
                 onClick={toggleTheme}
                 className={`w-12 h-6 rounded-full relative transition-colors ${isDark ? 'bg-blue-600' : 'bg-green-300'}`}
               >
@@ -888,8 +859,8 @@ const Index = () => {
               </button>
             </div>
             <div className="border-t dark:border-green-700 pt-4">
-              <h4 className="text-sm font-medium text-white-950 dark:text-white mb-2">Language</h4>
-              <select 
+              <h4 className="text-sm font-medium text-white-950 dark:text-white mb-2">{t('language')}</h4>
+              <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as any)}
                 className="w-full px-3 py-2 border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white rounded-lg"
@@ -902,7 +873,6 @@ const Index = () => {
           </div>
         </VercelModal>
       )}
-
       {activeModal === 'spendingLimits' && selectedStudent && (
         <SpendingLimitsModal
           student={selectedStudent}
@@ -914,8 +884,63 @@ const Index = () => {
           isLoading={isLoading}
         />
       )}
-
-      {/* Toast Container */}
+      {activeModal === 'studentTransactions' && selectedStudent && (
+        <VercelModal
+          title={`${selectedStudent.name}'s Transactions`}
+          onClose={() => {
+            setActiveModal(null);
+            setSelectedStudent(null);
+          }}
+          onSubmit={() => {}}
+          isLoading={false}
+          hideSubmit
+        >
+          <div className="space-y-4">
+            {transactions
+              .filter(tx => tx.student === selectedStudent.name)
+              .map(tx => (
+                <div key={tx.id} className="flex items-center justify-between p-3 rounded-lg bg-green-50 dark:bg-green-900/30">
+                  <div>
+                    <p className="text-sm font-medium text-green-800 dark:text-green-200">{tx.title}</p>
+                    <p className="text-xs text-green-600 dark:text-green-400">{tx.date}</p>
+                  </div>
+                  <span className={`text-sm font-semibold ${tx.amount > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                    {tx.amount > 0 ? '+' : ''}{Math.abs(tx.amount).toLocaleString()} RWF
+                  </span>
+                </div>
+              ))}
+            {transactions.filter(tx => tx.student === selectedStudent.name).length === 0 && (
+              <p className="text-center text-gray-500 dark:text-gray-400">{t('noTransactions')}</p>
+            )}
+          </div>
+        </VercelModal>
+      )}
+      {activeModal === 'allTransactions' && (
+        <VercelModal
+          title={t('allTransactions')}
+          onClose={() => setActiveModal(null)}
+          onSubmit={() => {}}
+          isLoading={false}
+          hideSubmit
+        >
+          <div className="space-y-4">
+            {transactions.map(tx => (
+              <div key={tx.id} className="flex items-center justify-between p-3 rounded-lg bg-green-50 dark:bg-green-900/30">
+                <div>
+                  <p className="text-sm font-medium text-green-800 dark:text-green-200">{tx.title}</p>
+                  <p className="text-xs text-green-600 dark:text-green-400">{tx.date}</p>
+                </div>
+                <span className={`text-sm font-semibold ${tx.amount > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                  {tx.amount > 0 ? '+' : ''}{Math.abs(tx.amount).toLocaleString()} RWF
+                </span>
+              </div>
+            ))}
+            {transactions.length === 0 && (
+              <p className="text-center text-gray-500 dark:text-gray-400">{t('noTransactions')}</p>
+            )}
+          </div>
+        </VercelModal>
+      )}
       <div className="fixed top-20 right-4 space-y-2 z-50">
         {toasts.map(toast => (
           <VercelToast
@@ -926,8 +951,6 @@ const Index = () => {
           />
         ))}
       </div>
-
-      {/* Global Loader */}
       {isLoading && <BinanceLoader />}
     </div>
   );

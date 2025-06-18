@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 interface AdData {
   src: string;
@@ -10,42 +10,94 @@ interface AdData {
   ctaLink?: string;
 }
 
-const mockAds: AdData[] = [
-  {
-    src: "/placeholder.svg",
-    alt: "Premium Service",
-    title: "Discover Premium Features",
-    subtitle: "Unlock the full potential of our platform",
-    ctaText: "Get Started",
-    ctaLink: "#"
-  },
-  {
-    src: "/placeholder.svg", 
-    alt: "Special Offer",
-    title: "Limited Time Offer",
-    subtitle: "Save 50% on all premium plans",
-    ctaText: "Claim Offer",
-    ctaLink: "#"
-  }
-];
-
-const AdBanner = () => {
+const AdBanner: React.FC = () => {
+  const [ads, setAds] = useState<AdData[]>([]);
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [isScrollHidden, setIsScrollHidden] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [csrfToken, setCsrfToken] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const currentAd = mockAds[currentAdIndex];
+  const currentAd = ads[currentAdIndex];
+
+  // Fetch CSRF token with retry logic
+  const fetchCsrfToken = async (retries = 3, delay = 1000): Promise<string | null> => {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+      try {
+        const response = await axios.get('http://localhost:8001/admin/get-csrf-token', {
+          withCredentials: true, // Send session_id cookie
+        });
+        console.log('CSRF Token:', response.data.csrf_token); // Debug
+        setCsrfToken(response.data.csrf_token);
+        setError('');
+        return response.data.csrf_token;
+      } catch (err: any) {
+        const errorMsg = err.response?.data?.detail || 'Failed to fetch CSRF token';
+        console.error(`CSRF token error (attempt ${attempt}):`, err);
+        if (attempt === retries) {
+          setError(errorMsg);
+          return null;
+        }
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      }
+    }
+    return null;
+  };
+
+  // Fetch active ads
+  const fetchAds = async () => {
+    if (!csrfToken) return;
+    try {
+      setLoading(true);
+      const response = await axios.get('http://localhost:8001/admin/ads/active', {
+        headers: {
+          'X-CSRF-Token': csrfToken,
+        },
+        withCredentials: true, // Send session_id cookie
+      });
+      // Map backend Ad to AdData
+      const mappedAds: AdData[] = response.data.map((ad: any) => ({
+        src: ad.image_url,
+        alt: ad.title,
+        title: ad.title,
+        subtitle: ad.subtitle,
+        ctaText: ad.cta_text,
+        ctaLink: ad.cta_link,
+      }));
+      setAds(mappedAds);
+      setLoading(false);
+      setError('');
+    } catch (err: any) {
+      const errorMsg = err.response?.data?.detail || 'Failed to fetch ads';
+      setError(errorMsg);
+      console.error('Ads fetch error:', err);
+      setLoading(false);
+    }
+  };
+
+  // Initial CSRF token fetch
+  useEffect(() => {
+    fetchCsrfToken();
+  }, []);
+
+  // Fetch ads when CSRF token is available
+  useEffect(() => {
+    if (csrfToken) {
+      fetchAds();
+    }
+  }, [csrfToken]);
 
   // Auto-rotate ads
   useEffect(() => {
-    if (mockAds.length > 1) {
+    if (ads.length > 1) {
       const interval = setInterval(() => {
-        setCurrentAdIndex((prev) => (prev + 1) % mockAds.length);
+        setCurrentAdIndex((prev) => (prev + 1) % ads.length);
       }, 5000);
       return () => clearInterval(interval);
     }
-  }, []);
+  }, [ads]);
 
   // Scroll detection for hide/show
   useEffect(() => {
@@ -73,6 +125,14 @@ const AdBanner = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Handle refresh
+  const handleRefresh = async () => {
+    const token = await fetchCsrfToken();
+    if (token) {
+      await fetchAds();
+    }
+  };
+
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
@@ -96,52 +156,83 @@ const AdBanner = () => {
 
         {/* Content Container with Enhanced Glass Effect */}
         <div className="relative z-10 p-4 sm:p-8">
-          <div className="flex flex-col sm:flex-row items-center gap-6">
-            {/* Enhanced Image Container */}
-            <div className="flex-shrink-0 w-full sm:w-48 md:w-56 h-24 sm:h-32 md:h-36 rounded-2xl overflow-hidden shadow-xl relative group/image">
-              <img
-                src={currentAd.src}
-                alt={currentAd.alt}
-                onLoad={handleImageLoad}
-                className="w-full h-full object-cover transition-all duration-700 group-hover/image:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent opacity-60"></div>
+          {error ? (
+            <div className={`text-center text-sm ${isDark ? 'text-red-400' : 'text-red-500'}`}>
+              {error}
             </div>
-
-            {/* Enhanced Text Content */}
-            <div className="flex-1 text-center sm:text-left min-w-0">
-              <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${
-                isDark ? 'text-emerald-50' : 'text-emerald-800'
-              }`}>
-                {currentAd.title}
-              </h3>
-              {currentAd.subtitle && (
-                <p className={`font-medium mb-4 sm:mb-5 text-sm sm:text-base lg:text-lg ${
-                  isDark ? 'text-emerald-200' : 'text-emerald-600'
-                }`}>
-                  {currentAd.subtitle}
-                </p>
-              )}
-              {currentAd.ctaText && (
+          ) : loading ? (
+            <div className={`text-center text-sm ${isDark ? 'text-emerald-200' : 'text-emerald-600'}`}>
+              Loading ads...
+            </div>
+          ) : ads.length === 0 ? (
+            <div className={`text-center text-sm ${isDark ? 'text-emerald-200' : 'text-emerald-600'}`}>
+              No active ads
+            </div>
+          ) : (
+            <>
+              <div className="flex justify-end mb-2">
                 <button
-                  onClick={() => currentAd.ctaLink && window.open(currentAd.ctaLink, '_blank')}
-                  className={`inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+                  onClick={handleRefresh}
+                  className={`inline-flex items-center px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                     isDark 
                       ? 'bg-gradient-to-r from-emerald-500 to-green-400 text-white shadow-emerald-500/25' 
                       : 'bg-gradient-to-r from-emerald-400 to-green-300 text-white shadow-emerald-300/25'
                   }`}
                 >
-                  <span className="relative z-10">{currentAd.ctaText}</span>
+                  Refresh Ads
                 </button>
-              )}
-            </div>
-          </div>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                {/* Enhanced Image Container */}
+                <div className="flex-shrink-0 w-full sm:w-48 md:w-56 h-24 sm:h-32 md:h-36 rounded-2xl overflow-hidden shadow-xl relative group/image">
+                  <img
+                    src={currentAd.src}
+                    alt={currentAd.alt}
+                    onLoad={handleImageLoad}
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://via.placeholder.com/224x144?text=Ad+Image';
+                    }}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover/image:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent opacity-60"></div>
+                </div>
+
+                {/* Enhanced Text Content */}
+                <div className="flex-1 text-center sm:text-left min-w-0">
+                  <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${
+                    isDark ? 'text-emerald-50' : 'text-emerald-800'
+                  }`}>
+                    {currentAd.title}
+                  </h3>
+                  {currentAd.subtitle && (
+                    <p className={`font-medium mb-4 sm:mb-5 text-sm sm:text-base lg:text-lg ${
+                      isDark ? 'text-emerald-200' : 'text-emerald-600'
+                    }`}>
+                      {currentAd.subtitle}
+                    </p>
+                  )}
+                  {currentAd.ctaText && (
+                    <button
+                      onClick={() => currentAd.ctaLink && window.open(currentAd.ctaLink, '_blank')}
+                      className={`inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+                        isDark 
+                          ? 'bg-gradient-to-r from-emerald-500 to-green-400 text-white shadow-emerald-500/25' 
+                          : 'bg-gradient-to-r from-emerald-400 to-green-300 text-white shadow-emerald-300/25'
+                      }`}
+                    >
+                      <span className="relative z-10">{currentAd.ctaText}</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Enhanced Progress Indicators */}
-        {mockAds.length > 1 && (
+        {ads.length > 1 && !loading && !error && ads.length > 0 && (
           <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
-            {mockAds.map((_, index) => (
+            {ads.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentAdIndex(index)}

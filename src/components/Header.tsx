@@ -1,10 +1,11 @@
-
 import React, { useState } from 'react';
 import { Globe, User, Bell, Settings, LogOut, Menu, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({ onMenuClick }) => {
   const { t, language, setLanguage } = useLanguage();
+  const navigate = useNavigate();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,11 +20,14 @@ const Header = ({ onMenuClick }) => {
 
   const shimmerClass = "relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent";
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   return (
     <header className="bg-gradient-to-r from-red-50 via-yellow-50 via-green-50 to-blue-50 backdrop-blur-xl border-b-4 border-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-blue-200 sticky top-0 z-50 shadow-2xl">
-      {/* Shimmer Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-red-100/30 via-yellow-100/30 via-green-100/30 to-blue-100/30 animate-pulse"></div>
-      
       <div className="absolute inset-0 opacity-10" style={{
         backgroundImage: `
           radial-gradient(circle at 25% 25%, #ef4444 1px, transparent 1px),
@@ -33,10 +37,8 @@ const Header = ({ onMenuClick }) => {
         `,
         backgroundSize: '40px 40px'
       }}></div>
-
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex items-center justify-between h-20">
-          {/* Enhanced Logo */}
           <div className="flex items-center space-x-4">
             <div className={`relative w-14 h-14 bg-gradient-to-br from-red-500 via-yellow-500 via-green-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-2xl transform hover:scale-110 transition-all duration-300 ${shimmerClass}`}>
               <span className="text-white font-black text-xl drop-shadow-lg">iW</span>
@@ -52,10 +54,7 @@ const Header = ({ onMenuClick }) => {
               </div>
             </div>
           </div>
-
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            {/* Enhanced Notifications */}
             <div className="relative group">
               <button className={`relative p-4 text-gray-600 hover:text-red-600 transition-all duration-300 rounded-2xl hover:bg-white/60 backdrop-blur-sm ${shimmerClass}`}>
                 <Bell className="w-6 h-6" />
@@ -69,19 +68,17 @@ const Header = ({ onMenuClick }) => {
                   <h3 className="font-bold text-gray-900 mb-4 text-lg">{t('recentNotifications')}</h3>
                   <div className="space-y-3">
                     <div className="p-3 bg-green-50 rounded-xl border border-green-200">
-                      <p className="text-sm font-semibold text-green-800">Alice made a purchase - 2,500 RWF</p>
-                      <p className="text-xs text-green-600">2 minutes ago</p>
+                      <p className="text-sm font-semibold text-green-800">{t('alicePurchase')}</p>
+                      <p className="text-xs text-green-600">{t('twoMinutesAgo')}</p>
                     </div>
                     <div className="p-3 bg-blue-50 rounded-xl border border-blue-200">
-                      <p className="text-sm font-semibold text-blue-800">Weekly limit reminder for Bob</p>
-                      <p className="text-xs text-blue-600">1 hour ago</p>
+                      <p className="text-sm font-semibold text-blue-800">{t('bobLimitReminder')}</p>
+                      <p className="text-xs text-blue-600">{t('oneHourAgo')}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Enhanced Language Selector - Now Always Visible */}
             <div className="relative">
               <button
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
@@ -90,7 +87,6 @@ const Header = ({ onMenuClick }) => {
                 <Globe className="w-5 h-5" />
                 <span className="text-sm">{currentLanguage?.flag} {currentLanguage?.name}</span>
               </button>
-              
               {isLanguageOpen && (
                 <div className="absolute right-0 mt-2 w-56 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border-2 border-gray-100 py-3 z-50">
                   {languages.map((lang) => (
@@ -111,8 +107,6 @@ const Header = ({ onMenuClick }) => {
                 </div>
               )}
             </div>
-
-            {/* Enhanced Profile Menu */}
             <div className="relative">
               <button
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -126,7 +120,6 @@ const Header = ({ onMenuClick }) => {
                   <p className="text-xs text-gray-600 font-medium">{t('alwaysCaring')}</p>
                 </div>
               </button>
-
               {isProfileOpen && (
                 <div className="absolute right-0 mt-2 w-72 bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border-2 border-gray-100 py-4 z-50">
                   <div className="px-6 py-4 border-b border-gray-100">
@@ -142,7 +135,13 @@ const Header = ({ onMenuClick }) => {
                     </div>
                   </div>
                   <div className="py-3">
-                    <button className="w-full flex items-center space-x-4 px-6 py-3 text-left text-sm hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-200 font-semibold">
+                    <button
+                      onClick={() => {
+                        onMenuClick();
+                        setIsProfileOpen(false);
+                      }}
+                      className="w-full flex items-center space-x-4 px-6 py-3 text-left text-sm hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 transition-all duration-200 font-semibold"
+                    >
                       <User className="w-5 h-5 text-blue-500" />
                       <span>{t('profileSettings')}</span>
                     </button>
@@ -151,7 +150,10 @@ const Header = ({ onMenuClick }) => {
                       <span>{t('accountSettings')}</span>
                     </button>
                     <hr className="my-3 border-gray-200" />
-                    <button className="w-full flex items-center space-x-4 px-6 py-3 text-left text-sm text-red-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-rose-50 transition-all duration-200 font-semibold">
+                    <button
+                      onClick={handleLogout}
+                      className="w-full flex items-center space-x-4 px-6 py-3 text-left text-sm text-red-600 hover:bg-gradient-to-r hover:from-red-50 hover:to-rose-50 transition-all duration-200 font-semibold"
+                    >
                       <LogOut className="w-5 h-5" />
                       <span>{t('signOut')}</span>
                     </button>
@@ -160,8 +162,6 @@ const Header = ({ onMenuClick }) => {
               )}
             </div>
           </div>
-
-          {/* Enhanced Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-4 text-gray-600 hover:text-red-600 transition-all duration-300 rounded-2xl hover:bg-white/60 backdrop-blur-sm ${shimmerClass}`}
@@ -169,8 +169,6 @@ const Header = ({ onMenuClick }) => {
             {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
-
-        {/* Enhanced Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t-2 border-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-blue-200 py-6 space-y-6 bg-white/60 backdrop-blur-xl rounded-b-3xl">
             <div className="flex items-center space-x-4 px-6">
@@ -183,15 +181,12 @@ const Header = ({ onMenuClick }) => {
                 <p className="text-xs text-green-600 font-semibold">{t('trustedGuardian')}</p>
               </div>
             </div>
-            
             <div className="space-y-3 px-6">
               <button className="w-full flex items-center space-x-4 py-4 text-left bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl px-4 font-semibold">
                 <Bell className="w-6 h-6 text-blue-500" />
                 <span>{t('notifications')}</span>
                 <span className="ml-auto w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span>
               </button>
-              
-              {/* Mobile Language Selector */}
               <div className="w-full bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl px-4 py-4">
                 <div className="flex items-center space-x-3 mb-3">
                   <Globe className="w-6 h-6 text-green-500" />
@@ -213,12 +208,24 @@ const Header = ({ onMenuClick }) => {
                   ))}
                 </div>
               </div>
-              
-              <button className="w-full flex items-center space-x-4 py-4 text-left bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl px-4 font-semibold">
+              <button
+                onClick={() => {
+                  onMenuClick();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="flex items-center w-full space-x-4 py-4 rounded-2xl px-4 bg-gradient-to-r from-blue-50 to-cyan-50 font-semibold text-left"
+              >
+                <User className="w-6 h-6 text-blue-500" />
+                <span>{t('profileSettings')}</span>
+              </button>
+              <button className="flex items-center w-full space-x-4 py-4 rounded-xl px-4 bg-gradient-to-r from-purple-50 to-pink-50 font-semibold text-left">
                 <Settings className="w-6 h-6 text-purple-500" />
                 <span>{t('settings')}</span>
               </button>
-              <button className="w-full flex items-center space-x-4 py-4 text-left bg-gradient-to-r from-red-50 to-rose-50 rounded-2xl px-4 text-red-600 font-semibold">
+              <button
+                onClick={handleLogout}
+                className="flex items-center w-full space-x-4 py-4 rounded-xl px-4 bg-gradient-to-r from-red-50 to-rose-50 text-red-600 font-semibold text-left"
+              >
                 <LogOut className="w-6 h-6" />
                 <span>{t('signOut')}</span>
               </button>
@@ -226,7 +233,6 @@ const Header = ({ onMenuClick }) => {
           </div>
         )}
       </div>
-
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-400 via-yellow-400 via-green-400 to-blue-400 animate-pulse"></div>
     </header>
   );

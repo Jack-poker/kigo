@@ -1,88 +1,100 @@
-const API_BASE_URL = 'https://auto.kaascan.com/webhook'; // Replace with your n8n webhook URL
+import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
-// Student-related API calls
-export const fetchStudents = async () => {
+const API_BASE_URL = 'http://localhost:8001';
+
+// Create axios instance with default config
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 8000,
+  withCredentials: true,
+});
+
+// Request interceptor
+api.interceptors.request.use(
+  (config) => {
+    // Add admin token if available
+    const adminToken = localStorage.getItem('adminToken');
+    if (adminToken) {
+      config.headers['Authorization'] = `Bearer ${adminToken}`;
+    }
+    
+    // Add CSRF token if available
+    const csrfToken = sessionStorage.getItem('lastCsrfToken');
+    if (csrfToken) {
+      config.headers['X-CSRF-Token'] = csrfToken;
+    }
+    
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Response interceptor
+api.interceptors.response.use(
+  (response) => response,
+  async (error: AxiosError) => {
+    const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean };
+    
+    // Handle CSRF token errors
+    if (error.response?.status === 403 && 
+        error.response?.data?.detail?.includes('CSRF') && 
+        !originalRequest._retry) {
+      originalRequest._retry = true;
+      
+      try {
+        // Get a fresh CSRF token
+        const response = await axios.get(`${API_BASE_URL}/admin/get-csrf-token`, {
+          withCredentials: true,
+        });
+        
+        if (response.data && response.data.csrf_token) {
+          const newToken = response.data.csrf_token;
+          sessionStorage.setItem('lastCsrfToken', newToken);
+          sessionStorage.setItem('csrfTokenTimestamp', Date.now().toString());
+          
+          // Update the failed request with new token and retry
+          if (originalRequest.headers) {
+            originalRequest.headers['X-CSRF-Token'] = newToken;
+          }
+          
+          return axios(originalRequest);
+        }
+      } catch (refreshError) {
+        console.error('Failed to refresh CSRF token:', refreshError);
+      }
+    }
+    
+    // Handle authentication errors
+    if (error.response?.status === 401) {
+      // Clear admin token and redirect to login
+      localStorage.removeItem('adminToken');
+      window.location.href = '/login';
+    }
+    
+    return Promise.reject(error);
+  }
+);
+
+export const getCsrfToken = async (): Promise<string> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/students`);
-    if (!response.ok) throw new Error('Failed to fetch students');
-    return await response.json();
+    const response = await api.get('/admin/get-csrf-token');
+    const token = response.data.csrf_token;
+    
+    if (token) {
+      sessionStorage.setItem('lastCsrfToken', token);
+      sessionStorage.setItem('csrfTokenTimestamp', Date.now().toString());
+    }
+    
+    return token;
   } catch (error) {
-    console.error('Error fetching students:', error);
+    console.error('Failed to get CSRF token:', error);
+    
+    // Try to use cached token if available
+    const cachedToken = sessionStorage.getItem('lastCsrfToken');
+    if (cachedToken) return cachedToken;
+    
     throw error;
   }
 };
 
-export const addStudent = async (studentData) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/students`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(studentData),
-    });
-    if (!response.ok) throw new Error('Failed to add student');
-    return await response.json();
-  } catch (error) {
-    console.error('Error adding student:', error);
-    throw error;
-  }
-};
-
-// Wallet-related API calls
-export const getWalletBalance = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/wallet/balance`);
-    if (!response.ok) throw new Error('Failed to fetch wallet balance');
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching wallet balance:', error);
-    throw error;
-  }
-};
-
-export const depositToWallet = async (depositData) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/wallet/deposit`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(depositData),
-    });
-    if (!response.ok) throw new Error('Failed to deposit to wallet');
-    return await response.json();
-  } catch (error) {
-    console.error('Error depositing to wallet:', error);
-    throw error;
-  }
-};
-
-// Transaction-related API calls
-export const fetchTransactions = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/transactions`);
-    if (!response.ok) throw new Error('Failed to fetch transactions');
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching transactions:', error);
-    throw error;
-  }
-};
-
-export const addTransaction = async (transactionData) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/transactions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(transactionData),
-    });
-    if (!response.ok) throw new Error('Failed to add transaction');
-    return await response.json();
-  } catch (error) {
-    console.error('Error adding transaction:', error);
-    throw error;
-  }
-};
+export default api;

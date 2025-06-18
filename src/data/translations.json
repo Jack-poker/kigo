@@ -1,7 +1,7 @@
 
 {
   "en": {
-    "welcome": "Welcome to iKaramu",
+    "welcome": "Welcome to kaascan",
     "subtitle": "Manage your student's spending with ease",
     "overview": "Overview",
     "wallet": "Wallet",
@@ -57,7 +57,7 @@
     "english": "English",
     "french": "French",
     "kinyarwanda": "Kinyarwanda",
-    "appName": "iKaramu",
+    "appName": "kaascan",
     "tagline": "Smart spending for students",
     "recentNotifications": "Recent Notifications",
     "lovingParent": "Loving Parent",
@@ -71,7 +71,7 @@
     "settings": "Settings"
   },
   "fr": {
-    "welcome": "Bienvenue à iKaramu",
+    "welcome": "Bienvenue à kaascan",
     "subtitle": "Gérez les dépenses de votre étudiant facilement",
     "overview": "Aperçu",
     "wallet": "Portefeuille",
@@ -127,7 +127,7 @@
     "english": "Anglais",
     "french": "Français",
     "kinyarwanda": "Kinyarwanda",
-    "appName": "iKaramu",
+    "appName": "kaascan",
     "tagline": "Dépenses intelligentes pour étudiants",
     "recentNotifications": "Notifications Récentes",
     "lovingParent": "Parent Aimant",
@@ -141,7 +141,7 @@
     "settings": "Paramètres"
   },
   "rw": {
-    "welcome": "Murakaza neza kuri iKaramu",
+    "welcome": "Murakaza neza kuri kaascan",
     "subtitle": "Genzura amafaranga y'umunyeshuri wawe byoroshye",
     "overview": "Urwego Rusange",
     "wallet": "Igikwama",
@@ -197,7 +197,7 @@
     "english": "Icyongereza",
     "french": "Igifaransa",
     "kinyarwanda": "Ikinyarwanda",
-    "appName": "iKaramu",
+    "appName": "kaascan",
     "tagline": "Gukoresha amafaranga neza ku banyeshuri",
     "recentNotifications": "Amakuru Ashya",
     "lovingParent": "Umubyeyi w'Urukundo",
