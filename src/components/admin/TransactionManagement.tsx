@@ -27,7 +27,7 @@ const TransactionManagement: React.FC = () => {
     let delay = initialDelay;
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
-        const response = await axios.get('http://localhost:8001/admin/get-csrf-token', {
+        const response = await axios.get('https://api.kaascan.com/admin/get-csrf-token', {
           withCredentials: true, // Send session_id cookie
           timeout: 5000, // 5 second timeout
         });
@@ -55,7 +55,7 @@ const TransactionManagement: React.FC = () => {
     if (!csrfToken) return;
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:8001/admin/transactions', {
+      const response = await axios.get('https://api.kaascan.com/admin/transactions', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
           'X-CSRF-Token': csrfToken,
@@ -100,7 +100,7 @@ const TransactionManagement: React.FC = () => {
   // Fetch transaction details
   const handleViewTransaction = async (transaction_id: string) => {
     try {
-      const response = await axios.get(`http://localhost:8001/admin/transactions/${transaction_id}`, {
+      const response = await axios.get(`https://api.kaascan.com/admin/transactions/${transaction_id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
           'X-CSRF-Token': csrfToken,

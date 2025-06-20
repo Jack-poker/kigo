@@ -36,7 +36,7 @@ const UserManagement: React.FC = () => {
   useEffect(() => {
     const fetchCsrfToken = async () => {
       try {
-        const response = await axios.get('http://localhost:8001/admin/get-csrf-token', {
+        const response = await axios.get('https://api.kaascan.com/admin/get-csrf-token', {
           withCredentials: true, // Ensure session_id cookie is sent
         });
         console.log('CSRF Token:', response.data.csrf_token); // Debug
@@ -54,7 +54,7 @@ const UserManagement: React.FC = () => {
     if (!csrfToken) return;
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8001/admin/parents', {
+        const response = await axios.get('https://api.kaascan.com/admin/parents', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
             'X-CSRF-Token': csrfToken,

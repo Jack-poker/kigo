@@ -44,7 +44,7 @@ const Index = () => {
   const navigate = useNavigate();
   const [balance, setBalance] = useState(0);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('wallet');
   const [students, setStudents] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [activeModal, setActiveModal] = useState(null);
@@ -61,7 +61,7 @@ const Index = () => {
   const studentsRef = useRef(null);
   const transactionsRef = useRef(null);
 
-  const API_URL = 'http://localhost:8000';
+  const API_URL = 'https://wallet.kaascan.com';
 
   const showToast = (message, type = 'success') => {
     const id = Date.now().toString();
@@ -284,8 +284,8 @@ const Index = () => {
   const currentLanguage = languages.find(lang => lang.code === language);
 
   const tabs = [
+      { id: 'wallet', label: t('wallet'), icon: Wallet },
     { id: 'overview', label: t('overview'), icon: BarChart3 },
-    { id: 'wallet', label: t('wallet'), icon: Wallet },
     { id: 'students', label: t('students'), icon: Users },
     { id: 'transactions', label: t('transactions'), icon: Activity }
   ];
@@ -296,31 +296,31 @@ const Index = () => {
         return (
           <div ref={overviewRef} className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
+              <div className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">{t('totalBalance')}</p>
+                    <p className="text-brand dark:text-brand text-sm font-medium">{t('totalBalance')}</p>
                     <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">
                       {isBalanceVisible ? `${balance.toLocaleString()} RWF` : '••••••'}
                     </p>
                   </div>
-                  <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded-xl">
-                    <Wallet className="w-6 h-6 text-green-600 dark:text-green-400" />
+                  <div className="p-3 bg-brand dark:bg-green-900/30 rounded-xl">
+                    <Wallet className="w-6 h-6 text-white dark:text-brand" />
                   </div>
                 </div>
-                <div className="flex items-center mt-4 text-green-600 dark:text-green-400 text-sm font-medium">
+                <div className="flex items-center mt-4 text-green-600 dark:text-brand text-sm font-medium">
                   <TrendingUp className="w-4 h-4 mr-1" />
                   <span>+2.5% {t('fromLastMonth')}</span>
                 </div>
               </div>
-              <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
+              <div className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">{t('activeStudents')}</p>
+                    <p className="text-brand0 dark:text-brand text-sm font-medium">{t('activeStudents')}</p>
                     <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">{students.length}</p>
                   </div>
-                  <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
-                    <Users className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <div className="p-3 bg-bland dark:bg-brand rounded-xl">
+                    <Users className="w-6 h-6 text-white dark:text-white" />
                   </div>
                 </div>
                 <div className="flex items-center mt-4 text-blue-600 dark:text-blue-400 text-sm font-medium">
@@ -328,10 +328,10 @@ const Index = () => {
                   <span>{t('readyToLink')}</span>
                 </div>
               </div>
-              <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
+              <div className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">{t('thisMonthSpent')}</p>
+                    <p className="text-brand0 dark:text-brand text-sm font-medium">{t('thisMonthSpent')}</p>
                     <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">
                       {isBalanceVisible ? `${students.reduce((sum, s) => sum + s.todaySpent, 0).toLocaleString()} RWF` : '••••••'}
                     </p>
@@ -345,10 +345,10 @@ const Index = () => {
                   <span>-15% {t('vsLastMonth')}</span>
                 </div>
               </div>
-              <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200">
+              <div className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-green-500 dark:text-green-400 text-sm font-medium">{t('todayActivity')}</p>
+                    <p className="text-brand0 dark:text-brand text-sm font-medium">{t('todayActivity')}</p>
                     <p className="text-white-950 dark:text-white text-2xl font-bold mt-1">{transactions.length}</p>
                   </div>
                   <div className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-xl">
@@ -370,26 +370,26 @@ const Index = () => {
                 />
               </div>
               <div className="lg:col-span-1">
-                <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 h-full">
+                <div className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-full">
                   <h3 className="text-white-950 dark:text-white font-semibold text-lg mb-6">{t('quickActions')}</h3>
                   <div className="space-y-3">
                     <button
                       onClick={() => setActiveModal('deposit')}
-                      className="w-full flex items-center justify-center space-x-3 bg-green-700 hover:bg-green-800 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 bg-brand hover:bg-brand text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <Plus className="w-5 h-5" />
                       <span>{t('deposit')}</span>
                     </button>
                     <button
                       onClick={() => setActiveModal('withdraw')}
-                      className="w-full flex items-center justify-center space-x-3 bg-red-600 hover:bg-red-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 bg-orange-600 hover:bg-red-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <TrendingDown className="w-5 h-5" />
                       <span>{t('withdraw')}</span>
                     </button>
                     <button
                       onClick={() => setActiveModal('linkStudent')}
-                      className="w-full flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 bg-zinc-600 hover:bg-blue-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                     >
                       <Users className="w-5 h-5" />
                       <span>{t('linkStudent')}</span>
@@ -398,18 +398,18 @@ const Index = () => {
                 </div>
               </div>
               <div className="lg:col-span-1">
-                <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 h-full">
+                <div className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-full">
                   <h3 className="text-white-950 dark:text-white font-semibold text-lg mb-6">{t('recentActivity')}</h3>
                   <div className="space-y-4">
                     {transactions.slice(0, 4).map((transaction) => (
                       <div key={transaction.id} className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                           <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                            transaction.type === 'deposit' ? 'bg-green-50 dark:bg-green-900/30' :
+                            transaction.type === 'deposit' ? 'bg-brand dark:bg-green-900/30' :
                             transaction.type === 'withdraw' ? 'bg-red-50 dark:bg-red-900/30' : 'bg-blue-50 dark:bg-blue-900/30'
                           }`}>
                             {transaction.type === 'deposit' ?
-                              <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" /> :
+                              <TrendingUp className="w-5 h-5 text-green-600 dark:text-brand" /> :
                               transaction.type === 'withdraw' ?
                               <TrendingDown className="w-5 h-5 text-red-600 dark:text-red-400" /> :
                               <ShoppingCart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
@@ -417,16 +417,32 @@ const Index = () => {
                           </div>
                           <div>
                             <p className="text-white-950 dark:text-white text-sm font-medium">{transaction.title}</p>
-                            <p className="text-green-500 dark:text-green-400 text-xs">{transaction.date}</p>
+                            <p className="text-brand0 dark:text-brand text-xs">{transaction.date}</p>
                           </div>
                         </div>
                         <span className={`text-sm font-semibold ${
-                          transaction.amount > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+                          transaction.amount > 0 ? 'text-green-600 dark:text-brand' : 'text-red-600 dark:text-red-400'
                         }`}>
                           {transaction.amount > 0 ? '+' : ''}{Math.abs(transaction.amount).toLocaleString()} RWF
                         </span>
                       </div>
                     ))}
+                    {transactions.slice(0, 4).length === 0 && (
+                      <>
+                        <div className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? 'text-emerald-200' : 'text-emerald-600'}`}>
+                          <div className="w-52 h-52 mx-auto mb-2">
+                            <img
+                              src="/assets/Credit card-bro.svg"
+                              alt="No transactions illustration"
+                              className="w-full h-full object-contain"
+                              draggable={false}
+                            />
+                          </div>
+                          {t('noTransactions' as any)}
+                        </div>
+                        {/* <p className="text-center text-gray-500 dark:text-gray-400">{t('noTransactions' as any)}</p> */}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -478,14 +494,22 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 dark:bg-[hsl(var(--primary))] transition-colors duration-200">
-      <div className="sticky top-0 z-50 bg-white dark:bg-white-950 border-b border-green-200 dark:border-green-700 shadow-sm">
+    // bg-gradient-to-br from-brand via-white to-brand0 
+    <div
+      className="min-h-screen bg-white dark:bg-zinc-900 transition-colors duration-200"
+      style={{
+      backgroundImage: "url('/assets/background.png')",
+      backgroundRepeat: 'repeat',
+      backgroundSize: 'auto'
+      }}
+    >
+      <div className="sticky top-0 z-50 bg-white dark:bg-white-950 border-b border-brand shadow-sm">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-3">
               <img src="/assets/logo.png" alt="kaascan Logo" className="w-40 rounded-lg object-contain" />
             </div>
-            <div className="hidden md:flex items-center space-x-1 bg-green-100 dark:bg-green-700 rounded-lg p-1">
+            <div className="hidden md:flex items-center space-x-1 bg-brand dark:bg-brand rounded-lg p-1">
               {tabs.map((tab) => {
                 const IconComponent = tab.icon;
                 return (
@@ -494,8 +518,8 @@ const Index = () => {
                     onClick={() => handleTabChange(tab.id)}
                     className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                       activeTab === tab.id
-                        ? 'bg-white dark:bg-green-600 text-white-950 dark:text-white shadow-sm'
-                        : 'text-green-600 dark:text-green-300 hover:text-white-950 dark:hover:text-white hover:bg-white/50 dark:hover:bg-green-600/50'
+                        ? 'bg-white dark:bg-brand text-white-950 dark:text-white shadow-sm'
+                        : 'text-white dark:text-white hover:text-white-950 dark:hover:text-white hover:bg-white/50 dark:hover:bg-green-600/50'
                     }`}
                   >
                     <IconComponent className="w-4 h-4" />
@@ -508,26 +532,26 @@ const Index = () => {
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setIsBalanceVisible(!isBalanceVisible)}
-              className="p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
+              className="p-2 text-brand dark:text-brand hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
             >
               {isBalanceVisible ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
             </button>
             <button
               onClick={toggleTheme}
-              className="p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
+              className="p-2 text-brand dark:text-brand hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
             <div className="relative">
               <button
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-                className="flex items-center space-x-2 p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
+                className="flex items-center space-x-2 p-2 text-brand dark:text-brand hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
               >
                 <Globe className="w-5 h-5" />
                 <span className="text-sm font-medium">{currentLanguage?.flag}</span>
               </button>
               {showLanguageDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 py-2 z-50">
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-brand dark:border-brand py-2 z-50">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
@@ -535,8 +559,8 @@ const Index = () => {
                         setLanguage(lang.code as any);
                         setShowLanguageDropdown(false);
                       }}
-                      className={`w-full px-4 py-2 text-left text-sm hover:bg-green-50 dark:hover:bg-green-700 transition-all duration-200 font-medium flex items-center space-x-3 ${
-                        language === lang.code ? 'bg-green-50 dark:bg-green-700 text-yellow-600 dark:text-yellow-400' : 'text-green-700 dark:text-green-300'
+                      className={`w-full px-4 py-2 text-left text-sm hover:bg-brand dark:hover:bg-brand transition-all duration-200 font-medium flex items-center space-x-3 ${
+                        language === lang.code ? 'bg-brand dark:bg-brand text-yellow-600 dark:text-yellow-400' : 'text-brand dark:text-green-300'
                       }`}
                     >
                       <span className="text-lg">{lang.flag}</span>
@@ -549,20 +573,20 @@ const Index = () => {
             <div className="relative">
               <button
                 onClick={() => setShowNotificationDropdown(!showNotificationDropdown)}
-                className="relative p-2 text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
+                className="relative p-2 text-brand dark:text-brand hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
               >
-                <Bell className="w-5 h-5" />
+                <Bell className="w-5 h-5 " />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </button>
               {showNotificationDropdown && (
-                <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 z-50">
-                  <div className="p-4 border-b border-green-200 dark:border-green-700">
+                <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-brand dark:border-brand z-50">
+                  <div className="p-4 border-b border-brand dark:border-brand">
                     <h3 className="font-semibold text-white-950 dark:text-white">{t('notifications')}</h3>
                   </div>
                   <div className="p-4 space-y-3">
-                    <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded-lg">
-                      <p className="text-sm font-medium text-green-800 dark:text-green-200">{t('alicePurchase')}</p>
-                      <p className="text-xs text-green-600 dark:text-green-400">{t('twoMinutesAgo')}</p>
+                    <div className="p-3 bg-brand dark:bg-brand rounded-lg">
+                      <p className="text-sm font-medium text-brand dark:text-green-200">{t('alicePurchase')}</p>
+                      <p className="text-xs text-green-600 dark:text-brand">{t('twoMinutesAgo')}</p>
                     </div>
                     <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
                       <p className="text-sm font-medium text-blue-800 dark:text-blue-200">{t('bobLimitReminder')}</p>
@@ -575,22 +599,22 @@ const Index = () => {
             <div className="relative">
               <button
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-                className="flex items-center space-x-2 p-2 hover:bg-green-100 dark:hover:bg-green-700 rounded-lg transition-all duration-200"
+                className="flex items-center space-x-2 p-2 hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
               >
                 <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
                   <User className="w-4 h-4 text-white" />
                 </div>
               </button>
               {showProfileDropdown && (
-                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-green-200 dark:border-green-700 py-2 z-50">
-                  <div className="px-4 py-3 border-b border-green-200 dark:border-green-700">
+                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-brand dark:border-brand py-2 z-50">
+                  <div className="px-4 py-3 border-b border-brand dark:border-brand">
                     <div className="flex items-center space-x-3">
                       <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
                         <User className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <p className="font-medium text-white-950 dark:text-white">{t('lovingParent')}</p>
-                        <p className="text-sm text-green-500 dark:text-green-400">parent@example.com</p>
+                        <p className="text-sm text-brand0 dark:text-brand">parent@example.com</p>
                       </div>
                     </div>
                   </div>
@@ -600,7 +624,7 @@ const Index = () => {
                         setActiveModal('profile');
                         setShowProfileDropdown(false);
                       }}
-                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-green-700 dark:text-green-300 hover:bg-green-50 dark:hover:bg-green-700 transition-all duration-200"
+                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-brand dark:text-green-300 hover:bg-brand dark:hover:bg-brand transition-all duration-200"
                     >
                       <User className="w-4 h-4" />
                       <span>{t('profileSettings')}</span>
@@ -610,12 +634,12 @@ const Index = () => {
                         setActiveModal('settings');
                         setShowProfileDropdown(false);
                       }}
-                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-green-700 dark:text-green-300 hover:bg-green-50 dark:hover:bg-green-700 transition-all duration-200"
+                      className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-brand dark:text-green-300 hover:bg-brand dark:hover:bg-brand transition-all duration-200"
                     >
                       <Settings className="w-4 h-4" />
                       <span>{t('settings')}</span>
                     </button>
-                    <hr className="my-2 border-green-200 dark:border-green-700" />
+                    <hr className="my-2 border-brand dark:border-brand" />
                     <button
                       onClick={handleLogout}
                       className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition-all duration-200"
@@ -634,7 +658,7 @@ const Index = () => {
       <div className="flex-1 p-6">
         <div className="max-w-7xl mx-auto">{renderTabContent()}</div>
       </div>
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-white-950 border-t border-green-200 dark:border-green-700 z-50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-white-950 border-t border-brand dark:border-brand z-50">
         <div className="flex items-center justify-around py-2">
           {tabs.map((tab) => {
             const IconComponent = tab.icon;
@@ -645,7 +669,7 @@ const Index = () => {
                 className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-lg transition-all duration-200 ${
                   activeTab === tab.id
                     ? 'text-yellow-600 dark:text-yellow-400'
-                    : 'text-green-500 dark:text-green-400 hover:text-white-950 dark:hover:text-white'
+                    : 'text-brand0 dark:text-brand hover:text-white-950 dark:hover:text-white'
                 }`}
               >
                 <IconComponent className="w-5 h-5" />
@@ -665,19 +689,19 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('phoneNumber')}
               </label>
               <input
                 type="tel"
                 name="phone"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="078XXXXXXX"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('amount')}
               </label>
               <input
@@ -685,12 +709,12 @@ const Index = () => {
                 name="amount"
                 required
                 min="1000"
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="10,000"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('pin')}
               </label>
               <input
@@ -698,7 +722,7 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
@@ -714,19 +738,19 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('phoneNumber')}
               </label>
               <input
                 type="tel"
                 name="phone"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="078XXXXXXX"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('amount')}
               </label>
               <input
@@ -735,12 +759,12 @@ const Index = () => {
                 required
                 min="1000"
                 max={balance}
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="10,000"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('pin')}
               </label>
               <input
@@ -748,7 +772,7 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
@@ -764,57 +788,57 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('studentId')}
               </label>
               <input
                 type="text"
                 name="studentId"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="STU003"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('studentName')}
               </label>
               <input
                 type="text"
                 name="name"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Full Name"
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+                <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                   {t('grade')}
                 </label>
                 <input
                   type="text"
                   name="grade"
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="Grade 10"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+                <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                   {t('class')}
                 </label>
                 <input
                   type="text"
                   name="class"
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="10A"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-green-700 dark:text-green-300 mb-2">
+              <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('pinForPurchases')}
               </label>
               <input
@@ -822,7 +846,7 @@ const Index = () => {
                 name="pin"
                 required
                 maxLength={4}
-                className="w-full px-4 py-3 rounded-xl border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
               />
             </div>
@@ -840,7 +864,7 @@ const Index = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-sm font-medium text-white-950 dark:text-white">{t('notifications')}</h4>
-                <p className="text-sm text-green-500 dark:text-green-400">{t('receiveAlerts')}</p>
+                <p className="text-sm text-brand0 dark:text-brand">{t('receiveAlerts')}</p>
               </div>
               <button className="w-12 h-6 bg-blue-600 rounded-full relative">
                 <div className="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5"></div>
@@ -849,7 +873,7 @@ const Index = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-sm font-medium text-white-950 dark:text-white">{t('darkMode')}</h4>
-                <p className="text-sm text-green-500 dark:text-green-400">{t('switchTheme')}</p>
+                <p className="text-sm text-brand0 dark:text-brand">{t('switchTheme')}</p>
               </div>
               <button
                 onClick={toggleTheme}
@@ -858,12 +882,12 @@ const Index = () => {
                 <div className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform ${isDark ? 'right-0.5' : 'left-0.5'}`}></div>
               </button>
             </div>
-            <div className="border-t dark:border-green-700 pt-4">
+            <div className="border-t dark:border-brand pt-4">
               <h4 className="text-sm font-medium text-white-950 dark:text-white mb-2">{t('language')}</h4>
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as any)}
-                className="w-full px-3 py-2 border border-green-300 dark:border-green-600 bg-white dark:bg-white-950 text-white-950 dark:text-white rounded-lg"
+                className="w-full px-3 py-2 border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white rounded-lg"
               >
                 {languages.map(lang => (
                   <option key={lang.code} value={lang.code}>{lang.flag} {lang.name}</option>
@@ -899,12 +923,12 @@ const Index = () => {
             {transactions
               .filter(tx => tx.student === selectedStudent.name)
               .map(tx => (
-                <div key={tx.id} className="flex items-center justify-between p-3 rounded-lg bg-green-50 dark:bg-green-900/30">
+                <div key={tx.id} className="flex items-center justify-between p-3 rounded-lg bg-brand dark:bg-green-900/30">
                   <div>
-                    <p className="text-sm font-medium text-green-800 dark:text-green-200">{tx.title}</p>
-                    <p className="text-xs text-green-600 dark:text-green-400">{tx.date}</p>
+                    <p className="text-sm font-medium text-brand dark:text-green-200">{tx.title}</p>
+                    <p className="text-xs text-green-600 dark:text-brand">{tx.date}</p>
                   </div>
-                  <span className={`text-sm font-semibold ${tx.amount > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                  <span className={`text-sm font-semibold ${tx.amount > 0 ? 'text-green-600 dark:text-brand' : 'text-red-600 dark:text-red-400'}`}>
                     {tx.amount > 0 ? '+' : ''}{Math.abs(tx.amount).toLocaleString()} RWF
                   </span>
                 </div>
@@ -925,12 +949,12 @@ const Index = () => {
         >
           <div className="space-y-4">
             {transactions.map(tx => (
-              <div key={tx.id} className="flex items-center justify-between p-3 rounded-lg bg-green-50 dark:bg-green-900/30">
+              <div key={tx.id} className="flex items-center justify-between p-3 rounded-lg bg-brand dark:bg-green-900/30">
                 <div>
-                  <p className="text-sm font-medium text-green-800 dark:text-green-200">{tx.title}</p>
-                  <p className="text-xs text-green-600 dark:text-green-400">{tx.date}</p>
+                  <p className="text-sm font-medium text-brand dark:text-green-200">{tx.title}</p>
+                  <p className="text-xs text-green-600 dark:text-brand">{tx.date}</p>
                 </div>
-                <span className={`text-sm font-semibold ${tx.amount > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                <span className={`text-sm font-semibold ${tx.amount > 0 ? 'text-green-600 dark:text-brand' : 'text-red-600 dark:text-red-400'}`}>
                   {tx.amount > 0 ? '+' : ''}{Math.abs(tx.amount).toLocaleString()} RWF
                 </span>
               </div>

@@ -68,7 +68,18 @@
     "signOut": "Sign Out",
     "notifications": "Notifications",
     "language": "Language",
-    "settings": "Settings"
+    "settings": "Settings",
+    "totalBalance":"Total Balance",
+    "activeStudents":"Active Students",
+    "thisMonthSpent":"This Month Spent",
+    "todayActivity":"Today Activity",
+    "noTransactions":"No Transactions",
+    "availableFunds":"Available Funds",
+    "parentUser":"Parent User",
+    "linkStudentPrompt":"No available found please add student",
+    "recentTransactions":"Recent Transactions",
+    "qrRedeemer":"Qrcode-Redeemer",
+    "scanGuide": "Soma QR code ukoresheje kamera yawe kugirango ubone amakuru cyangwa serivisi."
   },
   "fr": {
     "welcome": "Bienvenue à kaascan",
@@ -138,7 +149,18 @@
     "signOut": "Déconnexion",
     "notifications": "Notifications",
     "language": "Langue",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "totalBalance": "Solde total",
+    "activeStudents": "Étudiants actifs",
+    "thisMonthSpent": "Dépenses ce mois",
+    "todayActivity": "Activité du jour",
+    "noTransactions": "Aucune transaction",
+    "availableFunds": "Fonds disponibles",
+    "parentUser": "Utilisateur parent",
+    "linkStudentPrompt": "Aucun élève trouvé, veuillez ajouter",
+    "recentTransactions": "Transactions récentes",
+    "qrRedeemer":"Qrcode-Redeemer",
+    "scanGuide": "Soma QR code ukoresheje kamera yawe kugirango ubone amakuru cyangwa serivisi."
   },
   "rw": {
     "welcome": "Murakaza neza kuri kaascan",
@@ -208,6 +230,17 @@
     "signOut": "Gusohoka",
     "notifications": "Amakuru",
     "language": "Ururimi",
-    "settings": "Amahitamo"
+    "settings": "Amahitamo",
+    "totalBalance": "Umutungo wose",
+    "activeStudents": "Abanyeshuri bakoresha konti",
+    "thisMonthSpent": "Amafaranga yakoreshejwe uku kwezi",
+    "todayActivity": "Ibikorwa by’uyu munsi",
+    "noTransactions": "Nta bikorwa byakozwe",
+    "availableFunds": "Amafaranga ahari",
+    "parentUser": "Umubyeyi ukoresha konti",
+    "linkStudentPrompt": "Nta munyeshuri wabonetse, ongeramo",
+    "recentTransactions": "Ibikorwa biheruka",
+    "qrRedeemer":"Kwakira amafaranga",
+    "scanGuide": "Soma QR code ukoresheje kamera yawe kugirango ubone amakuru cyangwa serivisi."
   }
 }

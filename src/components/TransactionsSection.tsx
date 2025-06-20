@@ -79,9 +79,10 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         
         {transactions.length === 0 && (
           <div className="text-center py-8">
-            <Activity className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500 dark:text-gray-400">{t('noTransactions')}</p>
-            <p className="text-sm text-gray-400 dark:text-gray-400">{t('transactionHistory')}</p>
+            {/* <Activity className="w-12 h-12 text-gray-300 mx-auto mb-4" /> */}
+            
+            {/* <p className="text-gray-500 dark:text-gray-400">{t('noTransactions')}</p>
+            <p className="text-sm text-gray-400 dark:text-gray-400">{t('transactionHistory')}</p> */}
           </div>
         )}
       </div>

@@ -51,13 +51,12 @@ const AdminPanel: React.FC = () => {
   const [adminName, setAdminName] = useState<string>('Admin User');
   const [adminAvatar, setAdminAvatar] = useState<string>('/admin-avatar.png');
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
-  const [isFetchingToken, setIsFetchingToken] = useState<boolean>(false);
   const tokenExpiryTime = useRef<number | null>(null);
   const tokenRefreshInterval = useRef<NodeJS.Timeout | null>(null);
   const statsCache = useRef<{ data: Stats | null; timestamp: number | null }>({ data: null, timestamp: null });
-  let tokenPromise = useRef<Promise<string | null> | null>(null);
+  const tokenPromise = useRef<Promise<string | null> | null>(null);
 
-  const API_BASE_URL = 'http://localhost:8001';
+  const API_BASE_URL = 'https://api.kaascan.com';
   const TOKEN_REFRESH_BUFFER = 5 * 60 * 1000; // 5 minutes
   const STATS_CACHE_TTL = 60 * 1000; // 1 minute
 
@@ -101,86 +100,80 @@ const AdminPanel: React.FC = () => {
   }, [navigate, toast]);
 
   // Fetch CSRF token
-  const fetchCsrfToken = useCallback(async (retries = 3, delay = 1000): Promise<string | null> => {
-    if (isFetchingToken) {
+  const fetchCsrfToken = useCallback(async (): Promise<string | null> => {
+    if (tokenPromise.current) {
       return tokenPromise.current;
     }
 
-    setIsFetchingToken(true);
     tokenPromise.current = (async () => {
-      for (let attempt = 1; attempt <= retries; attempt++) {
-        try {
-          const response = await axios.get(`${API_BASE_URL}/admin/get-csrf-token`, {
-            withCredentials: true,
-            timeout: 5000,
-          });
-          const token = response.data.csrf_token;
-          if (!token || typeof token !== 'string') throw new Error('Invalid CSRF token');
-          setCsrfToken(token);
-          setError('');
-          return token;
-        } catch (err: any) {
-          const errorMsg = err.response?.data?.detail || 'Failed to fetch CSRF token';
-          console.error(`CSRF token error (attempt ${attempt}):`, err);
-          if (attempt === retries) {
-            setError(`Authentication error: ${errorMsg}`);
-            return null;
-          }
-          await new Promise((resolve) => setTimeout(resolve, delay * Math.pow(1.5, attempt - 1)));
-        }
+      try {
+        const response = await axios.get(`${API_BASE_URL}/admin/get-csrf-token`, {
+          withCredentials: true,
+          timeout: 5000,
+        });
+        const token = response.data.csrf_token;
+        if (!token || typeof token !== 'string') throw new Error('Invalid CSRF token');
+        setCsrfToken(token);
+        setError('');
+        return token;
+      } catch (err: any) {
+        const errorMsg = err.response?.data?.detail || 'Failed to fetch CSRF token';
+        setError(`Authentication error: ${errorMsg}`);
+        console.error('CSRF token error:', err);
+        return null;
+      } finally {
+        tokenPromise.current = null;
       }
-      return null;
     })();
 
-    try {
-      const token = await tokenPromise.current;
-      return token;
-    } finally {
-      setIsFetchingToken(false);
-      tokenPromise.current = null;
-    }
-  }, [API_BASE_URL, isFetchingToken]);
+    return tokenPromise.current;
+  }, [API_BASE_URL]);
 
   // Refresh auth token
   const refreshToken = useCallback(async () => {
-    if (isFetchingToken) return;
-    setIsFetchingToken(true);
+    const currentToken = localStorage.getItem('adminToken');
+    if (!currentToken || !checkTokenValidity()) {
+      navigate('/login');
+      return;
+    }
+
     try {
-      const currentToken = localStorage.getItem('adminToken');
-      if (!currentToken) {
-        navigate('/login');
-        return;
-      }
-      const response = await axios.post(`${API_BASE_URL}/admin/refresh-token`, {}, {
-        headers: { Authorization: `Bearer ${currentToken}`, 'X-CSRF-Token': csrfToken },
-        withCredentials: true,
-        timeout: 5000,
-      });
+      const response = await axios.post(
+        `${API_BASE_URL}/admin/refresh-token`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${currentToken}`, 'X-CSRF-Token': csrfToken },
+          withCredentials: true,
+          timeout: 5000,
+        }
+      );
       if (response.data?.token) {
         localStorage.setItem('adminToken', response.data.token);
         checkTokenValidity();
-        await fetchCsrfToken();
+        const newCsrfToken = await fetchCsrfToken();
+        if (!newCsrfToken) {
+          throw new Error('Failed to fetch new CSRF token after refresh');
+        }
       } else {
         throw new Error('Invalid token response');
       }
     } catch (err: any) {
       console.error('Token refresh failed:', err);
-      if (err.response?.status === 401 || err.response?.status === 403) {
-        toast({ title: 'Authentication Failed', description: 'Please log in again.', variant: 'destructive' });
-        localStorage.removeItem('adminToken');
-        navigate('/login');
-      }
-    } finally {
-      setIsFetchingToken(false);
+      toast({ title: 'Authentication Failed', description: 'Please log in again.', variant: 'destructive' });
+      localStorage.removeItem('adminToken');
+      navigate('/login');
     }
-  }, [API_BASE_URL, csrfToken, navigate, toast, checkTokenValidity, fetchCsrfToken, isFetchingToken]);
+  }, [API_BASE_URL, csrfToken, navigate, toast, checkTokenValidity, fetchCsrfToken]);
 
   // API request wrapper
   const apiRequest = useCallback(
     async (method: string, endpoint: string, data: any = null, options: any = {}) => {
       if (!checkTokenValidity()) return null;
       const token = localStorage.getItem('adminToken');
-      if (!token || !csrfToken) return null;
+      if (!token || !csrfToken) {
+        const newToken = await fetchCsrfToken();
+        if (!newToken) return null;
+      }
 
       try {
         const config = {
@@ -197,8 +190,11 @@ const AdminPanel: React.FC = () => {
       } catch (err: any) {
         if (err.response?.status === 403 && err.response?.data?.detail?.includes('CSRF')) {
           const newToken = await fetchCsrfToken();
-          if (newToken) return apiRequest(method, endpoint, data, options);
-        } else if (err.response?.status === 401 || err.response?.status === 403) {
+          if (newToken) {
+            return apiRequest(method, endpoint, data, options);
+          }
+        }
+        if (err.response?.status === 401 || err.response?.status === 403) {
           toast({ title: 'Authentication Error', description: 'Session expired.', variant: 'destructive' });
           localStorage.removeItem('adminToken');
           navigate('/login');
@@ -273,14 +269,16 @@ const AdminPanel: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Initial setup
+  // Initialize CSRF token
   useEffect(() => {
-    const isValid = checkTokenValidity();
-    if (isValid && !csrfToken && !isFetchingToken) fetchCsrfToken();
+    if (!checkTokenValidity()) return;
+    if (!csrfToken && !tokenPromise.current) {
+      fetchCsrfToken();
+    }
     return () => {
       if (tokenRefreshInterval.current) clearTimeout(tokenRefreshInterval.current);
     };
-  }, [checkTokenValidity, fetchCsrfToken, csrfToken, isFetchingToken]);
+  }, [checkTokenValidity, fetchCsrfToken, csrfToken]);
 
   // Fetch data when CSRF token is available
   useEffect(() => {
@@ -337,7 +335,19 @@ const AdminPanel: React.FC = () => {
   );
 
   // Stat card
-  const StatCard = ({ title, value, icon, subtitle, trend = 0 }: { title: string; value: string | number; icon: React.ReactNode; subtitle: string; trend?: number }) => (
+  const StatCard = ({
+    title,
+    value,
+    icon,
+    subtitle,
+    trend = 0,
+  }: {
+    title: string;
+    value: string | number;
+    icon: React.ReactNode;
+    subtitle: string;
+    trend?: number;
+  }) => (
     <motion.div whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }} transition={{ duration: 0.2 }}>
       <Card className="bg-white shadow-sm border border-green-100 hover:shadow-md transition-all overflow-hidden">
         <div className="absolute top-0 right-0 h-20 w-20 bg-green-50 rounded-bl-full opacity-30" />
@@ -425,47 +435,90 @@ const AdminPanel: React.FC = () => {
           <AnimatePresence>{error && <ErrorDisplay message={error} />}</AnimatePresence>
           <div className="grid md:grid-cols-4 gap-6 mb-8">
             {refreshing ? (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="col-span-4 text-center py-12 bg-green-50/50 border border-green-100 rounded-lg shadow-inner">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="col-span-4 text-center py-12 bg-green-50/50 border border-green-100 rounded-lg shadow-inner"
+              >
                 <RefreshCw className="h-8 w-8 text-green-600 mx-auto animate-spin mb-4" />
                 <p className="text-green-700">Refreshing dashboard statistics...</p>
               </motion.div>
             ) : (
               <>
-                <StatCard title="Total Users" value={stats.totalUsers} icon={<Users className="h-4 w-4 text-green-600" />} subtitle="Parents & Students" trend={stats.growth_rate || 0} />
-                <StatCard title="Transactions" value={stats.totalTransactions} icon={<DollarSign className="h-4 w-4 text-green-600" />} subtitle="This month" trend={3.2} />
-                <StatCard title="Revenue" value={`$${stats.totalRevenue}`} icon={<BarChart3 className="h-4 w-4 text-green-600" />} subtitle="Total revenue" trend={7.4} />
-                <StatCard title="Active Ads" value={stats.activeAds} icon={<MessageSquare className="h-4 w-4 text-green-600" />} subtitle="Currently running" trend={-2.5} />
+                <StatCard
+                  title="Total Users"
+                  value={stats.total_users}
+                  icon={<Users className="h-4 w-4 text-green-600" />}
+                  subtitle="Parents & Students"
+                  trend={stats.growth_rate || 0}
+                />
+                <StatCard
+                  title="Transactions"
+                  value={stats.total_transactions}
+                  icon={<DollarSign className="h-4 w-4 text-green-600" />}
+                  subtitle="This month"
+                  trend={3.2}
+                />
+                <StatCard
+                  title="Revenue"
+                  value={`$${stats.total_revenue}`}
+                  icon={<BarChart3 className="h-4 w-4 text-green-600" />}
+                  subtitle="Total revenue"
+                  trend={7.4}
+                />
+                <StatCard
+                  title="Active Ads"
+                  value={stats.active_ads}
+                  icon={<MessageSquare className="h-4 w-4 text-green-600" />}
+                  subtitle="Currently running"
+                  trend={-2.5}
+                />
               </>
             )}
           </div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             <Tabs defaultValue="users" className="space-y-6">
               <TabsList className="grid w-full grid-cols-5 bg-green-50 p-1 rounded-lg shadow-sm">
-                <TabsTrigger value="users" className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all">
+                <TabsTrigger
+                  value="users"
+                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
+                >
                   <div className="flex items-center space-x-2">
                     <Users className="w-4 h-4" />
                     <span>Users</span>
                   </div>
                 </TabsTrigger>
-                <TabsTrigger value="transactions" className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all">
+                <TabsTrigger
+                  value="transactions"
+                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
+                >
                   <div className="flex items-center space-x-2">
                     <DollarSign className="w-4 h-4" />
                     <span>Transactions</span>
                   </div>
                 </TabsTrigger>
-                <TabsTrigger value="ads" className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all">
+                <TabsTrigger
+                  value="ads"
+                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
+                >
                   <div className="flex items-center space-x-2">
                     <MessageSquare className="w-4 h-4" />
                     <span>Ads</span>
                   </div>
                 </TabsTrigger>
-                <TabsTrigger value="shop" className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all">
+                <TabsTrigger
+                  value="shop"
+                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
+                >
                   <div className="flex items-center space-x-2">
                     <ShoppingBag className="w-4 h-4" />
                     <span>Shop</span>
                   </div>
                 </TabsTrigger>
-                <TabsTrigger value="settings" className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all">
+                <TabsTrigger
+                  value="settings"
+                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
+                >
                   <div className="flex items-center space-x-2">
                     <Settings className="w-4 h-4" />
                     <span>Settings</span>

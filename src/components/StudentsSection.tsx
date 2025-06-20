@@ -59,8 +59,20 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({ students, onViewTransac
       </div>
 
       {students.length === 0 ? (
-        <div className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-8 text-center">
-          <p className="text-gray-500 dark:text-gray-400 text-lg">{t('noStudentsLinked')}</p>
+        <div className="bg-white dark:bg-white-950 border border-brand dark:border-green-700 rounded-xl p-8 text-center">
+         
+          <div className="flex flex-col items-center justify-center text-center text-sm text-emerald-600 dark:text-emerald-200">
+            <div className="w-82 h-82 mx-auto mb-2">
+              <img
+                src="/assets/kids wearing masks at school-bro.svg"
+                alt={t('noStudentsLinked')}
+                className="w-full h-full object-contain"
+                draggable={false}
+              />
+            </div>
+            <p className="text-lg font-medium mb-1">{t('noStudentsLinked')}</p>
+            {/* <p className="text-gray-400 dark:text-gray-500 text-sm">{t('linkStudentPrompt')}</p> */}
+          </div>
           <p className="text-gray-400 dark:text-gray-500 text-sm mt-2">{t('linkStudentPrompt')}</p>
         </div>
       ) : (
@@ -68,7 +80,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({ students, onViewTransac
           {students.map((student) => (
             <div
               key={student.id}
-              className="bg-white dark:bg-white-950 border border-green-200 dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200"
+              className="bg-white dark:bg-white-950 border border-brand dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200"
             >
               <div className="flex items-center space-x-4 mb-4">
                 <img

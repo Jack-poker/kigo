@@ -18,7 +18,7 @@ export function LoginForm({
   const [phoneNumber, setPhoneNumber] = useState("")
   const [password, setPassword] = useState("")
   const [totpCode, setTotpCode] = useState(["", "", "", ""])
-  const baseUrl = "http://localhost:8000" // Updated to match backend
+  const baseUrl = "https://wallet.kaascan.com" // Updated to match backend
 
   // Fetch CSRF token on component mount
   useEffect(() => {
@@ -171,7 +171,7 @@ export function LoginForm({
       <div className="flex flex-col items-center mb-0">
         <img src="/assets/logo.png" alt="kigo logo" className="w-64 h-50 object-contain" />
       </div>
-      <Card className="overflow-hidden bg-[hsl(var(--primary))]">
+      <Card className="overflow-hidden bg-brand">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form className="p-6 md:p-8" onSubmit={(e) => e.preventDefault()}>
             <div className="flex flex-col gap-6">
@@ -283,9 +283,9 @@ export function LoginForm({
           <div className="relative hidden bg-white h-full md:block">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 z-10"></div>
             <img
-              src="/assets/side.png"
+              src="/banner5.png"
               alt="Image"
-              className="absolute inset-0 h-full w-full object-contain"
+              className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute bottom-8 left-8 right-8 z-20 text-white">
               <h2 className="text-3xl font-bold mb-2">Welcome to Kaascan Parent Portal</h2>
@@ -297,7 +297,7 @@ export function LoginForm({
           </div>
         </CardContent>
       </Card>
-      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
+      <div className="text-balance text-center text-xs text-white [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
       </div>

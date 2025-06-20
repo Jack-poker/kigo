@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { useEffect, useState } from "react"
 
 export function SignupForm({ className, ...props }: React.ComponentProps<"div">) {
-  const baseurl = "http://localhost:8000"
+  const baseurl = "https://wallet.kaascan.com"
 
   const [isSubmitted, setSubmitted] = useState(false)
   const [isSignupComplete, setSignupComplete] = useState(false)
@@ -74,10 +74,10 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex justify-center">
-        <img src="/assets/logo.png" alt="kigo logo" className="w-64 h-20 object-contain" />
+        <img src="/assets/logo.png" alt="kaascan logo" className="w-64 h-20 object-contain" />
       </div>
 
-      <Card>
+      <Card className="bg-brand text-white">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form className="p-6 md:p-8 w-full">
             <div className="flex flex-col gap-6">
@@ -129,7 +129,7 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
                   <Button
                     type="button"
                     onClick={signup_submit}
-                    className="w-full bg-amber-400 hover:bg-amber-500"
+                    className="w-full bg-amber-500 hover:bg-amber-500"
                   >
                     Sign Up
                   </Button>
@@ -156,13 +156,13 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
             </div>
           </form>
 
-          <div className="relative hidden md:block">
+            <div className="relative hidden md:block rounded-xl overflow-hidden">
             <img
-              src="/assets/side.png"
+              src="/banner5.png"
               alt="Side visual"
               className="absolute inset-0 object-cover h-full w-full"
             />
-          </div>
+            </div>
         </CardContent>
       </Card>
 

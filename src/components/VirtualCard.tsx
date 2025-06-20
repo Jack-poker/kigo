@@ -15,9 +15,10 @@ const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
 
   return (
     <div className="relative group perspective-1000">
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-green-300 to-emerald-500 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
-      <div className="relative bg-gradient-to-br from-emerald-500 via-green-400 to-emerald-600 rounded-3xl p-8 text-white shadow-2xl transform group-hover:scale-105 transition-all duration-500 overflow-hidden">
-        <div className="absolute inset-0 opacity-20" style={{
+      {/* bg-gradient-to-r from-emerald-400 via-green-300 to-emerald-500 make it glow */}
+      <div className="absolute inset-0   rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
+      <div className="relative bg-brand  dark:bg-gradient-to-br from-emerald-700 via-green-500 to-emerald-900  rounded-3xl p-8 text-white shadow-2xl transform group-hover:scale-105 transition-all duration-500 overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{
           backgroundImage: `
             radial-gradient(circle at 25% 25%, white 2px, transparent 2px),
             radial-gradient(circle at 75% 25%, white 2px, transparent 2px),

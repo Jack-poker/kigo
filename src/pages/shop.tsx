@@ -30,7 +30,7 @@ const Shop: React.FC = () => {
   const [cartItems, setCartItems] = useState<Set<string>>(new Set());
 
   // API base URL
-  const API_BASE_URL = 'http://localhost:8001';
+  const API_BASE_URL = 'https://api.kaascan.com';
 
   // Enhanced CSRF token fetching with fallback mechanism
   const fetchCsrfToken = useCallback(async (retries = 3, delay = 1000): Promise<string | null> => {
@@ -362,7 +362,7 @@ const Shop: React.FC = () => {
                     </Button>
                     <Button 
                       variant="outline" 
-                      className={`${cartItems.has(product.product_id) ? 'bg-green-50 border-green-200' : ''}`}
+                      className={`${cartItems.has(product.product_id) ? 'bg-green-50 border-brand' : ''}`}
                       onClick={() => toggleCart(product.product_id)}
                     >
                       <ShoppingCart className={`h-4 w-4 ${cartItems.has(product.product_id) ? 'text-green-600' : ''}`} />
@@ -413,7 +413,7 @@ const EmptyProductState = () => (
       <Button 
         variant="outline" 
         onClick={() => fetchProducts()}
-        className="border-green-200 text-green-700 hover:bg-green-50"
+        className="border-brand text-green-700 hover:bg-green-50"
       >
         Refresh Products
       </Button>

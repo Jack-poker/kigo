@@ -65,7 +65,7 @@ const WhatsAppTemplate: React.FC<WhatsAppTemplateProps> = ({ messageData }) => {
           <h2 className="text-xl font-semibold text-gray-900">Transfer Successful!</h2>
           
           {amount && (
-            <div className="bg-green-50 border-2 border-green-200 rounded-xl p-4 w-full max-w-xs">
+            <div className="bg-green-50 border-2 border-brand rounded-xl p-4 w-full max-w-xs">
               <p className="text-green-700 font-bold text-2xl">${amount}</p>
               <p className="text-green-600 text-sm">Amount Sent</p>
             </div>

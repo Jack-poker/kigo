@@ -67,7 +67,7 @@ const Header = ({ onMenuClick }) => {
                 <div className="p-6">
                   <h3 className="font-bold text-gray-900 mb-4 text-lg">{t('recentNotifications')}</h3>
                   <div className="space-y-3">
-                    <div className="p-3 bg-green-50 rounded-xl border border-green-200">
+                    <div className="p-3 bg-green-50 rounded-xl border border-brand">
                       <p className="text-sm font-semibold text-green-800">{t('alicePurchase')}</p>
                       <p className="text-xs text-green-600">{t('twoMinutesAgo')}</p>
                     </div>

@@ -32,7 +32,7 @@ const ShopManagement: React.FC = () => {
   const fetchCsrfToken = async (retries = maxRetries, delay = initialDelay): Promise<string | null> => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
-        const response = await axios.get('http://localhost:8001/admin/get-csrf-token', {
+        const response = await axios.get('https://api.kaascan.com/admin/get-csrf-token', {
           withCredentials: true, // Send session_id cookie
           timeout: 5000, // 5 second timeout
         });
@@ -83,7 +83,7 @@ const ShopManagement: React.FC = () => {
       setLoading(true);
       setRefreshing(true);
       
-      const response = await axios.get('http://localhost:8001/admin/products', {
+      const response = await axios.get('https://api.kaascan.com/admin/products', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
           'X-CSRF-Token': csrfToken,
@@ -178,7 +178,7 @@ const ShopManagement: React.FC = () => {
         ));
         
         try {
-          const response = await axios.put(`http://localhost:8001/admin/products/${editingProductId}`, formData, {
+          const response = await axios.put(`https://api.kaascan.com/admin/products/${editingProductId}`, formData, {
             headers,
             withCredentials: true,
           });
@@ -203,7 +203,7 @@ const ShopManagement: React.FC = () => {
         setProducts([...products, optimisticProduct]);
         
         try {
-          const response = await axios.post('http://localhost:8001/admin/products', formData, {
+          const response = await axios.post('https://api.kaascan.com/admin/products', formData, {
             headers,
             withCredentials: true,
           });
@@ -260,7 +260,7 @@ const ShopManagement: React.FC = () => {
     setProducts(products.filter((product) => product.product_id !== product_id));
     
     try {
-      await axios.delete(`http://localhost:8001/admin/products/${product_id}`, {
+      await axios.delete(`https://api.kaascan.com/admin/products/${product_id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
           'X-CSRF-Token': csrfToken,

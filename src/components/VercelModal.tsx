@@ -22,7 +22,7 @@ const VercelModal: React.FC<VercelModalProps> = ({ title, children, onClose, onS
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-md flex items-center justify-center p-4 z-50">
       {/* Modal Container with Glass Effect */}
-      <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl max-w-md w-full shadow-2xl border border-emerald-100/50 overflow-hidden">
+      <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl max-w-md w-full shadow-2xl border border-brand overflow-hidden">
         {/* Glass Effect Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/80 via-white/60 to-emerald-100/40"></div>
         
@@ -31,11 +31,11 @@ const VercelModal: React.FC<VercelModalProps> = ({ title, children, onClose, onS
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-200/20 rounded-full blur-xl"></div>
         
         {/* Header */}
-        <div className="relative z-10 flex items-center justify-between p-6 border-b border-emerald-100/60">
-          <h2 className="text-xl font-bold text-emerald-800 drop-shadow-sm">{title}</h2>
+        <div className="relative z-10 flex items-center justify-between p-6 border-brand border-emerald-100/60">
+          <h2 className="text-xl font-bold text-brand drop-shadow-sm">{title}</h2>
           <button
             onClick={onClose}
-            className="p-2 text-emerald-600 hover:text-emerald-800 hover:bg-emerald-100/50 rounded-xl transition-all duration-200 backdrop-blur-sm"
+            className="p-2 text-white hover:text-white bg-brand hover:bg-brand rounded-xl transition-all duration-200 backdrop-blur-sm"
           >
             <X className="w-5 h-5" />
           </button>
@@ -59,7 +59,7 @@ const VercelModal: React.FC<VercelModalProps> = ({ title, children, onClose, onS
             <button
               type="submit"
               disabled={isLoading}
-              className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-green-400 text-white rounded-xl hover:from-emerald-600 hover:to-green-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-semibold flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="px-8 py-3 bg-brand text-white rounded-xl hover:from-emerald-600 hover:to-green-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-semibold flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               {isLoading ? (
                 <>

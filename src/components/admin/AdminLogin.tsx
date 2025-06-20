@@ -17,7 +17,7 @@ export function AdminLogin({ className, ...props }: React.ComponentProps<'div'>)
   const [isFetchingToken, setIsFetchingToken] = useState(false);
   const tokenContext = useContext(TokenContext);
   const tokenPromise = useRef<Promise<string | null> | null>(null);
-  const baseUrl = 'http://localhost:8001';
+  const baseUrl = 'https://api.kaascan.com';
 
   // Prioritize TokenContext CSRF token, fallback to local
   const effectiveCsrfToken = tokenContext?.csrfToken || localCsrfToken;

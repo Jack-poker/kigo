@@ -24,7 +24,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
   });
   const [csrfToken, setCsrfToken] = useState('');
 
-  const API_URL = 'http://localhost:8000';
+  const API_URL = 'https://wallet.kaascan.com';
 
   const fetchCsrfToken = async () => {
     try {

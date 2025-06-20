@@ -26,7 +26,7 @@ const AdBanner: React.FC = () => {
   const fetchCsrfToken = async (retries = 3, delay = 1000): Promise<string | null> => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
-        const response = await axios.get('http://localhost:8001/admin/get-csrf-token', {
+        const response = await axios.get('https://api.kaascan.com/admin/get-csrf-token', {
           withCredentials: true, // Send session_id cookie
         });
         console.log('CSRF Token:', response.data.csrf_token); // Debug
@@ -51,7 +51,7 @@ const AdBanner: React.FC = () => {
     if (!csrfToken) return;
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:8001/admin/ads/active', {
+      const response = await axios.get('https://api.kaascan.com/admin/ads/active', {
         headers: {
           'X-CSRF-Token': csrfToken,
         },
@@ -139,14 +139,14 @@ const AdBanner: React.FC = () => {
 
   return (
     <div className={`sticky top-0 z-40 transition-all duration-500 ease-in-out px-2 sm:px-4 ${isScrollHidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
-      <div className={`relative w-full max-w-7xl mx-auto mb-4 sm:mb-6 rounded-3xl sm:rounded-[2rem] overflow-hidden backdrop-blur-xl transition-all duration-300 hover:shadow-2xl group ${
+      <div className={`relative w-full max-w-7xl mx-auto mb-4 sm:mb-6 rounded-3xl sm:rounded-[2rem] overflow-hidden backdrop-blur-xl transition-all duration-300 group ${
         isDark 
-          ? 'bg-emerald-900/20 border border-emerald-600/30 shadow-emerald-500/20' 
-          : 'bg-white/70 border border-emerald-100 shadow-emerald-200/50'
+          ? 'bg-brand border border-emerald-600/30 shadow-emerald-500/20' 
+          : 'bg-orange'
       }`}>
         
         {/* Enhanced Glass Effect Background */}
-        <div className="absolute inset-0 backdrop-blur-md bg-gradient-to-br from-emerald-50/30 via-white/40 to-emerald-100/30"></div>
+        <div className="absolute inset-0 "></div>
         
         {/* Animated Shimmer Effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
@@ -165,9 +165,19 @@ const AdBanner: React.FC = () => {
               Loading ads...
             </div>
           ) : ads.length === 0 ? (
-            <div className={`text-center text-sm ${isDark ? 'text-emerald-200' : 'text-emerald-600'}`}>
+            
+            <div className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? 'text-emerald-200' : 'text-emerald-600'}`}>
+              <div className="w-32 h-32 mx-auto mb-2">
+              <img
+                src="/assets/Wallet-bro.svg"
+                alt="No ads illustration"
+                className="w-full h-full object-contain"
+                draggable={false}
+              />
+              </div>
               No active ads
             </div>
+            
           ) : (
             <>
               <div className="flex justify-end mb-2">
@@ -175,8 +185,8 @@ const AdBanner: React.FC = () => {
                   onClick={handleRefresh}
                   className={`inline-flex items-center px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                     isDark 
-                      ? 'bg-gradient-to-r from-emerald-500 to-green-400 text-white shadow-emerald-500/25' 
-                      : 'bg-gradient-to-r from-emerald-400 to-green-300 text-white shadow-emerald-300/25'
+                      ? 'bg-brand text-white' 
+                      : 'bg-brand text-white'
                   }`}
                 >
                   Refresh Ads
@@ -200,13 +210,13 @@ const AdBanner: React.FC = () => {
                 {/* Enhanced Text Content */}
                 <div className="flex-1 text-center sm:text-left min-w-0">
                   <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${
-                    isDark ? 'text-emerald-50' : 'text-emerald-800'
+                    isDark ? 'text-white' : 'text-white'
                   }`}>
                     {currentAd.title}
                   </h3>
                   {currentAd.subtitle && (
                     <p className={`font-medium mb-4 sm:mb-5 text-sm sm:text-base lg:text-lg ${
-                      isDark ? 'text-emerald-200' : 'text-emerald-600'
+                      isDark ? 'text-white' : 'text-zinc-900'
                     }`}>
                       {currentAd.subtitle}
                     </p>
@@ -216,8 +226,8 @@ const AdBanner: React.FC = () => {
                       onClick={() => currentAd.ctaLink && window.open(currentAd.ctaLink, '_blank')}
                       className={`inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                         isDark 
-                          ? 'bg-gradient-to-r from-emerald-500 to-green-400 text-white shadow-emerald-500/25' 
-                          : 'bg-gradient-to-r from-emerald-400 to-green-300 text-white shadow-emerald-300/25'
+                          ? 'bg-brand text-white' 
+                          : 'bg-brand text-white'
                       }`}
                     >
                       <span className="relative z-10">{currentAd.ctaText}</span>
