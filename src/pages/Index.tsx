@@ -37,6 +37,10 @@ import BinanceLoader from '../components/BinanceLoader';
 import ProfileModal from '../components/ProfileModal';
 import AdBanner from '../components/AdBanner';
 import SpendingLimitsModal from '../components/SpendingLimitsModal';
+import PaymentStatusListener from '../components/payment/track_payment';
+
+
+
 
 const Index = () => {
   const { t, language, setLanguage } = useLanguage();
@@ -175,7 +179,8 @@ const Index = () => {
       );
       await fetchDashboardData();
       setActiveModal(null);
-      showToast(`Successfully deposited ${Number(data.amount)} RWF`);
+      // showToast(`Successfully deposited ${Number(data.amount)} RWF`);
+      showToast(`3 ${Number(data.amoun)} RWF`);
     } catch (err) {
       console.error('Deposit failed:', err);
       showToast(err.response?.data?.detail || t('depositError'), 'error');
@@ -681,6 +686,14 @@ const Index = () => {
       </div>
       {activeModal === 'profile' && <ProfileModal onClose={() => setActiveModal(null)} />}
       {activeModal === 'deposit' && (
+
+
+
+
+
+
+
+
         <VercelModal
           title={t('depositFunds')}
           onClose={() => setActiveModal(null)}
@@ -689,6 +702,9 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
+
+              {<PaymentStatusListener />}
+              
               <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
                 {t('phoneNumber')}
               </label>
@@ -708,7 +724,7 @@ const Index = () => {
                 type="number"
                 name="amount"
                 required
-                min="1000"
+                min="100"
                 className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="10,000"
               />
@@ -728,6 +744,24 @@ const Index = () => {
             </div>
           </div>
         </VercelModal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       )}
       {activeModal === 'withdraw' && (
         <VercelModal

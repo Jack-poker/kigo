@@ -215,9 +215,9 @@ const Shop: React.FC = () => {
   const Loader = () => (
     <div className="fixed inset-0 bg-white bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="relative">
-        <div className="h-24 w-24 rounded-full border-t-4 border-b-4 border-green-500 animate-spin"></div>
-        <div className="h-16 w-16 rounded-full border-t-4 border-b-4 border-green-300 animate-spin absolute top-4 left-4"></div>
-        <div className="h-8 w-8 rounded-full border-t-4 border-b-4 border-green-100 animate-spin absolute top-8 left-8"></div>
+        <div className="h-24 w-24 rounded-full border-t-4 border-b-4 border-brand animate-spin"></div>
+        {/* <div className="h-16 w-16 rounded-full border-t-4 border-b-4 border-brand animate-spin absolute top-4 left-4"></div> */}
+        <div className="h-8 w-8 rounded-full border-t-4 border-b-4 border-brand animate-spin absolute top-8 left-8"></div>
       </div>
       <p className="text-green-700 font-medium mt-4 ml-4">Loading products...</p>
     </div>
@@ -242,17 +242,21 @@ const Shop: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50"   style={{
+      backgroundImage: "url('/assets/background.png')",
+      backgroundRepeat: 'repeat',
+      backgroundSize: 'auto'
+      }}>
       {/* Full-page loader */}
       {loading && <Loader />}
       
       {/* Hero section */}
-      <div className="bg-gradient-to-r from-green-600 to-green-400 text-white py-16">
+      <div className="bg-brand text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <ShoppingBag className="h-16 w-16 mx-auto mb-6 opacity-90" />
             <h1 className="text-4xl font-bold mb-4">School Shop</h1>
-            <p className="text-xl opacity-90 mb-8">Find the best products for your school needs</p>
+            <p className="text-xl text-yellow-400 opacity-90 mb-8">Find the best products for your school needs</p>
             
             {/* Search bar */}
             <div className="relative max-w-xl mx-auto">
@@ -270,16 +274,16 @@ const Shop: React.FC = () => {
       </div>
       
       {/* Main content */}
-      <div className="container mx-auto p-4 md:p-6 lg:p-8">
+      <div className="container mx-auto p-4 md:p-6 lg:p-8" >
         {/* Category filters */}
         <div className="mb-8 flex items-center overflow-x-auto pb-2">
-          <Filter className="h-5 w-5 text-green-600 mr-2 flex-shrink-0" />
-          <span className="text-gray-700 mr-4 font-medium flex-shrink-0">Filter by:</span>
+          <Filter className="h-5 w-5 text-brand mr-2 flex-shrink-0" />
+          <span className="text-brand mr-4 font-medium flex-shrink-0">Filter by:</span>
           {categories.map((category) => (
             <Badge
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
-              className={`mr-2 cursor-pointer px-3 py-1 ${selectedCategory === category ? 'bg-green-600 hover:bg-green-700' : 'hover:bg-green-50'}`}
+              className={`mr-2 cursor-pointer px-3 py-1 ${selectedCategory === category ? 'bg-brand hover:bg-green-700' : 'hover:bg-green-50'}`}
               onClick={() => setSelectedCategory(category)}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -325,7 +329,7 @@ const Shop: React.FC = () => {
                     <div className="flex justify-between items-start">
                       <h3 className="text-lg font-bold text-gray-800 line-clamp-2">{product.name}</h3>
                       {product.rating && (
-                        <div className="flex items-center bg-green-50 px-2 py-1 rounded">
+                        <div className="flex items-center bg-brand text-white px-2 py-1 rounded">
                           <Star className="h-3 w-3 text-yellow-500 fill-yellow-500 mr-1" />
                           <span className="text-xs font-medium">{product.rating}</span>
                         </div>
@@ -342,14 +346,14 @@ const Shop: React.FC = () => {
                     <p className="text-gray-600 text-sm line-clamp-2 mb-2">
                       {product.description || 'No description available'}
                     </p>
-                    <p className="text-green-600 font-bold text-lg">
+                    <p className="text-brand font-bold text-lg">
                       RWF {product.price.toFixed(2)}
                     </p>
                   </CardContent>
                   
                   <CardFooter className="flex gap-2">
                     <Button 
-                      className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+                      className="flex-1 bg-brand hover:bg-brand text-white"
                       asChild
                     >
                       <a

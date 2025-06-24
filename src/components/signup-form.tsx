@@ -94,15 +94,17 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
 
               {!isSignupComplete ? (
                 <>
-                  <div className="grid gap-2">
+                    <div className="grid gap-2 ">
                     <Label htmlFor="fullnames">Full names</Label>
                     <Input
                       id="fullnames"
                       value={fullnames}
                       onChange={(e) => setFullnames(e.target.value)}
                       required
+                      className="text-zinc-900 placeholder:text-gray-300"
+                      placeholder="Enter your full names"
                     />
-                  </div>
+                    </div>
 
                   <div className="grid gap-2">
                     <Label htmlFor="phone">Phone number</Label>
@@ -111,6 +113,8 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
                       type="tel"
                       value={phonenumber}
                       onChange={(e) => setPhonenumber(e.target.value)}
+                      className="text-zinc-900 placeholder:text-gray-300"
+                      placeholder="Enter your phonenumber"
                       required
                     />
                   </div>
@@ -122,6 +126,8 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      className="text-zinc-900 placeholder:text-gray-300"
+                      placeholder="Create Password"
                       required
                     />
                   </div>

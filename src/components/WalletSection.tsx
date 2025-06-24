@@ -1,6 +1,7 @@
 import React from 'react';
 import { Wallet, Plus, Minus, Eye, EyeOff, RefreshCw } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import PaymentStatusListener from './payment/track_payment';
 
 const WalletSection = ({ balance, isVisible, onDeposit, onWithdraw, onToggleVisibility }) => {
   const { t } = useLanguage();
@@ -50,7 +51,9 @@ const WalletSection = ({ balance, isVisible, onDeposit, onWithdraw, onToggleVisi
               )}
             </button>
           </div>
+                 {<PaymentStatusListener />}
           <p className="text-sm text-zinc-900 mt-2 font-semibold">
+      
             {t('percentChange')}
           </p>
         </div>
