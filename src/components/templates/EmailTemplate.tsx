@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 
 interface MessageData {
   content: string;
@@ -15,67 +14,106 @@ interface EmailTemplateProps {
 }
 
 const EmailTemplate: React.FC<EmailTemplateProps> = ({ messageData }) => {
-  const { content, recipient, brand, title, color = '#007bff', email } = messageData;
+  const {
+    content,
+    recipient,
+    brand,
+    title,
+    color = "#007bff",
+    email,
+  } = messageData;
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden font-sans">
+    <div
+      className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden font-sans"
+      data-oid="mg5va7y"
+    >
       {/* Email Header */}
-      <div className="bg-gray-50 border-b border-gray-200 p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-3">
-            <div 
+      <div
+        className="bg-gray-50 border-b border-gray-200 p-6"
+        data-oid="2vn54h6"
+      >
+        <div
+          className="flex items-center justify-between mb-4"
+          data-oid="7zr3lmk"
+        >
+          <div className="flex items-center space-x-3" data-oid="htd126x">
+            <div
               className="w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-xl"
               style={{ backgroundColor: color }}
+              data-oid="6y07n5s"
             >
-              {brand?.charAt(0) || 'B'}
+              {brand?.charAt(0) || "B"}
             </div>
-            <div>
-              <h2 className="font-bold text-gray-900 text-lg">{brand || 'Your Brand'}</h2>
-              <p className="text-gray-600 text-sm">{email || 'noreply@company.com'}</p>
+            <div data-oid="u71b0:r">
+              <h2
+                className="font-bold text-gray-900 text-lg"
+                data-oid="326vh:v"
+              >
+                {brand || "Your Brand"}
+              </h2>
+              <p className="text-gray-600 text-sm" data-oid="jys6r8l">
+                {email || "noreply@company.com"}
+              </p>
             </div>
           </div>
-          <div className="text-right">
-            <p className="text-gray-500 text-sm">To: {recipient || 'customer@email.com'}</p>
-            <p className="text-gray-500 text-xs">{new Date().toLocaleDateString()}</p>
+          <div className="text-right" data-oid="97zix-z">
+            <p className="text-gray-500 text-sm" data-oid="kis.x-n">
+              To: {recipient || "customer@email.com"}
+            </p>
+            <p className="text-gray-500 text-xs" data-oid="nlp_nhf">
+              {new Date().toLocaleDateString()}
+            </p>
           </div>
         </div>
-        <h1 className="text-2xl font-bold text-gray-900">{title || 'Important Message'}</h1>
+        <h1 className="text-2xl font-bold text-gray-900" data-oid="wi29mpv">
+          {title || "Important Message"}
+        </h1>
       </div>
 
       {/* Email Body */}
-      <div className="p-8">
-        <div className="mb-6">
-          <p className="text-gray-700 leading-relaxed text-base whitespace-pre-wrap">
+      <div className="p-8" data-oid="1v7eup6">
+        <div className="mb-6" data-oid="1_tj7r.">
+          <p
+            className="text-gray-700 leading-relaxed text-base whitespace-pre-wrap"
+            data-oid="w35_2r7"
+          >
             {recipient && `Dear ${recipient},\n\n`}
-            {content || 'Thank you for your interest in our services. We are excited to help you achieve your goals.'}
+            {content ||
+              "Thank you for your interest in our services. We are excited to help you achieve your goals."}
           </p>
         </div>
 
         {/* Call to Action */}
-        <div className="text-center my-8">
-          <button 
+        <div className="text-center my-8" data-oid="fju1v3b">
+          <button
             className="px-8 py-3 rounded-lg text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200"
             style={{ backgroundColor: color }}
+            data-oid="bju:c.."
           >
             Get Started
           </button>
         </div>
 
-        <div className="border-t border-gray-200 pt-6 mt-8">
-          <p className="text-gray-600 text-sm">
-            Best regards,<br/>
-            <strong>{brand || 'Your Brand'} Team</strong>
+        <div className="border-t border-gray-200 pt-6 mt-8" data-oid="p:7ngt-">
+          <p className="text-gray-600 text-sm" data-oid="vln7v31">
+            Best regards,
+            <br data-oid="hwyip8u" />
+            <strong data-oid="7w9kk_m">{brand || "Your Brand"} Team</strong>
           </p>
         </div>
       </div>
 
       {/* Email Footer */}
-      <div className="bg-gray-50 border-t border-gray-200 p-6">
-        <div className="text-center">
-          <p className="text-gray-500 text-xs mb-2">
-            © 2024 {brand || 'Your Brand'}. All rights reserved.
+      <div
+        className="bg-gray-50 border-t border-gray-200 p-6"
+        data-oid="qvg:fw6"
+      >
+        <div className="text-center" data-oid="64ptrz2">
+          <p className="text-gray-500 text-xs mb-2" data-oid="kq8ov79">
+            © 2024 {brand || "Your Brand"}. All rights reserved.
           </p>
-          <p className="text-gray-500 text-xs">
+          <p className="text-gray-500 text-xs" data-oid="a.8-4dy">
             You received this email because you subscribed to our newsletter.
           </p>
         </div>

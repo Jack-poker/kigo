@@ -1,61 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 export default function PaymentStatusListener() {
   const [payments, setPayments] = useState([]);
 
-  useEffect(() => {
-    // Replace with your actual WebSocket URL
-    const ws = new WebSocket('ws://wallet.kaascan.com/ws');
-
-    ws.onopen = () => {
-      console.log('🔌 WebSocket connected');
-    };
-
-    ws.onmessage = (event) => {
-      try {
-        const data = JSON.parse(event.data);
-        console.log('📩 Payment update:', data);
-
-        // Add new payment update to list (latest on top)
-        setPayments(prev => [data, ...prev]);
-      } catch (error) {
-        console.error('❌ Invalid JSON message:', event.data);
-      }
-    }; 
-
-    ws.onerror = (error) => {
-      console.error('❌ WebSocket error:', error);
-    };
-
-    ws.onclose = () => {
-      console.log('🔌 WebSocket disconnected');
-    };
-
-    // Clean up on unmount
-    return () => {
-      ws.close();
-    };
-  }, []);
-
   return (
-    <div style={{ maxWidth: 400, margin: 'auto', fontFamily: 'Arial, sans-serif' }}>
-      <h3>💰 Live Payment Updates</h3>
-      {payments.length === 0 && <p>No payments yet.</p>}
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+    <div
+      style={{ maxWidth: 400, margin: "auto", fontFamily: "Arial, sans-serif" }}
+      data-oid="hfo39a8"
+    >
+      <h3 data-oid="46hnrv2">💰 Live Payment Updates</h3>
+      {payments.length === 0 && (
+        <p data-oid="7i-my95" className="h-[fit-content]">
+          No payments yet.
+        </p>
+      )}
+      <ul style={{ listStyle: "none", padding: 0 }} data-oid="l.18tr_">
         {payments.map((payment, i) => (
           <li
             key={i}
             style={{
               marginBottom: 10,
               padding: 10,
-              border: '1px solid #ddd',
+              border: "1px solid #ddd",
               borderRadius: 5,
-              backgroundColor: payment.status === 'success' ? '#d4edda' : '#f8d7da',
-              color: payment.status === 'success' ? '#155724' : '#721c24'
+              backgroundColor:
+                payment.status === "success" ? "#d4edda" : "#f8d7da",
+              color: payment.status === "success" ? "#155724" : "#721c24",
             }}
+            data-oid="qwq:nue"
           >
-            <strong>{payment.phone}</strong> paid <strong>{payment.amount} RWF</strong> — <em>{payment.status}</em><br />
-            <small>{payment.timestamp}</small>
+            <strong data-oid="n3d3dr6">{payment.phone}</strong> paid{" "}
+            <strong data-oid="bqp.2lm">{payment.amount} RWF</strong> —{" "}
+            <em data-oid=":-5:arp">{payment.status}</em>
+            <br data-oid="maoo42u" />
+            <small data-oid="gj5-vtv">{payment.timestamp}</small>
           </li>
         ))}
       </ul>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 interface AdData {
   src: string;
@@ -16,25 +16,32 @@ const AdBanner: React.FC = () => {
   const [isScrollHidden, setIsScrollHidden] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [csrfToken, setCsrfToken] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [csrfToken, setCsrfToken] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
 
   const currentAd = ads[currentAdIndex];
 
   // Fetch CSRF token with retry logic
-  const fetchCsrfToken = async (retries = 3, delay = 1000): Promise<string | null> => {
+  const fetchCsrfToken = async (
+    retries = 3,
+    delay = 1000,
+  ): Promise<string | null> => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
-        const response = await axios.get('https://api.kaascan.com/admin/get-csrf-token', {
-          withCredentials: true, // Send session_id cookie
-        });
-        console.log('CSRF Token:', response.data.csrf_token); // Debug
+        const response = await axios.get(
+          "https://api.kaascan.com/admin/get-csrf-token",
+          {
+            withCredentials: true, // Send session_id cookie
+          },
+        );
+        console.log("CSRF Token:", response.data.csrf_token); // Debug
         setCsrfToken(response.data.csrf_token);
-        setError('');
+        setError("");
         return response.data.csrf_token;
       } catch (err: any) {
-        const errorMsg = err.response?.data?.detail || 'Failed to fetch CSRF token';
+        const errorMsg =
+          err.response?.data?.detail || "Failed to fetch CSRF token";
         console.error(`CSRF token error (attempt ${attempt}):`, err);
         if (attempt === retries) {
           setError(errorMsg);
@@ -51,12 +58,15 @@ const AdBanner: React.FC = () => {
     if (!csrfToken) return;
     try {
       setLoading(true);
-      const response = await axios.get('https://api.kaascan.com/admin/ads/active', {
-        headers: {
-          'X-CSRF-Token': csrfToken,
+      const response = await axios.get(
+        "https://api.kaascan.com/admin/ads/active",
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true, // Send session_id cookie
         },
-        withCredentials: true, // Send session_id cookie
-      });
+      );
       // Map backend Ad to AdData
       const mappedAds: AdData[] = response.data.map((ad: any) => ({
         src: ad.image_url,
@@ -68,11 +78,11 @@ const AdBanner: React.FC = () => {
       }));
       setAds(mappedAds);
       setLoading(false);
-      setError('');
+      setError("");
     } catch (err: any) {
-      const errorMsg = err.response?.data?.detail || 'Failed to fetch ads';
+      const errorMsg = err.response?.data?.detail || "Failed to fetch ads";
       setError(errorMsg);
-      console.error('Ads fetch error:', err);
+      console.error("Ads fetch error:", err);
       setLoading(false);
     }
   };
@@ -108,20 +118,23 @@ const AdBanner: React.FC = () => {
       lastScrollY = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Dark mode detection
   useEffect(() => {
     const checkDarkMode = () => {
-      setIsDark(document.documentElement.classList.contains('dark'));
+      setIsDark(document.documentElement.classList.contains("dark"));
     };
-    
+
     checkDarkMode();
     const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     return () => observer.disconnect();
   }, []);
 
@@ -138,99 +151,142 @@ const AdBanner: React.FC = () => {
   };
 
   return (
-    <div className={`sticky top-0 z-40 transition-all duration-500 ease-in-out px-2 sm:px-4 ${isScrollHidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
-      <div className={`relative w-full max-w-7xl mx-auto mb-4 sm:mb-6 rounded-3xl sm:rounded-[2rem] overflow-hidden backdrop-blur-xl transition-all duration-300 group ${
-        isDark 
-          ? 'bg-brand border border-emerald-600/30 shadow-emerald-500/20' 
-          : 'bg-orange'
-      }`}>
-        
+    <div
+      className={`sticky top-0 z-40 transition-all duration-500 ease-in-out px-2 sm:px-4 ${isScrollHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+      data-oid="9l-douo"
+    >
+      <div
+        className={`relative w-full max-w-7xl mx-auto mb-4 sm:mb-6 rounded-3xl sm:rounded-[2rem] overflow-hidden backdrop-blur-xl transition-all duration-300 group ${
+          isDark
+            ? "bg-brand border border-emerald-600/30 shadow-emerald-500/20"
+            : "bg-orange"
+        }`}
+        data-oid="8ub0e:8"
+      >
         {/* Enhanced Glass Effect Background */}
-        <div className="absolute inset-0 "></div>
-        
+        <div className="absolute inset-0 " data-oid="zig11rh"></div>
+
         {/* Animated Shimmer Effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"
+          data-oid="sg7ce9-"
+        ></div>
 
         {/* Glass Reflections */}
-        <div className="absolute -inset-[400px] bg-gradient-radial from-emerald-200/20 via-transparent to-transparent blur-2xl transform rotate-45"></div>
+        <div
+          className="absolute -inset-[400px] bg-gradient-radial from-emerald-200/20 via-transparent to-transparent blur-2xl transform rotate-45"
+          data-oid="88dnwxz"
+        ></div>
 
         {/* Content Container with Enhanced Glass Effect */}
-        <div className="relative z-10 p-4 sm:p-8">
+        <div className="relative z-10 p-4 sm:p-8" data-oid="wiecu99">
           {error ? (
-            <div className={`text-center text-sm ${isDark ? 'text-red-400' : 'text-red-500'}`}>
+            <div
+              className={`text-center text-sm ${isDark ? "text-red-400" : "text-red-500"}`}
+              data-oid="4cgz2t4"
+            >
               {error}
             </div>
           ) : loading ? (
-            <div className={`text-center text-sm ${isDark ? 'text-emerald-200' : 'text-emerald-600'}`}>
+            <div
+              className={`text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
+              data-oid="m4s6ood"
+            >
               Loading ads...
             </div>
           ) : ads.length === 0 ? (
-            
-            <div className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? 'text-emerald-200' : 'text-emerald-600'}`}>
-              <div className="w-32 h-32 mx-auto mb-2">
-              <img
-                src="/assets/Wallet-bro.svg"
-                alt="No ads illustration"
-                className="w-full h-full object-contain"
-                draggable={false}
-              />
+            <div
+              className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
+              data-oid="85gnrce"
+            >
+              <div className="w-32 h-32 mx-auto mb-2" data-oid="e4ieevd">
+                <img
+                  src="/assets/Wallet-bro.svg"
+                  alt="No ads illustration"
+                  className="w-full h-full object-contain"
+                  draggable={false}
+                  data-oid="y5.5j7m"
+                />
               </div>
               No active ads
             </div>
-            
           ) : (
             <>
-              <div className="flex justify-end mb-2">
+              <div className="flex justify-end mb-2" data-oid=".m_azek">
                 <button
                   onClick={handleRefresh}
                   className={`inline-flex items-center px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
-                    isDark 
-                      ? 'bg-brand text-white' 
-                      : 'bg-brand text-white'
+                    isDark ? "bg-brand text-white" : "bg-brand text-white"
                   }`}
+                  data-oid="rv6.k5p"
                 >
                   Refresh Ads
                 </button>
               </div>
-              <div className="flex flex-col sm:flex-row items-center gap-6">
+              <div
+                className="flex flex-col sm:flex-row items-center gap-6"
+                data-oid="::_s6fy"
+              >
                 {/* Enhanced Image Container */}
-                <div className="flex-shrink-0 w-full sm:w-48 md:w-56 h-24 sm:h-32 md:h-36 rounded-2xl overflow-hidden shadow-xl relative group/image">
+                <div
+                  className="flex-shrink-0 w-full sm:w-48 md:w-56 h-24 sm:h-32 md:h-36 rounded-2xl overflow-hidden shadow-xl relative group/image"
+                  data-oid="10vlybo"
+                >
                   <img
                     src={currentAd.src}
                     alt={currentAd.alt}
                     onLoad={handleImageLoad}
                     onError={(e) => {
-                      e.currentTarget.src = 'https://via.placeholder.com/224x144?text=Ad+Image';
+                      e.currentTarget.src =
+                        "https://via.placeholder.com/224x144?text=Ad+Image";
                     }}
                     className="w-full h-full object-cover transition-all duration-700 group-hover/image:scale-110"
+                    data-oid="w_fpm6x"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent opacity-60"></div>
+
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent opacity-60"
+                    data-oid="m7:qrfz"
+                  ></div>
                 </div>
 
                 {/* Enhanced Text Content */}
-                <div className="flex-1 text-center sm:text-left min-w-0">
-                  <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${
-                    isDark ? 'text-white' : 'text-white'
-                  }`}>
+                <div
+                  className="flex-1 text-center sm:text-left min-w-0"
+                  data-oid="u.g.s1r"
+                >
+                  <h3
+                    className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${
+                      isDark ? "text-white" : "text-white"
+                    }`}
+                    data-oid="v95hc8y"
+                  >
                     {currentAd.title}
                   </h3>
                   {currentAd.subtitle && (
-                    <p className={`font-medium mb-4 sm:mb-5 text-sm sm:text-base lg:text-lg ${
-                      isDark ? 'text-white' : 'text-zinc-900'
-                    }`}>
+                    <p
+                      className={`font-medium mb-4 sm:mb-5 text-sm sm:text-base lg:text-lg ${
+                        isDark ? "text-white" : "text-zinc-900"
+                      }`}
+                      data-oid="59ev65a"
+                    >
                       {currentAd.subtitle}
                     </p>
                   )}
                   {currentAd.ctaText && (
                     <button
-                      onClick={() => currentAd.ctaLink && window.open(currentAd.ctaLink, '_blank')}
+                      onClick={() =>
+                        currentAd.ctaLink &&
+                        window.open(currentAd.ctaLink, "_blank")
+                      }
                       className={`inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
-                        isDark 
-                          ? 'bg-brand text-white' 
-                          : 'bg-brand text-white'
+                        isDark ? "bg-brand text-white" : "bg-brand text-white"
                       }`}
+                      data-oid="99s7r6j"
                     >
-                      <span className="relative z-10">{currentAd.ctaText}</span>
+                      <span className="relative z-10" data-oid="i6-r5x.">
+                        {currentAd.ctaText}
+                      </span>
                     </button>
                   )}
                 </div>
@@ -241,24 +297,34 @@ const AdBanner: React.FC = () => {
 
         {/* Enhanced Progress Indicators */}
         {ads.length > 1 && !loading && !error && ads.length > 0 && (
-          <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+          <div
+            className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20"
+            data-oid="om9xesu"
+          >
             {ads.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentAdIndex(index)}
                 className={`h-2 sm:h-3 rounded-full transition-all duration-500 ${
                   index === currentAdIndex
-                    ? `w-8 sm:w-10 ${isDark ? 'bg-emerald-400' : 'bg-emerald-500'}`
-                    : `w-2 sm:w-3 ${isDark ? 'bg-emerald-700 hover:bg-emerald-600' : 'bg-emerald-200 hover:bg-emerald-300'}`
+                    ? `w-8 sm:w-10 ${isDark ? "bg-emerald-400" : "bg-emerald-500"}`
+                    : `w-2 sm:w-3 ${isDark ? "bg-emerald-700 hover:bg-emerald-600" : "bg-emerald-200 hover:bg-emerald-300"}`
                 }`}
+                data-oid="dcv3ywo"
               />
             ))}
           </div>
         )}
 
         {/* Enhanced Decorative Elements */}
-        <div className="absolute top-0 left-0 w-48 h-48 rounded-full blur-3xl opacity-20 bg-emerald-300"></div>
-        <div className="absolute bottom-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-20 bg-green-300"></div>
+        <div
+          className="absolute top-0 left-0 w-48 h-48 rounded-full blur-3xl opacity-20 bg-emerald-300"
+          data-oid="vdd64ki"
+        ></div>
+        <div
+          className="absolute bottom-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-20 bg-green-300"
+          data-oid="3ihm-5i"
+        ></div>
       </div>
     </div>
   );

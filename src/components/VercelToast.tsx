@@ -1,14 +1,17 @@
-
-import React, { useEffect } from 'react';
-import { Check, AlertCircle, X } from 'lucide-react';
+import React, { useEffect } from "react";
+import { Check, AlertCircle, X } from "lucide-react";
 
 interface VercelToastProps {
   message: string;
-  type: 'success' | 'error';
+  type: "success" | "error";
   onClose: () => void;
 }
 
-const VercelToast: React.FC<VercelToastProps> = ({ message, type = 'success', onClose }) => {
+const VercelToast: React.FC<VercelToastProps> = ({
+  message,
+  type = "success",
+  onClose,
+}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
@@ -19,37 +22,52 @@ const VercelToast: React.FC<VercelToastProps> = ({ message, type = 'success', on
 
   const getIcon = () => {
     switch (type) {
-      case 'success':
-        return <Check className="w-4 h-4 text-green-600" />;
-      case 'error':
-        return <AlertCircle className="w-4 h-4 text-red-600" />;
+      case "success":
+        return <Check className="w-4 h-4 text-green-600" data-oid="_6q6omb" />;
+      case "error":
+        return (
+          <AlertCircle className="w-4 h-4 text-red-600" data-oid="szb93zv" />
+        );
+
       default:
-        return <Check className="w-4 h-4 text-green-600" />;
+        return <Check className="w-4 h-4 text-green-600" data-oid="7h0yfp-" />;
     }
   };
 
   const getBorderColor = () => {
     switch (type) {
-      case 'success':
-        return 'border-l-green-500';
-      case 'error':
-        return 'border-l-red-500';
+      case "success":
+        return "border-l-green-500";
+      case "error":
+        return "border-l-red-500";
       default:
-        return 'border-l-green-500';
+        return "border-l-green-500";
     }
   };
 
   return (
-    <div className={`bg-white rounded-xl shadow-lg border border-gray-200 border-l-4 ${getBorderColor()} p-4 flex items-center space-x-3 min-w-[320px] animate-in slide-in-from-right duration-300`}>
-      <div className={`flex-shrink-0 p-1 rounded-full ${type === 'success' ? 'bg-green-50' : 'bg-red-50'}`}>
+    <div
+      className={`bg-white rounded-xl shadow-lg border border-gray-200 border-l-4 ${getBorderColor()} p-4 flex items-center space-x-3 min-w-[320px] animate-in slide-in-from-right duration-300`}
+      data-oid="j_g.bcv"
+    >
+      <div
+        className={`flex-shrink-0 p-1 rounded-full ${type === "success" ? "bg-green-50" : "bg-red-50"}`}
+        data-oid="1ulqrot"
+      >
         {getIcon()}
       </div>
-      <p className="text-sm font-medium text-gray-900 flex-1">{message}</p>
+      <p
+        className="text-sm font-medium text-gray-900 flex-1"
+        data-oid="bp974zn"
+      >
+        {message}
+      </p>
       <button
         onClick={onClose}
         className="flex-shrink-0 p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all duration-200"
+        data-oid="4wexhad"
       >
-        <X className="w-4 h-4" />
+        <X className="w-4 h-4" data-oid="6-uojmf" />
       </button>
     </div>
   );
