@@ -52,16 +52,16 @@ const steps = [
 const StepIndicator: React.FC<{ currentStep: number }> = ({ currentStep }) => {
   const { t } = useLanguage();
   return (
-    <div className="relative w-full mb-8 md:mb-12" data-oid="xvytzhe">
+    <div className="relative w-full mb-8 md:mb-12" data-oid="ai1hxkl">
       <div
         className="flex items-center justify-between max-w-[90vw] sm:max-w-md mx-auto"
-        data-oid="bcbq5f7"
+        data-oid="m0g9z_s"
       >
         {steps.map((step, index) => (
-          <div key={step.label} data-oid="mnxaxkm">
+          <div key={step.label} data-oid="r8ifci:">
             <div
               className="flex flex-col items-center z-10 relative"
-              data-oid="3npfnm0"
+              data-oid="8:g_pyy"
             >
               <motion.div
                 className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full shadow-xl backdrop-blur-sm border-2 ${
@@ -75,19 +75,19 @@ const StepIndicator: React.FC<{ currentStep: number }> = ({ currentStep }) => {
                   opacity: 1,
                   transition: { duration: 0.4, type: "spring", bounce: 0.3 },
                 }}
-                data-oid="bmb7h8x"
+                data-oid="k8:j6h7"
               >
                 {index < currentStep ? (
                   <CheckCircle
                     size={20}
                     className="sm:w-6 sm:h-6"
-                    data-oid="a1-tfyr"
+                    data-oid="kewn:fd"
                   />
                 ) : (
                   <step.icon
                     size={20}
                     className="sm:w-6 sm:h-6"
-                    data-oid="b4aw_or"
+                    data-oid="8x7:yow"
                   />
                 )}
                 {index === currentStep && (
@@ -95,7 +95,7 @@ const StepIndicator: React.FC<{ currentStep: number }> = ({ currentStep }) => {
                     className="absolute rounded-full bg-zinc-900"
                     animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    data-oid="0fhu_:3"
+                    data-oid="5i10ix3"
                   />
                 )}
               </motion.div>
@@ -106,16 +106,16 @@ const StepIndicator: React.FC<{ currentStep: number }> = ({ currentStep }) => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                data-oid="54exes2"
+                data-oid="uz32b7p"
               >
                 {t(step.label)}
               </motion.span>
             </div>
             {index < steps.length - 1 && (
-              <div className="relative flex-1 mx-2 sm:mx-6" data-oid="k:tvr5y">
+              <div className="relative flex-1 mx-2 sm:mx-6" data-oid="7ruf69j">
                 <div
                   className="absolute top-5 sm:top-6 h-1 w-full bg-gray-200/50 rounded-full"
-                  data-oid="259.zst"
+                  data-oid="c82vgxp"
                 />
 
                 <motion.div
@@ -125,7 +125,7 @@ const StepIndicator: React.FC<{ currentStep: number }> = ({ currentStep }) => {
                     width: index < currentStep ? "100%" : "0%",
                   }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
-                  data-oid=".hnd1hh"
+                  data-oid="v:zw:yu"
                 />
               </div>
             )}
@@ -146,30 +146,30 @@ const MethodSelection: React.FC<{
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className="text-center space-y-8"
-      data-oid="ldnhm1c"
+      data-oid="y2l_m1b"
     >
-      <div className="space-y-4" data-oid="3b.s.40">
+      <div className="space-y-4" data-oid="0_dw-xd">
         <motion.div
           className="w-16 h-16 sm:w-20 sm:h-20 bg-brand rounded-3xl flex items-center justify-center mx-auto shadow-2xl"
           animate={{ rotate: [0, 5, -5, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          data-oid="w:4h64s"
+          data-oid="aa732pi"
         >
           <Users
             className="w-8 h-8 sm:w-10 sm:h-10 text-white"
-            data-oid="a5i_y96"
+            data-oid="k3m2w7r"
           />
         </motion.div>
-        <div data-oid="63mi4yu">
+        <div data-oid="vym5wew">
           <h1
             className="text-2xl sm:text-4xl font-bold bg-brand bg-clip-text text-transparent mb-4"
-            data-oid="6c7q0m."
+            data-oid="n92x4h0"
           >
             {t("addYourChild")}
           </h1>
           <p
             className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto leading-relaxed"
-            data-oid="kyt111."
+            data-oid="pw73uon"
           >
             {t("connectChildPrompt")}
           </p>
@@ -178,7 +178,7 @@ const MethodSelection: React.FC<{
 
       <div
         className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 max-w-[90vw] sm:max-w-3xl mx-auto"
-        data-oid="54axj2u"
+        data-oid="4s2.705"
       >
         <motion.button
           whileHover={{ scale: 1.03, y: -5 }}
@@ -188,45 +188,45 @@ const MethodSelection: React.FC<{
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          data-oid="s17z8ah"
+          data-oid="-..pnc7"
         >
           <div
             className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-yellow-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            data-oid="sm7breq"
+            data-oid="7ykrr-d"
           />
 
-          <div className="relative space-y-4 sm:space-y-6" data-oid="p:7byms">
+          <div className="relative space-y-4 sm:space-y-6" data-oid="z7mo8x3">
             <div
               className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-700 to-indigo-800 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg bg-[#000000]"
-              data-oid="-4y2c4-"
+              data-oid="-0qn-tw"
             >
               <Search
                 className="w-6 h-6 sm:w-8 sm:h-8 text-white"
-                data-oid="z7f56ik"
+                data-oid=".pexn7g"
               />
             </div>
-            <div className="text-left" data-oid="h.bfn46">
+            <div className="text-left" data-oid="2i62u03">
               <h3
                 className="text-lg sm:text-xl font-bold text-gray-900 mb-2"
-                data-oid="gr5h0uh"
+                data-oid="lih-43k"
               >
                 {t("searchByName")}
               </h3>
               <p
                 className="text-gray-600 leading-relaxed text-sm sm:text-base"
-                data-oid="0:1pavd"
+                data-oid=":ig2g48"
               >
                 {t("searchByNameDesc")}
               </p>
             </div>
             <div
               className="flex items-center text-indigo-700 font-semibold group-hover:translate-x-2 transition-transform duration-300"
-              data-oid="fpy.x0j"
+              data-oid="_ppxvk7"
             >
-              <span className="text-sm sm:text-base" data-oid="kmyf0tr">
+              <span className="text-sm sm:text-base" data-oid="bojtqf1">
                 {t("getStarted")}
               </span>
-              <ArrowRight className="w-4 h-4 ml-2" data-oid="pj3vcy4" />
+              <ArrowRight className="w-4 h-4 ml-2" data-oid="0s:fx-o" />
             </div>
           </div>
         </motion.button>
@@ -239,45 +239,45 @@ const MethodSelection: React.FC<{
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
-          data-oid="lje_gp_"
+          data-oid="nl0ph1g"
         >
           <div
             className="absolute inset-0 bg-gradient-to-br from-yellow-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            data-oid="wj7o783"
+            data-oid="5zvmquv"
           />
 
-          <div className="relative space-y-4 sm:space-y-6" data-oid=":_m9-hy">
+          <div className="relative space-y-4 sm:space-y-6" data-oid="a67sb93">
             <div
               className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg bg-[#000000]"
-              data-oid="6tfvcv1"
+              data-oid="e0iyw5s"
             >
               <Camera
                 className="w-6 h-6 sm:w-8 sm:h-8 text-white"
-                data-oid="ig9c63s"
+                data-oid="5dy7odp"
               />
             </div>
-            <div className="text-left" data-oid="pt4m70-">
+            <div className="text-left" data-oid="zp90pw2">
               <h3
                 className="text-lg sm:text-xl font-bold text-gray-900 mb-2"
-                data-oid="vmq:pc7"
+                data-oid="jpn0pq4"
               >
                 {t("scanQRCode")}
               </h3>
               <p
                 className="text-gray-600 leading-relaxed text-sm sm:text-base"
-                data-oid="a2qa-6t"
+                data-oid="2nn3teo"
               >
                 {t("scanQRCodeDesc")}
               </p>
             </div>
             <div
               className="flex items-center text-yellow-600 font-semibold group-hover:translate-x-2 transition-transform duration-300"
-              data-oid="4zdereq"
+              data-oid="lub9yc8"
             >
-              <span className="text-sm sm:text-base" data-oid="d2o6j22">
+              <span className="text-sm sm:text-base" data-oid="usrpdqw">
                 {t("openCamera")}
               </span>
-              <Camera className="w-4 h-4 ml-2" data-oid="tbuiyp_" />
+              <Camera className="w-4 h-4 ml-2" data-oid="y-xb0mu" />
             </div>
           </div>
         </motion.button>
@@ -320,81 +320,81 @@ const ManualSearch: React.FC<{
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className="space-y-6"
-      data-oid="l466ck9"
+      data-oid="3_krunh"
     >
-      <div className="text-center space-y-3" data-oid="akjxiwo">
+      <div className="text-center space-y-3" data-oid="488lrgc">
         <h2
           className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-900 to-indigo-800 bg-clip-text text-transparent"
-          data-oid="s-bo1zl"
+          data-oid="-68ikgo"
         >
           {t("findStudent")}
         </h2>
-        <p className="text-gray-600 text-base sm:text-lg" data-oid="yfct29x">
+        <p className="text-gray-600 text-base sm:text-lg" data-oid="6x9598s">
           {t("findStudentPrompt")}
         </p>
       </div>
 
-      <div className="space-y-4" data-oid="dx9zxu4">
+      <div className="space-y-4" data-oid="lffmfdj">
         <motion.div
           className="space-y-2"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
-          data-oid="y1x1-pj"
+          data-oid=":p2p2vi"
         >
           <label
             className="text-xs sm:text-sm font-semibold text-gray-700 flex items-center gap-2"
-            data-oid="8bhseth"
+            data-oid="zeqy8p1"
           >
-            <Users className="w-4 h-4 text-indigo-700" data-oid="a8hmu2b" />
+            <Users className="w-4 h-4 text-indigo-700" data-oid="xyz06pk" />
             {t("studentName")}
           </label>
-          <div className="relative" data-oid="_6q0d0u">
+          <div className="relative" data-oid="s5jyjb8">
             <input
               type="text"
               value={searchName}
               onChange={(e) => setSearchName(e.target.value)}
               placeholder={t("enterStudentName")}
               className="w-full p-3 sm:p-4 pl-10 sm:pl-12 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-700 transition-all duration-300 text-gray-900 placeholder-gray-500 shadow-lg text-sm sm:text-base"
-              data-oid="xvri8pw"
+              data-oid="8-al6xo"
             />
 
             <Search
               className="absolute left-3 sm:left-4 top-3 sm:top-4 w-5 h-5 text-gray-400"
-              data-oid="zq.6na6"
+              data-oid="00c-f4:"
             />
           </div>
         </motion.div>
 
         <div
           className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-          data-oid="8chah5-"
+          data-oid="b981ggf"
         >
           <motion.div
             className="space-y-2"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            data-oid="61:39lu"
+            data-oid="yyjs4w."
           >
             <label
               className="text-xs sm:text-sm font-semibold text-gray-700 flex items-center gap-2"
-              data-oid=".k5axnq"
+              data-oid="fih65_c"
             >
-              <School className="w-4 h-4 text-yellow-600" data-oid=":q8f-fn" />
+              <School className="w-4 h-4 text-yellow-600" data-oid="412zt8g" />
               {t("schoolName")}
             </label>
             <select
               value={selectedSchool}
               onChange={(e) => setSelectedSchool(e.target.value)}
               className="w-full p-3 sm:p-4 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl focus:ring-4 focus:ring-yellow-500/20 focus:border-yellow-600 transition-all duration-300 text-gray-900 shadow-lg appearance-none cursor-pointer text-sm sm:text-base"
-              data-oid="riaz:43"
+              data-oid="zxrihl6"
             >
-              <option value="" data-oid="oyfo:l4">
+              <option value="" data-oid="95.3-5x">
                 {t("chooseSchool")}
               </option>
               {schools.map((school) => (
-                <option key={school} value={school} data-oid="su.2z85">
+                <option key={school} value={school} data-oid="gsbybd1">
                   {school}
                 </option>
               ))}
@@ -406,15 +406,15 @@ const ManualSearch: React.FC<{
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            data-oid=":g8jd8r"
+            data-oid="pyobkod"
           >
             <label
               className="text-xs sm:text-sm font-semibold text-gray-700 flex items-center gap-2"
-              data-oid="a42rd1t"
+              data-oid="14geb12"
             >
               <GraduationCap
                 className="w-4 h-4 text-indigo-700"
-                data-oid="kiq5g2b"
+                data-oid="s-nzi47"
               />
 
               {t("gradeLevel")}
@@ -424,13 +424,13 @@ const ManualSearch: React.FC<{
               onChange={(e) => setSelectedGrade(e.target.value)}
               disabled={!selectedSchool}
               className="w-full p-3 sm:p-4 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-700 transition-all duration-300 text-gray-900 shadow-lg appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
-              data-oid="--5wp9g"
+              data-oid="q_vvsmc"
             >
-              <option value="" data-oid="-l5dcbt">
+              <option value="" data-oid="h4-qepp">
                 {t("chooseGrade")}
               </option>
               {grades.map((grade) => (
-                <option key={grade} value={grade} data-oid="tr6v9rz">
+                <option key={grade} value={grade} data-oid="9mir7gk">
                   {grade}
                 </option>
               ))}
@@ -443,7 +443,7 @@ const ManualSearch: React.FC<{
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
-            data-oid="43-s7:f"
+            data-oid="gl7.lju"
           >
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -451,22 +451,22 @@ const ManualSearch: React.FC<{
               onClick={handleSearch}
               disabled={isLoading}
               className="px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-indigo-900 via-indigo-700 to-yellow-500 text-white rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-3 mx-auto text-sm sm:text-base"
-              data-oid="0x03dyb"
+              data-oid="jjnif4-"
             >
               {isLoading ? (
                 <>
                   <Loader2
                     className="w-5 h-5 animate-spin"
-                    data-oid="vspugde"
+                    data-oid="z0xtt99"
                   />
 
                   {t("searching")}
                 </>
               ) : (
                 <>
-                  <Search className="w-5 h-5" data-oid="ej.my82" />
+                  <Search className="w-5 h-5" data-oid="::pgcrb" />
                   {t("searchStudents")}
-                  <Sparkles className="w-4 h-4" data-oid="c:w1b:w" />
+                  <Sparkles className="w-4 h-4" data-oid=".9-h:d8" />
                 </>
               )}
             </motion.button>
@@ -474,24 +474,24 @@ const ManualSearch: React.FC<{
         )}
       </div>
 
-      <AnimatePresence data-oid="wxbsaz2">
+      <AnimatePresence data-oid="0wooal8">
         {searchResults.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             className="space-y-4"
-            data-oid="9ise8g2"
+            data-oid="a.joh50"
           >
             <h3
               className="text-lg sm:text-xl font-bold text-gray-900 text-center sticky top-0 bg-white/80 backdrop-blur-sm py-2 z-10"
-              data-oid="kxqdu7_"
+              data-oid="i9-9eby"
             >
               {t("selectYourChild")}
             </h3>
             <div
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-80 sm:max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-700 scrollbar-track-indigo-50 scroll-smooth p-3 sm:p-4 rounded-2xl"
-              data-oid="ovao93l"
+              data-oid="5nj-x1f"
             >
               {searchResults.map((student, index) => (
                 <motion.button
@@ -507,21 +507,21 @@ const ManualSearch: React.FC<{
                   whileTap={{ scale: 0.97 }}
                   onClick={() => onStudentSelect(student)}
                   className="group p-4 sm:p-6 bg-white/80 backdrop-blur-xl rounded-3xl shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 text-left overflow-hidden"
-                  data-oid="jpp05tq"
+                  data-oid="omx63l."
                 >
                   <div
                     className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-yellow-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    data-oid=":u-ce91"
+                    data-oid="w021tlx"
                   />
 
                   <div
                     className="relative flex items-center gap-3 sm:gap-4"
-                    data-oid="4np5.s8"
+                    data-oid="7fwjqbj"
                   >
-                    <div className="relative" data-oid="m7fip_s">
+                    <div className="relative" data-oid="6yvr_z1">
                       <div
                         className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 shadow-lg"
-                        data-oid="gmlmp_h"
+                        data-oid="g_vb.0d"
                       >
                         <img
                           src={student.student_photo_url}
@@ -533,43 +533,43 @@ const ManualSearch: React.FC<{
                               student.student_name,
                             )}&background=random&color=fff`;
                           }}
-                          data-oid="2wiu8_c"
+                          data-oid="_r0_eo."
                         />
                       </div>
                       <div
                         className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-lg"
-                        data-oid="zcy-u1a"
+                        data-oid="2jn8eni"
                       >
                         <Heart
                           className="w-3 h-3 text-white"
-                          data-oid="rjkz82f"
+                          data-oid="uvcl.bc"
                         />
                       </div>
                     </div>
-                    <div className="flex-1" data-oid="_f5tvx0">
+                    <div className="flex-1" data-oid="_i5tgce">
                       <h4
                         className="font-bold text-gray-900 group-hover:text-indigo-700 transition-colors text-base sm:text-lg"
-                        data-oid="lfhwlb7"
+                        data-oid="5d-4vtu"
                       >
                         {student.student_name}
                       </h4>
                       <p
                         className="text-gray-600 font-medium text-sm sm:text-base"
-                        data-oid="c3hdw40"
+                        data-oid="s.v1vfx"
                       >
                         {student.school_name}
                       </p>
                       <p
                         className="text-xs sm:text-sm text-gray-500 flex items-center gap-1"
-                        data-oid="cw2tsky"
+                        data-oid="6edqaqs"
                       >
-                        <Star className="w-3 h-3" data-oid="379olv2" />
+                        <Star className="w-3 h-3" data-oid="zbwcs42" />
                         {t("grade")} {student.grade}
                       </p>
                     </div>
                     <ArrowRight
                       className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-indigo-700 group-hover:translate-x-2 transition-all duration-300"
-                      data-oid="dw:46-y"
+                      data-oid="52uu8ui"
                     />
                   </div>
                 </motion.button>
@@ -689,69 +689,69 @@ const QRScanner: React.FC<{
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50"
-      data-oid="j9nkm7d"
+      data-oid="oft:gkb"
     >
       <motion.div
         initial={{ y: 50 }}
         animate={{ y: 0 }}
         className="bg-white rounded-3xl shadow-2xl max-w-[90vw] sm:max-w-md w-full overflow-hidden"
-        data-oid=".c293r0"
+        data-oid="uc:-y:g"
       >
         <div
           className="relative p-4 sm:p-6 from-indigo-900 to-yellow-500 text-white bg-[#05000000] bg-[url(/images/1ev8.png)]"
-          data-oid="4.gyg69"
+          data-oid="tt:rq:h"
         >
           <button
             onClick={onClose}
             className="absolute top-3 sm:top-4 right-3 sm:right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
-            data-oid="8z9y2yy"
+            data-oid="c8h-2a5"
           >
-            <X className="w-4 h-4 sm:w-5 sm:h-5" data-oid="49zcv_n" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" data-oid=".kqn.mz" />
           </button>
-          <div className="text-center" data-oid="o7lf:pa">
+          <div className="text-center" data-oid="7psd316">
             <div
               className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4"
-              data-oid="eaeh.kl"
+              data-oid="ow3gb4f"
             >
-              <Camera className="w-6 h-6 sm:w-8 sm:h-8" data-oid="0-dbjve" />
+              <Camera className="w-6 h-6 sm:w-8 sm:h-8" data-oid="_cyhr4k" />
             </div>
             <h2
               className="text-xl sm:text-2xl font-bold mb-2"
-              data-oid="ca0zb7p"
+              data-oid="0:vq.df"
             >
               {t("scanQRCode")}
             </h2>
             <p
               className="text-indigo-100 text-sm sm:text-base"
-              data-oid="vd9zirm"
+              data-oid="xbl8a_h"
             >
               {t("positionQRCode")}
             </p>
           </div>
         </div>
 
-        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6" data-oid="niviwu_">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6" data-oid="wnep1u.">
           {hasCamera !== false && (
             <div
               className="relative mx-auto w-[80vw] sm:w-80 h-[80vw] sm:h-80 max-w-[300px] max-h-[300px] rounded-2xl overflow-hidden bg-gray-900"
-              data-oid="jt2q6:6"
+              data-oid="ujp51s6"
             >
               <div
                 id="qr-scanner"
                 ref={scannerRef}
                 className="w-full h-full"
-                data-oid="-88r6kt"
+                data-oid="szuk6na"
               />
 
               {isScanning && (
                 <div
                   className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                  data-oid="p4flq05"
+                  data-oid="-ug93gn"
                 >
-                  <div className="relative" data-oid="zaqz-.x">
+                  <div className="relative" data-oid="df:qb1u">
                     <div
                       className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] border-4 border-white/80 rounded-2xl bg-transparent"
-                      data-oid="7-8u7nk"
+                      data-oid="8yu_r_s"
                     />
 
                     <motion.div
@@ -764,27 +764,27 @@ const QRScanner: React.FC<{
                         repeat: Infinity,
                         ease: "linear",
                       }}
-                      data-oid="2:mto_3"
+                      data-oid="riv-qyk"
                     />
 
                     <div
                       className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 border-l-4 border-t-4 border-yellow-400 rounded-tl-lg"
-                      data-oid="bg-5lz_"
+                      data-oid="x3ygetb"
                     />
 
                     <div
                       className="absolute -top-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 border-r-4 border-t-4 border-yellow-400 rounded-tr-lg"
-                      data-oid="z0pk0b."
+                      data-oid=".m.gucq"
                     />
 
                     <div
                       className="absolute -bottom-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 border-l-4 border-b-4 border-yellow-400 rounded-bl-lg"
-                      data-oid="bt_c0qe"
+                      data-oid="5zv-i48"
                     />
 
                     <div
                       className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 border-r-4 border-b-4 border-yellow-400 rounded-br-lg"
-                      data-oid="a68q57a"
+                      data-oid="73.9d-i"
                     />
 
                     <motion.div
@@ -794,7 +794,7 @@ const QRScanner: React.FC<{
                         opacity: [0.5, 0.8, 0.5],
                       }}
                       transition={{ duration: 1.5, repeat: Infinity }}
-                      data-oid="2n9h9io"
+                      data-oid="v1cecpa"
                     />
                   </div>
                 </div>
@@ -802,18 +802,18 @@ const QRScanner: React.FC<{
               {error && (
                 <div
                   className="absolute inset-0 flex items-center justify-center bg-black/50"
-                  data-oid="x:a7hv:"
+                  data-oid="ot96j2d"
                 >
                   <div
                     className="text-center text-white p-4"
-                    data-oid="uc_zei5"
+                    data-oid="14_3440"
                   >
                     <AlertCircle
                       className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 text-red-400"
-                      data-oid="ux4_27_"
+                      data-oid=":c-h.sw"
                     />
 
-                    <p className="text-xs sm:text-sm" data-oid="pghc-.7">
+                    <p className="text-xs sm:text-sm" data-oid="br8-:3y">
                       {error}
                     </p>
                     <button
@@ -827,7 +827,7 @@ const QRScanner: React.FC<{
                         }
                       }}
                       className="mt-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-600 text-white rounded-lg text-xs sm:text-sm hover:bg-indigo-700 transition-colors"
-                      data-oid="8wr7ft3"
+                      data-oid="wekn:m6"
                     >
                       {t("tryAgain")}
                     </button>
@@ -842,31 +842,31 @@ const QRScanner: React.FC<{
             whileTap={{ scale: 0.98 }}
             onClick={onBack}
             className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-white/80 backdrop-blur-sm text-gray-700 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 text-sm sm:text-base"
-            data-oid="ulsv:8p"
+            data-oid="9gs37se"
           >
-            <ArrowLeft className="w-5 h-5" data-oid="wxinjt9" />
+            <ArrowLeft className="w-5 h-5" data-oid="ve:ir5e" />
             {t("backToMethod")}
           </motion.button>
 
-          <div className="text-center" data-oid="my9t675">
+          <div className="text-center" data-oid="c8_bqan">
             {isScanning && hasCamera ? (
               <div
                 className="flex items-center justify-center gap-2 text-indigo-700"
-                data-oid="bjo-gez"
+                data-oid="gjjkm9z"
               >
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  data-oid="pc:_ekx"
+                  data-oid="lf2y_zj"
                 >
                   <Camera
                     className="w-4 h-4 sm:w-5 sm:h-5"
-                    data-oid="_do3sij"
+                    data-oid="2_gez_a"
                   />
                 </motion.div>
                 <span
                   className="font-medium text-sm sm:text-base"
-                  data-oid="_ygf7ps"
+                  data-oid="y9yrsdu"
                 >
                   {t("scanningQRCode")}
                 </span>
@@ -874,12 +874,12 @@ const QRScanner: React.FC<{
             ) : (
               <div
                 className="flex items-center justify-center gap-2 text-gray-500"
-                data-oid="zgcv8lb"
+                data-oid="_y6y_x4"
               >
-                <Camera className="w-4 h-4 sm:w-5 sm:h-5" data-oid="cqmsh53" />
+                <Camera className="w-4 h-4 sm:w-5 sm:h-5" data-oid="uiawqop" />
                 <span
                   className="font-medium text-sm sm:text-base"
-                  data-oid="b862dq_"
+                  data-oid="p5dfgd0"
                 >
                   {hasCamera === false ? t("noCameraFound") : t("cameraReady")}
                 </span>
@@ -913,34 +913,34 @@ const StudentConfirmation: React.FC<{
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="rounded-3xl shadow-xl"
-      data-oid="b0nq8c:"
+      data-oid="5lcvw4h"
     >
-      <rect width="128" height="128" fill="url(#gradient)" data-oid="x0ey45z" />
+      <rect width="128" height="128" fill="url(#gradient)" data-oid="vnmih01" />
       <path
         d="M64 48C72.8366 48 80 40.8366 80 32C80 23.1634 72.8366 16 64 16C55.1634 16 48 23.1634 48 32C48 40.8366 55.1634 48 64 48Z"
         fill="#fff"
         fillOpacity="0.8"
-        data-oid="rxrznlm"
+        data-oid="3rju72e"
       />
 
       <path
         d="M64 64C50.7452 64 40 74.7452 40 88V112H88V88C88 74.7452 77.2548 64 64 64Z"
         fill="#fff"
         fillOpacity="0.8"
-        data-oid="leyehb7"
+        data-oid="zw_vjc1"
       />
 
-      <defs data-oid="uywu9at">
+      <defs data-oid="7e_423y">
         <linearGradient
           id="gradient"
           x1="0"
           y1="0"
           x2="128"
           y2="128"
-          data-oid="cwcflwc"
+          data-oid="fkug2g7"
         >
-          <stop offset="0%" stopColor="#4f46e5" data-oid="dtx:jqa" />
-          <stop offset="100%" stopColor="#facc15" data-oid="3d5qyw:" />
+          <stop offset="0%" stopColor="#4f46e5" data-oid="arbmy6b" />
+          <stop offset="100%" stopColor="#facc15" data-oid="ea_uv-1" />
         </linearGradient>
       </defs>
     </svg>
@@ -952,16 +952,16 @@ const StudentConfirmation: React.FC<{
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className="space-y-6"
-      data-oid="7ngg_vu"
+      data-oid="ifapz67"
     >
-      <div className="text-center space-y-3" data-oid="wtxkm.g">
+      <div className="text-center space-y-3" data-oid="onafiy8">
         <h2
           className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-900 to-green-800 bg-clip-text text-transparent"
-          data-oid="ystqlyd"
+          data-oid="-x83r9v"
         >
           {t("confirmDetails")}
         </h2>
-        <p className="text-gray-600 text-base sm:text-lg" data-oid="fbjsl-4">
+        <p className="text-gray-600 text-base sm:text-lg" data-oid="xka-5tg">
           {t("verifyStudentPrompt")}
         </p>
       </div>
@@ -970,19 +970,19 @@ const StudentConfirmation: React.FC<{
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6 border border-white/20"
-        data-oid="1eijrae"
+        data-oid="918qhb4"
       >
-        <div className="text-center space-y-4 sm:space-y-6" data-oid="_jrc6fi">
+        <div className="text-center space-y-4 sm:space-y-6" data-oid="2u1vjw3">
           <div
             className="relative mx-auto w-24 h-24 sm:w-32 sm:h-32"
-            data-oid="1z98vzj"
+            data-oid="qdgi0oi"
           >
             <div
               className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 shadow-xl"
-              data-oid="n08lz.u"
+              data-oid="0nv8h4n"
             >
               {imageError ? (
-                <CustomSVGPlaceholder data-oid="1lz8_e0" />
+                <CustomSVGPlaceholder data-oid="i_a67xl" />
               ) : (
                 <img
                   src={student.student_photo_url}
@@ -991,31 +991,31 @@ const StudentConfirmation: React.FC<{
                   onError={() => {
                     setImageError(true);
                   }}
-                  data-oid="02ko_a2"
+                  data-oid="j.f7uwc"
                 />
               )}
             </div>
             <div
               className="absolute -bottom-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg"
-              data-oid="dv3bhye"
+              data-oid="efgwx2a"
             >
               <CheckCircle
                 className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-                data-oid="j1qgkbc"
+                data-oid="ndtq_2y"
               />
             </div>
           </div>
 
-          <div data-oid="05_4we_">
+          <div data-oid="5oeor8y">
             <h3
               className="text-xl sm:text-2xl font-bold text-gray-900 mb-2"
-              data-oid="1k1.fbj"
+              data-oid="unfhoep"
             >
               {student.student_name}
             </h3>
             <p
               className="text-gray-600 font-medium text-sm sm:text-base"
-              data-oid="hrnk:q."
+              data-oid="o3tob1e"
             >
               {t("studentId")}: {student.student_id.slice(0, 8)}...
             </p>
@@ -1024,36 +1024,36 @@ const StudentConfirmation: React.FC<{
 
         <div
           className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-          data-oid="62h_lgc"
+          data-oid="9b6f_py"
         >
           <motion.div
             className="p-4 sm:p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl border border-indigo-200"
             whileHover={{ scale: 1.02 }}
-            data-oid="3359ct6"
+            data-oid="x8p65x3"
           >
             <div
               className="flex items-center gap-3 sm:gap-4"
-              data-oid="ejqs5th"
+              data-oid="cb6zusj"
             >
               <div
                 className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-700 rounded-xl flex items-center justify-center shadow-lg"
-                data-oid="2vbm1vl"
+                data-oid="vz2.1m2"
               >
                 <School
                   className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-                  data-oid="7_n9z2b"
+                  data-oid="i9_i3w9"
                 />
               </div>
-              <div data-oid="px1daos">
+              <div data-oid="8uro88t">
                 <p
                   className="text-xs sm:text-sm text-indigo-700 font-semibold"
-                  data-oid="lpsx3mx"
+                  data-oid=".1r9d47"
                 >
                   {t("school")}
                 </p>
                 <p
                   className="font-bold text-gray-900 text-sm sm:text-base"
-                  data-oid="_uhgbw2"
+                  data-oid="_fk3rgf"
                 >
                   {student.school_name}
                 </p>
@@ -1064,31 +1064,31 @@ const StudentConfirmation: React.FC<{
           <motion.div
             className="p-4 sm:p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl border border-yellow-200"
             whileHover={{ scale: 1.02 }}
-            data-oid="zh0-l2c"
+            data-oid="b9a.sts"
           >
             <div
               className="flex items-center gap-3 sm:gap-4"
-              data-oid="b8bv692"
+              data-oid="p4eakn-"
             >
               <div
                 className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-600 rounded-xl flex items-center justify-center shadow-lg"
-                data-oid="1confh:"
+                data-oid="1.b3el1"
               >
                 <GraduationCap
                   className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-                  data-oid="8dcsbff"
+                  data-oid="s3hs3s2"
                 />
               </div>
-              <div data-oid="l8pk6yz">
+              <div data-oid="2fwapas">
                 <p
                   className="text-xs sm:text-sm text-yellow-700 font-semibold"
-                  data-oid="tr7be2a"
+                  data-oid="okfk6uq"
                 >
                   {t("grade")}
                 </p>
                 <p
                   className="font-bold text-gray-900 text-sm sm:text-base"
-                  data-oid="4kgo76p"
+                  data-oid="-au3vcq"
                 >
                   {student.grade}
                 </p>
@@ -1102,37 +1102,37 @@ const StudentConfirmation: React.FC<{
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
           className="p-4 sm:p-6 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/20"
-          data-oid="zg7973."
+          data-oid="30f6sib"
         >
           <h4
             className="text-lg sm:text-xl font-bold text-gray-900 mb-4"
-            data-oid="4j9-0sy"
+            data-oid="2cni81:"
           >
             {t("studentStats")}
           </h4>
-          <ResponsiveContainer width="100%" height={200} data-oid="g7mazd4">
-            <BarChart data={chartData} data-oid=":krchyh">
+          <ResponsiveContainer width="100%" height={200} data-oid="25fqsod">
+            <BarChart data={chartData} data-oid="i1y5fhr">
               <CartesianGrid
                 strokeDasharray="3 3"
                 stroke="#e5e7eb"
-                data-oid="vr0ss8:"
+                data-oid="478vg4t"
               />
 
               <XAxis
                 dataKey="name"
                 stroke="#374151"
                 fontSize={12}
-                data-oid="o34-d82"
+                data-oid="4-.rg:s"
               />
 
-              <YAxis stroke="#374151" fontSize={12} data-oid="ww:g9t_" />
+              <YAxis stroke="#374151" fontSize={12} data-oid="-hzfuwz" />
               <Tooltip
                 contentStyle={{
                   backgroundColor: "rgba(255, 255, 255, 0.9)",
                   borderRadius: "8px",
                   border: "1px solid #e5e7eb",
                 }}
-                data-oid="rf84hq0"
+                data-oid="t2ttfv5"
               />
 
               <Bar
@@ -1140,20 +1140,20 @@ const StudentConfirmation: React.FC<{
                 fill="url(#chartGradient)"
                 radius={[8, 8, 0, 0]}
                 barSize={40}
-                data-oid="6vjhq2d"
+                data-oid="r74ql18"
               />
 
-              <defs data-oid="c-zv240">
+              <defs data-oid="q8kf-02">
                 <linearGradient
                   id="chartGradient"
                   x1="0"
                   y1="0"
                   x2="0"
                   y2="1"
-                  data-oid="7_3o4t5"
+                  data-oid="fgzs:1d"
                 >
-                  <stop offset="0%" stopColor="#4f46e5" data-oid="6xm38ll" />
-                  <stop offset="100%" stopColor="#facc15" data-oid="4fvkxs1" />
+                  <stop offset="0%" stopColor="#4f46e5" data-oid="ik-sfad" />
+                  <stop offset="100%" stopColor="#facc15" data-oid="lnsy-bc" />
                 </linearGradient>
               </defs>
             </BarChart>
@@ -1166,22 +1166,22 @@ const StudentConfirmation: React.FC<{
           onClick={onConfirm}
           disabled={isLoading}
           className="w-full px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
-          data-oid="n42scdh"
+          data-oid="t3_acnp"
         >
           {isLoading ? (
             <>
               <Loader2
                 className="w-5 h-5 sm:w-6 sm:h-6 animate-spin"
-                data-oid="qyn6ly6"
+                data-oid="y7xb:70"
               />
 
               {t("addingStudent")}
             </>
           ) : (
             <>
-              <Heart className="w-5 h-5 sm:w-6 sm:h-6" data-oid="0pcx1z_" />
+              <Heart className="w-5 h-5 sm:w-6 sm:h-6" data-oid="-otwd3z" />
               {t("addToAccount")}
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" data-oid="z9-1f:i" />
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" data-oid="9w-cud:" />
             </>
           )}
         </motion.button>
@@ -1201,40 +1201,40 @@ const QuitConfirmation: React.FC<{
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50"
-      data-oid="tnhywfo"
+      data-oid="gku24_l"
     >
       <motion.div
         initial={{ y: 50 }}
         animate={{ y: 0 }}
         className="bg-white rounded-3xl shadow-2xl max-w-[90vw] sm:max-w-md w-full p-4 sm:p-6"
-        data-oid="n69yt16"
+        data-oid="yywyin6"
       >
-        <div className="text-center space-y-4" data-oid="yzp:b_-">
+        <div className="text-center space-y-4" data-oid="fnuavoa">
           <AlertCircle
             className="w-10 h-10 sm:w-12 sm:h-12 mx-auto text-yellow-500"
-            data-oid="-rsv39:"
+            data-oid="d5fhwxt"
           />
 
           <h3
             className="text-lg sm:text-xl font-bold text-gray-900"
-            data-oid="47avduj"
+            data-oid="a1_iwxa"
           >
             {t("quitConfirmTitle")}
           </h3>
-          <p className="text-gray-600 text-sm sm:text-base" data-oid=":q9rh6q">
+          <p className="text-gray-600 text-sm sm:text-base" data-oid="7p6k_q8">
             {t("quitConfirmPrompt")}
           </p>
         </div>
         <div
           className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4"
-          data-oid="6cx0u3x"
+          data-oid="64dgxnx"
         >
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={onCancel}
             className="flex-1 px-4 sm:px-6 py-3 bg-white/80 backdrop-blur-sm text-gray-700 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 text-sm sm:text-base"
-            data-oid="ceiytdj"
+            data-oid="yegg9h7"
           >
             {t("cancel")}
           </motion.button>
@@ -1243,7 +1243,7 @@ const QuitConfirmation: React.FC<{
             whileTap={{ scale: 0.98 }}
             onClick={onConfirm}
             className="flex-1 px-4 sm:px-6 py-3 bg-red-500 text-white rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 text-sm sm:text-base"
-            data-oid="ox-a9fl"
+            data-oid="hj8vxa_"
           >
             {t("quit")}
           </motion.button>
@@ -1268,17 +1268,17 @@ class ErrorBoundary extends React.Component<
       return (
         <div
           className="p-8 text-center bg-red-50 border border-red-200 rounded-2xl"
-          data-oid="gyycsxj"
+          data-oid="g7ldls5"
         >
           <AlertCircle
             className="w-12 h-12 mx-auto mb-4 text-red-500"
-            data-oid="2:02w0p"
+            data-oid="x:v1c2q"
           />
 
-          <h2 className="text-xl font-bold text-gray-900" data-oid=".ho3_vj">
+          <h2 className="text-xl font-bold text-gray-900" data-oid="55y-xl:">
             Something went wrong
           </h2>
-          <p className="text-gray-600 mt-2" data-oid="b6ystzf">
+          <p className="text-gray-600 mt-2" data-oid="jql3_m.">
             Please refresh the page or try again later.
           </p>
         </div>
@@ -1618,51 +1618,51 @@ const AddStudent: React.FC = () => {
   };
 
   return (
-    <ErrorBoundary data-oid="a9n3b3b">
+    <ErrorBoundary data-oid="5_v2nti">
       <div
         className="min-h-screen bg-brand backdrop-blur-2xl relative overflow-hidden"
-        data-oid="_y0o4lt"
+        data-oid="x6jozfy"
       >
         <div
           className="absolute inset-0 overflow-hidden bg-[url(/images/rw4j.png)]"
-          data-oid="3co:8cv"
+          data-oid="c5ejst-"
         >
           <div
             className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-indigo-400/20 to-yellow-400/20 rounded-full blur-3xl"
-            data-oid=".cwztqn"
+            data-oid="n:wjv9j"
           />
 
           <div
             className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-yellow-400/20 to-indigo-400/20 rounded-full blur-3xl"
-            data-oid="xp8:7-b"
+            data-oid="m.0zwrd"
           />
         </div>
 
         <div
           className="relative max-w-[95vw] md:max-w-5xl mx-auto py-8 px-2 sm:px-4"
-          data-oid="smxrf.h"
+          data-oid="87e12lj"
         >
-          <div className="relative" data-oid=":1lgcqd">
+          <div className="relative" data-oid="lyifni4">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleQuit}
               className="absolute top-0 right-0 p-2 rounded-full bg-white/20 hover:bg-white/30 text-gray-700 transition-colors"
-              data-oid="uyx.rok"
+              data-oid="r9yvnb0"
             >
-              <X className="w-5 h-5 sm:w-6 sm:h-6" data-oid="l8y60va" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" data-oid="g2-oap9" />
             </motion.button>
-            <StepIndicator currentStep={currentStep} data-oid="94e7hpd" />
+            <StepIndicator currentStep={currentStep} data-oid="ddthr81" />
           </div>
 
-          <AnimatePresence data-oid="tmavknd">
+          <AnimatePresence data-oid="bhgzeh_">
             {error && (
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 className="mb-6 sm:mb-8 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-2xl text-red-700 text-center backdrop-blur-sm text-sm sm:text-base"
-                data-oid="dfuxlhq"
+                data-oid=":byif1y"
               >
                 {error}
               </motion.div>
@@ -1671,14 +1671,14 @@ const AddStudent: React.FC = () => {
 
           <div
             className="bg-white/60 backdrop-blur-xl rounded-3xl shadow-2xl p-6 sm:p-8 min-h-[500px] sm:min-h-[600px] border border-white/20"
-            data-oid="s4ij24e"
+            data-oid="j:is6-7"
           >
-            <AnimatePresence mode="wait" data-oid="5fe24f0">
+            <AnimatePresence mode="wait" data-oid="xw1c7me">
               {currentStep === 0 && (
                 <MethodSelection
                   key="method"
                   onMethodSelect={handleMethodSelect}
-                  data-oid="_mu7t:9"
+                  data-oid=".a03eqa"
                 />
               )}
               {currentStep === 1 && (
@@ -1696,7 +1696,7 @@ const AddStudent: React.FC = () => {
                   isLoading={isLoading}
                   searchName={searchName}
                   setSearchName={setSearchName}
-                  data-oid="578841u"
+                  data-oid="p2_k1-1"
                 />
               )}
               {currentStep === 2 && selectedStudent && (
@@ -1705,38 +1705,38 @@ const AddStudent: React.FC = () => {
                   student={selectedStudent}
                   onConfirm={handleConfirm}
                   isLoading={isLoading}
-                  data-oid="2m:r6m7"
+                  data-oid="6tkeh7z"
                 />
               )}
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-between mt-6 sm:mt-8" data-oid="kfbl6vh">
+          <div className="flex justify-between mt-6 sm:mt-8" data-oid="4wqrngx">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handlePrev}
               className="px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-3 bg-white/80 backdrop-blur-sm text-gray-700 shadow-lg hover:shadow-xl border border-white/20 text-sm sm:text-base"
-              data-oid="wjrceno"
+              data-oid="f7b4kmb"
             >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" data-oid="gfztek4" />
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" data-oid="9mq6xo4" />
               {currentStep === 0 ? t("quit") : t("previous")}
             </motion.button>
 
-            <div className="text-center" data-oid="zsu3idd">
+            <div className="text-center" data-oid="aeumk.7">
               <p
-                className="text-xs sm:text-sm text-gray-500 w-[137px] h-[74px]"
-                data-oid="2jfb.yy"
+                className="text-xs sm:text-sm text-gray-500"
+                data-oid="ce2:3ev"
               >
                 {t("step")} {currentStep + 1} {t("of")} {steps.length}
               </p>
             </div>
 
-            <div className="w-24 sm:w-32" data-oid="m-yod20" />
+            <div className="w-24 sm:w-32" data-oid="_ccyabw" />
           </div>
         </div>
 
-        <AnimatePresence data-oid="1gh:54_">
+        <AnimatePresence data-oid="_xtxrku">
           {showQRScanner && (
             <QRScanner
               onStudentFound={handleQRScan}
@@ -1752,23 +1752,23 @@ const AddStudent: React.FC = () => {
                 setCurrentStep(0);
                 setError(null);
               }}
-              data-oid="mrs-s_a"
+              data-oid="nel6_kb"
             />
           )}
           {showQuitConfirm && (
             <QuitConfirmation
               onConfirm={confirmQuit}
               onCancel={() => setShowQuitConfirm(false)}
-              data-oid="tvo9cti"
+              data-oid="qc644:f"
             />
           )}
         </AnimatePresence>
 
         <div
           className="fixed top-16 sm:top-20 right-2 sm:right-4 space-y-2 z-50"
-          data-oid="vpd5-fw"
+          data-oid="epn17i7"
         >
-          <AnimatePresence data-oid="grs:mi9">
+          <AnimatePresence data-oid="fm__9ap">
             {toasts.map((toast) => (
               <motion.div
                 key={toast.id}
@@ -1780,7 +1780,7 @@ const AddStudent: React.FC = () => {
                     ? "bg-green-50 border-green-200 text-green-700"
                     : "bg-red-50 border-red-200 text-red-700"
                 }`}
-                data-oid="8gk-ep."
+                data-oid="r8hcpfl"
               >
                 {toast.message}
                 <button
@@ -1788,9 +1788,9 @@ const AddStudent: React.FC = () => {
                     setToasts((prev) => prev.filter((t) => t.id !== toast.id))
                   }
                   className="ml-2 p-1 hover:bg-gray-200/50 rounded-full"
-                  data-oid="17hfo41"
+                  data-oid="c_c-v-p"
                 >
-                  <X className="w-4 h-4" data-oid="0w79s8l" />
+                  <X className="w-4 h-4" data-oid="l8d0fpr" />
                 </button>
               </motion.div>
             ))}

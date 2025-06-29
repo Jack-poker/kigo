@@ -12,45 +12,45 @@ const Modal = ({ title, children, onClose, onSubmit, isLoading }) => {
   return (
     <div
       className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
-      data-oid="pk0hadw"
+      data-oid="02y:8d3"
     >
       <div
         className="bg-white  rounded-2xl max-w-md w-full max-h-[90vh] overflow-hidden shadow-2xl"
-        data-oid="7_uv2f_"
+        data-oid="faxu:40"
       >
         <div
           className="flex items-center justify-between p-6 border-b border-gray-100"
-          data-oid="ecd9d:o"
+          data-oid="lymrt:r"
         >
           <h2
             className="text-xl font-semibold text-gray-900"
-            data-oid="wd__6ov"
+            data-oid="k.:qk_z"
           >
             {title}
           </h2>
           <button
             onClick={onClose}
             className="p-2 text-gray-400 hover:text-gray-600 transition-colors duration-200"
-            data-oid="-vuq.io"
+            data-oid="ubr6f26"
           >
-            <X className="w-5 h-5" data-oid="ta_uf-y" />
+            <X className="w-5 h-5" data-oid="w2ce_:7" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} data-oid="lg29n:l">
-          <div className="p-6 max-h-[60vh] overflow-y-auto" data-oid="_4wiuxb">
+        <form onSubmit={handleSubmit} data-oid="i0f_2j8">
+          <div className="p-6 max-h-[60vh] overflow-y-auto" data-oid="c_25ve-">
             {children}
           </div>
 
           <div
             className="flex items-center justify-end space-x-3 p-6 border-t border-gray-100 bg-gray-50/50"
-            data-oid="r2vfooe"
+            data-oid="q8.3wkx"
           >
             <button
               type="button"
               onClick={onClose}
               className="px-4 py-2 text-gray-700 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors duration-200"
-              data-oid="wsq23fy"
+              data-oid="p1ehafb"
             >
               Cancel
             </button>
@@ -58,19 +58,19 @@ const Modal = ({ title, children, onClose, onSubmit, isLoading }) => {
               type="submit"
               disabled={isLoading}
               className="px-6 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
-              data-oid="-2byz3s"
+              data-oid="ho3srjl"
             >
               {isLoading ? (
                 <>
                   <Loader2
                     className="w-4 h-4 animate-spin"
-                    data-oid="v3.yg5o"
+                    data-oid="5x0ke0x"
                   />
 
-                  <span data-oid="79liq-l">Processing...</span>
+                  <span data-oid="_91dpv1">Processing...</span>
                 </>
               ) : (
-                <span data-oid="t7n:cl:">Confirm</span>
+                <span data-oid="de8wqpp">Confirm</span>
               )}
             </button>
           </div>

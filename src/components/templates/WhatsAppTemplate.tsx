@@ -49,11 +49,11 @@ const WhatsAppTemplate: React.FC<WhatsAppTemplateProps> = ({ messageData }) => {
         {/* Brand Header */}
         <div className="mb-6" data-oid="75gkckg">
           {/* <div 
-                       className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-4 mx-auto shadow-lg"
-                       style={{ backgroundColor: color }}
-                      >
-                       {brand.charAt(0)}
-                      </div> */}
+                        className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-4 mx-auto shadow-lg"
+                        style={{ backgroundColor: color }}
+                       >
+                        {brand.charAt(0)}
+                       </div> */}
           <img
             src="/assets/logo.png"
             className="w-45 h-20"

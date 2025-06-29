@@ -65,7 +65,7 @@ const WalletSection = ({
           </div>
         </div>
         <div
-          className="mb-8 p-6 dark:bg-gray-800 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-700 bg-[#E4E9F0]"
+          className="mb-8 p-6 bg-white dark:bg-gray-800 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-700"
           data-oid="3a7iijb"
         >
           <div className="flex items-center space-x-4" data-oid="-.-7fkz">
@@ -119,7 +119,7 @@ const WalletSection = ({
             data-oid="oqf9130"
           >
             <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#1919191A]"
+              className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               data-oid="bdfq1i0"
             ></div>
             <Minus className="w-6 h-6 relative z-10" data-oid="g:w04gl" />

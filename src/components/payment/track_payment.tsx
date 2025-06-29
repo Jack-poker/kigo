@@ -6,15 +6,15 @@ export default function PaymentStatusListener() {
   return (
     <div
       style={{ maxWidth: 400, margin: "auto", fontFamily: "Arial, sans-serif" }}
-      data-oid="7ri738b"
+      data-oid="qa3qt5a"
     >
-      <h3 data-oid="wlxaj8e">💰 Live Payment Updates</h3>
+      <h3 data-oid="51hk25x">💰 Live Payment Updates</h3>
       {payments.length === 0 && (
-        <p className="h-[fit-content]" data-oid="m2wnmu8">
+        <p className="h-[fit-content]" data-oid="vfwndvl">
           No payments yet.
         </p>
       )}
-      <ul style={{ listStyle: "none", padding: 0 }} data-oid="s_mh-zg">
+      <ul style={{ listStyle: "none", padding: 0 }} data-oid=".-k8bap">
         {payments.map((payment, i) => (
           <li
             key={i}
@@ -27,13 +27,13 @@ export default function PaymentStatusListener() {
                 payment.status === "success" ? "#d4edda" : "#f8d7da",
               color: payment.status === "success" ? "#155724" : "#721c24",
             }}
-            data-oid="o7:p6d-"
+            data-oid="863.24j"
           >
-            <strong data-oid="5-nl.63">{payment.phone}</strong> paid{" "}
-            <strong data-oid="b7ji9tf">{payment.amount} RWF</strong> —{" "}
-            <em data-oid="fqt9w2.">{payment.status}</em>
-            <br data-oid="qicakli" />
-            <small data-oid="3s4sp5o">{payment.timestamp}</small>
+            <strong data-oid="gl4v-10">{payment.phone}</strong> paid{" "}
+            <strong data-oid="yz9kyqp">{payment.amount} RWF</strong> —{" "}
+            <em data-oid="5vl-tn-">{payment.status}</em>
+            <br data-oid="yevjeon" />
+            <small data-oid="t64wc0h">{payment.timestamp}</small>
           </li>
         ))}
       </ul>

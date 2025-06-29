@@ -26,57 +26,57 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({ messageData }) => {
   return (
     <div
       className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden font-sans"
-      data-oid="bmooclb"
+      data-oid="mg5va7y"
     >
       {/* Email Header */}
       <div
         className="bg-gray-50 border-b border-gray-200 p-6"
-        data-oid="xdzmq85"
+        data-oid="2vn54h6"
       >
         <div
           className="flex items-center justify-between mb-4"
-          data-oid="ubaikuu"
+          data-oid="7zr3lmk"
         >
-          <div className="flex items-center space-x-3" data-oid="a5-5m0o">
+          <div className="flex items-center space-x-3" data-oid="htd126x">
             <div
               className="w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-xl"
               style={{ backgroundColor: color }}
-              data-oid="sok.ua8"
+              data-oid="6y07n5s"
             >
               {brand?.charAt(0) || "B"}
             </div>
-            <div data-oid="b:1.sc6">
+            <div data-oid="u71b0:r">
               <h2
                 className="font-bold text-gray-900 text-lg"
-                data-oid="i:wq0r8"
+                data-oid="326vh:v"
               >
                 {brand || "Your Brand"}
               </h2>
-              <p className="text-gray-600 text-sm" data-oid="s93op.p">
+              <p className="text-gray-600 text-sm" data-oid="jys6r8l">
                 {email || "noreply@company.com"}
               </p>
             </div>
           </div>
-          <div className="text-right" data-oid="t85oi16">
-            <p className="text-gray-500 text-sm" data-oid="4hm_li_">
+          <div className="text-right" data-oid="97zix-z">
+            <p className="text-gray-500 text-sm" data-oid="kis.x-n">
               To: {recipient || "customer@email.com"}
             </p>
-            <p className="text-gray-500 text-xs" data-oid="el5t0fd">
+            <p className="text-gray-500 text-xs" data-oid="nlp_nhf">
               {new Date().toLocaleDateString()}
             </p>
           </div>
         </div>
-        <h1 className="text-2xl font-bold text-gray-900" data-oid="d4sjzj_">
+        <h1 className="text-2xl font-bold text-gray-900" data-oid="wi29mpv">
           {title || "Important Message"}
         </h1>
       </div>
 
       {/* Email Body */}
-      <div className="p-8" data-oid="ac-yur:">
-        <div className="mb-6" data-oid="oj42mbt">
+      <div className="p-8" data-oid="1v7eup6">
+        <div className="mb-6" data-oid="1_tj7r.">
           <p
             className="text-gray-700 leading-relaxed text-base whitespace-pre-wrap"
-            data-oid="2tvbdbx"
+            data-oid="w35_2r7"
           >
             {recipient && `Dear ${recipient},\n\n`}
             {content ||
@@ -85,21 +85,21 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({ messageData }) => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center my-8" data-oid="xdvg4:8">
+        <div className="text-center my-8" data-oid="fju1v3b">
           <button
             className="px-8 py-3 rounded-lg text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200"
             style={{ backgroundColor: color }}
-            data-oid="axr03mc"
+            data-oid="bju:c.."
           >
             Get Started
           </button>
         </div>
 
-        <div className="border-t border-gray-200 pt-6 mt-8" data-oid="d95umy4">
-          <p className="text-gray-600 text-sm" data-oid="wq-wdmn">
+        <div className="border-t border-gray-200 pt-6 mt-8" data-oid="p:7ngt-">
+          <p className="text-gray-600 text-sm" data-oid="vln7v31">
             Best regards,
-            <br data-oid=".tv.776" />
-            <strong data-oid="i9ifeb-">{brand || "Your Brand"} Team</strong>
+            <br data-oid="hwyip8u" />
+            <strong data-oid="7w9kk_m">{brand || "Your Brand"} Team</strong>
           </p>
         </div>
       </div>
@@ -107,13 +107,13 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({ messageData }) => {
       {/* Email Footer */}
       <div
         className="bg-gray-50 border-t border-gray-200 p-6"
-        data-oid="6jxamc4"
+        data-oid="qvg:fw6"
       >
-        <div className="text-center" data-oid="qohnrgo">
-          <p className="text-gray-500 text-xs mb-2" data-oid="10boi3_">
+        <div className="text-center" data-oid="64ptrz2">
+          <p className="text-gray-500 text-xs mb-2" data-oid="kq8ov79">
             © 2024 {brand || "Your Brand"}. All rights reserved.
           </p>
-          <p className="text-gray-500 text-xs" data-oid="ikg8zyh">
+          <p className="text-gray-500 text-xs" data-oid="a.8-4dy">
             You received this email because you subscribed to our newsletter.
           </p>
         </div>

@@ -48,21 +48,21 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
   };
 
   return (
-    <div className="space-y-6" data-oid="982ulnp">
-      <div className="flex items-center justify-between" data-oid="ufmwwse">
-        <div className="flex items-center space-x-3" data-oid="_2k5vw2">
+    <div className="space-y-6" data-oid=".z5p3si">
+      <div className="flex items-center justify-between" data-oid="sty6wo.">
+        <div className="flex items-center space-x-3" data-oid="2ilcus:">
           <div
             className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl"
-            data-oid="o.xni3e"
+            data-oid="lisddim"
           >
             <Users
               className="w-6 h-6 text-blue-600 dark:text-blue-400"
-              data-oid="benlcea"
+              data-oid="t0lue38"
             />
           </div>
           <h2
             className="text-white-950 dark:text-white text-2xl font-semibold"
-            data-oid="99iw4e0"
+            data-oid="ujefjpy"
           >
             {t("linkedStudents")}
           </h2>
@@ -70,39 +70,39 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
         <button
           onClick={() => onSetLimits({} as Student)} // Trigger link student modal in parent
           className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl transition-all duration-200 font-medium"
-          data-oid="213y.-n"
+          data-oid="dkc6:st"
         >
-          <Users className="w-5 h-5" data-oid=":pdng7t" />
-          <span data-oid="uy.6e1d">{t("linkStudent")}</span>
+          <Users className="w-5 h-5" data-oid="7hpd8:5" />
+          <span data-oid="1n7so_.">{t("linkStudent")}</span>
         </button>
       </div>
 
       {students.length === 0 ? (
         <div
           className="bg-white dark:bg-white-950 border border-brand dark:border-green-700 rounded-xl p-8 text-center"
-          data-oid="bgp.dl-"
+          data-oid="omi24xi"
         >
           <div
             className="flex flex-col items-center justify-center text-center text-sm text-emerald-600 dark:text-emerald-200"
-            data-oid="5-v7nmj"
+            data-oid="wrzofxp"
           >
-            <div className="w-82 h-82 mx-auto mb-2" data-oid="2swzu:5">
+            <div className="w-82 h-82 mx-auto mb-2" data-oid="zdnbhls">
               <img
                 src="/assets/kids wearing masks at school-bro.svg"
                 alt={t("noStudentsLinked")}
                 className="w-full h-full object-contain"
                 draggable={false}
-                data-oid="mk31g1p"
+                data-oid="lzfywak"
               />
             </div>
-            <p className="text-lg font-medium mb-1" data-oid="thr:-ul">
+            <p className="text-lg font-medium mb-1" data-oid="mnys8-p">
               {t("noStudentsLinked")}
             </p>
             {/* <p className="text-gray-400 dark:text-gray-500 text-sm">{t('linkStudentPrompt')}</p> */}
           </div>
           <p
             className="text-gray-400 dark:text-gray-500 text-sm mt-2"
-            data-oid="o:h2x:j"
+            data-oid="1t.ogua"
           >
             {t("linkStudentPrompt")}
           </p>
@@ -110,109 +110,109 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
       ) : (
         <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          data-oid="916j6-d"
+          data-oid="7kzbhqj"
         >
           {students.map((student) => (
             <div
               key={student.id}
               className="bg-white dark:bg-white-950 border border-brand dark:border-green-700 rounded-xl p-6 hover:shadow-lg transition-all duration-200"
-              data-oid="tr5-da6"
+              data-oid="4_w3kgl"
             >
               <div
                 className="flex items-center space-x-4 mb-4"
-                data-oid="g34ylmi"
+                data-oid="3oz0uri"
               >
                 <img
                   src={student.photo}
                   alt={student.name}
                   className="w-12 h-12 rounded-full object-cover border-2 border-green-300 dark:border-green-600"
-                  data-oid="cowg6ei"
+                  data-oid="-bl_ljg"
                 />
 
-                <div data-oid="5yatieq">
+                <div data-oid="r-_nl_j">
                   <h3
                     className="text-white-950 dark:text-white font-semibold text-lg"
-                    data-oid="ppt_905"
+                    data-oid="ijb8h02"
                   >
                     {student.name}
                   </h3>
                   <p
                     className="text-green-500 dark:text-green-400 text-sm"
-                    data-oid="n1p25.o"
+                    data-oid="pcd4xyp"
                   >
                     {student.studentId}
                   </p>
                 </div>
               </div>
-              <div className="space-y-3" data-oid="yh01v0u">
+              <div className="space-y-3" data-oid="c2vld1e">
                 <div
                   className="flex justify-between items-center"
-                  data-oid="9-v:_dj"
+                  data-oid="dz-jlbw"
                 >
                   <span
                     className="text-gray-500 dark:text-gray-400 text-sm"
-                    data-oid="0u4:c::"
+                    data-oid="3179rgl"
                   >
                     {t("grade")}
                   </span>
                   <span
                     className="text-white-950 dark:text-white font-medium"
-                    data-oid="su4.m26"
+                    data-oid="ah7:7e8"
                   >
                     {student.grade || t("notSpecified")}
                   </span>
                 </div>
                 <div
                   className="flex justify-between items-center"
-                  data-oid="dsybjld"
+                  data-oid="etfjv62"
                 >
                   <span
                     className="text-gray-500 dark:text-gray-400 text-sm"
-                    data-oid="81u:7z3"
+                    data-oid="rlx35vw"
                   >
                     {t("class")}
                   </span>
                   <span
                     className="text-white-950 dark:text-white font-medium"
-                    data-oid="0tpk.97"
+                    data-oid="mmczw2n"
                   >
                     {student.class || t("notSpecified")}
                   </span>
                 </div>
                 <div
                   className="flex justify-between items-center"
-                  data-oid="ad5m-a9"
+                  data-oid="k2cmlyu"
                 >
                   <span
                     className="text-gray-500 dark:text-gray-400 text-sm"
-                    data-oid="a5dx1-a"
+                    data-oid="zq8f_rh"
                   >
                     {t("todaySpent")}
                   </span>
                   <span
                     className="text-white-950 dark:text-white font-medium"
-                    data-oid="j7q4z55"
+                    data-oid="9pwqayf"
                   >
                     {formatLimitDisplay(student.todaySpent, student.dailyLimit)}
                   </span>
                 </div>
               </div>
-              <div className="mt-6 flex space-x-3" data-oid="no64ibt">
+              <div className="mt-6 flex space-x-3" data-oid="r6mhn60">
                 <button
                   onClick={() => onViewTransactions(student)}
                   className="flex-1 flex items-center justify-center space-x-2 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 py-3 rounded-xl hover:bg-green-100 dark:hover:bg-green-800/30 transition-all duration-200 font-medium"
-                  data-oid="4-ipmwg"
+                  data-oid="jmva3y2"
                 >
-                  <Activity className="w-5 h-5" data-oid="sm6o58:" />
-                  <span data-oid="axttikh">{t("transactions")}</span>
+                  <Activity className="w-5 h-5" data-oid="pctdobx" />
+                  <span data-oid="g9cajd0">{t("transactions")}</span>
                 </button>
                 <button
                   onClick={() => onSetLimits(student)}
                   className="flex-1 flex items-center justify-center space-x-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 py-3 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800/30 transition-all duration-200 font-medium"
-                  data-oid="a:9e4qw"
+                  data-oid="1noij1c"
                 >
-                  <Settings className="w-5 h-5" data-oid="dxn4n4k" />
-                  <span data-oid="oeenkch">{t("setLimits")}</span>
+                  <Settings className="w-5 h-5" data-oid="5-l3-.b" />
+                  <span data-oid="khdg.lg">{t("setLimits")}</span>
                 </button>
               </div>
             </div>

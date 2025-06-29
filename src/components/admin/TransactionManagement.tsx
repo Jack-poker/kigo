@@ -182,9 +182,9 @@ const TransactionManagement: React.FC = () => {
   const EmptyTransactionState = () => (
     <div
       className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-lg text-center"
-      data-oid="4c8d::p"
+      data-oid="w_hww8d"
     >
-      <div className="w-48 h-48 mb-6" data-oid="vu5u0.1">
+      <div className="w-48 h-48 mb-6" data-oid="6tpslv5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -194,16 +194,16 @@ const TransactionManagement: React.FC = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
           className="w-full h-full"
-          data-oid="00o-0ol"
+          data-oid="icxjpa6"
         >
-          <rect x="2" y="5" width="20" height="14" rx="2" data-oid="qhk1v04" />
-          <line x1="2" y1="10" x2="22" y2="10" data-oid="my52srr" />
-          <path d="M6 15h.01M9 15h.01" data-oid="oaq95kl" />
-          <path d="M6 5v-2" data-oid="pif0lrp" />
-          <path d="M18 5v-2" data-oid="mrh7-j3" />
-          <path d="M12 22v-2" data-oid="nx6pg.d" />
-          <path d="M12 17v-2" data-oid="_kyju.a" />
-          <path d="M16 15h2" data-oid="t86_m:7" />
+          <rect x="2" y="5" width="20" height="14" rx="2" data-oid="z7d1ld7" />
+          <line x1="2" y1="10" x2="22" y2="10" data-oid="-7eueld" />
+          <path d="M6 15h.01M9 15h.01" data-oid="0kj:_0u" />
+          <path d="M6 5v-2" data-oid="9l5hxmk" />
+          <path d="M18 5v-2" data-oid="vzih4j2" />
+          <path d="M12 22v-2" data-oid="h11m38v" />
+          <path d="M12 17v-2" data-oid="qblp1go" />
+          <path d="M16 15h2" data-oid="uztoz2-" />
           <circle
             cx="12"
             cy="12"
@@ -211,35 +211,35 @@ const TransactionManagement: React.FC = () => {
             stroke="#4ade80"
             strokeWidth="1"
             strokeDasharray="2 2"
-            data-oid="r8o.ee:"
+            data-oid="bf:vh8q"
           />
 
-          <path d="M12 9v3l1.5 1.5" data-oid="me:d_w4" />
+          <path d="M12 9v3l1.5 1.5" data-oid=":91zhzy" />
         </svg>
       </div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-2" data-oid="et3yoxf">
+      <h3 className="text-2xl font-bold text-gray-800 mb-2" data-oid="xi5tjee">
         No Transactions Yet
       </h3>
-      <p className="text-gray-600 mb-6" data-oid="nspz84d">
+      <p className="text-gray-600 mb-6" data-oid="2rcvxqy">
         Transactions will appear here once parents start making payments.
       </p>
       <button
         onClick={handleRefresh}
         className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-all transform hover:scale-105 shadow-md flex items-center justify-center"
-        data-oid="2kraw4q"
+        data-oid="5xpwyt."
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 mr-2"
           viewBox="0 0 20 20"
           fill="currentColor"
-          data-oid="4rh1fs9"
+          data-oid="m.7xc7o"
         >
           <path
             fillRule="evenodd"
             d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
             clipRule="evenodd"
-            data-oid="zoof4kn"
+            data-oid="kyfgy:8"
           />
         </svg>
         Refresh
@@ -249,30 +249,30 @@ const TransactionManagement: React.FC = () => {
 
   // Loading skeleton component
   const TransactionSkeleton = () => (
-    <div className="animate-pulse" data-oid="noeqad8">
+    <div className="animate-pulse" data-oid="63jnakj">
       <div
         className="h-8 bg-gray-200 rounded mb-4 w-1/3"
-        data-oid="kmg42:j"
+        data-oid="030dkcm"
       ></div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4" data-oid="5wgvg1y">
-        <div className="lg:col-span-2" data-oid="4wxoa91">
-          <div className="bg-white rounded-lg shadow p-4" data-oid="-2k4plt">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4" data-oid="rrugojr">
+        <div className="lg:col-span-2" data-oid="n3hv9fy">
+          <div className="bg-white rounded-lg shadow p-4" data-oid="910jcdx">
             <div
               className="h-8 bg-gray-200 rounded mb-4"
-              data-oid="xlm_lq6"
+              data-oid="xdk0in7"
             ></div>
-            <div className="space-y-3" data-oid="q8lk1y:">
+            <div className="space-y-3" data-oid="x--aip8">
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
                   className="grid grid-cols-7 gap-2"
-                  data-oid="gzk68wm"
+                  data-oid="-6ptr3_"
                 >
                   {[...Array(7)].map((_, j) => (
                     <div
                       key={j}
                       className="h-6 bg-gray-200 rounded"
-                      data-oid="wn99uc2"
+                      data-oid="91d17wz"
                     ></div>
                   ))}
                 </div>
@@ -280,24 +280,24 @@ const TransactionManagement: React.FC = () => {
             </div>
           </div>
         </div>
-        <div data-oid="k8mbhwp">
-          <div className="bg-white rounded-lg shadow p-4" data-oid="tjipl8k">
+        <div data-oid="qq9rejr">
+          <div className="bg-white rounded-lg shadow p-4" data-oid="tvpicoj">
             <div
               className="h-6 bg-gray-200 rounded mb-4"
-              data-oid=".k0366f"
+              data-oid="ml23uye"
             ></div>
-            <div className="space-y-2" data-oid="8u33xpb">
+            <div className="space-y-2" data-oid="u1s0npj">
               {[...Array(6)].map((_, i) => (
                 <div
                   key={i}
                   className="h-5 bg-gray-200 rounded"
-                  data-oid="-9jauo4"
+                  data-oid="u-epfv-"
                 ></div>
               ))}
             </div>
             <div
               className="h-8 bg-gray-200 rounded mt-4"
-              data-oid="8migijv"
+              data-oid="ab2bvbh"
             ></div>
           </div>
         </div>
@@ -306,37 +306,37 @@ const TransactionManagement: React.FC = () => {
   );
 
   return (
-    <div className="container mx-auto p-4" data-oid="vvj4ee.">
+    <div className="container mx-auto p-4" data-oid="4pu_fvd">
       {/* Header with gradient background */}
       <div
         className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg shadow-lg p-6 mb-6 text-white flex justify-between items-center"
-        data-oid="yga6z88"
+        data-oid="h3d7nat"
       >
-        <div data-oid="av7:mi1">
-          <h2 className="text-3xl font-bold" data-oid="9xpd31n">
+        <div data-oid="_7osgr7">
+          <h2 className="text-3xl font-bold" data-oid="x1c91wc">
             Transaction Management
           </h2>
-          <p className="text-green-100" data-oid="lj5oulw">
+          <p className="text-green-100" data-oid="0tdk0qo">
             Monitor and manage all financial transactions
           </p>
         </div>
         <button
           onClick={handleRefresh}
           className="bg-white text-green-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-all transform hover:scale-105 shadow flex items-center"
-          data-oid="p:9u:fz"
+          data-oid="9vm-.:5"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 mr-2"
             viewBox="0 0 20 20"
             fill="currentColor"
-            data-oid="ti-wej4"
+            data-oid="wv.:pel"
           >
             <path
               fillRule="evenodd"
               d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
               clipRule="evenodd"
-              data-oid="z54gq_8"
+              data-oid="hwyd3tc"
             />
           </svg>
           Refresh
@@ -347,44 +347,44 @@ const TransactionManagement: React.FC = () => {
       {error && (
         <div
           className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded shadow-md flex justify-between items-center"
-          data-oid="hx25:__"
+          data-oid="t6jq3rp"
         >
-          <div className="flex items-center" data-oid="0u2_e4i">
+          <div className="flex items-center" data-oid="crydk6-">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 mr-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              data-oid="uxab6:d"
+              data-oid="zru3p-:"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                data-oid="ickck66"
+                data-oid="8ku24hb"
               />
             </svg>
-            <span data-oid="1m8gph3">{error}</span>
+            <span data-oid="w0zvnue">{error}</span>
           </div>
           <button
             onClick={() => setError("")}
             className="text-red-700 hover:text-red-800"
-            data-oid="5hxkm68"
+            data-oid="vxnqbiq"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
               viewBox="0 0 20 20"
               fill="currentColor"
-              data-oid="tpkj3aj"
+              data-oid="cvfp7:r"
             >
               <path
                 fillRule="evenodd"
                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                 clipRule="evenodd"
-                data-oid="54xpol."
+                data-oid="8qex8mm"
               />
             </svg>
           </button>
@@ -392,70 +392,70 @@ const TransactionManagement: React.FC = () => {
       )}
 
       {/* Loading state */}
-      {loading && <TransactionSkeleton data-oid="iry1a_w" />}
+      {loading && <TransactionSkeleton data-oid="vze04k7" />}
 
       {/* Empty state */}
       {!loading && !error && transactions.length === 0 && (
-        <EmptyTransactionState data-oid="t39gr:n" />
+        <EmptyTransactionState data-oid="yr474ti" />
       )}
 
       {/* Transaction data */}
       {!loading && !error && transactions.length > 0 && (
         <div
           className="grid grid-cols-1 lg:grid-cols-3 gap-6"
-          data-oid="z6cyqqk"
+          data-oid="-izlhlt"
         >
-          <div className="lg:col-span-2" data-oid="0xrki8q">
+          <div className="lg:col-span-2" data-oid="jpxbme3">
             <div
               className="bg-white rounded-lg shadow-lg overflow-hidden"
-              data-oid="ybcinyx"
+              data-oid="3oyb4:b"
             >
-              <div className="overflow-x-auto" data-oid="xyj:z69">
-                <table className="min-w-full" data-oid="p0sbs_4">
-                  <thead data-oid="jdc5_vw">
+              <div className="overflow-x-auto" data-oid="qua:q9m">
+                <table className="min-w-full" data-oid="rwjptx8">
+                  <thead data-oid="rcyovpd">
                     <tr
                       className="bg-gradient-to-r from-green-500 to-green-600 text-white"
-                      data-oid="eeqre03"
+                      data-oid="e_2s659"
                     >
                       <th
                         className="py-3 px-4 text-left font-semibold"
-                        data-oid="m3vtg9a"
+                        data-oid="q0e9tjc"
                       >
                         ID
                       </th>
                       <th
                         className="py-3 px-4 text-left font-semibold"
-                        data-oid="3l3o1hz"
+                        data-oid="acpz4he"
                       >
                         Parent
                       </th>
                       <th
                         className="py-3 px-4 text-left font-semibold"
-                        data-oid="cgq1gu4"
+                        data-oid="s-mn8sq"
                       >
                         Student
                       </th>
                       <th
                         className="py-3 px-4 text-left font-semibold"
-                        data-oid="84sosab"
+                        data-oid=".g60c6o"
                       >
                         Amount
                       </th>
                       <th
                         className="py-3 px-4 text-left font-semibold"
-                        data-oid="lq4guc:"
+                        data-oid="_0-z1gp"
                       >
                         Fee
                       </th>
                       <th
                         className="py-3 px-4 text-left font-semibold"
-                        data-oid="qyqp.hp"
+                        data-oid="ydc1xx-"
                       >
                         Date
                       </th>
                       <th
                         className="py-3 px-4 text-left font-semibold"
-                        data-oid="g:_xdit"
+                        data-oid="7lcv6cg"
                       >
                         Actions
                       </th>
@@ -463,66 +463,66 @@ const TransactionManagement: React.FC = () => {
                   </thead>
                   <tbody
                     className="divide-y divide-gray-200"
-                    data-oid="e19bgc7"
+                    data-oid="omdg6:g"
                   >
                     {transactions.map((transaction) => (
                       <tr
                         key={transaction.transaction_id}
                         className="hover:bg-green-50 transition-colors duration-150 ease-in-out"
-                        data-oid="bdv0ilw"
+                        data-oid="rzl8zu8"
                       >
                         <td
                           className="py-3 px-4 font-mono text-sm"
-                          data-oid="xorch-t"
+                          data-oid="v:rm1k:"
                         >
                           {transaction.transaction_id.slice(0, 8)}
                         </td>
-                        <td className="py-3 px-4" data-oid="qqj5kr5">
+                        <td className="py-3 px-4" data-oid="eqcbdyu">
                           {transaction.parent?.fullnames || "-"}
                         </td>
-                        <td className="py-3 px-4" data-oid="m_doisz">
+                        <td className="py-3 px-4" data-oid="h:afp.k">
                           {transaction.student?.student_name || "-"}
                         </td>
                         <td
                           className="py-3 px-4 font-semibold text-green-600"
-                          data-oid="d4x9fu5"
+                          data-oid="ov6umbg"
                         >
                           RWF {transaction.amount_sent.toFixed(2)}
                         </td>
                         <td
                           className="py-3 px-4 text-gray-600"
-                          data-oid="7.:6u7d"
+                          data-oid=":f:fgs:"
                         >
                           RWF {transaction.fee.toFixed(2)}
                         </td>
-                        <td className="py-3 px-4" data-oid="a8o:-mj">
+                        <td className="py-3 px-4" data-oid="kz:ef63">
                           {new Date(transaction.timestamp).toLocaleDateString()}
                         </td>
-                        <td className="py-3 px-4" data-oid="519i4z-">
+                        <td className="py-3 px-4" data-oid="6fp73a9">
                           <button
                             onClick={() =>
                               handleViewTransaction(transaction.transaction_id)
                             }
                             className="bg-green-500 text-white px-3 py-1 rounded-full hover:bg-green-600 transition-colors duration-150 ease-in-out flex items-center justify-center text-sm"
-                            data-oid="ur71:kh"
+                            data-oid="0z7n__q"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               className="h-4 w-4 mr-1"
                               viewBox="0 0 20 20"
                               fill="currentColor"
-                              data-oid="gjgtsdc"
+                              data-oid="g97.nef"
                             >
                               <path
                                 d="M10 12a2 2 0 100-4 2 2 0 000 4z"
-                                data-oid="nlwrb00"
+                                data-oid="o6abu3s"
                               />
 
                               <path
                                 fillRule="evenodd"
                                 d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                 clipRule="evenodd"
-                                data-oid="qhvts6j"
+                                data-oid="f-6agpp"
                               />
                             </svg>
                             View
@@ -537,39 +537,39 @@ const TransactionManagement: React.FC = () => {
           </div>
 
           {/* Transaction details panel */}
-          <div data-oid="-gvryqv">
+          <div data-oid="0u32:fi">
             {selectedTransaction ? (
               <div
                 className="bg-white rounded-lg shadow-lg p-6 sticky top-4 transition-all duration-300 transform hover:shadow-xl"
-                data-oid="nb7bdaz"
+                data-oid="vehtxxi"
               >
                 <div
                   className="flex justify-between items-center mb-4"
-                  data-oid="ab5p58e"
+                  data-oid="of-goex"
                 >
                   <h3
                     className="text-xl font-bold text-gray-800"
-                    data-oid="0312w:z"
+                    data-oid="-0s3oxr"
                   >
                     Transaction Details
                   </h3>
                   <button
                     onClick={() => setSelectedTransaction(null)}
                     className="text-gray-500 hover:text-gray-700"
-                    data-oid="eov15.k"
+                    data-oid="3st2991"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      data-oid="184jy9h"
+                      data-oid="sye-b77"
                     >
                       <path
                         fillRule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                         clipRule="evenodd"
-                        data-oid="ba416c-"
+                        data-oid="9zjb4_c"
                       />
                     </svg>
                   </button>
@@ -577,102 +577,102 @@ const TransactionManagement: React.FC = () => {
 
                 <div
                   className="bg-green-50 p-4 rounded-lg mb-4"
-                  data-oid="f:k53b7"
+                  data-oid="hn.0ub9"
                 >
-                  <div className="flex justify-between" data-oid="c_iohqt">
-                    <span className="text-gray-600" data-oid="bjw51vk">
+                  <div className="flex justify-between" data-oid="-a6v52p">
+                    <span className="text-gray-600" data-oid="s3b8jow">
                       Amount:
                     </span>
                     <span
                       className="font-bold text-green-600"
-                      data-oid="78eywol"
+                      data-oid="t4b_:dq"
                     >
                       RWF {selectedTransaction.amount_sent.toFixed(2)}
                     </span>
                   </div>
-                  <div className="flex justify-between mt-1" data-oid="0_g7abt">
-                    <span className="text-gray-600" data-oid="w467lpm">
+                  <div className="flex justify-between mt-1" data-oid="pmyhupq">
+                    <span className="text-gray-600" data-oid="8yfsy3k">
                       Fee:
                     </span>
-                    <span className="text-gray-800" data-oid="3__moit">
+                    <span className="text-gray-800" data-oid="am2tzp9">
                       RWF {selectedTransaction.fee.toFixed(2)}
                     </span>
                   </div>
                 </div>
 
-                <div className="space-y-3" data-oid="c5a-_ce">
-                  <div data-oid="7cc39uw">
+                <div className="space-y-3" data-oid="_3kehsy">
+                  <div data-oid="cw.32mg">
                     <label
                       className="block text-sm font-medium text-gray-600"
-                      data-oid="3:0sxhj"
+                      data-oid="t7ubdga"
                     >
                       Transaction ID
                     </label>
                     <div
                       className="mt-1 font-mono text-sm bg-gray-50 p-2 rounded border border-gray-200 overflow-x-auto"
-                      data-oid="fww5o6p"
+                      data-oid="0stgfic"
                     >
                       {selectedTransaction.transaction_id}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4" data-oid="hjyynpw">
-                    <div data-oid="87eiqw1">
+                  <div className="grid grid-cols-2 gap-4" data-oid="eix_jp9">
+                    <div data-oid="2.f_y5a">
                       <label
                         className="block text-sm font-medium text-gray-600"
-                        data-oid="3s_.:7x"
+                        data-oid="lgt1pcw"
                       >
                         Parent
                       </label>
                       <div
                         className="mt-1 bg-gray-50 p-2 rounded border border-gray-200"
-                        data-oid="erwu7r_"
+                        data-oid="ilab.nm"
                       >
                         {selectedTransaction.parent?.fullnames || "-"}
                       </div>
                     </div>
-                    <div data-oid="o5qa:i8">
+                    <div data-oid="dzh4fbj">
                       <label
                         className="block text-sm font-medium text-gray-600"
-                        data-oid="12w6v1_"
+                        data-oid="pmy6:qu"
                       >
                         Student
                       </label>
                       <div
                         className="mt-1 bg-gray-50 p-2 rounded border border-gray-200"
-                        data-oid="frk5clk"
+                        data-oid="29akz8n"
                       >
                         {selectedTransaction.student?.student_name || "-"}
                       </div>
                     </div>
                   </div>
 
-                  <div data-oid="qlde0ww">
+                  <div data-oid="bkr36lq">
                     <label
                       className="block text-sm font-medium text-gray-600"
-                      data-oid="rjtvke:"
+                      data-oid="3b84wl8"
                     >
                       Description
                     </label>
                     <div
                       className="mt-1 bg-gray-50 p-2 rounded border border-gray-200 min-h-[60px]"
-                      data-oid="1k:9uzc"
+                      data-oid="p-.wsey"
                     >
                       {selectedTransaction.description ||
                         "No description provided"}
                     </div>
                   </div>
 
-                  <div data-oid="hqd30kq">
+                  <div data-oid="yaj4d:9">
                     <label
                       className="block text-sm font-medium text-gray-600"
-                      data-oid=".hxqdw7"
+                      data-oid="8n8_guv"
                     >
                       Date & Time
                     </label>
                     <div
                       className="mt-1 bg-gray-50 p-2 rounded border border-gray-200"
-                      data-oid="u6ta-m3"
+                      data-oid="l1gwnl6"
                     >
                       {new Date(selectedTransaction.timestamp).toLocaleString()}
                     </div>
@@ -680,16 +680,16 @@ const TransactionManagement: React.FC = () => {
 
                   {selectedTransaction.latitude &&
                     selectedTransaction.longitude && (
-                      <div data-oid="pj8z3kp">
+                      <div data-oid="yxd-jn3">
                         <label
                           className="block text-sm font-medium text-gray-600"
-                          data-oid="3m3.nn_"
+                          data-oid="uri.hyb"
                         >
                           Location
                         </label>
                         <div
                           className="mt-1 bg-gray-50 p-2 rounded border border-gray-200"
-                          data-oid="yuh0sms"
+                          data-oid="lojm8gr"
                         >
                           Lat: {selectedTransaction.latitude.toFixed(6)}, Long:{" "}
                           {selectedTransaction.longitude.toFixed(6)}
@@ -701,7 +701,7 @@ const TransactionManagement: React.FC = () => {
             ) : (
               <div
                 className="bg-gray-50 rounded-lg border border-gray-200 p-6 text-center"
-                data-oid="5.8zcto"
+                data-oid="q7psi5_"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -709,23 +709,23 @@ const TransactionManagement: React.FC = () => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  data-oid="sccbe20"
+                  data-oid="swbsd4h"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={1}
                     d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                    data-oid="5ygva8f"
+                    data-oid="lhqj7hi"
                   />
                 </svg>
                 <h3
                   className="text-lg font-medium text-gray-600 mb-1"
-                  data-oid="h.505ry"
+                  data-oid="xp1bs3j"
                 >
                   No Transaction Selected
                 </h3>
-                <p className="text-gray-500 text-sm" data-oid="_f4u8zc">
+                <p className="text-gray-500 text-sm" data-oid="2rhefw.">
                   Click on "View" button to see transaction details
                 </p>
               </div>

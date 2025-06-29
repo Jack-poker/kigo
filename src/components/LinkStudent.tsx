@@ -151,65 +151,65 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
   };
 
   return (
-    <div className="w-full max-w-md mx-auto" data-oid="x86gkx7">
+    <div className="w-full max-w-md mx-auto" data-oid="dwsqk-j">
       <Tabs
         value={activeTab}
         onValueChange={setActiveTab}
         className="w-full"
-        data-oid="ay9blc1"
+        data-oid="qcvsy8z"
       >
         <TabsList
           className="grid w-full grid-cols-2 mb-6 bg-gray-100 dark:bg-gray-800 p-1 rounded-xl"
-          data-oid="17:36hh"
+          data-oid="ff0gkvu"
         >
           <TabsTrigger
             value="manual"
             className="flex items-center space-x-2 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm"
-            data-oid="l1rrdwt"
+            data-oid="v.p:gp0"
           >
-            <UserPlus className="h-4 w-4" data-oid="4yh5m30" />
-            <span className="hidden sm:inline" data-oid="lofp3fh">
+            <UserPlus className="h-4 w-4" data-oid="_e5cy:-" />
+            <span className="hidden sm:inline" data-oid="3m3fbpu">
               Manual Entry
             </span>
-            <span className="sm:hidden" data-oid="xh:zpb3">
+            <span className="sm:hidden" data-oid="r27scid">
               Manual
             </span>
           </TabsTrigger>
           <TabsTrigger
             value="qr"
             className="flex items-center space-x-2 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm"
-            data-oid="bzc.98h"
+            data-oid="yrpeh70"
           >
-            <QrCode className="h-4 w-4" data-oid="mx.99:f" />
-            <span className="hidden sm:inline" data-oid="zztrjmz">
+            <QrCode className="h-4 w-4" data-oid="sfq2njs" />
+            <span className="hidden sm:inline" data-oid="pt9fj75">
               QR Scan
             </span>
-            <span className="sm:hidden" data-oid="vto52pv">
+            <span className="sm:hidden" data-oid="px2n-u8">
               QR
             </span>
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="manual" className="space-y-6" data-oid="az6z89l">
-          <div className="text-center mb-6" data-oid="yvsn9sd">
+        <TabsContent value="manual" className="space-y-6" data-oid="xxxlywa">
+          <div className="text-center mb-6" data-oid="h45kgpk">
             <div
               className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-6 rounded-2xl"
-              data-oid="952qdwc"
+              data-oid="e9_pk-f"
             >
               <UserPlus
                 className="h-12 w-12 text-purple-600 dark:text-purple-400 mx-auto mb-3"
-                data-oid="pa-l8.-"
+                data-oid="0q-x9g7"
               />
 
               <h3
                 className="text-lg font-semibold text-gray-900 dark:text-white mb-2"
-                data-oid="5t8spat"
+                data-oid="js1z-jq"
               >
                 Add Student Details
               </h3>
               <p
                 className="text-gray-600 dark:text-gray-300 text-sm"
-                data-oid="pkh1qtp"
+                data-oid="9j:aogl"
               >
                 Enter your student's information manually
               </p>
@@ -219,12 +219,12 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
           <form
             onSubmit={handleManualSubmit}
             className="space-y-4"
-            data-oid="c8n1-jc"
+            data-oid="97v-ir:"
           >
-            <div data-oid=".eblf4-">
+            <div data-oid="x4kw:y0">
               <label
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                data-oid="y6l:pmf"
+                data-oid="wkpt0ll"
               >
                 Student ID
               </label>
@@ -236,14 +236,14 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                 required
                 className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                 placeholder="STU003"
-                data-oid="4jsq0.d"
+                data-oid="i3u0wxw"
               />
             </div>
 
-            <div data-oid="ixfsrm.">
+            <div data-oid="s-vgj:_">
               <label
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                data-oid=".z4c41n"
+                data-oid="awpd.c6"
               >
                 Student Name
               </label>
@@ -255,15 +255,15 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                 required
                 className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                 placeholder="Full Name"
-                data-oid="7:ytjpl"
+                data-oid="6ztd-7u"
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4" data-oid="xq.afim">
-              <div data-oid="v5_02lz">
+            <div className="grid grid-cols-2 gap-4" data-oid="n7j5qox">
+              <div data-oid="yliwv6:">
                 <label
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  data-oid="9unsso0"
+                  data-oid="a9ee9kp"
                 >
                   Grade
                 </label>
@@ -275,13 +275,13 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                   required
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                   placeholder="Grade 10"
-                  data-oid="0h2z8m:"
+                  data-oid="xi5.:92"
                 />
               </div>
-              <div data-oid="7-n5_9:">
+              <div data-oid="3pthn3i">
                 <label
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  data-oid="io0a01-"
+                  data-oid="_0ddb1b"
                 >
                   Class
                 </label>
@@ -293,15 +293,15 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                   required
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                   placeholder="10A"
-                  data-oid="6j8s726"
+                  data-oid="u2oh81x"
                 />
               </div>
             </div>
 
-            <div data-oid="erz9gui">
+            <div data-oid="0lbv0i2">
               <label
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                data-oid="6pfjtp5"
+                data-oid="x5g2xj0"
               >
                 PIN for Purchases
               </label>
@@ -317,7 +317,7 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                 maxLength={4}
                 className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                 placeholder="****"
-                data-oid="hxxm61l"
+                data-oid="q8qxggq"
               />
             </div>
 
@@ -325,46 +325,46 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
               type="submit"
               disabled={isLoading}
               className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-200"
-              data-oid="iwf5cey"
+              data-oid="x78llo2"
             >
               {isLoading ? (
-                <div className="flex items-center space-x-2" data-oid="i1hjqjx">
+                <div className="flex items-center space-x-2" data-oid="b7orerm">
                   <div
                     className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"
-                    data-oid="tdtijuv"
+                    data-oid="gl.5n.p"
                   ></div>
-                  <span data-oid="b-rjwds">Linking Student...</span>
+                  <span data-oid="_h6xg4b">Linking Student...</span>
                 </div>
               ) : (
-                <div className="flex items-center space-x-2" data-oid="ws5hkf8">
-                  <UserPlus className="h-5 w-5" data-oid="451-7x0" />
-                  <span data-oid="7:gajj3">Link Student</span>
+                <div className="flex items-center space-x-2" data-oid="p-_y816">
+                  <UserPlus className="h-5 w-5" data-oid="p6wjn.m" />
+                  <span data-oid="iccq49r">Link Student</span>
                 </div>
               )}
             </Button>
           </form>
         </TabsContent>
 
-        <TabsContent value="qr" className="space-y-6" data-oid="hd4:vtu">
-          <div className="text-center mb-6" data-oid="imqmr4t">
+        <TabsContent value="qr" className="space-y-6" data-oid="w4p18lm">
+          <div className="text-center mb-6" data-oid="mou149a">
             <div
               className="bg-gradient-to-r from-blue-100 to-green-100 dark:from-blue-900/30 dark:to-green-900/30 p-6 rounded-2xl"
-              data-oid="xi9c8ac"
+              data-oid="9o:0t78"
             >
               <QrCode
                 className="h-12 w-12 text-blue-600 dark:text-blue-400 mx-auto mb-3"
-                data-oid="mzz0yps"
+                data-oid="2w9d63u"
               />
 
               <h3
                 className="text-lg font-semibold text-gray-900 dark:text-white mb-2"
-                data-oid="w6muv54"
+                data-oid="jh5:z.n"
               >
                 Scan QR Code
               </h3>
               <p
                 className="text-gray-600 dark:text-gray-300 text-sm"
-                data-oid="krmq474"
+                data-oid="oo7mjje"
               >
                 Point your camera at the student's QR code
               </p>
@@ -372,23 +372,23 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
           </div>
 
           {!showQRScanner ? (
-            <div className="text-center" data-oid="d77hi64">
+            <div className="text-center" data-oid="lbreinb">
               <Button
                 onClick={startCamera}
                 className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-6 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-200"
-                data-oid="j:6t0c4"
+                data-oid="hl8kqet"
               >
-                <Camera className="h-5 w-5 mr-2" data-oid="rxj7:n6" />
+                <Camera className="h-5 w-5 mr-2" data-oid="uu03ut5" />
                 Start Camera
               </Button>
             </div>
           ) : (
-            <div className="space-y-4" data-oid="z9hk69o">
+            <div className="space-y-4" data-oid="mmo7715">
               {!scanResult ? (
                 <>
                   <div
                     className="relative bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden aspect-square"
-                    data-oid="kkllx1p"
+                    data-oid=":m-wf1e"
                   >
                     <video
                       ref={videoRef}
@@ -396,35 +396,35 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                       playsInline
                       muted
                       className="w-full h-full object-cover"
-                      data-oid="92lufgu"
+                      data-oid="8aknik_"
                     />
 
                     {/* Scanning overlay */}
                     <div
                       className="absolute inset-0 border-2 border-blue-500"
-                      data-oid=".l_uyv2"
+                      data-oid="w.kskla"
                     >
                       <div
                         className="absolute top-4 left-4 w-8 h-8 border-t-4 border-l-4 border-blue-500 rounded-tl-lg"
-                        data-oid="3q1gnwz"
+                        data-oid="xhrd4ri"
                       ></div>
                       <div
                         className="absolute top-4 right-4 w-8 h-8 border-t-4 border-r-4 border-blue-500 rounded-tr-lg"
-                        data-oid="onc8_bl"
+                        data-oid="x4i358x"
                       ></div>
                       <div
                         className="absolute bottom-4 left-4 w-8 h-8 border-b-4 border-l-4 border-blue-500 rounded-bl-lg"
-                        data-oid="tgdxn_0"
+                        data-oid="b2xtwm."
                       ></div>
                       <div
                         className="absolute bottom-4 right-4 w-8 h-8 border-b-4 border-r-4 border-blue-500 rounded-br-lg"
-                        data-oid="6y4710n"
+                        data-oid="bw0lp2:"
                       ></div>
 
                       {/* Scanning line animation */}
                       <div
                         className="absolute inset-x-0 top-1/2 h-0.5 bg-blue-500 animate-pulse"
-                        data-oid="drwm7-_"
+                        data-oid=".s3_4s7"
                       ></div>
                     </div>
 
@@ -433,16 +433,16 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                       variant="ghost"
                       size="sm"
                       className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white"
-                      data-oid="m35.n6b"
+                      data-oid=":e-ds0h"
                     >
-                      <X className="h-4 w-4" data-oid="bco0q:f" />
+                      <X className="h-4 w-4" data-oid="8hjsy4n" />
                     </Button>
                   </div>
 
-                  <div className="text-center space-y-4" data-oid="h-7ppj_">
+                  <div className="text-center space-y-4" data-oid="y12mmqs">
                     <p
                       className="text-gray-600 dark:text-gray-300 text-sm"
-                      data-oid="60jjtr5"
+                      data-oid="201k66g"
                     >
                       Position the QR code within the frame
                     </p>
@@ -450,48 +450,48 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                       onClick={simulateQRScan}
                       variant="outline"
                       className="border-blue-500 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20"
-                      data-oid="_u0lb7c"
+                      data-oid="xwthvs-"
                     >
                       Simulate QR Scan (Demo)
                     </Button>
                   </div>
                 </>
               ) : (
-                <div className="text-center space-y-4" data-oid="oxwisjs">
+                <div className="text-center space-y-4" data-oid="q7hcb:3">
                   <div
                     className="bg-green-50 dark:bg-green-900/20 p-6 rounded-2xl"
-                    data-oid="xi.9jn_"
+                    data-oid="s4tevm1"
                   >
                     <CheckCircle
                       className="h-16 w-16 text-green-500 mx-auto mb-4"
-                      data-oid="0r.3uqj"
+                      data-oid=":903du5"
                     />
 
                     <h3
                       className="text-lg font-semibold text-gray-900 dark:text-white mb-2"
-                      data-oid="m_7quyx"
+                      data-oid="pwhrzxf"
                     >
                       QR Code Detected!
                     </h3>
                     <p
                       className="text-gray-600 dark:text-gray-300"
-                      data-oid="h9v3h_3"
+                      data-oid="a0mypg9"
                     >
                       Student ID: {scanResult}
                     </p>
-                    <div className="mt-4" data-oid="66db0as">
+                    <div className="mt-4" data-oid="qyizw2v">
                       {isLoading ? (
                         <div
                           className="flex items-center justify-center space-x-2"
-                          data-oid="u3836id"
+                          data-oid="xtd60.1"
                         >
                           <div
                             className="animate-spin rounded-full h-5 w-5 border-b-2 border-green-500"
-                            data-oid="x98ck4-"
+                            data-oid="0hrsubh"
                           ></div>
                           <span
                             className="text-green-600 dark:text-green-400"
-                            data-oid="4zxnu4_"
+                            data-oid="s2sep7h"
                           >
                             Linking student...
                           </span>
@@ -499,7 +499,7 @@ const ModalLinkForm: React.FC<ModalLinkFormProps> = ({
                       ) : (
                         <p
                           className="text-green-600 dark:text-green-400 font-medium"
-                          data-oid="3uzfihw"
+                          data-oid="xoam1cy"
                         >
                           Student linked successfully!
                         </p>
