@@ -1106,7 +1106,7 @@ const Index = () => {
         </div>
       </div>
       <AdBanner data-oid="m51tkfe" />
-      <div className="flex-1 p-6" data-oid="ypwbxfn">
+      <div className="flex-1 p-6 pb-24 md:pb-6" data-oid="ypwbxfn">
         <div className="max-w-7xl mx-auto" data-oid="ufq37p7">
           {renderTabContent()}
         </div>
@@ -1399,46 +1399,115 @@ const Index = () => {
           hideSubmit
           data-oid="re580ni"
         >
-          <div className="space-y-4" data-oid="5et_q-8">
+          <div
+            className="max-h-96 overflow-y-auto space-y-3"
+            data-oid="5et_q-8"
+          >
             {transactions
               .filter((tx) => tx.student === selectedStudent.name)
               .map((tx) => (
                 <div
                   key={tx.id}
-                  className="flex items-center justify-between p-3 rounded-lg bg-brand dark:bg-green-900/30"
+                  className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
                   data-oid="d_:d6c2"
                 >
-                  <div data-oid="vepi7hs">
-                    <p
-                      className="text-sm font-medium text-brand dark:text-green-200"
-                      data-oid="okf3n:a"
-                    >
-                      {tx.title}
-                    </p>
-                    <p
-                      className="text-xs text-green-600 dark:text-brand"
-                      data-oid="8ugc7sh"
-                    >
-                      {tx.date}
-                    </p>
-                  </div>
-                  <span
-                    className={`text-sm font-semibold ${tx.amount > 0 ? "text-green-600 dark:text-brand" : "text-red-600 dark:text-red-400"}`}
-                    data-oid="6efc4e9"
+                  <div
+                    className="flex items-center space-x-4"
+                    data-oid="vepi7hs"
                   >
-                    {tx.amount > 0 ? "+" : ""}
-                    {Math.abs(tx.amount).toLocaleString()} RWF
-                  </span>
+                    <div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
+                        tx.type === "deposit"
+                          ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+                          : tx.type === "withdraw"
+                            ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
+                            : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                      }`}
+                      data-oid="lnah68b"
+                    >
+                      {tx.type === "deposit" ? (
+                        <TrendingUp className="w-5 h-5" data-oid="xxw946b" />
+                      ) : tx.type === "withdraw" ? (
+                        <TrendingDown className="w-5 h-5" data-oid="iu216fd" />
+                      ) : (
+                        <ShoppingCart className="w-5 h-5" data-oid="rtc-:04" />
+                      )}
+                    </div>
+                    <div className="flex-1" data-oid="glf:07v">
+                      <p
+                        className="text-gray-900 dark:text-white text-sm font-semibold mb-1"
+                        data-oid="okf3n:a"
+                      >
+                        {tx.title}
+                      </p>
+                      <p
+                        className="text-gray-500 dark:text-gray-400 text-xs"
+                        data-oid="8ugc7sh"
+                      >
+                        {tx.date}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right" data-oid="6pqerze">
+                    <span
+                      className={`text-sm font-bold ${tx.amount > 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}
+                      data-oid="6efc4e9"
+                    >
+                      {tx.amount > 0 ? "+" : ""}
+                      {Math.abs(tx.amount).toLocaleString()} RWF
+                    </span>
+                    <div
+                      className="flex items-center justify-end mt-1"
+                      data-oid="wz4o5au"
+                    >
+                      <div
+                        className={`w-2 h-2 rounded-full ${
+                          tx.status === "completed"
+                            ? "bg-green-500"
+                            : tx.status === "pending"
+                              ? "bg-yellow-500"
+                              : "bg-red-500"
+                        }`}
+                        data-oid="0pijt7r"
+                      ></div>
+                      <span
+                        className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
+                        data-oid="mh5-.wt"
+                      >
+                        {tx.status}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               ))}
             {transactions.filter((tx) => tx.student === selectedStudent.name)
               .length === 0 && (
-              <p
-                className="text-center text-gray-500 dark:text-gray-400"
-                data-oid="lp1nt6j"
+              <div
+                className="flex flex-col items-center justify-center py-12 text-center"
+                data-oid="3lzopp9"
               >
-                {t("noTransactions")}
-              </p>
+                <div
+                  className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
+                  data-oid="5etymu6"
+                >
+                  <Activity
+                    className="w-8 h-8 text-gray-400 dark:text-gray-500"
+                    data-oid="nt7buvp"
+                  />
+                </div>
+                <h4
+                  className="text-gray-900 dark:text-white font-medium mb-2"
+                  data-oid=".a28.1:"
+                >
+                  No Transactions Found
+                </h4>
+                <p
+                  className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
+                  data-oid="lp1nt6j"
+                >
+                  {t("noTransactions")}
+                </p>
+              </div>
             )}
           </div>
         </VercelModal>
@@ -1452,43 +1521,130 @@ const Index = () => {
           hideSubmit
           data-oid="j8i9lgn"
         >
-          <div className="space-y-4" data-oid="twiy99y">
+          <div
+            className="max-h-96 overflow-y-auto space-y-3"
+            data-oid="twiy99y"
+          >
             {transactions.map((tx) => (
               <div
                 key={tx.id}
-                className="flex items-center justify-between p-3 rounded-lg bg-brand dark:bg-green-900/30"
+                className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
                 data-oid="j_hi.zz"
               >
-                <div data-oid="_skajwq">
-                  <p
-                    className="text-sm font-medium text-brand dark:text-green-200"
-                    data-oid="vj7izdt"
+                <div className="flex items-center space-x-4" data-oid="_skajwq">
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
+                      tx.type === "deposit"
+                        ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+                        : tx.type === "withdraw"
+                          ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
+                          : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                    }`}
+                    data-oid="c::x4ef"
                   >
-                    {tx.title}
-                  </p>
-                  <p
-                    className="text-xs text-green-600 dark:text-brand"
-                    data-oid="y_5fdtj"
-                  >
-                    {tx.date}
-                  </p>
+                    {tx.type === "deposit" ? (
+                      <TrendingUp className="w-5 h-5" data-oid="7c.t9.n" />
+                    ) : tx.type === "withdraw" ? (
+                      <TrendingDown className="w-5 h-5" data-oid="prqlstn" />
+                    ) : (
+                      <ShoppingCart className="w-5 h-5" data-oid="aw96.jk" />
+                    )}
+                  </div>
+                  <div className="flex-1" data-oid=":9x8lt-">
+                    <p
+                      className="text-gray-900 dark:text-white text-sm font-semibold mb-1"
+                      data-oid="vj7izdt"
+                    >
+                      {tx.title}
+                    </p>
+                    <div
+                      className="flex items-center space-x-2"
+                      data-oid="22d617s"
+                    >
+                      <p
+                        className="text-gray-500 dark:text-gray-400 text-xs"
+                        data-oid="y_5fdtj"
+                      >
+                        {tx.date}
+                      </p>
+                      {tx.student && (
+                        <>
+                          <span
+                            className="text-gray-300 dark:text-gray-600"
+                            data-oid="_d6l9y5"
+                          >
+                            •
+                          </span>
+                          <p
+                            className="text-gray-500 dark:text-gray-400 text-xs"
+                            data-oid=":td.-km"
+                          >
+                            {tx.student}
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <span
-                  className={`text-sm font-semibold ${tx.amount > 0 ? "text-green-600 dark:text-brand" : "text-red-600 dark:text-red-400"}`}
-                  data-oid="uld0ha3"
-                >
-                  {tx.amount > 0 ? "+" : ""}
-                  {Math.abs(tx.amount).toLocaleString()} RWF
-                </span>
+                <div className="text-right" data-oid="qxvwtv0">
+                  <span
+                    className={`text-sm font-bold ${tx.amount > 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}
+                    data-oid="uld0ha3"
+                  >
+                    {tx.amount > 0 ? "+" : ""}
+                    {Math.abs(tx.amount).toLocaleString()} RWF
+                  </span>
+                  <div
+                    className="flex items-center justify-end mt-1"
+                    data-oid="c_x7jfz"
+                  >
+                    <div
+                      className={`w-2 h-2 rounded-full ${
+                        tx.status === "completed"
+                          ? "bg-green-500"
+                          : tx.status === "pending"
+                            ? "bg-yellow-500"
+                            : "bg-red-500"
+                      }`}
+                      data-oid="_2j.6x3"
+                    ></div>
+                    <span
+                      className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
+                      data-oid="g1zunzb"
+                    >
+                      {tx.status}
+                    </span>
+                  </div>
+                </div>
               </div>
             ))}
             {transactions.length === 0 && (
-              <p
-                className="text-center text-gray-500 dark:text-gray-400"
-                data-oid="u8pljaq"
+              <div
+                className="flex flex-col items-center justify-center py-12 text-center"
+                data-oid=":1nz.-0"
               >
-                {t("noTransactions")}
-              </p>
+                <div
+                  className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
+                  data-oid="95ml.3x"
+                >
+                  <Activity
+                    className="w-8 h-8 text-gray-400 dark:text-gray-500"
+                    data-oid="1r5bbgt"
+                  />
+                </div>
+                <h4
+                  className="text-gray-900 dark:text-white font-medium mb-2"
+                  data-oid="4-:23m5"
+                >
+                  No Transactions Found
+                </h4>
+                <p
+                  className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
+                  data-oid="u8pljaq"
+                >
+                  {t("noTransactions")}
+                </p>
+              </div>
             )}
           </div>
         </VercelModal>
