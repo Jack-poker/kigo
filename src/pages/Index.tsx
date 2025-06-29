@@ -565,9 +565,9 @@ const Index = () => {
                   data-oid="de3ao8."
                 />
               </div>
-              <div className="lg:col-span-1" data-oid="wvjyluw">
+              <div className="lg:col-span-1 h-[326px]" data-oid="wvjyluw">
                 <div
-                  className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-full"
+                  className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-[318px]"
                   data-oid="gpopm4v"
                 >
                   <h3
@@ -579,7 +579,7 @@ const Index = () => {
                   <div className="space-y-3" data-oid="doa01:r">
                     <button
                       onClick={() => setActiveModal("deposit")}
-                      className="w-full flex items-center justify-center space-x-3 bg-brand hover:bg-brand text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 hover:bg-brand text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium bg-[#07040C]"
                       data-oid="_fe04:5"
                     >
                       <Plus className="w-5 h-5" data-oid="v7qx-op" />
@@ -606,103 +606,164 @@ const Index = () => {
               </div>
               <div className="lg:col-span-1" data-oid="vlib:0g">
                 <div
-                  className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-full"
+                  className="bg-white dark:bg-white-950 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-200"
                   data-oid="s4z9g4w"
                 >
-                  <h3
-                    className="text-white-950 dark:text-white font-semibold text-lg mb-6"
-                    data-oid="rj.la:z"
+                  <div
+                    className="flex items-center justify-between mb-6"
+                    data-oid="4_mjvfs"
                   >
-                    {t("recentActivity")}
-                  </h3>
-                  <div className="space-y-4" data-oid="7rs.5d7">
-                    {transactions.slice(0, 4).map((transaction) => (
+                    <h3
+                      className="text-gray-900 dark:text-white font-semibold text-lg"
+                      data-oid="rj.la:z"
+                    >
+                      {t("recentActivity")}
+                    </h3>
+                    <button
+                      onClick={() => setActiveModal("allTransactions")}
+                      className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
+                      data-oid="obqo0x8"
+                    >
+                      View All
+                    </button>
+                  </div>
+                  <div className="space-y-3" data-oid="7rs.5d7">
+                    {transactions.slice(0, 4).map((transaction, index) => (
                       <div
                         key={transaction.id}
-                        className="flex items-center justify-between"
+                        className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
                         data-oid="6ezzhmr"
                       >
                         <div
-                          className="flex items-center space-x-3"
+                          className="flex items-center space-x-4"
                           data-oid="6we-ao8"
                         >
                           <div
-                            className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                            className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                               transaction.type === "deposit"
-                                ? "bg-brand dark:bg-green-900/30"
+                                ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
                                 : transaction.type === "withdraw"
-                                  ? "bg-red-50 dark:bg-red-900/30"
-                                  : "bg-blue-50 dark:bg-blue-900/30"
+                                  ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
+                                  : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
                             }`}
                             data-oid="uas.p_5"
                           >
                             {transaction.type === "deposit" ? (
                               <TrendingUp
-                                className="w-5 h-5 text-green-600 dark:text-brand"
+                                className="w-5 h-5"
                                 data-oid="x9vrm34"
                               />
                             ) : transaction.type === "withdraw" ? (
                               <TrendingDown
-                                className="w-5 h-5 text-red-600 dark:text-red-400"
+                                className="w-5 h-5"
                                 data-oid="wbkz3y2"
                               />
                             ) : (
                               <ShoppingCart
-                                className="w-5 h-5 text-blue-600 dark:text-blue-400"
+                                className="w-5 h-5"
                                 data-oid="i6r.goe"
                               />
                             )}
                           </div>
-                          <div data-oid="gibgkyf">
+                          <div className="flex-1" data-oid="gibgkyf">
                             <p
-                              className="text-white-950 dark:text-white text-sm font-medium"
+                              className="text-gray-900 dark:text-white text-sm font-semibold mb-1"
                               data-oid="k6sj:4d"
                             >
                               {transaction.title}
                             </p>
-                            <p
-                              className="text-brand0 dark:text-brand text-xs"
-                              data-oid="abf0p0e"
+                            <div
+                              className="flex items-center space-x-2"
+                              data-oid="risb6ob"
                             >
-                              {transaction.date}
-                            </p>
+                              <p
+                                className="text-gray-500 dark:text-gray-400 text-xs"
+                                data-oid="abf0p0e"
+                              >
+                                {transaction.date}
+                              </p>
+                              {transaction.student && (
+                                <>
+                                  <span
+                                    className="text-gray-300 dark:text-gray-600"
+                                    data-oid="ocrr6jc"
+                                  >
+                                    •
+                                  </span>
+                                  <p
+                                    className="text-gray-500 dark:text-gray-400 text-xs"
+                                    data-oid="uor:riw"
+                                  >
+                                    {transaction.student}
+                                  </p>
+                                </>
+                              )}
+                            </div>
                           </div>
                         </div>
-                        <span
-                          className={`text-sm font-semibold ${
-                            transaction.amount > 0
-                              ? "text-green-600 dark:text-brand"
-                              : "text-red-600 dark:text-red-400"
-                          }`}
-                          data-oid="1l:j-7m"
-                        >
-                          {transaction.amount > 0 ? "+" : ""}
-                          {Math.abs(transaction.amount).toLocaleString()} RWF
-                        </span>
+                        <div className="text-right" data-oid="-gy3kpu">
+                          <span
+                            className={`text-sm font-bold ${
+                              transaction.amount > 0
+                                ? "text-green-600 dark:text-green-400"
+                                : "text-red-600 dark:text-red-400"
+                            }`}
+                            data-oid="1l:j-7m"
+                          >
+                            {transaction.amount > 0 ? "+" : ""}
+                            {Math.abs(transaction.amount).toLocaleString()} RWF
+                          </span>
+                          <div
+                            className="flex items-center justify-end mt-1"
+                            data-oid="01s15r9"
+                          >
+                            <div
+                              className={`w-2 h-2 rounded-full ${
+                                transaction.status === "completed"
+                                  ? "bg-green-500"
+                                  : transaction.status === "pending"
+                                    ? "bg-yellow-500"
+                                    : "bg-red-500"
+                              }`}
+                              data-oid="o_tsnz7"
+                            ></div>
+                            <span
+                              className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
+                              data-oid="17g-i69"
+                            >
+                              {transaction.status}
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     ))}
                     {transactions.slice(0, 4).length === 0 && (
-                      <>
+                      <div
+                        className="flex flex-col items-center justify-center py-12 text-center"
+                        data-oid="dqtd5uq"
+                      >
                         <div
-                          className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
-                          data-oid="dqtd5uq"
+                          className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
+                          data-oid="kt4esg0"
                         >
-                          <div
-                            className="w-52 h-52 mx-auto mb-2"
-                            data-oid="kt4esg0"
-                          >
-                            <img
-                              src="/assets/Credit card-bro.svg"
-                              alt="No transactions illustration"
-                              className="w-full h-full object-contain"
-                              draggable={false}
-                              data-oid="erjmxl."
-                            />
-                          </div>
-                          {t("noTransactions" as any)}
+                          <Activity
+                            className="w-8 h-8 text-gray-400 dark:text-gray-500"
+                            data-oid="37see_p"
+                          />
                         </div>
-                        {/* <p className="text-center text-gray-500 dark:text-gray-400">{t('noTransactions' as any)}</p> */}
-                      </>
+                        <h4
+                          className="text-gray-900 dark:text-white font-medium mb-2"
+                          data-oid="-d98rwc"
+                        >
+                          No Recent Activity
+                        </h4>
+                        <p
+                          className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
+                          data-oid="t9um::k"
+                        >
+                          {t("noTransactions" as any)}
+                        </p>
+                      </div>
                     )}
                   </div>
                 </div>
