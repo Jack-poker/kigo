@@ -23,97 +23,97 @@ import PaymentStatus from "./pages/paymentStatus";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient} data-oid="3mqvior">
-    <ThemeProvider data-oid="d_-e8_1">
-      <LanguageProvider data-oid="6osz36_">
-        <TooltipProvider data-oid="5uhwuy5">
-          <Toaster data-oid=".ul:c1u" />
-          <Sonner data-oid="t2a5nd1" />
-          <BrowserRouter data-oid=":uzhknr">
-            <Routes data-oid="-0kq637">
+  <QueryClientProvider client={queryClient} data-oid="e_x:w0t">
+    <ThemeProvider data-oid="csika07">
+      <LanguageProvider data-oid="fv_6u9e">
+        <TooltipProvider data-oid="i-qhxfc">
+          <Toaster data-oid="blj61vf" />
+          <Sonner data-oid="837.xx." />
+          <BrowserRouter data-oid="8vfennd">
+            <Routes data-oid="jhrvswo">
               <Route
                 path="/login"
-                element={<LoginPage data-oid="1efdd0:" />}
-                data-oid="upvq2no"
+                element={<LoginPage data-oid="dox3gn9" />}
+                data-oid="cr7:v-e"
               />
 
               <Route
                 path="/dashboard"
-                element={<Index data-oid="f9u6odi" />}
-                data-oid="0l73cke"
+                element={<Index data-oid="e:2z-r4" />}
+                data-oid="k-6.oh:"
               />
 
               <Route
                 path="/signup"
-                element={<SignupForm data-oid="dwu.6e2" />}
-                data-oid=":xrwop9"
+                element={<SignupForm data-oid="bpxb-4h" />}
+                data-oid="4.1s820"
               />
 
               <Route
                 path="/message"
-                element={<MessageGenerator data-oid="xfvc1ma" />}
-                data-oid="yr6k0nf"
+                element={<MessageGenerator data-oid="pbbp2.q" />}
+                data-oid="6fgv89s"
               />
 
               <Route
                 path="/chat"
-                element={<WhatsAppChat data-oid="d29cjsh" />}
-                data-oid="a-49_04"
+                element={<WhatsAppChat data-oid="r:3l-dp" />}
+                data-oid="d0oez2p"
               />
 
               <Route
                 path="/admin"
-                element={<AdminLogin data-oid="405gem3" />}
-                data-oid="6kxy64m"
+                element={<AdminLogin data-oid="70ubadf" />}
+                data-oid="i01u.dm"
               />
 
               <Route
                 path="/admin/dashboard"
-                element={<AdminPanel data-oid=".slb301" />}
-                data-oid="fjz8om1"
+                element={<AdminPanel data-oid="td-e5at" />}
+                data-oid="o57wp91"
               />
 
               <Route
                 path="/shop"
-                element={<Shop data-oid="q-1_s:e" />}
-                data-oid="oa_11om"
+                element={<Shop data-oid="0-t82dw" />}
+                data-oid=".1snepy"
               />
 
               <Route
                 path="/qr-redeemer"
-                element={<QRRedeemer data-oid="eqcnf5v" />}
-                data-oid="3_tod2f"
+                element={<QRRedeemer data-oid="4f9hr2m" />}
+                data-oid="vlnx2gf"
               />
 
               <Route
                 path="/student-balance"
-                element={<StudentBalance data-oid="xvcru-9" />}
-                data-oid="41bo85a"
+                element={<StudentBalance data-oid="42:0m3d" />}
+                data-oid="4i_:1z_"
               />
 
               <Route
                 path="/location-info"
-                element={<LocationInfo data-oid="0.kr0zz" />}
-                data-oid="8375eb0"
+                element={<LocationInfo data-oid="-hkbgp1" />}
+                data-oid="7xno_9c"
               />
 
               <Route
                 path="/news"
-                element={<News data-oid=":m6g75_" />}
-                data-oid="b_15do."
+                element={<News data-oid="so4phm4" />}
+                data-oid="2im6wp1"
               />
 
               <Route
                 path="/payment-status"
-                element={<PaymentStatus data-oid="p2.er9q" />}
-                data-oid="3eokuz7"
+                element={<PaymentStatus data-oid="svos7o_" />}
+                data-oid="g4hkav0"
               />
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route
                 path="*"
-                element={<NotFound data-oid="0svl1e7" />}
-                data-oid="c954vjy"
+                element={<NotFound data-oid="y56y4tc" />}
+                data-oid="bbgl1c8"
               />
             </Routes>
           </BrowserRouter>

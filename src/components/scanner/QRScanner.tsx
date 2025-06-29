@@ -93,7 +93,7 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScan, onError }) => {
   return (
     <div
       className="relative w-full aspect-square bg-black rounded-lg overflow-hidden"
-      data-oid="z-8n2ee"
+      data-oid="5tcp009"
     >
       <video
         ref={videoRef}
@@ -101,20 +101,20 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScan, onError }) => {
         playsInline
         muted
         autoPlay={false}
-        data-oid="wpu4zj-"
+        data-oid="0qk3s.f"
       />
 
       {!isScanning && (
         <div
           className="absolute inset-0 flex items-center justify-center bg-black/50"
-          data-oid="gl1wv2w"
+          data-oid="cq0oy4s"
         >
-          <div className="text-white text-center" data-oid="l9gwea4">
+          <div className="text-white text-center" data-oid="fqwvff8">
             <div
               className="animate-spin w-8 h-8 border-2 border-white border-t-transparent rounded-full mx-auto mb-2"
-              data-oid="8qr_we6"
+              data-oid="ob:jp8n"
             ></div>
-            <p data-oid="-uwz92k">Initializing camera...</p>
+            <p data-oid="nadi901">Initializing camera...</p>
           </div>
         </div>
       )}

@@ -552,7 +552,7 @@ const Index = () => {
               </div>
             </div>
             <div
-              className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-auto top-auto right-auto bottom-auto left-auto static h-[1004px]"
               data-oid="cybpcdm"
             >
               <div className="lg:col-span-1" data-oid="yytwbox">
@@ -1045,8 +1045,11 @@ const Index = () => {
         </div>
       </div>
       <AdBanner data-oid="m51tkfe" />
-      <div className="flex-1 p-6" data-oid="ypwbxfn">
-        <div className="max-w-7xl mx-auto" data-oid="ufq37p7">
+      <div
+        className="flex-1 p-6 w-[573px] h-[1730px] top-auto right-auto bottom-auto left-auto static"
+        data-oid="ypwbxfn"
+      >
+        <div className="max-w-7xl mx-auto" data-oid="ufq37p7" key="olk-SsqB">
           {renderTabContent()}
         </div>
       </div>

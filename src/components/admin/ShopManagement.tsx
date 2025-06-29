@@ -364,7 +364,7 @@ const ShopManagement: React.FC = () => {
   const EmptyProductState = () => (
     <div
       className="flex flex-col items-center justify-center py-12 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
-      data-oid="2sqd2b2"
+      data-oid="p1kmx7q"
     >
       <svg
         className="w-40 h-40 text-gray-400"
@@ -372,14 +372,14 @@ const ShopManagement: React.FC = () => {
         stroke="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        data-oid="t8._ovo"
+        data-oid="cxdf4rp"
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1"
           d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-          data-oid="i10760j"
+          data-oid="uikcqbs"
         ></path>
         <circle
           cx="12"
@@ -387,23 +387,23 @@ const ShopManagement: React.FC = () => {
           r="3"
           fill="currentColor"
           opacity="0.3"
-          data-oid="o-l8d89"
+          data-oid="nd9_uwi"
         ></circle>
       </svg>
       <h3
         className="mt-4 text-xl font-semibold text-gray-700"
-        data-oid="36ld6n1"
+        data-oid="uyvp4cb"
       >
         No Products Available
       </h3>
-      <p className="mt-2 text-gray-500 text-center max-w-md" data-oid="wxsf286">
+      <p className="mt-2 text-gray-500 text-center max-w-md" data-oid="_fmc1kq">
         Your shop is empty. Add your first product using the form above to get
         started.
       </p>
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="mt-6 px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition-colors"
-        data-oid="27ltt8e"
+        data-oid="6kllorl"
       >
         Add Your First Product
       </button>
@@ -417,48 +417,48 @@ const ShopManagement: React.FC = () => {
     return (
       <div
         className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-        data-oid="pbmz4bg"
+        data-oid=".5zrtd6"
       >
         <div
           className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-          data-oid="xbsy5lx"
+          data-oid="-xtt:.x"
         >
           <div
             className="p-4 border-b border-gray-200 flex justify-between items-center"
-            data-oid="y9jkbnm"
+            data-oid="3zkagds"
           >
             <h3
               className="text-lg font-semibold text-gray-800"
-              data-oid="qz2anjp"
+              data-oid="891xhn0"
             >
               Product Preview
             </h3>
             <button
               onClick={() => setShowPreview(false)}
               className="text-gray-500 hover:text-gray-700"
-              data-oid="nzjowh_"
+              data-oid="4lpw-lf"
             >
               <svg
                 className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                data-oid="9134unb"
+                data-oid="faduhui"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
-                  data-oid="a8iwbxe"
+                  data-oid="rybqr9t"
                 ></path>
               </svg>
             </button>
           </div>
 
-          <div className="p-6" data-oid="0ap0yl4">
-            <div className="flex flex-col md:flex-row gap-6" data-oid="7y0-m7_">
-              <div className="w-full md:w-1/2" data-oid="h.ez:q6">
+          <div className="p-6" data-oid="2n0998a">
+            <div className="flex flex-col md:flex-row gap-6" data-oid="511tter">
+              <div className="w-full md:w-1/2" data-oid=".2t_1ng">
                 {previewProduct.image_url ? (
                   <img
                     src={previewProduct.image_url}
@@ -468,52 +468,52 @@ const ShopManagement: React.FC = () => {
                       (e.target as HTMLImageElement).src =
                         "https://via.placeholder.com/400x300?text=Image+Not+Found";
                     }}
-                    data-oid="hh-tv98"
+                    data-oid="54jof01"
                   />
                 ) : (
                   <div
                     className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center"
-                    data-oid="npjdpzv"
+                    data-oid="-7dn92s"
                   >
-                    <span className="text-gray-500" data-oid="j5bzvp1">
+                    <span className="text-gray-500" data-oid="-sjqs_w">
                       No Image Available
                     </span>
                   </div>
                 )}
               </div>
 
-              <div className="w-full md:w-1/2" data-oid="g_9359v">
+              <div className="w-full md:w-1/2" data-oid="8vildx4">
                 <h2
                   className="text-2xl font-bold text-gray-800 mb-2"
-                  data-oid="mxcwg9s"
+                  data-oid="f_h--ay"
                 >
                   {previewProduct.name}
                 </h2>
                 <p
                   className="text-emerald-600 text-xl font-semibold mb-4"
-                  data-oid="2s7hcb5"
+                  data-oid="81eekrw"
                 >
                   RWF {previewProduct.price?.toFixed(2)}
                 </p>
 
                 {previewProduct.description && (
-                  <div className="mb-4" data-oid="ky:3hdd">
+                  <div className="mb-4" data-oid="4-l53ul">
                     <h4
                       className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1"
-                      data-oid="3pn.qby"
+                      data-oid="oinbipe"
                     >
                       Description
                     </h4>
-                    <p className="text-gray-700" data-oid="m_2.egq">
+                    <p className="text-gray-700" data-oid="z-8iqi0">
                       {previewProduct.description}
                     </p>
                   </div>
                 )}
 
-                <div className="mb-4" data-oid="6vuvmpt">
+                <div className="mb-4" data-oid="bn_ob.w">
                   <h4
                     className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1"
-                    data-oid="jxk4883"
+                    data-oid="m9ypyb8"
                   >
                     Affiliate Link
                   </h4>
@@ -522,19 +522,19 @@ const ShopManagement: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline break-all"
-                    data-oid="_qve0ja"
+                    data-oid="9gd3_io"
                   >
                     {previewProduct.affiliate_link}
                   </a>
                 </div>
 
-                <div className="mt-6" data-oid="-:xv_hc">
+                <div className="mt-6" data-oid="-53jsbl">
                   <a
                     href={previewProduct.affiliate_link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block bg-emerald-600 text-white px-6 py-2 rounded-md hover:bg-emerald-700 transition-colors"
-                    data-oid="negp1zs"
+                    data-oid="lexc2um"
                   >
                     Visit Product Page
                   </a>
@@ -551,35 +551,35 @@ const ShopManagement: React.FC = () => {
   const ProductSkeleton = () => (
     <div
       className="animate-pulse grid grid-cols-1 md:grid-cols-3 gap-6"
-      data-oid="a840qv5"
+      data-oid="ydce003"
     >
       {[1, 2, 3].map((i) => (
         <div
           key={i}
           className="bg-white rounded-lg shadow-md overflow-hidden"
-          data-oid="ai48wpb"
+          data-oid="901lum."
         >
-          <div className="h-48 bg-gray-300" data-oid="cio1alm"></div>
-          <div className="p-4" data-oid="yga:q2y">
+          <div className="h-48 bg-gray-300" data-oid="3-tza:s"></div>
+          <div className="p-4" data-oid=".5n:n8g">
             <div
               className="h-6 bg-gray-300 rounded w-3/4 mb-3"
-              data-oid="bkczaa8"
+              data-oid="nk9rg6j"
             ></div>
             <div
               className="h-4 bg-gray-300 rounded w-1/2 mb-3"
-              data-oid="2ekol0."
+              data-oid="9t1mzvc"
             ></div>
             <div
               className="h-4 bg-gray-300 rounded w-full mb-3"
-              data-oid="j36ubpu"
+              data-oid="iwi1w:5"
             ></div>
             <div
               className="h-4 bg-gray-300 rounded w-full mb-3"
-              data-oid="2cmrfoo"
+              data-oid="2v9..nt"
             ></div>
             <div
               className="h-8 bg-gray-300 rounded w-1/3 mt-4"
-              data-oid="x37k3dr"
+              data-oid="pfd:ytd"
             ></div>
           </div>
         </div>
@@ -588,18 +588,18 @@ const ShopManagement: React.FC = () => {
   );
 
   return (
-    <div className="container mx-auto p-4" data-oid="ydfu036">
+    <div className="container mx-auto p-4" data-oid="_ooaovm">
       {/* Header */}
       <div
         className="bg-gradient-to-r from-emerald-700 to-emerald-900 rounded-lg shadow-lg p-6 mb-6"
-        data-oid="j:vbrxk"
+        data-oid="t_v4_mj"
       >
-        <div className="flex justify-between items-center" data-oid=".gqgn.a">
-          <div data-oid="2gcbqd.">
-            <h2 className="text-3xl font-bold text-white" data-oid="z29ddbx">
+        <div className="flex justify-between items-center" data-oid="1jg0zdk">
+          <div data-oid="8:kkjia">
+            <h2 className="text-3xl font-bold text-white" data-oid=":8_xgvf">
               Shop Management
             </h2>
-            <p className="text-emerald-100 mt-1" data-oid="6fd81ev">
+            <p className="text-emerald-100 mt-1" data-oid="fyw-4.6">
               Manage your product catalog
             </p>
           </div>
@@ -607,7 +607,7 @@ const ShopManagement: React.FC = () => {
             onClick={handleRefresh}
             disabled={refreshing}
             className={`bg-white text-emerald-700 px-4 py-2 rounded-md hover:bg-emerald-50 transition-colors flex items-center ${refreshing ? "opacity-70 cursor-not-allowed" : ""}`}
-            data-oid="5j0k5ae"
+            data-oid="gm96y93"
           >
             {refreshing ? (
               <>
@@ -616,7 +616,7 @@ const ShopManagement: React.FC = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  data-oid="pwo1ifh"
+                  data-oid="0qshz7q"
                 >
                   <circle
                     className="opacity-25"
@@ -625,13 +625,13 @@ const ShopManagement: React.FC = () => {
                     r="10"
                     stroke="currentColor"
                     strokeWidth="4"
-                    data-oid="3to1xu6"
+                    data-oid="km5k95z"
                   ></circle>
                   <path
                     className="opacity-75"
                     fill="currentColor"
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    data-oid="p108gnh"
+                    data-oid="4aj2p7-"
                   ></path>
                 </svg>
                 Refreshing...
@@ -647,49 +647,49 @@ const ShopManagement: React.FC = () => {
       {error && (
         <div
           className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-md"
-          data-oid="b0phuyr"
+          data-oid=".d9ord-"
         >
-          <div className="flex items-start" data-oid="c80y135">
-            <div className="flex-shrink-0" data-oid="gzc25wc">
+          <div className="flex items-start" data-oid="y901phk">
+            <div className="flex-shrink-0" data-oid="0ubt9x-">
               <svg
                 className="h-5 w-5 text-red-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                data-oid="7536oka"
+                data-oid="qt--1eg"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                  data-oid="_iofn65"
+                  data-oid="c6_och1"
                 />
               </svg>
             </div>
-            <div className="ml-3" data-oid="26w_zwz">
-              <p className="text-sm text-red-700" data-oid="-xow2iw">
+            <div className="ml-3" data-oid="s.cd2:s">
+              <p className="text-sm text-red-700" data-oid="-va51uv">
                 {error}
               </p>
             </div>
-            <div className="ml-auto pl-3" data-oid="cd:gryx">
-              <div className="-mx-1.5 -my-1.5" data-oid="cf8w.hz">
+            <div className="ml-auto pl-3" data-oid="s71f3qa">
+              <div className="-mx-1.5 -my-1.5" data-oid="zqxoi6x">
                 <button
                   onClick={() => setError("")}
                   className="inline-flex rounded-md p-1.5 text-red-500 hover:bg-red-100 focus:outline-none"
-                  data-oid="2uozt1j"
+                  data-oid="ydqxq06"
                 >
                   <svg
                     className="h-5 w-5"
                     viewBox="0 0 20 20"
                     fill="currentColor"
-                    data-oid="qv85dcr"
+                    data-oid="681w_36"
                   >
                     <path
                       fillRule="evenodd"
                       d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                       clipRule="evenodd"
-                      data-oid="68wrr2i"
+                      data-oid="b9h02ip"
                     />
                   </svg>
                 </button>
@@ -702,26 +702,26 @@ const ShopManagement: React.FC = () => {
       {/* Product form */}
       <div
         className="bg-white p-6 rounded-lg shadow-lg mb-8"
-        data-oid="r:wqpl1"
+        data-oid="r30qu3s"
       >
         <h3
           className="text-xl font-semibold text-gray-800 mb-4"
-          data-oid="hteu99i"
+          data-oid="t_faqe."
         >
           {editingProductId ? "Edit Product" : "Add New Product"}
         </h3>
 
-        <form onSubmit={handleCreateOrUpdateProduct} data-oid="qu._gqx">
+        <form onSubmit={handleCreateOrUpdateProduct} data-oid="kwtmef2">
           <div
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            data-oid="o9pmq88"
+            data-oid="qf_.8ml"
           >
-            <div className="space-y-4" data-oid="9bb0lhx">
-              <div data-oid="p:hh5j8">
+            <div className="space-y-4" data-oid="y37e3v_">
+              <div data-oid="go.dkp5">
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700 mb-1"
-                  data-oid="73cmtz2"
+                  data-oid="n9iiyw5"
                 >
                   Product Name
                 </label>
@@ -734,15 +734,15 @@ const ShopManagement: React.FC = () => {
                   placeholder="Enter product name"
                   className="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                   required
-                  data-oid="7nhaa0l"
+                  data-oid="dae-t0v"
                 />
               </div>
 
-              <div data-oid=":5xxzhr">
+              <div data-oid="pgcm_c_">
                 <label
                   htmlFor="price"
                   className="block text-sm font-medium text-gray-700 mb-1"
-                  data-oid="xs9osak"
+                  data-oid="x49wmxy"
                 >
                   Price (RWF)
                 </label>
@@ -757,15 +757,15 @@ const ShopManagement: React.FC = () => {
                   step="0.01"
                   min="0"
                   required
-                  data-oid="b7msmbc"
+                  data-oid="mruf.aq"
                 />
               </div>
 
-              <div data-oid="lik91mw">
+              <div data-oid=".of73-_">
                 <label
                   htmlFor="affiliate_link"
                   className="block text-sm font-medium text-gray-700 mb-1"
-                  data-oid="jz2c.h2"
+                  data-oid="6.eyu_s"
                 >
                   Affiliate Link
                 </label>
@@ -778,17 +778,17 @@ const ShopManagement: React.FC = () => {
                   placeholder="https://"
                   className="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                   required
-                  data-oid="r8pq__q"
+                  data-oid="evotafx"
                 />
               </div>
             </div>
 
-            <div className="space-y-4" data-oid="7a3a48g">
-              <div data-oid="5kaq-yv">
+            <div className="space-y-4" data-oid="8ewggpm">
+              <div data-oid="ipzbpp8">
                 <label
                   htmlFor="image_url"
                   className="block text-sm font-medium text-gray-700 mb-1"
-                  data-oid="nr05:ym"
+                  data-oid="91uuipp"
                 >
                   Image URL
                 </label>
@@ -800,15 +800,15 @@ const ShopManagement: React.FC = () => {
                   onChange={handleInputChange}
                   placeholder="https://"
                   className="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  data-oid="yw_q.dy"
+                  data-oid="cobpgpi"
                 />
               </div>
 
-              <div data-oid="so-03yh">
+              <div data-oid="069md9i">
                 <label
                   htmlFor="description"
                   className="block text-sm font-medium text-gray-700 mb-1"
-                  data-oid=".csbl1b"
+                  data-oid="d48qbz6"
                 >
                   Description
                 </label>
@@ -820,7 +820,7 @@ const ShopManagement: React.FC = () => {
                   placeholder="Enter product description"
                   className="border border-gray-300 p-2 rounded-md w-full focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                   rows={5}
-                  data-oid="8twv6:r"
+                  data-oid="s7.s0.r"
                 />
               </div>
             </div>
@@ -828,13 +828,13 @@ const ShopManagement: React.FC = () => {
 
           <div
             className="mt-6 flex items-center justify-between"
-            data-oid="nwu339n"
+            data-oid="2v2u:7v"
           >
-            <div className="space-x-2" data-oid="ajk:0cy">
+            <div className="space-x-2" data-oid="ajdnxu5">
               <button
                 type="submit"
                 className="bg-emerald-600 text-white px-5 py-2 rounded-md hover:bg-emerald-700 transition-colors"
-                data-oid="cfy5ls2"
+                data-oid="l6vf0bc"
               >
                 {editingProductId ? "Update Product" : "Create Product"}
               </button>
@@ -848,7 +848,7 @@ const ShopManagement: React.FC = () => {
                     setPreviewProduct(null);
                   }}
                   className="bg-gray-500 text-white px-5 py-2 rounded-md hover:bg-gray-600 transition-colors"
-                  data-oid="b3t:1mp"
+                  data-oid="axakd72"
                 >
                   Cancel
                 </button>
@@ -864,21 +864,21 @@ const ShopManagement: React.FC = () => {
                   )
                 }
                 className="text-emerald-600 hover:text-emerald-700 flex items-center"
-                data-oid="r7rfk45"
+                data-oid="sih.urr"
               >
                 <svg
                   className="w-5 h-5 mr-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  data-oid="_398610"
+                  data-oid="surmsxc"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    data-oid="1xk1l8f"
+                    data-oid="8-gxwnp"
                   />
 
                   <path
@@ -886,7 +886,7 @@ const ShopManagement: React.FC = () => {
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    data-oid="5ma2yor"
+                    data-oid="43sqn.y"
                   />
                 </svg>
                 Preview
@@ -897,31 +897,31 @@ const ShopManagement: React.FC = () => {
       </div>
 
       {/* Products display */}
-      <div className="bg-white p-6 rounded-lg shadow-lg" data-oid="jos44da">
+      <div className="bg-white p-6 rounded-lg shadow-lg" data-oid="1h1uoxr">
         <h3
           className="text-xl font-semibold text-gray-800 mb-6"
-          data-oid="eibwgyq"
+          data-oid="udjohh9"
         >
           Product Catalog
         </h3>
 
         {loading ? (
-          <ProductSkeleton data-oid="vng80qa" />
+          <ProductSkeleton data-oid="rfgqf0c" />
         ) : products.length > 0 ? (
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            data-oid="d1evszv"
+            data-oid="_uxj9t-"
           >
             {products.map((product) => (
               <div
                 key={product.product_id}
                 className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
-                data-oid="qmerc.j"
+                data-oid="9h-5v_v"
               >
                 <div
                   className="h-48 bg-gray-200 relative cursor-pointer"
                   onClick={() => togglePreview(product)}
-                  data-oid="has18d4"
+                  data-oid="b7fwpq0"
                 >
                   {product.image_url ? (
                     <img
@@ -932,33 +932,33 @@ const ShopManagement: React.FC = () => {
                         (e.target as HTMLImageElement).src =
                           "https://via.placeholder.com/400x300?text=Image+Not+Found";
                       }}
-                      data-oid="o4s9drw"
+                      data-oid="um74qmm"
                     />
                   ) : (
                     <div
                       className="w-full h-full flex items-center justify-center bg-gray-100"
-                      data-oid="p_f4ssq"
+                      data-oid="i31r_q-"
                     >
                       <svg
                         className="w-12 h-12 text-gray-400"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
-                        data-oid="y2o_u9k"
+                        data-oid="md8.3bc"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth="1"
                           d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          data-oid="a_.wllb"
+                          data-oid="70fvaa:"
                         />
                       </svg>
                     </div>
                   )}
                   <div
                     className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md"
-                    data-oid="1o1toah"
+                    data-oid="vk-1t5z"
                   >
                     <button
                       onClick={(e) => {
@@ -967,21 +967,21 @@ const ShopManagement: React.FC = () => {
                       }}
                       className="text-gray-600 hover:text-emerald-600"
                       title="Preview"
-                      data-oid="vc206ix"
+                      data-oid="-t7x2u6"
                     >
                       <svg
                         className="w-5 h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
-                        data-oid="w6z_kcg"
+                        data-oid="ia4e7-a"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth="2"
                           d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          data-oid="ak4.jum"
+                          data-oid="v-zkqpo"
                         />
 
                         <path
@@ -989,23 +989,23 @@ const ShopManagement: React.FC = () => {
                           strokeLinejoin="round"
                           strokeWidth="2"
                           d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                          data-oid="o2qu6wq"
+                          data-oid="rk2niet"
                         />
                       </svg>
                     </button>
                   </div>
                 </div>
 
-                <div className="p-4" data-oid="j-378wn">
+                <div className="p-4" data-oid="ofsb5uh">
                   <h4
                     className="text-lg font-semibold text-gray-800 mb-1 truncate"
-                    data-oid="incalec"
+                    data-oid="wpk55sj"
                   >
                     {product.name}
                   </h4>
                   <p
                     className="text-emerald-600 font-medium mb-2"
-                    data-oid="ksb8ney"
+                    data-oid="vdzdyie"
                   >
                     RWF {product.price.toFixed(2)}
                   </p>
@@ -1013,7 +1013,7 @@ const ShopManagement: React.FC = () => {
                   {product.description && (
                     <p
                       className="text-gray-600 text-sm mb-4 line-clamp-2"
-                      data-oid="8blx4dk"
+                      data-oid="bcqh.uo"
                     >
                       {product.description}
                     </p>
@@ -1021,20 +1021,20 @@ const ShopManagement: React.FC = () => {
 
                   <div
                     className="flex justify-between items-center mt-4"
-                    data-oid="kcdgqx-"
+                    data-oid="7ko_ke6"
                   >
-                    <div className="space-x-1" data-oid="1q-yj9a">
+                    <div className="space-x-1" data-oid="r6nakjd">
                       <button
                         onClick={() => handleEditProduct(product)}
                         className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition-colors"
-                        data-oid="x_erm8c"
+                        data-oid="d2-syai"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDeleteProduct(product.product_id)}
                         className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition-colors"
-                        data-oid="3f:yy1:"
+                        data-oid="04izdn8"
                       >
                         Delete
                       </button>
@@ -1046,7 +1046,7 @@ const ShopManagement: React.FC = () => {
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline text-sm"
                       onClick={(e) => e.stopPropagation()}
-                      data-oid="1f_24qi"
+                      data-oid="_p5syd5"
                     >
                       Visit Link
                     </a>
@@ -1056,12 +1056,12 @@ const ShopManagement: React.FC = () => {
             ))}
           </div>
         ) : (
-          <EmptyProductState data-oid="ww8m8aq" />
+          <EmptyProductState data-oid="1xnzkq0" />
         )}
       </div>
 
       {/* Preview modal */}
-      {showPreview && <ProductPreviewModal data-oid="0d9-33b" />}
+      {showPreview && <ProductPreviewModal data-oid="-tfx876" />}
     </div>
   );
 };

@@ -78,26 +78,26 @@ export function SignupForm({
     <div
       className={cn("flex flex-col gap-6", className)}
       {...props}
-      data-oid="zmen6fl"
+      data-oid="udgca8q"
     >
-      <div className="flex justify-center" data-oid="3gebur2">
+      <div className="flex justify-center" data-oid="g:xe1xt">
         <img
           src="/assets/logo.png"
           alt="kaascan logo"
           className="w-64 h-20 object-contain"
-          data-oid=":yt.8ns"
+          data-oid="e.s42d:"
         />
       </div>
 
-      <Card className="bg-brand text-white" data-oid="8iq8d1o">
-        <CardContent className="grid p-0 md:grid-cols-2" data-oid="35keolj">
-          <form className="p-6 md:p-8 w-full" data-oid="-hscel7">
-            <div className="flex flex-col gap-6" data-oid="y2rl8ke">
-              <div className="text-center" data-oid="urk:z1:">
-                <h1 className="text-2xl font-bold" data-oid="_.:w-vo">
+      <Card className="bg-brand text-white" data-oid="ypzwa-3">
+        <CardContent className="grid p-0 md:grid-cols-2" data-oid="ao3y5:c">
+          <form className="p-6 md:p-8 w-full" data-oid="-odjaga">
+            <div className="flex flex-col gap-6" data-oid="-a.h42_">
+              <div className="text-center" data-oid="0k93xrt">
+                <h1 className="text-2xl font-bold" data-oid="aoo:1wl">
                   {isSignupComplete ? "Enter OTP Code" : "Create your account"}
                 </h1>
-                <p className="text-sm text-muted-foreground" data-oid="oo2j92g">
+                <p className="text-sm text-muted-foreground" data-oid="8k6ylgl">
                   {isSignupComplete
                     ? "An OTP has been sent to your phone."
                     : "Provide your details to sign up."}
@@ -106,8 +106,8 @@ export function SignupForm({
 
               {!isSignupComplete ? (
                 <>
-                  <div className="grid gap-2 " data-oid="by8lccs">
-                    <Label htmlFor="fullnames" data-oid="rejse:k">
+                  <div className="grid gap-2 " data-oid="k9.dtbm">
+                    <Label htmlFor="fullnames" data-oid="feodxx4">
                       Full names
                     </Label>
                     <Input
@@ -117,12 +117,12 @@ export function SignupForm({
                       required
                       className="text-zinc-900 placeholder:text-gray-300"
                       placeholder="Enter your full names"
-                      data-oid="32_.30n"
+                      data-oid="l9395d0"
                     />
                   </div>
 
-                  <div className="grid gap-2" data-oid="e-ngokj">
-                    <Label htmlFor="phone" data-oid="mdwl:ej">
+                  <div className="grid gap-2" data-oid="4:07yky">
+                    <Label htmlFor="phone" data-oid="ky9p_d5">
                       Phone number
                     </Label>
                     <Input
@@ -133,12 +133,12 @@ export function SignupForm({
                       className="text-zinc-900 placeholder:text-gray-300"
                       placeholder="Enter your phonenumber"
                       required
-                      data-oid="kubyimg"
+                      data-oid="9m6z4wr"
                     />
                   </div>
 
-                  <div className="grid gap-2" data-oid="8biz1tj">
-                    <Label htmlFor="password" data-oid="cc-t0ax">
+                  <div className="grid gap-2" data-oid="ymj.fhh">
+                    <Label htmlFor="password" data-oid="budm.qy">
                       Password
                     </Label>
                     <Input
@@ -149,7 +149,7 @@ export function SignupForm({
                       className="text-zinc-900 placeholder:text-gray-300"
                       placeholder="Create Password"
                       required
-                      data-oid="e00ikqx"
+                      data-oid="s8:.wmk"
                     />
                   </div>
 
@@ -157,15 +157,15 @@ export function SignupForm({
                     type="button"
                     onClick={signup_submit}
                     className="w-full bg-amber-500 hover:bg-amber-500"
-                    data-oid="fkt.h4f"
+                    data-oid="wz20fm7"
                   >
                     Sign Up
                   </Button>
                 </>
               ) : (
                 <>
-                  <div className="grid gap-2" data-oid="1201au.">
-                    <Label htmlFor="otp" data-oid="9dn2pig">
+                  <div className="grid gap-2" data-oid="nyy_5_t">
+                    <Label htmlFor="otp" data-oid="1k_k..l">
                       OTP Code
                     </Label>
                     <Input
@@ -175,14 +175,14 @@ export function SignupForm({
                       maxLength={6}
                       className="text-center tracking-widest"
                       required
-                      data-oid="9cq2w0a"
+                      data-oid="qsuajl2"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     className="w-full bg-amber-400 hover:bg-amber-500"
-                    data-oid="p0gnx2u"
+                    data-oid="7gtaix_"
                   >
                     Verify OTP
                   </Button>
@@ -193,13 +193,13 @@ export function SignupForm({
 
           <div
             className="relative hidden md:block rounded-xl overflow-hidden"
-            data-oid=":de7f_2"
+            data-oid="a:a:9zz"
           >
             <img
               src="/banner5.png"
               alt="Side visual"
               className="absolute inset-0 object-cover h-full w-full"
-              data-oid="vlm_j29"
+              data-oid=":qn1nk_"
             />
           </div>
         </CardContent>
@@ -207,14 +207,14 @@ export function SignupForm({
 
       <p
         className="text-xs text-center text-muted-foreground"
-        data-oid="le-8pgk"
+        data-oid="fil_j32"
       >
         By clicking continue, you agree to our{" "}
-        <a href="#" className="underline" data-oid="00i4ym3">
+        <a href="#" className="underline" data-oid="l:x5jun">
           Terms of Service
         </a>{" "}
         and{" "}
-        <a href="#" className="underline" data-oid="pn4_1wa">
+        <a href="#" className="underline" data-oid="ir9n7p:">
           Privacy Policy
         </a>
         .

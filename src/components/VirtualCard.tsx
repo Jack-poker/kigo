@@ -25,7 +25,7 @@ const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
         data-oid="3opba38"
       >
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-5 bg-none bg-[#00000000]"
           style={{
             backgroundImage: `
             radial-gradient(circle at 25% 25%, white 2px, transparent 2px),

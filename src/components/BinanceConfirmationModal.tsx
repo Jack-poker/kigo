@@ -29,22 +29,22 @@ const BinanceConfirmationModal: React.FC<BinanceConfirmationModalProps> = ({
         return (
           <AlertTriangle
             className="w-8 h-8 text-yellow-500"
-            data-oid="gogvs._"
+            data-oid="88hul:d"
           />
         );
 
       case "success":
         return (
-          <CheckCircle className="w-8 h-8 text-green-500" data-oid="q4lp8g4" />
+          <CheckCircle className="w-8 h-8 text-green-500" data-oid="kpyc-dn" />
         );
 
       case "danger":
         return (
-          <AlertTriangle className="w-8 h-8 text-red-500" data-oid="1copmlf" />
+          <AlertTriangle className="w-8 h-8 text-red-500" data-oid="p5y4b_o" />
         );
 
       default:
-        return <Info className="w-8 h-8 text-blue-500" data-oid="dmm.u-v" />;
+        return <Info className="w-8 h-8 text-blue-500" data-oid="8v.zwyr" />;
     }
   };
 
@@ -64,40 +64,40 @@ const BinanceConfirmationModal: React.FC<BinanceConfirmationModalProps> = ({
   return (
     <div
       className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
-      data-oid="lk3is_y"
+      data-oid="dn-c:sm"
     >
       <div
         className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-gray-200 overflow-hidden"
-        data-oid="hd6263u"
+        data-oid="4y_rr3:"
       >
         <div
           className="flex items-center justify-between p-6 border-b border-gray-100"
-          data-oid="w6m56ab"
+          data-oid="p8_seda"
         >
           <h2
             className="text-lg font-semibold text-gray-900"
-            data-oid=":ilvsrp"
+            data-oid="izmfoo1"
           >
             {title}
           </h2>
           <button
             onClick={onCancel}
             className="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all duration-200"
-            data-oid="_swsnxm"
+            data-oid="-wh8.90"
           >
-            <X className="w-5 h-5" data-oid="djq1iaw" />
+            <X className="w-5 h-5" data-oid="-83mwbp" />
           </button>
         </div>
 
-        <div className="p-6" data-oid="qnud7lz">
-          <div className="flex items-center space-x-4 mb-6" data-oid="hwefep7">
-            <div className="flex-shrink-0" data-oid="76lr:qq">
+        <div className="p-6" data-oid="j873ykq">
+          <div className="flex items-center space-x-4 mb-6" data-oid="-mce_cj">
+            <div className="flex-shrink-0" data-oid="-tv1gys">
               {getIcon()}
             </div>
-            <div className="flex-1" data-oid="60e73.a">
+            <div className="flex-1" data-oid="demwujp">
               <p
                 className="text-gray-700 text-sm leading-relaxed"
-                data-oid="1k.:i-p"
+                data-oid="xidjgrw"
               >
                 {message}
               </p>
@@ -107,13 +107,13 @@ const BinanceConfirmationModal: React.FC<BinanceConfirmationModalProps> = ({
 
         <div
           className="flex items-center justify-end space-x-3 p-6 border-t border-gray-100 bg-gray-50/50"
-          data-oid="o.zsbsd"
+          data-oid="n7y.b.:"
         >
           <button
             onClick={onCancel}
             disabled={isLoading}
             className="px-6 py-2.5 text-gray-700 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
-            data-oid="6ielml."
+            data-oid="01-l-8e"
           >
             {cancelText}
           </button>
@@ -121,19 +121,19 @@ const BinanceConfirmationModal: React.FC<BinanceConfirmationModalProps> = ({
             onClick={onConfirm}
             disabled={isLoading}
             className={`px-6 py-2.5 text-white rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-medium flex items-center space-x-2 ${getButtonColor()}`}
-            data-oid=":534gst"
+            data-oid="d5qra_l"
           >
             {isLoading ? (
               <>
                 <div
                   className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
-                  data-oid="6aktdee"
+                  data-oid="_rcbr7o"
                 />
 
-                <span data-oid="k3g4p:u">Processing...</span>
+                <span data-oid="-b3qozf">Processing...</span>
               </>
             ) : (
-              <span data-oid="z_9:_k.">{confirmText}</span>
+              <span data-oid="rq032fk">{confirmText}</span>
             )}
           </button>
         </div>
