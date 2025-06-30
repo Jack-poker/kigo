@@ -1309,7 +1309,7 @@ const AddStudent: React.FC = () => {
   >([]);
   const [showQuitConfirm, setShowQuitConfirm] = useState(false);
 
-  const API_URL = "http://localhost:8001";
+  const API_URL = "https://api.kaascan.com";
 
   const fetchCsrfToken = async (retries = 3): Promise<string | undefined> => {
     for (let attempt = 1; attempt <= retries; attempt++) {

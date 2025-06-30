@@ -18,7 +18,7 @@ export function LoginForm({
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [totpCode, setTotpCode] = useState(["", "", "", ""]);
-  const baseUrl = "http://localhost:8001"; // Updated to match backend
+  const baseUrl = "https://api.kaascan.com"; // Updated to match backend
 
   // Fetch CSRF token on component mount
   useEffect(() => {
