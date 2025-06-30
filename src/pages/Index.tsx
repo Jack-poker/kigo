@@ -41,6 +41,7 @@ import PaymentStatusListener from "../components/payment/track_payment";
 import TransactionTracker from "../components/payment/Transaction_tracker";
 import AddStudent from "@/components/admin/addStudent";
 import AddStudentModal from "@/components/admin/addStudent";
+import WithdrawModal from "@/components/withdrawModal";
 
 const Index = () => {
   const { t, language, setLanguage } = useLanguage();
@@ -93,7 +94,7 @@ const Index = () => {
         onComplete={handleTransactionComplete}
         transactionAmount="$25.99"
         merchantName="Kid's Store"
-        data-oid="9p0l:c2"
+        data-oid=":gbaucl"
       />
     );
   }
@@ -381,29 +382,29 @@ const Index = () => {
     switch (activeTab) {
       case "overview":
         return (
-          <div ref={overviewRef} className="space-y-8" data-oid="p9u0ud:">
+          <div ref={overviewRef} className="space-y-8" data-oid="ai8jw.m">
             <div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-              data-oid="cwikib:"
+              data-oid="hztznsj"
             >
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200"
-                data-oid="xnvia4i"
+                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-[url(/images/Noqt.png)]"
+                data-oid="u1_v26w"
               >
                 <div
                   className="flex items-center justify-between"
-                  data-oid="9rkcqi8"
+                  data-oid="2qzy7vf"
                 >
-                  <div data-oid="j2hts5i">
+                  <div data-oid="1-x672g">
                     <p
                       className="text-brand dark:text-brand text-sm font-medium"
-                      data-oid=":nswiy_"
+                      data-oid="pg6je2."
                     >
                       {t("totalBalance")}
                     </p>
                     <p
                       className="text-white-950 dark:text-white text-2xl font-bold mt-1"
-                      data-oid="qjkwhj7"
+                      data-oid="gubp03n"
                     >
                       {isBalanceVisible
                         ? `${balance.toLocaleString()} RWF`
@@ -412,80 +413,80 @@ const Index = () => {
                   </div>
                   <div
                     className="p-3 bg-brand dark:bg-green-900/30 rounded-xl"
-                    data-oid="ipdrcq6"
+                    data-oid="iuf3zsv"
                   >
                     <Wallet
                       className="w-6 h-6 text-white dark:text-brand"
-                      data-oid=":qf25my"
+                      data-oid="n2k.:t-"
                     />
                   </div>
                 </div>
                 <div
                   className="flex items-center mt-4 text-green-600 dark:text-brand text-sm font-medium"
-                  data-oid="sxgo-1b"
+                  data-oid="_c1rr-f"
                 >
-                  <TrendingUp className="w-4 h-4 mr-1" data-oid="bysr0qc" />
-                  <span data-oid="22ic8_-">+2.5% {t("fromLastMonth")}</span>
+                  <TrendingUp className="w-4 h-4 mr-1" data-oid="0jdwjjq" />
+                  <span data-oid=".olb1:a">+2.5% {t("fromLastMonth")}</span>
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200"
-                data-oid="f:xljl6"
+                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-[url(/images/Ve2e.png)]"
+                data-oid="2ouz29j"
               >
                 <div
                   className="flex items-center justify-between"
-                  data-oid="i56lwew"
+                  data-oid="w.h.x2i"
                 >
-                  <div data-oid="s97ncy7">
+                  <div data-oid="k02aixm">
                     <p
                       className="text-brand0 dark:text-brand text-sm font-medium"
-                      data-oid="l4hrtxd"
+                      data-oid="4y2uxz0"
                     >
                       {t("activeStudents")}
                     </p>
                     <p
                       className="text-white-950 dark:text-white text-2xl font-bold mt-1"
-                      data-oid="_fj1._x"
+                      data-oid="w5qn-vb"
                     >
                       {students.length}
                     </p>
                   </div>
                   <div
                     className="p-3 bg-bland dark:bg-brand rounded-xl"
-                    data-oid="5cs8r52"
+                    data-oid="bf2z7g:"
                   >
                     <Users
                       className="w-6 h-6 text-white dark:text-white"
-                      data-oid="czfnd02"
+                      data-oid="3ai-z6w"
                     />
                   </div>
                 </div>
                 <div
                   className="flex items-center mt-4 text-blue-600 dark:text-blue-400 text-sm font-medium"
-                  data-oid="onme-8b"
+                  data-oid="kt72b6z"
                 >
-                  <Plus className="w-4 h-4 mr-1" data-oid="k5c6cr-" />
-                  <span data-oid="naffxwt">{t("readyToLink")}</span>
+                  <Plus className="w-4 h-4 mr-1" data-oid="xv-oc3m" />
+                  <span data-oid="em:ju04">{t("readyToLink")}</span>
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200"
-                data-oid="4iz_1m5"
+                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-[url(/images/VY9g.png)]"
+                data-oid="wnz.x6e"
               >
                 <div
                   className="flex items-center justify-between"
-                  data-oid="olww49r"
+                  data-oid="cb69ytf"
                 >
-                  <div data-oid="8w1kt2_">
+                  <div data-oid="btpj8w7">
                     <p
                       className="text-brand0 dark:text-brand text-sm font-medium"
-                      data-oid="g:-i5tx"
+                      data-oid=":uhoz7y"
                     >
                       {t("thisMonthSpent")}
                     </p>
                     <p
                       className="text-white-950 dark:text-white text-2xl font-bold mt-1"
-                      data-oid="3unu09j"
+                      data-oid="4ze3k:e"
                     >
                       {isBalanceVisible
                         ? `${students.reduce((sum, s) => sum + s.todaySpent, 0).toLocaleString()} RWF`
@@ -493,192 +494,192 @@ const Index = () => {
                     </p>
                   </div>
                   <div
-                    className="p-3 bg-orange-50 dark:bg-orange-900/30 rounded-xl"
-                    data-oid="ei76jvy"
+                    className="p-3 dark:bg-brand rounded-xl bg-brand"
+                    data-oid="6yn3qjf"
                   >
                     <ShoppingCart
-                      className="w-6 h-6 text-orange-600 dark:text-orange-400"
-                      data-oid="4o5426n"
+                      className="w-6 h-6 dark:text-orange-400 text-[#FAF6F6]"
+                      data-oid="xec6xx5"
                     />
                   </div>
                 </div>
                 <div
                   className="flex items-center mt-4 text-orange-600 dark:text-orange-400 text-sm font-medium"
-                  data-oid="x1.3je8"
+                  data-oid=".g50:dq"
                 >
-                  <TrendingDown className="w-4 h-4 mr-1" data-oid="35ywlyh" />
-                  <span data-oid="cbzjk_1">-15% {t("vsLastMonth")}</span>
+                  <TrendingDown className="w-4 h-4 mr-1" data-oid="j37hh56" />
+                  <span data-oid="roxgefp">-15% {t("vsLastMonth")}</span>
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200"
-                data-oid="6l_p6mc"
+                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-[url(/images/VY9g.png)]"
+                data-oid="z00ju-n"
               >
                 <div
                   className="flex items-center justify-between"
-                  data-oid="b_s5.np"
+                  data-oid="ubmmnn."
                 >
-                  <div data-oid="p28dr-y">
+                  <div data-oid="0ypla18">
                     <p
                       className="text-brand0 dark:text-brand text-sm font-medium"
-                      data-oid="vxn5san"
+                      data-oid="q6:1q9_"
                     >
                       {t("todayActivity")}
                     </p>
                     <p
                       className="text-white-950 dark:text-white text-2xl font-bold mt-1"
-                      data-oid="4:cgkej"
+                      data-oid="fr3wwb7"
                     >
                       {transactions.length}
                     </p>
                   </div>
                   <div
-                    className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-xl"
-                    data-oid="y8n82tl"
+                    className="p-3 dark:bg-purple-900/30 rounded-xl bg-[#320064]"
+                    data-oid="o0kwiif"
                   >
                     <Activity
-                      className="w-6 h-6 text-purple-600 dark:text-purple-400"
-                      data-oid="_huuown"
+                      className="w-6 h-6 dark:text-purple-400 text-[#F3EFEF]"
+                      data-oid="1-t8iaa"
                     />
                   </div>
                 </div>
                 <div
                   className="flex items-center mt-4 text-purple-600 dark:text-purple-400 text-sm font-medium"
-                  data-oid=".bwxis4"
+                  data-oid="ud:yqur"
                 >
-                  <PieChart className="w-4 h-4 mr-1" data-oid="3l0.-ln" />
-                  <span data-oid="0-oisat">{t("transactionsToday")}</span>
+                  <PieChart className="w-4 h-4 mr-1" data-oid=":t4zlal" />
+                  <span data-oid="pko9g9h">{t("transactionsToday")}</span>
                 </div>
               </div>
             </div>
             <div
               className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-              data-oid="cybpcdm"
+              data-oid="i5tpunj"
             >
-              <div className="lg:col-span-1" data-oid="yytwbox">
+              <div className="lg:col-span-1" data-oid="opt-kjx">
                 <VirtualCard
                   balance={balance}
                   isVisible={isBalanceVisible}
                   onToggleVisibility={() =>
                     setIsBalanceVisible(!isBalanceVisible)
                   }
-                  data-oid="de3ao8."
+                  data-oid="38-pxsi"
                 />
               </div>
-              <div className="lg:col-span-1 h-[326px]" data-oid="wvjyluw">
+              <div className="lg:col-span-1 h-[326px]" data-oid="2tkp5sm">
                 <div
-                  className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-[318px]"
-                  data-oid="gpopm4v"
+                  className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-[318px] bg-[url(/images/s-rg.png)]"
+                  data-oid="b6_76fw"
                 >
                   <h3
                     className="text-white-950 dark:text-white font-semibold text-lg mb-6"
-                    data-oid="p_okful"
+                    data-oid="pzcjg1f"
                   >
                     {t("quickActions")}
                   </h3>
-                  <div className="space-y-3" data-oid="doa01:r">
+                  <div className="space-y-3" data-oid="cwh5npe">
                     <button
                       onClick={() => setActiveModal("deposit")}
-                      className="w-full flex items-center justify-center space-x-3 hover:bg-brand text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium bg-[#07040C]"
-                      data-oid="_fe04:5"
+                      className="w-full flex items-center justify-center space-x-3 bg-brand text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium bg-[#341E5A]"
+                      data-oid="knajrgr"
                     >
-                      <Plus className="w-5 h-5" data-oid="v7qx-op" />
-                      <span data-oid="6rteiec">{t("deposit")}</span>
+                      <Plus className="w-5 h-5" data-oid="2vc2jh_" />
+                      <span data-oid="z69qdlw">{t("deposit")}</span>
                     </button>
                     <button
                       onClick={() => setActiveModal("withdraw")}
-                      className="w-full flex items-center justify-center space-x-3 bg-orange-600 hover:bg-red-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
-                      data-oid="i.bnijm"
+                      className="w-full flex items-center justify-center space-x-3 bg-yellow-500 0 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      data-oid="y_8w67u"
                     >
-                      <TrendingDown className="w-5 h-5" data-oid="fxcienb" />
-                      <span data-oid="b8rj20v">{t("withdraw")}</span>
+                      <TrendingDown className="w-5 h-5" data-oid="85devot" />
+                      <span data-oid="fem_b_e">{t("withdraw")}</span>
                     </button>
                     <button
                       onClick={() => setActiveModal("linkStudent")}
                       className="w-full flex items-center justify-center space-x-3 bg-zinc-600 hover:bg-blue-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
-                      data-oid="1wd8-5w"
+                      data-oid="hfrp7o4"
                     >
-                      <Users className="w-5 h-5" data-oid="kp1qagm" />
-                      <span data-oid="ire57c4">{t("linkStudent")}</span>
+                      <Users className="w-5 h-5" data-oid="md9vf_p" />
+                      <span data-oid="cwip9g1">{t("linkStudent")}</span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div className="lg:col-span-1" data-oid="vlib:0g">
+              <div className="lg:col-span-1" data-oid="z_t67o1">
                 <div
-                  className="bg-white dark:bg-white-950 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-200"
-                  data-oid="s4z9g4w"
+                  className="bg-white dark:bg-white-950 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-200 bg-[url(/images/s-rg.png)]"
+                  data-oid="u_0:xyp"
                 >
                   <div
                     className="flex items-center justify-between mb-6"
-                    data-oid="4_mjvfs"
+                    data-oid="g0ny.0n"
                   >
                     <h3
                       className="text-gray-900 dark:text-white font-semibold text-lg"
-                      data-oid="rj.la:z"
+                      data-oid="668zz85"
                     >
                       {t("recentActivity")}
                     </h3>
                     <button
                       onClick={() => setActiveModal("allTransactions")}
-                      className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200"
-                      data-oid="obqo0x8"
+                      className="text-sm dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200 text-[#000000]"
+                      data-oid="n6qqzx_"
                     >
                       View All
                     </button>
                   </div>
-                  <div className="space-y-3" data-oid="7rs.5d7">
+                  <div className="space-y-3" data-oid="n0hkxhk">
                     {transactions.slice(0, 4).map((transaction, index) => (
                       <div
                         key={transaction.id}
-                        className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
-                        data-oid="6ezzhmr"
+                        className="group flex items-center justify-between p-4 rounded-xl bg-brand transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600 bg-[#4C2F7C]"
+                        data-oid="_c6tgk2"
                       >
                         <div
                           className="flex items-center space-x-4"
-                          data-oid="6we-ao8"
+                          data-oid="0sq3hbe"
                         >
                           <div
                             className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                               transaction.type === "deposit"
-                                ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+                                ? "bg-yellow-400 dark:bg-yellow-400 text-zinc-900 dark:text-zinc-900"
                                 : transaction.type === "withdraw"
                                   ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                                   : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
                             }`}
-                            data-oid="uas.p_5"
+                            data-oid="pg11t:p"
                           >
                             {transaction.type === "deposit" ? (
                               <TrendingUp
-                                className="w-5 h-5"
-                                data-oid="x9vrm34"
+                                className="w-5 h-5 bg-[#00000000]"
+                                data-oid="d_w3v6y"
                               />
                             ) : transaction.type === "withdraw" ? (
                               <TrendingDown
                                 className="w-5 h-5"
-                                data-oid="wbkz3y2"
+                                data-oid="s72xnhb"
                               />
                             ) : (
                               <ShoppingCart
                                 className="w-5 h-5"
-                                data-oid="i6r.goe"
+                                data-oid="9wsu9r3"
                               />
                             )}
                           </div>
-                          <div className="flex-1" data-oid="gibgkyf">
+                          <div className="flex-1" data-oid="0o7k9yq">
                             <p
-                              className="text-gray-900 dark:text-white text-sm font-semibold mb-1"
-                              data-oid="k6sj:4d"
+                              className="dark:text-white text-sm font-semibold mb-1 text-[#FAF5F5]"
+                              data-oid="5kn15q0"
                             >
                               {transaction.title}
                             </p>
                             <div
                               className="flex items-center space-x-2"
-                              data-oid="risb6ob"
+                              data-oid="mo4e7bw"
                             >
                               <p
                                 className="text-gray-500 dark:text-gray-400 text-xs"
-                                data-oid="abf0p0e"
+                                data-oid="o_hr1yg"
                               >
                                 {transaction.date}
                               </p>
@@ -686,13 +687,13 @@ const Index = () => {
                                 <>
                                   <span
                                     className="text-gray-300 dark:text-gray-600"
-                                    data-oid="ocrr6jc"
+                                    data-oid="j86p5vm"
                                   >
                                     •
                                   </span>
                                   <p
                                     className="text-gray-500 dark:text-gray-400 text-xs"
-                                    data-oid="uor:riw"
+                                    data-oid="rpsp2e:"
                                   >
                                     {transaction.student}
                                   </p>
@@ -701,21 +702,21 @@ const Index = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="text-right" data-oid="-gy3kpu">
+                        <div className="text-right" data-oid="_ozdpwo">
                           <span
                             className={`text-sm font-bold ${
                               transaction.amount > 0
-                                ? "text-green-600 dark:text-green-400"
-                                : "text-red-600 dark:text-red-400"
+                                ? "text-yellow-400 dark:text-yellow-400"
+                                : "text-white-600 dark:text-white-400"
                             }`}
-                            data-oid="1l:j-7m"
+                            data-oid="oqecucc"
                           >
                             {transaction.amount > 0 ? "+" : ""}
                             {Math.abs(transaction.amount).toLocaleString()} RWF
                           </span>
                           <div
                             className="flex items-center justify-end mt-1"
-                            data-oid="01s15r9"
+                            data-oid="ogq9:t."
                           >
                             <div
                               className={`w-2 h-2 rounded-full ${
@@ -725,11 +726,11 @@ const Index = () => {
                                     ? "bg-yellow-500"
                                     : "bg-red-500"
                               }`}
-                              data-oid="o_tsnz7"
+                              data-oid="3bt-x3v"
                             ></div>
                             <span
                               className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
-                              data-oid="17g-i69"
+                              data-oid="cldy9ly"
                             >
                               {transaction.status}
                             </span>
@@ -740,26 +741,26 @@ const Index = () => {
                     {transactions.slice(0, 4).length === 0 && (
                       <div
                         className="flex flex-col items-center justify-center py-12 text-center"
-                        data-oid="dqtd5uq"
+                        data-oid="5:l45hz"
                       >
                         <div
                           className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
-                          data-oid="kt4esg0"
+                          data-oid="h62c5vx"
                         >
                           <Activity
                             className="w-8 h-8 text-gray-400 dark:text-gray-500"
-                            data-oid="37see_p"
+                            data-oid="p4q4b_-"
                           />
                         </div>
                         <h4
                           className="text-gray-900 dark:text-white font-medium mb-2"
-                          data-oid="-d98rwc"
+                          data-oid="n8pu683"
                         >
                           No Recent Activity
                         </h4>
                         <p
                           className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
-                          data-oid="t9um::k"
+                          data-oid="6pma4x_"
                         >
                           {t("noTransactions" as any)}
                         </p>
@@ -777,13 +778,13 @@ const Index = () => {
           <div
             ref={walletRef}
             className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-            data-oid="xz-dc_-"
+            data-oid="j2s6j6a"
           >
             <VirtualCard
               balance={balance}
               isVisible={isBalanceVisible}
               onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
-              data-oid="zjsom.2"
+              data-oid="95z4wt6"
             />
 
             <WalletSection
@@ -792,14 +793,14 @@ const Index = () => {
               onDeposit={() => setActiveModal("deposit")}
               onWithdraw={() => setActiveModal("withdraw")}
               onToggleVisibility={() => setIsBalanceVisible(!isBalanceVisible)}
-              data-oid="7hkx-lc"
+              data-oid="g1jx2-c"
             />
           </div>
         );
 
       case "students":
         return (
-          <div ref={studentsRef} data-oid="byn79-9">
+          <div ref={studentsRef} data-oid="_a8e:x7">
             <StudentsSection
               students={students}
               onViewTransactions={(student) => {
@@ -807,18 +808,18 @@ const Index = () => {
                 setActiveModal("studentTransactions");
               }}
               onSetLimits={handleSetLimits}
-              data-oid=":tfap1-"
+              data-oid="hi20rb:"
             />
           </div>
         );
 
       case "transactions":
         return (
-          <div ref={transactionsRef} data-oid="ecki:tt">
+          <div ref={transactionsRef} data-oid="xf__xff">
             <TransactionsSection
               transactions={transactions}
               onViewAll={() => setActiveModal("allTransactions")}
-              data-oid="-9kt69v"
+              data-oid="mb:d58n"
             />
           </div>
         );
@@ -834,31 +835,31 @@ const Index = () => {
       className="min-h-screen bg-white dark:bg-zinc-900 transition-colors duration-200"
       style={{
         backgroundImage: "url('/assets/background.png')",
-        backgroundRepeat: "repeat",
-        backgroundSize: "auto",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
-      data-oid="-l1lu1r"
+      data-oid="953wnnr"
     >
       <div
         className="sticky top-0 z-50 bg-white dark:bg-white-950 border-b border-brand shadow-sm"
-        data-oid="5o56cev"
+        data-oid="bekm7eo"
       >
         <div
-          className="flex items-center justify-between px-6 py-4"
-          data-oid="gmzpdhl"
+          className="flex items-center justify-between px-6 py-4 bg-[url(/images/pygH.png)]"
+          data-oid="iqwyiw2"
         >
-          <div className="flex items-center space-x-6" data-oid="2q-cod1">
-            <div className="flex items-center space-x-3" data-oid="bk7vtao">
+          <div className="flex items-center space-x-6" data-oid="muldqfn">
+            <div className="flex items-center space-x-3" data-oid="7xfenzm">
               <img
                 src="/assets/logo.png"
                 alt="kaascan Logo"
                 className="w-40 rounded-lg object-contain"
-                data-oid="fg7hezl"
+                data-oid="5xjomps"
               />
             </div>
             <div
               className="hidden md:flex items-center space-x-1 bg-brand dark:bg-brand rounded-lg p-1"
-              data-oid="v-f9z8i"
+              data-oid="z5p98rc"
             >
               {tabs.map((tab) => {
                 const IconComponent = tab.icon;
@@ -871,53 +872,53 @@ const Index = () => {
                         ? "bg-white dark:bg-brand text-white-950 dark:text-white shadow-sm"
                         : "text-white dark:text-white hover:text-white-950 dark:hover:text-white hover:bg-white/50 dark:hover:bg-green-600/50"
                     }`}
-                    data-oid="mnvfco2"
+                    data-oid="gbm8-__"
                   >
-                    <IconComponent className="w-4 h-4" data-oid="nzba.kt" />
-                    <span data-oid="gzr.if.">{tab.label}</span>
+                    <IconComponent className="w-4 h-4" data-oid="j615_ko" />
+                    <span data-oid="h4ac72j">{tab.label}</span>
                   </button>
                 );
               })}
             </div>
           </div>
-          <div className="flex items-center space-x-3" data-oid="-95yiki">
+          <div className="flex items-center space-x-3" data-oid="k0a7dud">
             <button
               onClick={() => setIsBalanceVisible(!isBalanceVisible)}
               className="p-2 text-brand dark:text-brand hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
-              data-oid="rt4njr:"
+              data-oid="07r:.eg"
             >
               {isBalanceVisible ? (
-                <Eye className="w-5 h-5" data-oid="3ecyq41" />
+                <Eye className="w-5 h-5" data-oid="ta3esc2" />
               ) : (
-                <EyeOff className="w-5 h-5" data-oid="ku8u4jd" />
+                <EyeOff className="w-5 h-5" data-oid="mydy3j." />
               )}
             </button>
             <button
               onClick={toggleTheme}
               className="p-2 text-brand dark:text-brand hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
-              data-oid="y5_u-uo"
+              data-oid="x7p6:75"
             >
               {isDark ? (
-                <Sun className="w-5 h-5" data-oid="fvf7311" />
+                <Sun className="w-5 h-5" data-oid=".ixqpef" />
               ) : (
-                <Moon className="w-5 h-5" data-oid="dq:9i-b" />
+                <Moon className="w-5 h-5" data-oid="b6xxgd1" />
               )}
             </button>
-            <div className="relative" data-oid="-mja7:5">
+            <div className="relative" data-oid="tecmrzn">
               <button
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
                 className="flex items-center space-x-2 p-2 text-brand dark:text-brand hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
-                data-oid="-ghoo_g"
+                data-oid="kv_644a"
               >
-                <Globe className="w-5 h-5" data-oid="wgzg8di" />
-                <span className="text-sm font-medium" data-oid="jc0lf6:">
+                <Globe className="w-5 h-5" data-oid="4mby8qz" />
+                <span className="text-sm font-medium" data-oid="fb6j4cu">
                   {currentLanguage?.flag}
                 </span>
               </button>
               {showLanguageDropdown && (
                 <div
                   className="absolute right-0 mt-2 w-48 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-brand dark:border-brand py-2 z-50"
-                  data-oid="ft_sk0k"
+                  data-oid="6uwwquu"
                 >
                   {languages.map((lang) => (
                     <button
@@ -931,78 +932,78 @@ const Index = () => {
                           ? "bg-brand dark:bg-brand text-yellow-600 dark:text-yellow-400"
                           : "text-brand dark:text-green-300"
                       }`}
-                      data-oid="vu92du1"
+                      data-oid="c8qcmu:"
                     >
-                      <span className="text-lg" data-oid="n.9pyoe">
+                      <span className="text-lg" data-oid="pvq8r9-">
                         {lang.flag}
                       </span>
-                      <span data-oid="yo1usg-">{lang.name}</span>
+                      <span data-oid="qofga5g">{lang.name}</span>
                     </button>
                   ))}
                 </div>
               )}
             </div>
-            <div className="relative" data-oid="7h1rx6:">
+            <div className="relative" data-oid="lrrc99r">
               <button
                 onClick={() =>
                   setShowNotificationDropdown(!showNotificationDropdown)
                 }
                 className="relative p-2 text-brand dark:text-brand hover:text-white-950 dark:hover:text-white hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
-                data-oid="omffv5w"
+                data-oid="t2x9o7y"
               >
-                <Bell className="w-5 h-5 " data-oid="33w0l2e" />
+                <Bell className="w-5 h-5 " data-oid="y_-:_pm" />
                 <span
                   className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"
-                  data-oid="4v6gwbi"
+                  data-oid="h.hsnfr"
                 ></span>
               </button>
               {showNotificationDropdown && (
                 <div
                   className="absolute right-0 mt-2 w-80 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-brand dark:border-brand z-50"
-                  data-oid="3rbr44."
+                  data-oid="ji0rv:r"
                 >
                   <div
                     className="p-4 border-b border-brand dark:border-brand"
-                    data-oid="b42avx9"
+                    data-oid="czvogke"
                   >
                     <h3
                       className="font-semibold text-white-950 dark:text-white"
-                      data-oid="yp5:sdd"
+                      data-oid="d6rojfk"
                     >
                       {t("notifications")}
                     </h3>
                   </div>
-                  <div className="p-4 space-y-3" data-oid="zk7juwy">
+                  <div className="p-4 space-y-3" data-oid="jqvy1_8">
                     <div
                       className="p-3 bg-brand dark:bg-brand rounded-lg"
-                      data-oid="nn6e1wl"
+                      data-oid="tzzt:j:"
                     >
                       <p
                         className="text-sm font-medium text-brand dark:text-green-200"
-                        data-oid="cch3zux"
+                        data-oid="8by1kr2"
                       >
                         {t("alicePurchase")}
                       </p>
                       <p
                         className="text-xs text-green-600 dark:text-brand"
-                        data-oid="hsio:rb"
+                        data-oid="dd9uvib"
                       >
                         {t("twoMinutesAgo")}
                       </p>
                     </div>
                     <div
                       className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg"
-                      data-oid="zatqeqc"
+                      data-oid="6uh7d43"
                     >
                       <p
                         className="text-sm font-medium text-blue-800 dark:text-blue-200"
-                        data-oid="e3sqwvy"
+                        data-oid="k14chon"
                       >
                         {t("bobLimitReminder")}
                       </p>
                       <p
                         className="text-xs text-blue-600 dark:text-blue-400"
-                        data-oid="rs61-r1"
+                        data-oid="8bgpzld"
                       >
                         {t("oneHourAgo")}
                       </p>
@@ -1011,68 +1012,68 @@ const Index = () => {
                 </div>
               )}
             </div>
-            <div className="relative" data-oid="8:w8uf-">
+            <div className="relative" data-oid="uz-qswi">
               <button
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
                 className="flex items-center space-x-2 p-2 hover:bg-green-100 dark:hover:bg-brand rounded-lg transition-all duration-200"
-                data-oid="-73zjne"
+                data-oid="53u:.z4"
               >
                 <div
                   className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center"
-                  data-oid="v_v:cwh"
+                  data-oid="hluz6:e"
                 >
-                  <User className="w-4 h-4 text-white" data-oid="fytp7x9" />
+                  <User className="w-4 h-4 text-white" data-oid="r2b4og6" />
                 </div>
               </button>
               {showProfileDropdown && (
                 <div
                   className="absolute right-0 mt-2 w-64 bg-white dark:bg-white-950 rounded-xl shadow-lg border border-brand dark:border-brand py-2 z-50"
-                  data-oid="mfrfff1"
+                  data-oid="zii8ima"
                 >
                   <div
                     className="px-4 py-3 border-b border-brand dark:border-brand"
-                    data-oid="epl_ptu"
+                    data-oid="d:_vmfc"
                   >
                     <div
                       className="flex items-center space-x-3"
-                      data-oid="w06i_m:"
+                      data-oid="1lfpcxy"
                     >
                       <div
                         className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center"
-                        data-oid="72jpgo."
+                        data-oid="r8but83"
                       >
                         <User
                           className="w-6 h-6 text-white"
-                          data-oid="4v.zihu"
+                          data-oid="b2rba7k"
                         />
                       </div>
-                      <div data-oid="onn6h0a">
+                      <div data-oid="g9f4q0k">
                         <p
                           className="font-medium text-white-950 dark:text-white"
-                          data-oid="t48wh3e"
+                          data-oid="9wqq1cj"
                         >
                           {t("lovingParent")}
                         </p>
                         <p
                           className="text-sm text-brand0 dark:text-brand"
-                          data-oid="4e174_1"
+                          data-oid="59zrn6u"
                         >
                           parent@example.com
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="py-2" data-oid="c.ssdzl">
+                  <div className="py-2" data-oid="gk869o7">
                     <button
                       onClick={() => {
                         setActiveModal("profile");
                         setShowProfileDropdown(false);
                       }}
                       className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-brand dark:text-green-300 hover:bg-brand dark:hover:bg-brand transition-all duration-200"
-                      data-oid="rdsjf.p"
+                      data-oid="4v9f--s"
                     >
-                      <User className="w-4 h-4" data-oid="i-.9yv6" />
-                      <span data-oid="v45ge8.">{t("profileSettings")}</span>
+                      <User className="w-4 h-4" data-oid="ovr_-re" />
+                      <span data-oid="zhycrho">{t("profileSettings")}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -1080,23 +1081,23 @@ const Index = () => {
                         setShowProfileDropdown(false);
                       }}
                       className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-brand dark:text-green-300 hover:bg-brand dark:hover:bg-brand transition-all duration-200"
-                      data-oid="jq3b41d"
+                      data-oid=".xkirzj"
                     >
-                      <Settings className="w-4 h-4" data-oid="lym::po" />
-                      <span data-oid="vjz_l.:">{t("settings")}</span>
+                      <Settings className="w-4 h-4" data-oid="7njuqeb" />
+                      <span data-oid="kfoxwjq">{t("settings")}</span>
                     </button>
                     <hr
                       className="my-2 border-brand dark:border-brand"
-                      data-oid="e_w:0f."
+                      data-oid="4.axl.6"
                     />
 
                     <button
                       onClick={handleLogout}
                       className="w-full flex items-center space-x-3 px-4 py-2 text-left text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition-all duration-200"
-                      data-oid="_3q5mp9"
+                      data-oid="_s6wzf."
                     >
-                      <LogOut className="w-4 h-4" data-oid="83s94n9" />
-                      <span data-oid="plcwqlr">{t("signOut")}</span>
+                      <LogOut className="w-4 h-4" data-oid="s.b.tes" />
+                      <span data-oid="c8fojdz">{t("signOut")}</span>
                     </button>
                   </div>
                 </div>
@@ -1105,19 +1106,15 @@ const Index = () => {
           </div>
         </div>
       </div>
-      <AdBanner data-oid="m51tkfe" />
-      <div className="flex-1 p-6 pb-24 md:pb-6" data-oid="ypwbxfn">
-        <div className="max-w-7xl mx-auto" data-oid="ufq37p7">
-          {renderTabContent()}
-        </div>
-      </div>
+      <AdBanner data-oid="x000t0." />
+
       <div
         className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-white-950 border-t border-brand dark:border-brand z-50"
-        data-oid="2ktjkvs"
+        data-oid="okxz-u0"
       >
         <div
           className="flex items-center justify-around py-2"
-          data-oid="x3ai:_5"
+          data-oid="mczhifz"
         >
           {tabs.map((tab) => {
             const IconComponent = tab.icon;
@@ -1130,10 +1127,10 @@ const Index = () => {
                     ? "text-yellow-600 dark:text-yellow-400"
                     : "text-brand0 dark:text-brand hover:text-white-950 dark:hover:text-white"
                 }`}
-                data-oid="5r78enc"
+                data-oid="q2qwin6"
               >
-                <IconComponent className="w-5 h-5" data-oid="m1vvnpq" />
-                <span className="text-xs font-medium" data-oid="mq:khzf">
+                <IconComponent className="w-5 h-5" data-oid="gk7huwy" />
+                <span className="text-xs font-medium" data-oid="ck1antw">
                   {tab.label}
                 </span>
               </button>
@@ -1142,7 +1139,7 @@ const Index = () => {
         </div>
       </div>
       {activeModal === "profile" && (
-        <ProfileModal onClose={() => setActiveModal(null)} data-oid="7o2v1ye" />
+        <ProfileModal onClose={() => setActiveModal(null)} data-oid="vw-3ij8" />
       )}
       {activeModal === "deposit" && (
         <VercelModal
@@ -1150,15 +1147,15 @@ const Index = () => {
           onClose={() => setActiveModal(null)}
           onSubmit={handleDeposit}
           isLoading={isLoading}
-          data-oid="32wc7nm"
+          data-oid="a8b4xb5"
         >
-          <div className="space-y-6" data-oid="phw_871">
-            <div data-oid="wtrq4f4">
-              {<PaymentStatusListener data-oid="6g.jofp" />}
+          <div className="space-y-6" data-oid="4f-xl:1">
+            <div data-oid="xkhailp">
+              {<PaymentStatusListener data-oid="dovsag5" />}
 
               <label
                 className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
-                data-oid="lyz.jx4"
+                data-oid="br.huzj"
               >
                 {t("phoneNumber")}
               </label>
@@ -1170,13 +1167,13 @@ const Index = () => {
                 className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="078XXXXXXX"
                 disabled
-                data-oid="vd_83-a"
+                data-oid="2lsyidp"
               />
             </div>
-            <div data-oid="tjza9o5">
+            <div data-oid="eblbe7n">
               <label
                 className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
-                data-oid="21jhtgm"
+                data-oid="5m9dd:7"
               >
                 {t("amount")}
               </label>
@@ -1187,7 +1184,7 @@ const Index = () => {
                 min="100"
                 className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="10,000"
-                data-oid="n6a:bi4"
+                data-oid="zacwkpj"
               />
             </div>
             {/* <div>
@@ -1207,81 +1204,28 @@ const Index = () => {
         </VercelModal>
       )}
       {activeModal === "withdraw" && (
-        <VercelModal
-          title={t("withdraw")}
-          onClose={() => setActiveModal(null)}
-          onSubmit={handleWithdraw}
+        <WithdrawModal
+          data-oid="l5kt-j6"
+          t={t}
+          setActiveModal={setActiveModal}
+          handleWithdraw={handleWithdraw}
           isLoading={isLoading}
-          data-oid="mgdvjyn"
-        >
-          <div className="space-y-6" data-oid="2k:rufc">
-            <div data-oid="dbahuii">
-              <label
-                className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
-                data-oid="eklgr2y"
-              >
-                {t("phoneNumber")}
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                required
-                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                placeholder="078XXXXXXX"
-                data-oid="hue6der"
-              />
-            </div>
-            <div data-oid="igp99kr">
-              <label
-                className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
-                data-oid=".uzgf5j"
-              >
-                {t("amount")}
-              </label>
-              <input
-                type="number"
-                name="amount"
-                required
-                min="1000"
-                max={balance}
-                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                placeholder="10,000"
-                data-oid="dif7zki"
-              />
-            </div>
-            <div data-oid="5mqyncn">
-              <label
-                className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
-                data-oid="_n9.8qg"
-              >
-                {t("pin")}
-              </label>
-              <input
-                type="password"
-                name="pin"
-                required
-                maxLength={4}
-                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                placeholder="****"
-                data-oid="2703ki4"
-              />
-            </div>
-          </div>
-        </VercelModal>
+          balance={balance}
+        />
       )}
       {activeModal === "linkStudent" && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40"
-          data-oid="-q7zqi_"
+          data-oid="nwcu6qr"
         >
-          <div className="w-full bg-zinc-900 " data-oid="bznhm3h">
+          <div className="w-full bg-zinc-900 " data-oid="mxoomki">
             <AddStudentModal
               onSubmit={handleLinkStudent}
               isLoading={isLoading}
               csrfToken={csrfToken}
               parentPhone={parentPhone}
               onClose={() => setActiveModal(null)}
-              data-oid="hsffl85"
+              data-oid="0yfu5rk"
             />
           </div>
         </div>
@@ -1292,51 +1236,51 @@ const Index = () => {
           onClose={() => setActiveModal(null)}
           onSubmit={() => setActiveModal(null)}
           isLoading={false}
-          data-oid="p733m77"
+          data-oid="vn_xcam"
         >
-          <div className="space-y-6" data-oid="8.vy9v5">
+          <div className="space-y-6" data-oid="6f-72_p">
             <div
               className="flex items-center justify-between"
-              data-oid="yonekmv"
+              data-oid="ynq21i8"
             >
-              <div data-oid="8h79a.p">
+              <div data-oid="tjk0d39">
                 <h4
                   className="text-sm font-medium text-white-950 dark:text-white"
-                  data-oid="_6u8d.9"
+                  data-oid="uk-l_44"
                 >
                   {t("notifications")}
                 </h4>
                 <p
                   className="text-sm text-brand0 dark:text-brand"
-                  data-oid="wqi.ju:"
+                  data-oid="lemr7qh"
                 >
                   {t("receiveAlerts")}
                 </p>
               </div>
               <button
                 className="w-12 h-6 bg-blue-600 rounded-full relative"
-                data-oid="fccal3q"
+                data-oid="d:8v0z."
               >
                 <div
                   className="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5"
-                  data-oid="5:.63q3"
+                  data-oid="y3-3e1r"
                 ></div>
               </button>
             </div>
             <div
               className="flex items-center justify-between"
-              data-oid="gfpsym."
+              data-oid="83rp64f"
             >
-              <div data-oid="dptkdjx">
+              <div data-oid="8c7rmwz">
                 <h4
                   className="text-sm font-medium text-white-950 dark:text-white"
-                  data-oid="wycy-t:"
+                  data-oid="fr:v3lj"
                 >
                   {t("darkMode")}
                 </h4>
                 <p
                   className="text-sm text-brand0 dark:text-brand"
-                  data-oid="bk:2-g5"
+                  data-oid="etm9o09"
                 >
                   {t("switchTheme")}
                 </p>
@@ -1344,18 +1288,18 @@ const Index = () => {
               <button
                 onClick={toggleTheme}
                 className={`w-12 h-6 rounded-full relative transition-colors ${isDark ? "bg-blue-600" : "bg-green-300"}`}
-                data-oid="7t0dv.5"
+                data-oid="5:_lkw_"
               >
                 <div
                   className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform ${isDark ? "right-0.5" : "left-0.5"}`}
-                  data-oid="d:o4aov"
+                  data-oid="saj4su-"
                 ></div>
               </button>
             </div>
-            <div className="border-t dark:border-brand pt-4" data-oid="lo1uqc1">
+            <div className="border-t dark:border-brand pt-4" data-oid="p6fm13k">
               <h4
                 className="text-sm font-medium text-white-950 dark:text-white mb-2"
-                data-oid="s:ixt6i"
+                data-oid="cyi-i2a"
               >
                 {t("language")}
               </h4>
@@ -1363,10 +1307,10 @@ const Index = () => {
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as any)}
                 className="w-full px-3 py-2 border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white rounded-lg"
-                data-oid="wn8c-ym"
+                data-oid="ymjse9t"
               >
                 {languages.map((lang) => (
-                  <option key={lang.code} value={lang.code} data-oid="5.z3cmv">
+                  <option key={lang.code} value={lang.code} data-oid="t8pqd7t">
                     {lang.flag} {lang.name}
                   </option>
                 ))}
@@ -1384,7 +1328,7 @@ const Index = () => {
           }}
           onSave={handleSaveLimits}
           isLoading={isLoading}
-          data-oid=":-lcn6d"
+          data-oid="6t3wciu"
         />
       )}
       {activeModal === "studentTransactions" && selectedStudent && (
@@ -1397,11 +1341,11 @@ const Index = () => {
           onSubmit={() => {}}
           isLoading={false}
           hideSubmit
-          data-oid="re580ni"
+          data-oid="0455-w1"
         >
           <div
             className="max-h-96 overflow-y-auto space-y-3"
-            data-oid="5et_q-8"
+            data-oid="algmbvy"
           >
             {transactions
               .filter((tx) => tx.student === selectedStudent.name)
@@ -1409,11 +1353,11 @@ const Index = () => {
                 <div
                   key={tx.id}
                   className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
-                  data-oid="d_:d6c2"
+                  data-oid="w8814tf"
                 >
                   <div
                     className="flex items-center space-x-4"
-                    data-oid="vepi7hs"
+                    data-oid="mwu4l2n"
                   >
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
@@ -1423,42 +1367,42 @@ const Index = () => {
                             ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                             : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
                       }`}
-                      data-oid="lnah68b"
+                      data-oid="xzcepq5"
                     >
                       {tx.type === "deposit" ? (
-                        <TrendingUp className="w-5 h-5" data-oid="xxw946b" />
+                        <TrendingUp className="w-5 h-5" data-oid="yolqn5v" />
                       ) : tx.type === "withdraw" ? (
-                        <TrendingDown className="w-5 h-5" data-oid="iu216fd" />
+                        <TrendingDown className="w-5 h-5" data-oid="k:w1c8d" />
                       ) : (
-                        <ShoppingCart className="w-5 h-5" data-oid="rtc-:04" />
+                        <ShoppingCart className="w-5 h-5" data-oid="um5_o8a" />
                       )}
                     </div>
-                    <div className="flex-1" data-oid="glf:07v">
+                    <div className="flex-1" data-oid="tp3xj0p">
                       <p
                         className="text-gray-900 dark:text-white text-sm font-semibold mb-1"
-                        data-oid="okf3n:a"
+                        data-oid="wjlrgq0"
                       >
                         {tx.title}
                       </p>
                       <p
                         className="text-gray-500 dark:text-gray-400 text-xs"
-                        data-oid="8ugc7sh"
+                        data-oid="ri49c0g"
                       >
                         {tx.date}
                       </p>
                     </div>
                   </div>
-                  <div className="text-right" data-oid="6pqerze">
+                  <div className="text-right" data-oid="ii7v:bw">
                     <span
                       className={`text-sm font-bold ${tx.amount > 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}
-                      data-oid="6efc4e9"
+                      data-oid="18prrt4"
                     >
                       {tx.amount > 0 ? "+" : ""}
                       {Math.abs(tx.amount).toLocaleString()} RWF
                     </span>
                     <div
                       className="flex items-center justify-end mt-1"
-                      data-oid="wz4o5au"
+                      data-oid="odkpnnt"
                     >
                       <div
                         className={`w-2 h-2 rounded-full ${
@@ -1468,11 +1412,11 @@ const Index = () => {
                               ? "bg-yellow-500"
                               : "bg-red-500"
                         }`}
-                        data-oid="0pijt7r"
+                        data-oid="lh5p:rx"
                       ></div>
                       <span
                         className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
-                        data-oid="mh5-.wt"
+                        data-oid="bhc4bz-"
                       >
                         {tx.status}
                       </span>
@@ -1484,26 +1428,26 @@ const Index = () => {
               .length === 0 && (
               <div
                 className="flex flex-col items-center justify-center py-12 text-center"
-                data-oid="3lzopp9"
+                data-oid="r8kxn0c"
               >
                 <div
                   className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
-                  data-oid="5etymu6"
+                  data-oid=".7bm0_0"
                 >
                   <Activity
                     className="w-8 h-8 text-gray-400 dark:text-gray-500"
-                    data-oid="nt7buvp"
+                    data-oid="o6vox02"
                   />
                 </div>
                 <h4
                   className="text-gray-900 dark:text-white font-medium mb-2"
-                  data-oid=".a28.1:"
+                  data-oid="7jptmto"
                 >
                   No Transactions Found
                 </h4>
                 <p
                   className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
-                  data-oid="lp1nt6j"
+                  data-oid="-cejlyu"
                 >
                   {t("noTransactions")}
                 </p>
@@ -1519,19 +1463,19 @@ const Index = () => {
           onSubmit={() => {}}
           isLoading={false}
           hideSubmit
-          data-oid="j8i9lgn"
+          data-oid="0:hl2lf"
         >
           <div
             className="max-h-96 overflow-y-auto space-y-3"
-            data-oid="twiy99y"
+            data-oid="iiliyij"
           >
             {transactions.map((tx) => (
               <div
                 key={tx.id}
                 className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
-                data-oid="j_hi.zz"
+                data-oid="e8qs2a3"
               >
-                <div className="flex items-center space-x-4" data-oid="_skajwq">
+                <div className="flex items-center space-x-4" data-oid="ksbsbm2">
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                       tx.type === "deposit"
@@ -1540,30 +1484,30 @@ const Index = () => {
                           ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                           : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
                     }`}
-                    data-oid="c::x4ef"
+                    data-oid="5.35:dr"
                   >
                     {tx.type === "deposit" ? (
-                      <TrendingUp className="w-5 h-5" data-oid="7c.t9.n" />
+                      <TrendingUp className="w-5 h-5" data-oid="vb-0ff-" />
                     ) : tx.type === "withdraw" ? (
-                      <TrendingDown className="w-5 h-5" data-oid="prqlstn" />
+                      <TrendingDown className="w-5 h-5" data-oid="91ypfrc" />
                     ) : (
-                      <ShoppingCart className="w-5 h-5" data-oid="aw96.jk" />
+                      <ShoppingCart className="w-5 h-5" data-oid=":4wmlzp" />
                     )}
                   </div>
-                  <div className="flex-1" data-oid=":9x8lt-">
+                  <div className="flex-1" data-oid="l854xe8">
                     <p
                       className="text-gray-900 dark:text-white text-sm font-semibold mb-1"
-                      data-oid="vj7izdt"
+                      data-oid="zc19gr_"
                     >
                       {tx.title}
                     </p>
                     <div
                       className="flex items-center space-x-2"
-                      data-oid="22d617s"
+                      data-oid="2pj1vgy"
                     >
                       <p
                         className="text-gray-500 dark:text-gray-400 text-xs"
-                        data-oid="y_5fdtj"
+                        data-oid="y-f-lp4"
                       >
                         {tx.date}
                       </p>
@@ -1571,13 +1515,13 @@ const Index = () => {
                         <>
                           <span
                             className="text-gray-300 dark:text-gray-600"
-                            data-oid="_d6l9y5"
+                            data-oid="wlm5jbi"
                           >
                             •
                           </span>
                           <p
                             className="text-gray-500 dark:text-gray-400 text-xs"
-                            data-oid=":td.-km"
+                            data-oid="ug0onzz"
                           >
                             {tx.student}
                           </p>
@@ -1586,17 +1530,17 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-                <div className="text-right" data-oid="qxvwtv0">
+                <div className="text-right" data-oid="oav3edl">
                   <span
                     className={`text-sm font-bold ${tx.amount > 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}
-                    data-oid="uld0ha3"
+                    data-oid="qents:i"
                   >
                     {tx.amount > 0 ? "+" : ""}
                     {Math.abs(tx.amount).toLocaleString()} RWF
                   </span>
                   <div
                     className="flex items-center justify-end mt-1"
-                    data-oid="c_x7jfz"
+                    data-oid="sb5hynd"
                   >
                     <div
                       className={`w-2 h-2 rounded-full ${
@@ -1606,11 +1550,11 @@ const Index = () => {
                             ? "bg-yellow-500"
                             : "bg-red-500"
                       }`}
-                      data-oid="_2j.6x3"
+                      data-oid="b7vmb5b"
                     ></div>
                     <span
                       className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
-                      data-oid="g1zunzb"
+                      data-oid="ukf.tic"
                     >
                       {tx.status}
                     </span>
@@ -1621,26 +1565,26 @@ const Index = () => {
             {transactions.length === 0 && (
               <div
                 className="flex flex-col items-center justify-center py-12 text-center"
-                data-oid=":1nz.-0"
+                data-oid="rd0o5p."
               >
                 <div
                   className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
-                  data-oid="95ml.3x"
+                  data-oid="fjz:0-2"
                 >
                   <Activity
                     className="w-8 h-8 text-gray-400 dark:text-gray-500"
-                    data-oid="1r5bbgt"
+                    data-oid="6frhgnj"
                   />
                 </div>
                 <h4
                   className="text-gray-900 dark:text-white font-medium mb-2"
-                  data-oid="4-:23m5"
+                  data-oid="ghzfyua"
                 >
                   No Transactions Found
                 </h4>
                 <p
                   className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
-                  data-oid="u8pljaq"
+                  data-oid="po_5-58"
                 >
                   {t("noTransactions")}
                 </p>
@@ -1649,7 +1593,7 @@ const Index = () => {
           </div>
         </VercelModal>
       )}
-      <div className="fixed top-20 right-4 space-y-2 z-50" data-oid="a3.1orv">
+      <div className="fixed top-20 right-4 space-y-2 z-50" data-oid="4j3z-p9">
         {toasts.map((toast) => (
           <VercelToast
             key={toast.id}
@@ -1658,13 +1602,21 @@ const Index = () => {
             onClose={() =>
               setToasts((prev) => prev.filter((t) => t.id !== toast.id))
             }
-            data-oid="lseh:-r"
+            data-oid="4vmn_-k"
           />
         ))}
       </div>
-      {isLoading && <BinanceLoader data-oid="w41iq3:" />}
+      <div
+        className="flex-1 p-6 pb-24 md:pb-6"
+        data-oid="c1pazjp"
+        key="olk-rcLk"
+      >
+        <div className="max-w-7xl mx-auto" data-oid="b8-w:d1">
+          {renderTabContent()}
+        </div>
+      </div>
+      {isLoading && <BinanceLoader data-oid="hs8grxk" />}
     </div>
   );
 };
-
 export default Index;

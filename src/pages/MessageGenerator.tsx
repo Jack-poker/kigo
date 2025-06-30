@@ -160,10 +160,10 @@ const MessageGenerator = () => {
       <div
         className="min-h-screen bg-white flex items-center justify-center p-4"
         style={{ width: "400px", margin: "0 auto" }}
-        data-oid="7.i64eo"
+        data-oid="q10u1lq"
       >
-        <div ref={messageRef} className="w-full" data-oid="i:e1nem">
-          <TemplateComponent messageData={messageData} data-oid="pgujoqs" />
+        <div ref={messageRef} className="w-full" data-oid="i9uyf05">
+          <TemplateComponent messageData={messageData} data-oid="yp4sd1m" />
         </div>
       </div>
     );
@@ -172,41 +172,41 @@ const MessageGenerator = () => {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50"
-      data-oid="dm5l0j7"
+      data-oid=".b012oy"
     >
       {/* Header */}
       <div
         className="bg-white/80 backdrop-blur-sm border-b border-emerald-100 sticky top-0 z-40"
-        data-oid="xvsw7.7"
+        data-oid="5d9h4mi"
       >
-        <div className="max-w-6xl mx-auto px-4 py-4" data-oid="gy9k-fo">
-          <div className="flex items-center justify-between" data-oid="51-20sq">
-            <div className="flex items-center space-x-4" data-oid="3b655l-">
+        <div className="max-w-6xl mx-auto px-4 py-4" data-oid="ytj9y-x">
+          <div className="flex items-center justify-between" data-oid="afj03sg">
+            <div className="flex items-center space-x-4" data-oid="vbf6qmx">
               <Link
                 to="/"
                 className="p-2 hover:bg-emerald-100 rounded-xl transition-colors"
-                data-oid="a10ldf9"
+                data-oid="2n18j6x"
               >
                 <ArrowLeft
                   className="w-5 h-5 text-emerald-600"
-                  data-oid="2uzjg_4"
+                  data-oid="j4gzxb1"
                 />
               </Link>
               <h1
                 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent"
-                data-oid="rnybie7"
+                data-oid="a-_1ui5"
               >
                 Message Generator
               </h1>
             </div>
-            <div className="flex items-center space-x-2" data-oid="1:1q.5h">
+            <div className="flex items-center space-x-2" data-oid="e98epj5">
               <button
                 onClick={copyUrlToClipboard}
                 className="p-2 hover:bg-emerald-100 rounded-xl transition-colors text-emerald-600"
                 title="Copy shareable URL"
-                data-oid="f79ck3l"
+                data-oid="pi1.vog"
               >
-                <Copy className="w-5 h-5" data-oid="i5t8a8." />
+                <Copy className="w-5 h-5" data-oid="ltww-d." />
               </button>
               <button
                 onClick={() =>
@@ -214,39 +214,39 @@ const MessageGenerator = () => {
                 }
                 className="p-2 hover:bg-emerald-100 rounded-xl transition-colors text-emerald-600"
                 title="Copy message content"
-                data-oid="eendpr1"
+                data-oid="zqeneoq"
               >
-                <MessageSquare className="w-5 h-5" data-oid="din3hca" />
+                <MessageSquare className="w-5 h-5" data-oid="4ve2g6k" />
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-8" data-oid="6ig4_-x">
-        <div className="grid lg:grid-cols-2 gap-8" data-oid="o-4fmk6">
+      <div className="max-w-6xl mx-auto px-4 py-8" data-oid="w6o7-pl">
+        <div className="grid lg:grid-cols-2 gap-8" data-oid="rgyi8i8">
           {/* Input Form */}
-          <div className="space-y-6" data-oid="nd5zejg">
+          <div className="space-y-6" data-oid="cg1.ng:">
             <div
               className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-emerald-100 shadow-lg"
-              data-oid="35yni_z"
+              data-oid="340jr-r"
             >
               <h2
                 className="text-xl font-bold text-emerald-800 mb-6"
-                data-oid="s3aa.xl"
+                data-oid="0qkq-m2"
               >
                 Message Settings
               </h2>
 
               {/* Template Selection */}
-              <div className="mb-6" data-oid="wdkstjc">
+              <div className="mb-6" data-oid="4t3hlad">
                 <label
                   className="block text-sm font-semibold text-emerald-700 mb-3"
-                  data-oid=":xnbjlt"
+                  data-oid="j2k4de7"
                 >
                   Template
                 </label>
-                <div className="grid grid-cols-2 gap-3" data-oid="e1m6j5c">
+                <div className="grid grid-cols-2 gap-3" data-oid="ylhnj-g">
                   {templates.map((template) => {
                     const IconComponent = template.icon;
                     return (
@@ -262,16 +262,16 @@ const MessageGenerator = () => {
                             ? "border-emerald-400 bg-emerald-50"
                             : "border-gray-200 hover:border-emerald-200"
                         }`}
-                        data-oid="ofj3wp-"
+                        data-oid="lo3y.c6"
                       >
                         <IconComponent
                           className="w-5 h-5 text-emerald-600"
-                          data-oid="2you3.g"
+                          data-oid="x4ql1.j"
                         />
 
                         <span
                           className="font-medium text-sm"
-                          data-oid="_ratjf0"
+                          data-oid="5-adgmd"
                         >
                           {template.name}
                         </span>
@@ -282,10 +282,10 @@ const MessageGenerator = () => {
               </div>
 
               {/* Brand Name */}
-              <div className="mb-4" data-oid="wj:udnl">
+              <div className="mb-4" data-oid="zhw2axo">
                 <label
                   className="block text-sm font-semibold text-emerald-700 mb-2"
-                  data-oid="2225fux"
+                  data-oid=".29l634"
                 >
                   Brand Name
                 </label>
@@ -295,15 +295,15 @@ const MessageGenerator = () => {
                   onChange={(e) => updateUrlParams({ brand: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200"
                   placeholder="Your Brand"
-                  data-oid="klnnpg8"
+                  data-oid="ynm7w.w"
                 />
               </div>
 
               {/* Recipient */}
-              <div className="mb-4" data-oid="47orvfd">
+              <div className="mb-4" data-oid="hp4vqe.">
                 <label
                   className="block text-sm font-semibold text-emerald-700 mb-2"
-                  data-oid="_2.q5z4"
+                  data-oid="vn9a9.m"
                 >
                   Recipient Name
                 </label>
@@ -315,16 +315,16 @@ const MessageGenerator = () => {
                   }
                   className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200"
                   placeholder="John Doe"
-                  data-oid=".4ksb:o"
+                  data-oid="jwq6_f-"
                 />
               </div>
 
               {/* Dynamic Fields Based on Template */}
               {messageData.type === "otp" && (
-                <div className="mb-4" data-oid="d_biwxb">
+                <div className="mb-4" data-oid="wwn68qc">
                   <label
                     className="block text-sm font-semibold text-emerald-700 mb-2"
-                    data-oid="0gkjd71"
+                    data-oid="tx9nh50"
                   >
                     OTP Code
                   </label>
@@ -335,17 +335,17 @@ const MessageGenerator = () => {
                     className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200 text-center text-2xl font-mono tracking-widest"
                     placeholder="123456"
                     maxLength={6}
-                    data-oid="u1icbsv"
+                    data-oid="t8runvz"
                   />
                 </div>
               )}
 
               {(messageData.type === "business" ||
                 messageData.type === "email") && (
-                <div className="mb-4" data-oid="2lchhut">
+                <div className="mb-4" data-oid="sggr.ei">
                   <label
                     className="block text-sm font-semibold text-emerald-700 mb-2"
-                    data-oid="g12cxz5"
+                    data-oid="eesi9oa"
                   >
                     Title
                   </label>
@@ -355,16 +355,16 @@ const MessageGenerator = () => {
                     onChange={(e) => updateUrlParams({ title: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200"
                     placeholder="Enter message title"
-                    data-oid="fz-kw8u"
+                    data-oid="jbf1ovh"
                   />
                 </div>
               )}
 
               {/* Message Content */}
-              <div className="mb-4" data-oid="uq36hl4">
+              <div className="mb-4" data-oid="-rw5ukz">
                 <label
                   className="block text-sm font-semibold text-emerald-700 mb-2"
-                  data-oid="lr-0vav"
+                  data-oid=".cm9xgo"
                 >
                   Message Content
                 </label>
@@ -373,19 +373,19 @@ const MessageGenerator = () => {
                   onChange={(e) => updateUrlParams({ content: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-200 h-32 resize-none"
                   placeholder="Enter your message content..."
-                  data-oid="apb6_zf"
+                  data-oid="9wue4oz"
                 />
               </div>
 
               {/* Color Theme */}
-              <div className="mb-4" data-oid="slm-hg1">
+              <div className="mb-4" data-oid="pr.aexg">
                 <label
                   className="block text-sm font-semibold text-emerald-700 mb-2"
-                  data-oid="49o9k.7"
+                  data-oid=":khv5en"
                 >
                   Color Theme
                 </label>
-                <div className="flex space-x-2" data-oid="livh0i:">
+                <div className="flex space-x-2" data-oid="2ycn6sk">
                   {[
                     "#25D366",
                     "#007bff",
@@ -403,7 +403,7 @@ const MessageGenerator = () => {
                           : "border-gray-200"
                       }`}
                       style={{ backgroundColor: color }}
-                      data-oid=":xoskxp"
+                      data-oid="aj0xlkq"
                     />
                   ))}
                 </div>
@@ -414,17 +414,17 @@ const MessageGenerator = () => {
                 onClick={handleGenerate}
                 disabled={isGenerating}
                 className="w-full bg-gradient-to-r from-emerald-500 to-green-400 text-white py-4 px-6 rounded-xl font-bold hover:from-emerald-600 hover:to-green-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
-                data-oid="0w6ijno"
+                data-oid="8peyrpq"
               >
                 {isGenerating ? (
                   <div
                     className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"
-                    data-oid="tmua1_o"
+                    data-oid="t.7ij07"
                   ></div>
                 ) : (
                   <>
-                    <Share2 className="w-5 h-5" data-oid="mjjiugv" />
-                    <span data-oid="1qutycr">Generate Message</span>
+                    <Share2 className="w-5 h-5" data-oid="b0c5i5s" />
+                    <span data-oid="49zhp8.">Generate Message</span>
                   </>
                 )}
               </button>
@@ -432,17 +432,17 @@ const MessageGenerator = () => {
               {/* URL Example */}
               <div
                 className="mt-4 p-4 bg-emerald-50 rounded-xl"
-                data-oid="y:da_cj"
+                data-oid="np_caq-"
               >
                 <p
                   className="text-sm text-emerald-700 font-medium mb-2"
-                  data-oid="ffeq9uo"
+                  data-oid="tgr9.3f"
                 >
                   Shareable URL Example:
                 </p>
                 <code
                   className="text-xs text-emerald-600 break-all"
-                  data-oid=".30ehq7"
+                  data-oid="u3bnoze"
                 >
                   {window.location.origin}/message-generator?type=
                   {messageData.type}&content=
@@ -453,25 +453,25 @@ const MessageGenerator = () => {
           </div>
 
           {/* Preview */}
-          <div className="space-y-6" data-oid="612nn:z">
+          <div className="space-y-6" data-oid="03eguaq">
             <div
               className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-emerald-100 shadow-lg"
-              data-oid="69o44x8"
+              data-oid="07:k02x"
             >
               <h2
                 className="text-xl font-bold text-emerald-800 mb-6"
-                data-oid="senq4gn"
+                data-oid=":t0am8y"
               >
                 Preview
               </h2>
               <div
                 ref={messageRef}
                 className="bg-white rounded-xl shadow-lg overflow-hidden"
-                data-oid="u3v6wvt"
+                data-oid="xfwc1oh"
               >
                 <TemplateComponent
                   messageData={messageData}
-                  data-oid="u6x.o.o"
+                  data-oid="0r35:k-"
                 />
               </div>
             </div>

@@ -134,25 +134,25 @@ const UserManagement: React.FC = () => {
   };
 
   return (
-    <Card data-oid="xb:sr2i">
-      <CardHeader data-oid="m4lml32">
+    <Card data-oid="323cxj:">
+      <CardHeader data-oid="1kx:uae">
         <CardTitle
           className="flex items-center justify-between"
-          data-oid="flx:324"
+          data-oid="tcsp:r_"
         >
-          <span data-oid="ggzga:_">User Management</span>
+          <span data-oid="4y3a:.l">User Management</span>
           <Button
             className="bg-emerald-600 hover:bg-emerald-700"
-            data-oid="emw8d6n"
+            data-oid="1pibltt"
           >
             Add User
           </Button>
         </CardTitle>
-        <div className="flex items-center space-x-4" data-oid="hw.9gro">
-          <div className="relative flex-1 max-w-sm" data-oid="b8v:6q9">
+        <div className="flex items-center space-x-4" data-oid="f2kfaop">
+          <div className="relative flex-1 max-w-sm" data-oid="tm35dc5">
             <Search
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"
-              data-oid="rn93lnh"
+              data-oid="y6z-fya"
             />
 
             <Input
@@ -160,130 +160,130 @@ const UserManagement: React.FC = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
-              data-oid="ubr4qe7"
+              data-oid="x4hg:.c"
             />
           </div>
           <Button
             variant="outline"
             className="flex items-center space-x-2"
-            data-oid=":x-yjra"
+            data-oid="mst_yu1"
           >
-            <Filter className="w-4 h-4" data-oid=".kl-3et" />
-            <span data-oid="cg:d31e">Filter</span>
+            <Filter className="w-4 h-4" data-oid="u4nhprb" />
+            <span data-oid="6.f.fbc">Filter</span>
           </Button>
         </div>
       </CardHeader>
-      <CardContent data-oid="ldcmd_z">
+      <CardContent data-oid="_ihf4oy">
         {error && (
-          <p className="text-red-500 mb-4" data-oid="nd94dkt">
+          <p className="text-red-500 mb-4" data-oid="q7_xg5n">
             {error}
           </p>
         )}
         {loading ? (
-          <p className="text-gray-600" data-oid="xp:i57p">
+          <p className="text-gray-600" data-oid="94z_l6_">
             Loading...
           </p>
         ) : (
-          <div className="overflow-x-auto" data-oid="wth3cvj">
-            <table className="w-full" data-oid="-xbny1x">
-              <thead data-oid=":tk569o">
-                <tr className="border-b" data-oid="_kvhkit">
+          <div className="overflow-x-auto" data-oid=".jdto-p">
+            <table className="w-full" data-oid="b8h9y_x">
+              <thead data-oid="0vaa6u0">
+                <tr className="border-b" data-oid="5vug5_c">
                   <th
                     className="text-left p-4 font-medium text-emerald-700"
-                    data-oid="g6s_lh8"
+                    data-oid="c9tsklj"
                   >
                     Name
                   </th>
                   <th
                     className="text-left p-4 font-medium text-emerald-700"
-                    data-oid="_x969o9"
+                    data-oid=".9u5h1c"
                   >
                     Email
                   </th>
                   <th
                     className="text-left p-4 font-medium text-emerald-700"
-                    data-oid="ffo9z64"
+                    data-oid="jifj:4n"
                   >
                     Type
                   </th>
                   <th
                     className="text-left p-4 font-medium text-emerald-700"
-                    data-oid="6sy8-.p"
+                    data-oid="wjlrqho"
                   >
                     Status
                   </th>
                   <th
                     className="text-left p-4 font-medium text-emerald-700"
-                    data-oid="v6_jxee"
+                    data-oid="2s0oni8"
                   >
                     Join Date
                   </th>
                   <th
                     className="text-left p-4 font-medium text-emerald-700"
-                    data-oid="btsj7n0"
+                    data-oid="10dqt1v"
                   >
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody data-oid="ecrisxi">
+              <tbody data-oid="kepb2j.">
                 {filteredUsers.map((user) => (
                   <tr
                     key={user.id}
                     className="border-b hover:bg-emerald-50/50"
-                    data-oid="c_:jl-5"
+                    data-oid="ysbv:bp"
                   >
-                    <td className="p-4 font-medium" data-oid="8kn3bp6">
+                    <td className="p-4 font-medium" data-oid="x_sk51m">
                       {user.name}
                     </td>
                     <td
                       className="p-4 text-muted-foreground"
-                      data-oid="jfx_0sw"
+                      data-oid="7oo1.5g"
                     >
                       {user.email}
                     </td>
-                    <td className="p-4" data-oid="mg3b7a4">
+                    <td className="p-4" data-oid="um870vx">
                       <span
                         className={`px-2 py-1 rounded-full text-xs font-medium ${
                           user.type === "parent"
                             ? "bg-blue-100 text-blue-800"
                             : "bg-purple-100 text-purple-800"
                         }`}
-                        data-oid="d3qc_jc"
+                        data-oid="dz_ca35"
                       >
                         {user.type}
                       </span>
                     </td>
-                    <td className="p-4" data-oid="fgjb682">
+                    <td className="p-4" data-oid="4qhm7u0">
                       <span
                         className={`px-2 py-1 rounded-full text-xs font-medium ${
                           user.status === "active"
                             ? "bg-green-100 text-green-800"
                             : "bg-red-100 text-red-800"
                         }`}
-                        data-oid="vrttz09"
+                        data-oid="dq-wc3b"
                       >
                         {user.status}
                       </span>
                     </td>
                     <td
                       className="p-4 text-muted-foreground"
-                      data-oid="cx24dvv"
+                      data-oid=".c1u.ct"
                     >
                       {user.joinDate}
                     </td>
-                    <td className="p-4" data-oid="hb1hvf2">
+                    <td className="p-4" data-oid="3sn.7ez">
                       <div
                         className="flex items-center space-x-2"
-                        data-oid="gnlz1rg"
+                        data-oid="ze-pvgc"
                       >
                         <Button
                           variant="outline"
                           size="sm"
                           onClick={() => handleView(user)}
-                          data-oid="d8xoq:g"
+                          data-oid="_ov8ezz"
                         >
-                          <Eye className="w-4 h-4" data-oid="oul_:a_" />
+                          <Eye className="w-4 h-4" data-oid="2zeomzi" />
                         </Button>
                         <Button
                           variant="outline"
@@ -294,37 +294,37 @@ const UserManagement: React.FC = () => {
                               : "text-green-600"
                           }
                           onClick={() => handleToggleStatus(user)}
-                          data-oid="3zty7jm"
+                          data-oid="n5x_7m-"
                         >
                           {user.status === "active" ? (
-                            <UserX className="w-4 h-4" data-oid="spo4qr6" />
+                            <UserX className="w-4 h-4" data-oid="ugf.bh6" />
                           ) : (
-                            <UserCheck className="w-4 h-4" data-oid="0o6dnl9" />
+                            <UserCheck className="w-4 h-4" data-oid="n5g.bzy" />
                           )}
                         </Button>
-                        <DropdownMenu data-oid="f9z-5vc">
-                          <DropdownMenuTrigger asChild data-oid="c14sb6n">
+                        <DropdownMenu data-oid="9q:kumi">
+                          <DropdownMenuTrigger asChild data-oid="nbpepo0">
                             <Button
                               variant="outline"
                               size="sm"
-                              data-oid="v.gr8x8"
+                              data-oid="9r-o:-."
                             >
                               <MoreHorizontal
                                 className="w-4 h-4"
-                                data-oid="mnz38zl"
+                                data-oid="v5rhuk6"
                               />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent data-oid="d49bbc2">
+                          <DropdownMenuContent data-oid="oont_-c">
                             <DropdownMenuItem
                               onClick={() => handleMoreActions("edit", user)}
-                              data-oid="pzem3a2"
+                              data-oid="3hus77q"
                             >
                               Edit
                             </DropdownMenuItem>
                             <DropdownMenuItem
                               onClick={() => handleMoreActions("delete", user)}
-                              data-oid="-4r-xp."
+                              data-oid="w041k5b"
                             >
                               Delete
                             </DropdownMenuItem>
@@ -345,50 +345,50 @@ const UserManagement: React.FC = () => {
         <Dialog
           open={!!selectedUser}
           onOpenChange={() => setSelectedUser(null)}
-          data-oid="eq1rq13"
+          data-oid="4ao_w9k"
         >
-          <DialogContent data-oid="s273sma">
-            <DialogHeader data-oid="haapllc">
-              <DialogTitle data-oid="0glcbl5">User Details</DialogTitle>
+          <DialogContent data-oid="1cl7e-j">
+            <DialogHeader data-oid="35xpd9u">
+              <DialogTitle data-oid="a5s0-l4">User Details</DialogTitle>
             </DialogHeader>
-            <div className="space-y-4" data-oid="u76hytw">
-              <p data-oid="vfblxcm">
-                <strong data-oid="7nwwjwz">Name:</strong> {selectedUser.name}
+            <div className="space-y-4" data-oid="16a227s">
+              <p data-oid="4z2iu51">
+                <strong data-oid="odz:lm-">Name:</strong> {selectedUser.name}
               </p>
-              <p data-oid="2c0e2j2">
-                <strong data-oid="e7adcpg">Email:</strong> {selectedUser.email}
+              <p data-oid="l035l9k">
+                <strong data-oid=":t18gwq">Email:</strong> {selectedUser.email}
               </p>
-              <p data-oid="uljoub.">
-                <strong data-oid="ztk0qkm">Type:</strong> {selectedUser.type}
+              <p data-oid="uo_rcm3">
+                <strong data-oid="09blgda">Type:</strong> {selectedUser.type}
               </p>
-              <p data-oid="x:qwrwq">
-                <strong data-oid="okgy7t.">Status:</strong>{" "}
+              <p data-oid="j-3wqol">
+                <strong data-oid="_k1h_:8">Status:</strong>{" "}
                 {selectedUser.status}
               </p>
-              <p data-oid="frov:dc">
-                <strong data-oid="4bje186">Join Date:</strong>{" "}
+              <p data-oid="0egxif0">
+                <strong data-oid="nxam9bs">Join Date:</strong>{" "}
                 {selectedUser.joinDate}
               </p>
-              <p data-oid="pj9zt8m">
-                <strong data-oid="m1wfpr1">Last Activity:</strong>{" "}
+              <p data-oid="9d57vra">
+                <strong data-oid="pxqyuk-">Last Activity:</strong>{" "}
                 {selectedUser.lastActivity}
               </p>
               {selectedUser.phone_number && (
-                <p data-oid=":xe11xm">
-                  <strong data-oid="_y2dxqo">Phone:</strong>{" "}
+                <p data-oid="xb-5cvv">
+                  <strong data-oid="q:kbl.c">Phone:</strong>{" "}
                   {selectedUser.phone_number}
                 </p>
               )}
               {selectedUser.account_balance !== undefined && (
-                <p data-oid="7jdo.xm">
-                  <strong data-oid="x1csj2v">Account Balance:</strong> $
+                <p data-oid="umncmk:">
+                  <strong data-oid="unv6xru">Account Balance:</strong> $
                   {selectedUser.account_balance.toFixed(2)}
                 </p>
               )}
               <Button
                 onClick={() => setSelectedUser(null)}
                 className="w-full bg-emerald-600 hover:bg-emerald-700"
-                data-oid="r1m12ri"
+                data-oid="seskdk6"
               >
                 Close
               </Button>

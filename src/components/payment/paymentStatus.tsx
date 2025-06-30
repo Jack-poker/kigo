@@ -143,98 +143,98 @@ const DepositStatusChecker: React.FC<DepositStatusCheckerProps> = ({
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200 p-4"
-      data-oid="be:dvju"
+      data-oid="1:s6.uz"
     >
       <div
         className="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full text-center"
-        data-oid="f5zn2g1"
+        data-oid="pah_e_9"
       >
         {error ? (
-          <div className="flex flex-col items-center" data-oid="ppjg7nx">
+          <div className="flex flex-col items-center" data-oid="-ueob15">
             <XCircle
               className="w-12 h-12 text-red-500 mb-4"
-              data-oid="dd8nufq"
+              data-oid="c4i6pre"
             />
 
             <p
               className="text-red-600 text-lg font-semibold mb-2"
-              data-oid="b6hcj20"
+              data-oid="kv5_jis"
             >
               {t("transactionError")}
             </p>
-            <p className="text-gray-600 mb-6" data-oid="_dgllyw">
+            <p className="text-gray-600 mb-6" data-oid="yhnah6w">
               {error}
             </p>
             <button
               onClick={handleGoToDashboard}
               className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200"
-              data-oid="tff2k.o"
+              data-oid="44nq9r8"
             >
               {t("goToDashboard")}
             </button>
           </div>
         ) : status === "success" ? (
-          <div className="flex flex-col items-center" data-oid="m.fb9zo">
+          <div className="flex flex-col items-center" data-oid="qgag-ig">
             <CheckCircle
               className="w-12 h-12 text-green-500 mb-4"
-              data-oid="wly8rer"
+              data-oid="a.qcvgq"
             />
 
             <p
               className="text-green-600 text-lg font-semibold mb-2"
-              data-oid="mdkxn8p"
+              data-oid="82gwr3:"
             >
               {t("transactionSuccess")}
             </p>
-            <p className="text-gray-600 mb-6" data-oid="rkl95sw">
+            <p className="text-gray-600 mb-6" data-oid="ck._i_5">
               {t("depositConfirmed")}
             </p>
             <button
               onClick={handleGoToDashboard}
               className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200"
-              data-oid="y4hw16e"
+              data-oid="98gnk2i"
             >
               {t("goToDashboard")}
             </button>
           </div>
         ) : status === "failed" ? (
-          <div className="flex flex-col items-center" data-oid="fmuh-fn">
+          <div className="flex flex-col items-center" data-oid="r-zm065">
             <XCircle
               className="w-12 h-12 text-red-500 mb-4"
-              data-oid="y2v4wpp"
+              data-oid="rln2.f6"
             />
 
             <p
               className="text-red-600 text-lg font-semibold mb-2"
-              data-oid="g.cqych"
+              data-oid="leboevt"
             >
               {t("transactionFailed")}
             </p>
-            <p className="text-gray-600 mb-6" data-oid="88zz-wz">
+            <p className="text-gray-600 mb-6" data-oid="qgp29lp">
               {t("depositFailed")}
             </p>
             <button
               onClick={handleGoToDashboard}
               className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors duration-200"
-              data-oid="10l2jsk"
+              data-oid="5.13nr-"
             >
               {t("goToDashboard")}
             </button>
           </div>
         ) : (
-          <div className="flex flex-col items-center" data-oid="wogfbo2">
+          <div className="flex flex-col items-center" data-oid="rrfuwo1">
             <Loader2
               className="w-12 h-12 text-indigo-600 animate-spin mb-4"
-              data-oid="_-1hge5"
+              data-oid=":vlf47f"
             />
 
             <p
               className="text-indigo-600 text-lg font-semibold"
-              data-oid="ryzrp_."
+              data-oid="18r7.vv"
             >
               {t("checkingDepositStatus")}
             </p>
-            <p className="text-gray-600" data-oid="bp4ok9u">
+            <p className="text-gray-600" data-oid="lo_us8o">
               {t("pleaseWait")}
             </p>
           </div>

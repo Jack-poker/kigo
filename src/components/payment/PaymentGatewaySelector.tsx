@@ -104,14 +104,14 @@ const PaymentGatewaySelector: React.FC<PaymentGatewaySelectorProps> = ({
   };
 
   return (
-    <div className="space-y-4" data-oid="jw3fxj9">
+    <div className="space-y-4" data-oid="pz573_h">
       <h3
         className="text-emerald-800 font-semibold text-center"
-        data-oid="4w76-f3"
+        data-oid="n2y886q"
       >
         {t("selectPaymentMethod")}
       </h3>
-      <div className="grid gap-3" data-oid="uzbjzwv">
+      <div className="grid gap-3" data-oid="ddz5905">
         {gateways.map((gateway) => (
           <Card
             key={gateway.id}
@@ -121,40 +121,40 @@ const PaymentGatewaySelector: React.FC<PaymentGatewaySelectorProps> = ({
                 : "border-gray-200 hover:border-emerald-300"
             }`}
             onClick={() => onGatewaySelect(gateway.id)}
-            data-oid="ndhpiu1"
+            data-oid=".hcg-7u"
           >
-            <CardContent className="p-4" data-oid="xt_.ll2">
-              <div className="flex items-center space-x-3" data-oid="a91hwbl">
+            <CardContent className="p-4" data-oid="h7i8c11">
+              <div className="flex items-center space-x-3" data-oid="wrlsh:w">
                 <div
                   className={`w-12 h-12 ${gateway.color} rounded-lg flex items-center justify-center shadow-md`}
-                  data-oid="miyn264"
+                  data-oid="hqd5:8w"
                 >
                   <img
                     src={gateway.logo}
                     alt={gateway.name}
                     className="w-8 h-8 object-contain filter brightness-0 invert"
-                    data-oid="n__57l7"
+                    data-oid="5z9lpy4"
                   />
                 </div>
-                <div className="flex-1" data-oid="-ko_f5-">
+                <div className="flex-1" data-oid="j.n7-w3">
                   <div
                     className="font-semibold text-gray-800"
-                    data-oid="4:xbfq-"
+                    data-oid="bjr875e"
                   >
                     {gateway.name}
                   </div>
-                  <div className="text-sm text-gray-500" data-oid="659pup6">
+                  <div className="text-sm text-gray-500" data-oid="e2fklfq">
                     {t("mobileMoneyPayment")}
                   </div>
                 </div>
                 {selectedGateway === gateway.id && (
                   <div
                     className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center"
-                    data-oid="lzi_g9."
+                    data-oid="t37ho5s"
                   >
                     <div
                       className="w-2 h-2 bg-white rounded-full"
-                      data-oid="f986fs3"
+                      data-oid="tf7z2uh"
                     ></div>
                   </div>
                 )}
@@ -166,18 +166,18 @@ const PaymentGatewaySelector: React.FC<PaymentGatewaySelectorProps> = ({
 
       {/* Phone Number Input - appears when gateway is selected */}
       {selectedGateway && (
-        <div className="space-y-2 animate-fade-in" data-oid=".t4.mn2">
+        <div className="space-y-2 animate-fade-in" data-oid="uhhhisk">
           <Label
             htmlFor="phone"
             className="text-emerald-800 font-medium"
-            data-oid="hqcmdl:"
+            data-oid=":sjds1f"
           >
             {t("enterPhoneNumber")}
           </Label>
-          <div className="relative" data-oid="5u1wl3.">
+          <div className="relative" data-oid="7y5goqc">
             <Phone
               className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-emerald-600"
-              data-oid="ydfl37."
+              data-oid="uuz..43"
             />
 
             <Input
@@ -192,7 +192,7 @@ const PaymentGatewaySelector: React.FC<PaymentGatewaySelectorProps> = ({
               onBlur={handlePhoneBlur}
               className="pl-10 border-emerald-300 focus:border-emerald-500 focus:ring-emerald-200 bg-white"
               maxLength={10}
-              data-oid="kppriv:"
+              data-oid="uoqk7nh"
             />
 
             {savedNumbers.length > 0 && (
@@ -202,9 +202,9 @@ const PaymentGatewaySelector: React.FC<PaymentGatewaySelectorProps> = ({
                 size="sm"
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 text-emerald-600 hover:text-emerald-800"
                 onClick={() => setShowSuggestions(!showSuggestions)}
-                data-oid="vto:-c9"
+                data-oid="s6xw:k9"
               >
-                <Clock className="w-4 h-4" data-oid="vngbimz" />
+                <Clock className="w-4 h-4" data-oid="wk6ea_c" />
               </Button>
             )}
           </div>
@@ -213,37 +213,37 @@ const PaymentGatewaySelector: React.FC<PaymentGatewaySelectorProps> = ({
           {showSuggestions && savedNumbers.length > 0 && (
             <Card
               className="border-emerald-200 bg-emerald-50/50"
-              data-oid="3p9u0lw"
+              data-oid="qk8011c"
             >
-              <CardContent className="p-3" data-oid="3y6eq1f">
+              <CardContent className="p-3" data-oid="-qgpldr">
                 <div
                   className="flex items-center space-x-2 mb-2"
-                  data-oid="qnwv0mr"
+                  data-oid="-0e2d_m"
                 >
                   <Clock
                     className="w-4 h-4 text-emerald-600"
-                    data-oid="-pk81ub"
+                    data-oid="6:1wm7c"
                   />
 
                   <span
                     className="text-sm font-medium text-emerald-800"
-                    data-oid="tbhi4ae"
+                    data-oid="95n2jsm"
                   >
                     {t("recentNumbers")}
                   </span>
                 </div>
-                <div className="space-y-1" data-oid=":v5lzhb">
+                <div className="space-y-1" data-oid="z7:6qx.">
                   {savedNumbers.map((number, index) => (
                     <div
                       key={index}
                       className="flex items-center justify-between bg-white rounded-lg p-2 hover:bg-emerald-50 transition-colors"
-                      data-oid="1g4ybkd"
+                      data-oid="c..e82h"
                     >
                       <button
                         type="button"
                         className="flex-1 text-left text-sm text-gray-700 hover:text-emerald-700"
                         onClick={() => selectSavedNumber(number)}
-                        data-oid="c0w51s_"
+                        data-oid="s1d86id"
                       >
                         {number}
                       </button>
@@ -254,9 +254,9 @@ const PaymentGatewaySelector: React.FC<PaymentGatewaySelectorProps> = ({
                           e.stopPropagation();
                           removeSavedNumber(number);
                         }}
-                        data-oid="euobsks"
+                        data-oid="yx58dx4"
                       >
-                        <X className="w-3 h-3" data-oid="fi4dc8q" />
+                        <X className="w-3 h-3" data-oid="nyvmvmy" />
                       </button>
                     </div>
                   ))}
@@ -265,7 +265,7 @@ const PaymentGatewaySelector: React.FC<PaymentGatewaySelectorProps> = ({
             </Card>
           )}
 
-          <p className="text-sm text-emerald-600" data-oid="0i5rxxy">
+          <p className="text-sm text-emerald-600" data-oid="x6yz-i2">
             {t("phoneRegisteredWith")}{" "}
             {gateways.find((g) => g.id === selectedGateway)?.name}
           </p>

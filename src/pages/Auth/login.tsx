@@ -15,29 +15,41 @@ export default function LoginPage(baseUrl) {
         "before:[background-image:linear-gradient(to_right,#00994C15_1px,transparent_1px),linear-gradient(to_bottom,#00994C15_1px,transparent_1px)]",
       )}
       style={{
-        backgroundImage: "url('/assets/background.png')",
-        backgroundRepeat: "repeat",
-        backgroundSize: "auto",
+        backgroundImage:
+          typeof window !== "undefined" &&
+          /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+            ? "url('/assets/blob-scene-haikei.png')"
+            : "url('/assets/background.png')",
+        backgroundRepeat:
+          typeof window !== "undefined" &&
+          /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+            ? "no-repeat"
+            : "repeat",
+        backgroundSize:
+          typeof window !== "undefined" &&
+          /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+            ? "cover"
+            : "cover",
       }}
-      data-oid="1442h:j"
+      data-oid="jwuqmpr"
     >
       {/* Decorative gradient blur */}
       <div
         className="absolute top-0 -left-4 w-72 h-72 bg-[#00994C] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"
-        data-oid="ju5b6cf"
+        data-oid="8w0_ikv"
       ></div>
       <div
         className="absolute top-0 -right-4 w-72 h-72 bg-[#007E3A] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"
-        data-oid="qgk6dvt"
+        data-oid="cc5_7us"
       ></div>
 
       {/* Content container */}
       <div
         className="relative flex min-h-svh flex-col items-center justify-center p-6 md:p-10"
-        data-oid="fg:ed46"
+        data-oid="23--ju5"
       >
-        <div className="w-full max-w-sm md:max-w-3xl" data-oid="kl_:p07">
-          <LoginForm data-oid="2xhy_94" />
+        <div className="w-full max-w-sm md:max-w-3xl" data-oid="9jbj9eb">
+          <LoginForm data-oid="959oqhp" />
         </div>
       </div>
     </div>

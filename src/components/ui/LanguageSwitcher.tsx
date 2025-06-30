@@ -19,24 +19,24 @@ const LanguageSwitcher = () => {
   ];
 
   return (
-    <div className="flex items-center space-x-2" data-oid="l.4t32-">
-      <Globe className="w-4 h-4 text-emerald-600" data-oid="n7:aylc" />
-      <Select value={language} onValueChange={setLanguage} data-oid="_p2_q3-">
+    <div className="flex items-center space-x-2" data-oid="b3cq3mb">
+      <Globe className="w-4 h-4 text-emerald-600" data-oid="sbh0692" />
+      <Select value={language} onValueChange={setLanguage} data-oid="82t4lbp">
         <SelectTrigger
           className="w-[140px] border-emerald-300 bg-white/80 backdrop-blur-sm"
-          data-oid="a8j2-hd"
+          data-oid="0new463"
         >
-          <SelectValue data-oid="9ts719w" />
+          <SelectValue data-oid="fjito4b" />
         </SelectTrigger>
         <SelectContent
           className="bg-white border-emerald-200"
-          data-oid="m:y2s:m"
+          data-oid="ru6ogfi"
         >
           {languages.map((lang) => (
-            <SelectItem key={lang.code} value={lang.code} data-oid="zneo7gr">
-              <div className="flex items-center space-x-2" data-oid="aqg1z3u">
-                <span data-oid="y1pe0om">{lang.flag}</span>
-                <span data-oid=".wifd37">{lang.name}</span>
+            <SelectItem key={lang.code} value={lang.code} data-oid=".1:zdmm">
+              <div className="flex items-center space-x-2" data-oid="9uc_.oz">
+                <span data-oid="ua642gu">{lang.flag}</span>
+                <span data-oid="p.7nrnb">{lang.name}</span>
               </div>
             </SelectItem>
           ))}

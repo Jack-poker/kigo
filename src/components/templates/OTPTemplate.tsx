@@ -27,52 +27,52 @@ const OTPTemplate: React.FC<OTPTemplateProps> = ({ messageData }) => {
   return (
     <div
       className="w-full max-w-md mx-auto bg-white shadow-xl rounded-2xl overflow-hidden font-sans"
-      data-oid="rmw7p-v"
+      data-oid="12kpu7k"
     >
       {/* Header */}
       <div
         className="text-center p-8"
         style={{ backgroundColor: `${color}10` }}
-        data-oid="_x9635y"
+        data-oid="4jd8tbz"
       >
         <div
           className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center"
           style={{ backgroundColor: color }}
-          data-oid="-_dtgkd"
+          data-oid="ah_-f8r"
         >
-          <Shield className="w-8 h-8 text-white" data-oid="y29oaym" />
+          <Shield className="w-8 h-8 text-white" data-oid="bt920vo" />
         </div>
         <h2
           className="text-2xl font-bold text-gray-900 mb-2"
-          data-oid="9ear:c6"
+          data-oid="6260233"
         >
           Verification Code
         </h2>
-        <p className="text-gray-600" data-oid="39fftjj">
+        <p className="text-gray-600" data-oid="wn4lizn">
           {brand || "Your Brand"}
         </p>
       </div>
 
       {/* Body */}
-      <div className="p-8" data-oid="sekaqzp">
-        <div className="text-center mb-8" data-oid="gam9j46">
-          <p className="text-gray-700 mb-6 leading-relaxed" data-oid="sg4dzna">
+      <div className="p-8" data-oid="9cq8h0v">
+        <div className="text-center mb-8" data-oid="_-yc1ik">
+          <p className="text-gray-700 mb-6 leading-relaxed" data-oid="5ycy5_r">
             {recipient && `Hi ${recipient},\n\n`}
             {content ||
               "Please use the following verification code to complete your request:"}
           </p>
 
           {/* OTP Code */}
-          <div className="mb-6" data-oid="zgtypsx">
+          <div className="mb-6" data-oid="821oq59">
             <div
               className="inline-block px-8 py-4 rounded-xl border-2 border-dashed"
               style={{ borderColor: color, backgroundColor: `${color}08` }}
-              data-oid="f3ug58-"
+              data-oid="ubk8y1l"
             >
               <span
                 className="text-4xl font-mono font-bold tracking-widest"
                 style={{ color: color }}
-                data-oid=".n:fw5o"
+                data-oid=":d42yxc"
               >
                 {code || "123456"}
               </span>
@@ -82,10 +82,10 @@ const OTPTemplate: React.FC<OTPTemplateProps> = ({ messageData }) => {
           {/* Expiry Info */}
           <div
             className="flex items-center justify-center space-x-2 text-gray-500 mb-6"
-            data-oid="yjdu3f_"
+            data-oid="oecxdju"
           >
-            <Clock className="w-4 h-4" data-oid="t37hi3e" />
-            <span className="text-sm" data-oid="9sqh9m1">
+            <Clock className="w-4 h-4" data-oid="wa1_4d." />
+            <span className="text-sm" data-oid="gq-_rq-">
               Expires in {expiry || "10 minutes"}
             </span>
           </div>
@@ -93,11 +93,11 @@ const OTPTemplate: React.FC<OTPTemplateProps> = ({ messageData }) => {
           {/* Security Notice */}
           <div
             className="bg-gray-50 border border-gray-200 rounded-lg p-4"
-            data-oid="imb7mge"
+            data-oid="-wyvmcv"
           >
             <p
               className="text-xs text-gray-600 leading-relaxed"
-              data-oid="naqako9"
+              data-oid="ccup5bj"
             >
               🔒 For security reasons, never share this code with anyone.
               {brand || "We"} will never ask for your verification code.
@@ -109,9 +109,9 @@ const OTPTemplate: React.FC<OTPTemplateProps> = ({ messageData }) => {
       {/* Footer */}
       <div
         className="bg-gray-50 border-t border-gray-200 p-6 text-center"
-        data-oid="yy_0k2w"
+        data-oid="3sati5b"
       >
-        <p className="text-xs text-gray-500" data-oid="o2bt2gy">
+        <p className="text-xs text-gray-500" data-oid="wuhyqix">
           This code was requested from your account. If you didn't request this,
           please ignore this message.
         </p>

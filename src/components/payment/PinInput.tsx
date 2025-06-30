@@ -75,24 +75,24 @@ const PinInput: React.FC<PinInputProps> = ({
   const isPinComplete = pin.every((p) => p !== "");
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose} data-oid="f7z4jv4">
+    <Dialog open={isOpen} onOpenChange={onClose} data-oid="m_43cls">
       <DialogContent
         className="max-w-sm mx-auto bg-white/95 backdrop-blur-sm border-emerald-200"
-        data-oid="w2rtgwj"
+        data-oid="aph1alp"
       >
-        <DialogHeader data-oid="a-j4qdj">
+        <DialogHeader data-oid="mm5vjaz">
           <DialogTitle
             className="text-center text-emerald-800 flex items-center justify-center space-x-2"
-            data-oid="8fetj5e"
+            data-oid="y3ki5l1"
           >
-            <Lock className="w-5 h-5" data-oid="mysquz5" />
-            <span data-oid="4nn7it3">Enter Card PIN</span>
+            <Lock className="w-5 h-5" data-oid="x8_oa4z" />
+            <span data-oid="mla3t1x">Enter Card PIN</span>
           </DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-6 p-4" data-oid="wult-ol">
+        <div className="space-y-6 p-4" data-oid="coq5-rt">
           {/* PIN Input */}
-          <div className="flex justify-center space-x-3" data-oid="yitu:d9">
+          <div className="flex justify-center space-x-3" data-oid="gvgxl-a">
             {pin.map((digit, index) => (
               <input
                 key={index}
@@ -104,7 +104,7 @@ const PinInput: React.FC<PinInputProps> = ({
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 className="w-12 h-12 text-center text-xl font-bold border-2 border-emerald-300 rounded-lg focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none bg-white"
                 disabled={isProcessing}
-                data-oid="7519:r5"
+                data-oid="ac4b621"
               />
             ))}
           </div>
@@ -112,7 +112,7 @@ const PinInput: React.FC<PinInputProps> = ({
           {/* Number Pad */}
           <div
             className="grid grid-cols-3 gap-3 max-w-xs mx-auto"
-            data-oid="_1votfh"
+            data-oid="jsv:e_b"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
               <Button
@@ -121,7 +121,7 @@ const PinInput: React.FC<PinInputProps> = ({
                 onClick={() => handleNumberPadClick(number.toString())}
                 disabled={isProcessing}
                 className="h-12 text-lg font-semibold border-emerald-300 hover:bg-emerald-50 hover:border-emerald-400"
-                data-oid="9zhd3ss"
+                data-oid="z78ss_-"
               >
                 {number}
               </Button>
@@ -131,30 +131,30 @@ const PinInput: React.FC<PinInputProps> = ({
               onClick={handleClearPin}
               disabled={isProcessing}
               className="h-12 border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400"
-              data-oid="kkjdt69"
+              data-oid="2dbgmkk"
             >
-              <X className="w-4 h-4" data-oid="6ywph5z" />
+              <X className="w-4 h-4" data-oid="sxev4id" />
             </Button>
             <Button
               variant="outline"
               onClick={() => handleNumberPadClick("0")}
               disabled={isProcessing}
               className="h-12 text-lg font-semibold border-emerald-300 hover:bg-emerald-50 hover:border-emerald-400"
-              data-oid="15gpofv"
+              data-oid="qmqm_i:"
             >
               0
             </Button>
-            <div data-oid="z5hzb1b"></div>
+            <div data-oid="y0qiqtx"></div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex space-x-3" data-oid="r0wmwdg">
+          <div className="flex space-x-3" data-oid="afa-yfm">
             <Button
               variant="outline"
               onClick={onClose}
               disabled={isProcessing}
               className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50"
-              data-oid="7o12yl8"
+              data-oid="23_1b2b"
             >
               Cancel
             </Button>
@@ -162,7 +162,7 @@ const PinInput: React.FC<PinInputProps> = ({
               onClick={handleConfirm}
               disabled={!isPinComplete || isProcessing}
               className="flex-1 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-semibold"
-              data-oid="hlvrs1j"
+              data-oid="y8an3h7"
             >
               {isProcessing ? "Processing..." : "Confirm"}
             </Button>

@@ -25,24 +25,24 @@ const MessageCard: React.FC<MessageCardProps> = ({ messageData }) => {
     return (
       <div
         className="max-w-md mx-auto bg-gradient-to-br from-emerald-500 via-green-400 to-emerald-600 rounded-3xl p-1 shadow-2xl"
-        data-oid="mc56z0d"
+        data-oid="vgut9cu"
       >
-        <div className="bg-white rounded-[22px] p-8" data-oid="1n84j7d">
+        <div className="bg-white rounded-[22px] p-8" data-oid="48fa0g1">
           {/* Header */}
-          <div className="text-center mb-6" data-oid="r25za:5">
+          <div className="text-center mb-6" data-oid="6lkn856">
             <div
               className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-emerald-100 to-green-100 rounded-2xl mb-4"
-              data-oid="g4bx6di"
+              data-oid="w5ewiou"
             >
-              <Shield className="w-8 h-8 text-emerald-600" data-oid="szgp:98" />
+              <Shield className="w-8 h-8 text-emerald-600" data-oid="tpw4iiq" />
             </div>
             <h2
               className="text-2xl font-bold text-gray-800 mb-2"
-              data-oid="301-:hv"
+              data-oid="lt.m3w."
             >
               Verification Code
             </h2>
-            <p className="text-emerald-600 font-semibold" data-oid="sfajrnz">
+            <p className="text-emerald-600 font-semibold" data-oid="85-4d1q">
               {messageData.brand || "Your Brand"}
             </p>
           </div>
@@ -50,19 +50,19 @@ const MessageCard: React.FC<MessageCardProps> = ({ messageData }) => {
           {/* OTP Code */}
           <div
             className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-6 mb-6 border-2 border-emerald-100"
-            data-oid="vod-sxw"
+            data-oid="p31tifr"
           >
-            <div className="text-center" data-oid="i_9mt_6">
-              <p className="text-sm text-gray-600 mb-2" data-oid=":jlgph3">
+            <div className="text-center" data-oid="elrjjw9">
+              <p className="text-sm text-gray-600 mb-2" data-oid="oc40n7j">
                 Your verification code is:
               </p>
               <div
                 className="text-4xl font-mono font-bold text-emerald-600 tracking-[0.3em] mb-2"
-                data-oid=":nckuwu"
+                data-oid="n9:8k38"
               >
                 {messageData.code || "123456"}
               </div>
-              <p className="text-xs text-gray-500" data-oid="x52yu3u">
+              <p className="text-xs text-gray-500" data-oid="i0gactc">
                 Valid for 10 minutes
               </p>
             </div>
@@ -70,10 +70,10 @@ const MessageCard: React.FC<MessageCardProps> = ({ messageData }) => {
 
           {/* Message Content */}
           {messageData.content && (
-            <div className="mb-6" data-oid="61.kw82">
+            <div className="mb-6" data-oid="iou.e2v">
               <p
                 className="text-gray-700 leading-relaxed text-center"
-                data-oid="rkedk9t"
+                data-oid="-h0lszc"
               >
                 {messageData.content}
               </p>
@@ -83,23 +83,23 @@ const MessageCard: React.FC<MessageCardProps> = ({ messageData }) => {
           {/* Footer */}
           <div
             className="border-t border-gray-100 pt-4 flex items-center justify-between text-xs text-gray-500"
-            data-oid="fskuia3"
+            data-oid="15fyalg"
           >
-            <span data-oid="or40c1y">{currentTime}</span>
-            <div className="flex items-center space-x-1" data-oid="m5gqzrc">
+            <span data-oid="kb-2cjl">{currentTime}</span>
+            <div className="flex items-center space-x-1" data-oid="y6ql2-.">
               <CheckCircle
                 className="w-3 h-3 text-emerald-500"
-                data-oid="5h4xodf"
+                data-oid="jzlc4ss"
               />
 
-              <span data-oid="5hu_o:8">Secure</span>
+              <span data-oid="d9tr-r9">Secure</span>
             </div>
           </div>
 
           {/* Recipient */}
           {messageData.recipient && (
-            <div className="mt-2 text-center" data-oid="wz6azlk">
-              <p className="text-xs text-gray-400" data-oid="jq856g3">
+            <div className="mt-2 text-center" data-oid="fk2__um">
+              <p className="text-xs text-gray-400" data-oid="b6d8tp8">
                 Sent to {messageData.recipient}
               </p>
             </div>
@@ -112,67 +112,67 @@ const MessageCard: React.FC<MessageCardProps> = ({ messageData }) => {
   return (
     <div
       className="max-w-md mx-auto bg-gradient-to-br from-emerald-500 via-green-400 to-emerald-600 rounded-3xl p-1 shadow-2xl"
-      data-oid="qfami9p"
+      data-oid="c7r-3hg"
     >
-      <div className="bg-white rounded-[22px] p-8" data-oid="abw8bcj">
+      <div className="bg-white rounded-[22px] p-8" data-oid="mb5:52p">
         {/* Header */}
         <div
           className="flex items-center justify-between mb-6"
-          data-oid="-mlxg_q"
+          data-oid="l3wq30i"
         >
-          <div className="flex items-center space-x-3" data-oid="9e94z:v">
+          <div className="flex items-center space-x-3" data-oid="58i7yv3">
             <div
               className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-400 rounded-xl flex items-center justify-center"
-              data-oid="5vfqy90"
+              data-oid="4ov3sv."
             >
               <MessageSquare
                 className="w-5 h-5 text-white"
-                data-oid="955jdd."
+                data-oid="we.uvuk"
               />
             </div>
-            <div data-oid="d4a:b2e">
-              <h3 className="font-bold text-gray-800" data-oid="-:56yzk">
+            <div data-oid="8qm09-z">
+              <h3 className="font-bold text-gray-800" data-oid="jvtqn5o">
                 {messageData.brand || "Your Brand"}
               </h3>
-              <p className="text-xs text-gray-500" data-oid="8i_:w4o">
+              <p className="text-xs text-gray-500" data-oid="xo1u6.8">
                 {currentTime}
               </p>
             </div>
           </div>
-          <div className="flex items-center space-x-1" data-oid="w8z6hd7">
+          <div className="flex items-center space-x-1" data-oid="nwpkp24">
             <CheckCircle
               className="w-4 h-4 text-emerald-500"
-              data-oid="tsx.-dh"
+              data-oid="gafzk:."
             />
 
             <CheckCircle
               className="w-4 h-4 text-emerald-500"
-              data-oid="4am8boj"
+              data-oid="aap:9ad"
             />
           </div>
         </div>
 
         {/* Title */}
         {messageData.title && (
-          <div className="mb-4" data-oid="25qmtrk">
-            <h2 className="text-xl font-bold text-gray-800" data-oid="i12u_yy">
+          <div className="mb-4" data-oid="yw.herp">
+            <h2 className="text-xl font-bold text-gray-800" data-oid="ukd4n37">
               {messageData.title}
             </h2>
           </div>
         )}
 
         {/* Content */}
-        <div className="mb-6" data-oid="0swxj:n">
-          <p className="text-gray-700 leading-relaxed" data-oid=".:i06xs">
+        <div className="mb-6" data-oid="7nvc80m">
+          <p className="text-gray-700 leading-relaxed" data-oid="hfo-fv_">
             {messageData.content || "Your message content will appear here..."}
           </p>
         </div>
 
         {/* Action Button */}
-        <div className="mb-4" data-oid="bj._ds2">
+        <div className="mb-4" data-oid="dpad6y5">
           <button
             className="w-full bg-gradient-to-r from-emerald-500 to-green-400 text-white py-3 px-6 rounded-xl font-semibold hover:from-emerald-600 hover:to-green-500 transition-all duration-200 shadow-lg"
-            data-oid="f14oxhy"
+            data-oid="8kgmjv3"
           >
             View Details
           </button>
@@ -181,11 +181,11 @@ const MessageCard: React.FC<MessageCardProps> = ({ messageData }) => {
         {/* Footer */}
         <div
           className="border-t border-gray-100 pt-4 flex items-center justify-between text-xs text-gray-500"
-          data-oid="44svvwt"
+          data-oid="z0:ew_r"
         >
-          <span data-oid="ndzu-.k">Delivered</span>
+          <span data-oid="4:.klqb">Delivered</span>
           {messageData.recipient && (
-            <span data-oid=".38jk84">To: {messageData.recipient}</span>
+            <span data-oid="98jsmu4">To: {messageData.recipient}</span>
           )}
         </div>
       </div>

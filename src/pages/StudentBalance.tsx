@@ -90,29 +90,29 @@ const StudentBalance = () => {
     return (
       <div
         className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100 p-4"
-        data-oid="wyg1b6v"
+        data-oid=".16ye3:"
       >
-        <div className="max-w-md mx-auto" data-oid="3buowo3">
+        <div className="max-w-md mx-auto" data-oid="3.6htcm">
           {/* Header */}
           <div
             className="flex items-center justify-between mb-6"
-            data-oid="5f.6vvm"
+            data-oid="qz3:v60"
           >
             <Button
               variant="ghost"
               size="sm"
               onClick={resetScanner}
               className="text-emerald-700 hover:text-emerald-800"
-              data-oid="9nztb:t"
+              data-oid="f4_j0va"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" data-oid="vuw9zbd" />
+              <ArrowLeft className="w-4 h-4 mr-2" data-oid="qy2z_00" />
               {t("back")}
             </Button>
-            <LanguageSwitcher data-oid="opvg43j" />
+            <LanguageSwitcher data-oid="ywh5gzm" />
             <Badge
               variant="secondary"
               className="bg-emerald-100 text-emerald-800"
-              data-oid="s9iqqt0"
+              data-oid="azgr5v9"
             >
               Student
             </Badge>
@@ -121,53 +121,53 @@ const StudentBalance = () => {
           {/* Balance Display */}
           <Card
             className="border-emerald-200 shadow-xl bg-white/80 backdrop-blur-sm animate-scale-in"
-            data-oid="7thzk31"
+            data-oid="uxzlxp1"
           >
-            <CardHeader className="text-center" data-oid="7n3esbj">
+            <CardHeader className="text-center" data-oid="0rtj-ci">
               <CardTitle
                 className="text-emerald-800 flex items-center justify-center space-x-2"
-                data-oid="0dk5rkw"
+                data-oid="-_.a.x9"
               >
                 <CheckCircle
                   className="w-6 h-6 text-green-600"
-                  data-oid="9x1yqxm"
+                  data-oid="3vcwc8o"
                 />
 
-                <span data-oid="g2ctd0r">Balance Retrieved</span>
+                <span data-oid="enevh0v">Balance Retrieved</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6" data-oid="gjk2br5">
+            <CardContent className="space-y-6" data-oid="z0cb_6i">
               {/* Student Info */}
-              <div className="bg-emerald-50 p-4 rounded-lg" data-oid="6u7l1c_">
+              <div className="bg-emerald-50 p-4 rounded-lg" data-oid="3yb7:wq">
                 <div
                   className="grid grid-cols-2 gap-2 text-sm mb-4"
-                  data-oid="6klbet8"
+                  data-oid="08ekgls"
                 >
-                  <div data-oid="_sp9cto">
+                  <div data-oid="0-jqtv4">
                     <span
                       className="text-emerald-600 font-medium"
-                      data-oid="urg6w4x"
+                      data-oid="jcitsly"
                     >
                       {t("name")}:
                     </span>
                   </div>
                   <div
                     className="text-emerald-800 font-semibold"
-                    data-oid="6m7cmqm"
+                    data-oid="7eg4gu2"
                   >
                     {scannedData?.studentName || "John Doe"}
                   </div>
-                  <div data-oid="_bv_mct">
+                  <div data-oid="zaxpw9.">
                     <span
                       className="text-emerald-600 font-medium"
-                      data-oid="8-27jje"
+                      data-oid="uc1xir7"
                     >
                       {t("id")}:
                     </span>
                   </div>
                   <div
                     className="text-emerald-800 font-semibold"
-                    data-oid="au8sq0d"
+                    data-oid="p451v4l"
                   >
                     {scannedData?.studentId || "STU001"}
                   </div>
@@ -177,18 +177,18 @@ const StudentBalance = () => {
               {/* Balance Card */}
               <div
                 className="bg-gradient-to-r from-emerald-600 to-green-600 p-6 rounded-xl text-white shadow-lg"
-                data-oid="vhdcqui"
+                data-oid="nxhjpf3"
               >
                 <div
                   className="flex items-center justify-between mb-4"
-                  data-oid="oxhv6_l"
+                  data-oid="m4b2k3i"
                 >
                   <div
                     className="flex items-center space-x-2"
-                    data-oid="1-2xezg"
+                    data-oid="tguaebs"
                   >
-                    <CreditCard className="w-6 h-6" data-oid="suww87." />
-                    <span className="text-lg font-semibold" data-oid="3i:s-mr">
+                    <CreditCard className="w-6 h-6" data-oid="kyr7dx8" />
+                    <span className="text-lg font-semibold" data-oid="iy846bs">
                       Card Balance
                     </span>
                   </div>
@@ -197,32 +197,32 @@ const StudentBalance = () => {
                     size="sm"
                     onClick={() => setShowBalanceAmount(!showBalanceAmount)}
                     className="text-white hover:bg-white/20"
-                    data-oid="pcq1o-5"
+                    data-oid="x9p_82y"
                   >
                     {showBalanceAmount ? (
-                      <EyeOff className="w-4 h-4" data-oid="qfsgbs4" />
+                      <EyeOff className="w-4 h-4" data-oid="nuwz6ee" />
                     ) : (
-                      <Eye className="w-4 h-4" data-oid="xfypgp9" />
+                      <Eye className="w-4 h-4" data-oid="8ohzxrr" />
                     )}
                   </Button>
                 </div>
-                <div className="text-3xl font-bold" data-oid="0hr2cjq">
+                <div className="text-3xl font-bold" data-oid=".1-93g7">
                   {showBalanceAmount ? `$${balance}` : "****"}
                 </div>
                 <div
                   className="text-emerald-100 text-sm mt-2"
-                  data-oid="6g1dv5q"
+                  data-oid="f10nxk6"
                 >
                   Available Balance
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex space-x-2" data-oid="mkhftmu">
+              <div className="flex space-x-2" data-oid="0eia9ey">
                 <Button
                   onClick={resetScanner}
                   className="flex-1 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300"
-                  data-oid="_bb.0um"
+                  data-oid="kvi0ykm"
                 >
                   Check Another Card
                 </Button>
@@ -237,49 +237,49 @@ const StudentBalance = () => {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100 p-4"
-      data-oid="1artnh8"
+      data-oid="-mfqvp2"
     >
-      <div className="max-w-md mx-auto" data-oid="341pbsz">
+      <div className="max-w-md mx-auto" data-oid="ag5b-sg">
         {/* Header with Language Switcher */}
         <div
           className="flex items-center justify-between mb-6"
-          data-oid="sf--h0n"
+          data-oid="z7k01p4"
         >
           <Button
             variant="ghost"
             size="sm"
             onClick={() => navigate("/")}
             className="text-emerald-700 hover:text-emerald-800"
-            data-oid="rdxbcm9"
+            data-oid="okwa8rq"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" data-oid="j0frxus" />
+            <ArrowLeft className="w-4 h-4 mr-2" data-oid="u0kpsth" />
             {t("back")}
           </Button>
-          <LanguageSwitcher data-oid="-bxdkwk" />
+          <LanguageSwitcher data-oid="24zammc" />
           <Badge
             variant="secondary"
             className="bg-emerald-100 text-emerald-800"
-            data-oid="m8948pi"
+            data-oid="26mn::g"
           >
             Student
           </Badge>
         </div>
 
         {/* Title */}
-        <div className="text-center mb-8" data-oid="imx:izv">
+        <div className="text-center mb-8" data-oid="juv5jms">
           <div
             className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
-            data-oid="3hwakab"
+            data-oid="fwg_9mz"
           >
-            <CreditCard className="w-8 h-8 text-white" data-oid=":kp_4pd" />
+            <CreditCard className="w-8 h-8 text-white" data-oid="ddwpj-t" />
           </div>
           <h1
             className="text-3xl font-bold text-emerald-800 mb-2"
-            data-oid="_j82rwg"
+            data-oid="j7ybd6z"
           >
             Check Balance
           </h1>
-          <p className="text-emerald-600" data-oid="y16cxc6">
+          <p className="text-emerald-600" data-oid="n6ei:j0">
             Scan your student card to check balance
           </p>
         </div>
@@ -288,16 +288,16 @@ const StudentBalance = () => {
         {error && (
           <Card
             className="mb-6 border-red-200 bg-red-50 animate-fade-in"
-            data-oid="axqve_x"
+            data-oid=".c1h93i"
           >
-            <CardContent className="p-4" data-oid="icyg9kr">
-              <div className="flex items-center space-x-2" data-oid="nspc5wc">
+            <CardContent className="p-4" data-oid="jfb9pcs">
+              <div className="flex items-center space-x-2" data-oid="26uau1z">
                 <AlertCircle
                   className="w-5 h-5 text-red-600"
-                  data-oid="5-o8x9k"
+                  data-oid="37cvd-."
                 />
 
-                <span className="text-red-700" data-oid="wajie6c">
+                <span className="text-red-700" data-oid="9e2ng-t">
                   {error}
                 </span>
               </div>
@@ -309,53 +309,53 @@ const StudentBalance = () => {
         {!scannedData && (
           <Card
             className="mb-6 border-emerald-200 shadow-xl bg-white/80 backdrop-blur-sm"
-            data-oid="voy:o0-"
+            data-oid="d3e2r1n"
           >
-            <CardHeader className="text-center" data-oid="8.cqy.i">
+            <CardHeader className="text-center" data-oid="hzz188o">
               <CardTitle
                 className="text-emerald-800 flex items-center justify-center space-x-2"
-                data-oid="pv9dmi5"
+                data-oid="cidh508"
               >
-                <Scan className="w-5 h-5" data-oid="orx.92e" />
-                <span data-oid="pnk7h:f">Card Scanner</span>
+                <Scan className="w-5 h-5" data-oid=".n2x907" />
+                <span data-oid="-tmv4jh">Card Scanner</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4" data-oid="-ywdi2-">
+            <CardContent className="space-y-4" data-oid="-:34x0.">
               {!isScanning ? (
-                <div className="text-center space-y-4" data-oid="-9go2it">
+                <div className="text-center space-y-4" data-oid="if9zk6v">
                   <div
                     className="w-32 h-32 mx-auto border-4 border-dashed border-emerald-300 rounded-lg flex items-center justify-center bg-emerald-50"
-                    data-oid="8zny5-."
+                    data-oid="qclmiic"
                   >
                     <Smartphone
                       className="w-12 h-12 text-emerald-400"
-                      data-oid="0f79k67"
+                      data-oid="93vmceo"
                     />
                   </div>
                   <Button
                     onClick={() => setIsScanning(true)}
                     className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
-                    data-oid="af7mlh_"
+                    data-oid="vo3yjrd"
                   >
-                    <Scan className="w-5 h-5 mr-2" data-oid="6x33548" />
+                    <Scan className="w-5 h-5 mr-2" data-oid="2m7:08g" />
                     Start Scanning
                   </Button>
                 </div>
               ) : (
-                <div className="relative" data-oid="bciu4_:">
+                <div className="relative" data-oid="78yt9u_">
                   <QRScanner
                     onScan={handleScanResult}
                     onError={handleScanError}
-                    data-oid="ay232f6"
+                    data-oid="8q:.k_s"
                   />
 
-                  <ScannerOverlay data-oid="miqk0l7" />
-                  <div className="mt-4 text-center" data-oid="xg8cqhe">
+                  <ScannerOverlay data-oid="ov9f6cp" />
+                  <div className="mt-4 text-center" data-oid="lnizl5e">
                     <Button
                       variant="outline"
                       onClick={() => setIsScanning(false)}
                       className="border-emerald-300 text-emerald-700 hover:bg-emerald-50"
-                      data-oid="rc802te"
+                      data-oid="03izkil"
                     >
                       Cancel Scan
                     </Button>
@@ -370,77 +370,77 @@ const StudentBalance = () => {
         {scannedData && (
           <Card
             className="mb-6 border-emerald-200 shadow-xl bg-white/80 backdrop-blur-sm animate-scale-in"
-            data-oid="h0brasi"
+            data-oid="ti23ci-"
           >
-            <CardHeader data-oid="_hsvn4y">
+            <CardHeader data-oid="wuh8m:m">
               <CardTitle
                 className="text-emerald-800 flex items-center space-x-2"
-                data-oid="7.lbxg5"
+                data-oid="a5zj-lb"
               >
                 <CheckCircle
                   className="w-5 h-5 text-green-600"
-                  data-oid="suei2dk"
+                  data-oid="z4_em9b"
                 />
 
-                <span data-oid=":6dndpw">Card Detected</span>
+                <span data-oid="lw:e0mc">Card Detected</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4" data-oid="v7qo.6i">
-              <div className="bg-emerald-50 p-4 rounded-lg" data-oid="gtk7pw-">
+            <CardContent className="space-y-4" data-oid="fw2:dim">
+              <div className="bg-emerald-50 p-4 rounded-lg" data-oid="sbyg6ay">
                 <div
                   className="grid grid-cols-2 gap-2 text-sm"
-                  data-oid="190tg-q"
+                  data-oid="h0_eo1d"
                 >
-                  <div data-oid="as3yyn2">
+                  <div data-oid="6l6r580">
                     <span
                       className="text-emerald-600 font-medium"
-                      data-oid="ykkutsx"
+                      data-oid="x0ep2dc"
                     >
                       {t("name")}:
                     </span>
                   </div>
                   <div
                     className="text-emerald-800 font-semibold"
-                    data-oid="-.859jf"
+                    data-oid="5-esvkk"
                   >
                     {scannedData.studentName || "John Doe"}
                   </div>
-                  <div data-oid="_.twc0f">
+                  <div data-oid="pqkrs88">
                     <span
                       className="text-emerald-600 font-medium"
-                      data-oid="szqni-3"
+                      data-oid="xqzu.v."
                     >
                       {t("id")}:
                     </span>
                   </div>
                   <div
                     className="text-emerald-800 font-semibold"
-                    data-oid="_3oa7rh"
+                    data-oid="b-:nx7t"
                   >
                     {scannedData.studentId || "STU001"}
                   </div>
-                  <div data-oid="gvvvjjf">
+                  <div data-oid="gov_v0f">
                     <span
                       className="text-emerald-600 font-medium"
-                      data-oid="ivp2:m0"
+                      data-oid="6j0p:76"
                     >
                       Card:
                     </span>
                   </div>
                   <div
                     className="text-emerald-800 font-semibold"
-                    data-oid="4246b_-"
+                    data-oid="lv16_al"
                   >
                     {scannedData.cardNumber || "****1234"}
                   </div>
                 </div>
               </div>
 
-              <div className="flex space-x-2" data-oid="q4cfql7">
+              <div className="flex space-x-2" data-oid="jx3d.lv">
                 <Button
                   onClick={handleCheckBalance}
                   className="flex-1 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300"
-                  data-oid="5t9hl7n"
+                  data-oid="zzv37e3"
                 >
                   Check Balance
                 </Button>
@@ -448,7 +448,7 @@ const StudentBalance = () => {
                   variant="outline"
                   onClick={resetScanner}
                   className="border-emerald-300 text-emerald-700 hover:bg-emerald-50"
-                  data-oid="z81calg"
+                  data-oid="g0:vxf8"
                 >
                   {t("reset")}
                 </Button>
@@ -463,7 +463,7 @@ const StudentBalance = () => {
           onClose={() => setShowPinInput(false)}
           onConfirm={handlePinConfirm}
           isProcessing={isProcessing}
-          data-oid="9:jgsc_"
+          data-oid="v31fbg5"
         />
       </div>
     </div>

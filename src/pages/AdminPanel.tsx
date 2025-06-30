@@ -403,27 +403,27 @@ const AdminPanel: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 bg-white bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50"
-      data-oid="ei1eo0f"
+      data-oid="ltwusfb"
     >
-      <div className="relative" data-oid="1s4sh8t">
+      <div className="relative" data-oid="8qr3-xa">
         <div
           className="h-24 w-24 rounded-full border-t-4 border-b-4 border-green-500 animate-spin"
-          data-oid="2w87ueq"
+          data-oid=":svw9-r"
         ></div>
         <div
           className="h-16 w-16 rounded-full border-t-4 border-b-4 border-green-300 animate-spin absolute top-4 left-4"
-          data-oid="zc9_7i6"
+          data-oid="rb:l0:q"
         ></div>
         <div
           className="h-8 w-8 rounded-full border-t-4 border-b-4 border-green-100 animate-spin absolute top-8 left-8"
-          data-oid="sdp:ebh"
+          data-oid="jw.tv3t"
         ></div>
       </div>
-      <div className="ml-4" data-oid="85rhb:d">
-        <p className="text-green-700 font-medium text-lg" data-oid=":q0nlti">
+      <div className="ml-4" data-oid="n148::0">
+        <p className="text-green-700 font-medium text-lg" data-oid="egidfci">
           Loading
         </p>
-        <p className="text-green-600/70 text-sm" data-oid="u3fajti">
+        <p className="text-green-600/70 text-sm" data-oid="nj1v-gc">
           Preparing your dashboard...
         </p>
       </div>
@@ -436,17 +436,17 @@ const AdminPanel: React.FC = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       className="mb-6"
-      data-oid="obe2:rl"
+      data-oid="hj77d4s"
     >
       <Alert
         className="bg-red-50 border border-red-200 text-red-800"
-        data-oid="4qluwxw"
+        data-oid="yod:b0l"
       >
-        <AlertTriangle className="h-4 w-4 mr-2" data-oid="f.4noh:" />
-        <AlertTitle className="font-semibold" data-oid="z77md27">
+        <AlertTriangle className="h-4 w-4 mr-2" data-oid="2v8bkjz" />
+        <AlertTitle className="font-semibold" data-oid="9nr91zy">
           Error
         </AlertTitle>
-        <AlertDescription data-oid="vguf44b">{message}</AlertDescription>
+        <AlertDescription data-oid="_rglrt1">{message}</AlertDescription>
       </Alert>
     </motion.div>
   );
@@ -468,53 +468,53 @@ const AdminPanel: React.FC = () => {
     <motion.div
       whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
       transition={{ duration: 0.2 }}
-      data-oid="ef96vgu"
+      data-oid="f5o:sd1"
     >
       <Card
         className="bg-white shadow-sm border border-green-100 hover:shadow-md transition-all overflow-hidden"
-        data-oid="xapx097"
+        data-oid="m6ab7zi"
       >
         <div
           className="absolute top-0 right-0 h-20 w-20 bg-green-50 rounded-bl-full opacity-30"
-          data-oid="y97jr8b"
+          data-oid="k:b:2zg"
         />
 
         <CardHeader
           className="flex flex-row items-center justify-between space-y-0 pb-2"
-          data-oid="ymhcw8_"
+          data-oid="av8b_7m"
         >
           <CardTitle
             className="text-sm font-medium text-green-700"
-            data-oid="9plu0gd"
+            data-oid="394w9kt"
           >
             {title}
           </CardTitle>
           <div
             className="h-8 w-8 rounded-full bg-green-100/80 flex items-center justify-center"
-            data-oid="eu3ztt8"
+            data-oid="2duaymy"
           >
             {icon}
           </div>
         </CardHeader>
-        <CardContent data-oid="mc-fdtb">
-          <div className="text-2xl font-bold text-green-800" data-oid="1fo:ycs">
+        <CardContent data-oid="w5ow3ou">
+          <div className="text-2xl font-bold text-green-800" data-oid="_x-t48i">
             {value}
           </div>
-          <div className="flex items-center justify-between" data-oid="e_-sd:f">
-            <p className="text-xs text-green-600/70" data-oid="ubhz45t">
+          <div className="flex items-center justify-between" data-oid="jyp2dvn">
+            <p className="text-xs text-green-600/70" data-oid="8gccpp_">
               {subtitle}
             </p>
             {trend !== 0 && (
               <div
                 className={`flex items-center text-xs ${trend > 0 ? "text-emerald-600" : "text-amber-600"}`}
-                data-oid="fs0_7-5"
+                data-oid="pebyd0g"
               >
                 <ChevronUp
                   className={`h-3 w-3 ${trend < 0 ? "rotate-180" : ""}`}
-                  data-oid="jkv-:ee"
+                  data-oid="mvb91ko"
                 />
 
-                <span data-oid="30na63:">{Math.abs(trend)}%</span>
+                <span data-oid="l483r09">{Math.abs(trend)}%</span>
               </div>
             )}
           </div>
@@ -527,13 +527,13 @@ const AdminPanel: React.FC = () => {
     return (
       <div
         className="min-h-screen bg-white flex items-center justify-center"
-        data-oid="xvs8cht"
+        data-oid="7_n0td0"
       >
         <Alert
           className="max-w-md bg-red-50 border border-red-200 text-red-800"
-          data-oid="p9pwwv1"
+          data-oid="3nstk2u"
         >
-          <AlertDescription className="text-center py-4" data-oid="6zenxm:">
+          <AlertDescription className="text-center py-4" data-oid="wwqnngt">
             Please log in to access the admin panel.
           </AlertDescription>
         </Alert>
@@ -544,70 +544,70 @@ const AdminPanel: React.FC = () => {
   return (
     <TokenContext.Provider
       value={{ csrfToken, apiRequest, refreshToken }}
-      data-oid="wfx2i6j"
+      data-oid="rcvly0:"
     >
       <div
         className="min-h-screen bg-gradient-to-b from-white to-green-50/30 p-6"
-        data-oid=":a.v.sn"
+        data-oid="b7dg.dm"
       >
-        <AnimatePresence data-oid="1pqj59a">
-          {loading && !refreshing && <Loader data-oid="tbfoufu" />}
+        <AnimatePresence data-oid="5cld9mb">
+          {loading && !refreshing && <Loader data-oid="6w767r." />}
         </AnimatePresence>
-        <div className="max-w-7xl mx-auto" data-oid="6vid5oe">
+        <div className="max-w-7xl mx-auto" data-oid="riy8p_g">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8 flex justify-between items-center"
-            data-oid="ub0xun-"
+            data-oid="00g_hmo"
           >
-            <div data-oid=".e6e:mj">
+            <div data-oid="yxarwn_">
               <h1
                 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent"
-                data-oid="ak3n6h8"
+                data-oid="43iwxnm"
               >
                 Admin Panel
               </h1>
-              <p className="text-xl text-green-700/70" data-oid="_s69..w">
+              <p className="text-xl text-green-700/70" data-oid="zmnyvv3">
                 Manage your student money transfer platform
               </p>
             </div>
-            <div className="flex items-center space-x-4" data-oid="z0molz0">
+            <div className="flex items-center space-x-4" data-oid="fz.wrcf">
               <Button
                 onClick={handleRefresh}
                 className="bg-green-600 hover:bg-green-700 text-white transition-all shadow-sm hover:shadow"
                 disabled={refreshing || loading}
-                data-oid="d.0zijk"
+                data-oid="lvu1g41"
               >
                 {refreshing ? (
                   <RefreshCw
                     className="w-4 h-4 mr-2 animate-spin"
-                    data-oid="2zd9n83"
+                    data-oid="9z2t7kz"
                   />
                 ) : (
-                  <RefreshCw className="w-4 h-4 mr-2" data-oid="1aog7-:" />
+                  <RefreshCw className="w-4 h-4 mr-2" data-oid="w7h_di-" />
                 )}
                 {refreshing ? "Refreshing..." : "Refresh"}
               </Button>
-              <DropdownMenu data-oid="mbatuq1">
-                <DropdownMenuTrigger asChild data-oid="_8aeva9">
+              <DropdownMenu data-oid="3z_wx0g">
+                <DropdownMenuTrigger asChild data-oid="6isc5mh">
                   <Button
                     variant="ghost"
                     className="relative h-10 w-10 rounded-full"
-                    data-oid="hpckusa"
+                    data-oid="kxrsh0z"
                   >
                     <Avatar
                       className="h-10 w-10 border-2 border-green-100 ring-2 ring-green-500/20"
-                      data-oid="p591_fw"
+                      data-oid="j-u7ui8"
                     >
                       <AvatarImage
                         src={adminAvatar}
                         alt={adminName}
-                        data-oid="7dmc2jg"
+                        data-oid="49.d3.g"
                       />
 
                       <AvatarFallback
                         className="bg-green-100 text-green-800"
-                        data-oid="umyl67:"
+                        data-oid="52d1w8k"
                       >
                         {adminName
                           .split(" ")
@@ -621,69 +621,69 @@ const AdminPanel: React.FC = () => {
                   className="w-56"
                   align="end"
                   forceMount
-                  data-oid="4:ksegb"
+                  data-oid="rcu_5uf"
                 >
                   <div
                     className="flex flex-col space-y-1 p-2"
-                    data-oid="edhchw4"
+                    data-oid="b3dlqn:"
                   >
                     <p
                       className="text-sm font-medium text-gray-900"
-                      data-oid="yxaiv72"
+                      data-oid="dfgcxuo"
                     >
                       {adminName}
                     </p>
-                    <p className="text-xs text-gray-500" data-oid="xy:eavk">
+                    <p className="text-xs text-gray-500" data-oid="ffgt3u1">
                       Administrator
                     </p>
                   </div>
-                  <DropdownMenuSeparator data-oid="v5x:j4k" />
+                  <DropdownMenuSeparator data-oid="f-i47f2" />
                   <DropdownMenuItem
                     className="cursor-pointer"
                     onClick={() => navigate("/admin/profile")}
-                    data-oid="..iefek"
+                    data-oid="xf0s_px"
                   >
-                    <User className="mr-2 h-4 w-4" data-oid="swdp1k0" />
-                    <span data-oid="a879ijm">Profile</span>
+                    <User className="mr-2 h-4 w-4" data-oid="q5bx.ok" />
+                    <span data-oid="f89i9y3">Profile</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     className="cursor-pointer"
                     onClick={() => navigate("/admin/settings")}
-                    data-oid="68uazs-"
+                    data-oid="3a1.947"
                   >
-                    <Settings className="mr-2 h-4 w-4" data-oid="6znaxp-" />
-                    <span data-oid="wiyaib-">Settings</span>
+                    <Settings className="mr-2 h-4 w-4" data-oid="p090_lu" />
+                    <span data-oid="p16ype7">Settings</span>
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator data-oid="p3:6mv9" />
+                  <DropdownMenuSeparator data-oid="apxh9ez" />
                   <DropdownMenuItem
                     className="cursor-pointer text-red-600"
                     onClick={handleLogout}
-                    data-oid="tg0j0gm"
+                    data-oid="v:c.tke"
                   >
-                    <LogOut className="mr-2 h-4 w-4" data-oid="3yuva8n" />
-                    <span data-oid="l785f9n">Log out</span>
+                    <LogOut className="mr-2 h-4 w-4" data-oid="wj9rrju" />
+                    <span data-oid="kpbeb-e">Log out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
           </motion.div>
-          <AnimatePresence data-oid="8tgzizg">
-            {error && <ErrorDisplay message={error} data-oid="pp19fe:" />}
+          <AnimatePresence data-oid="fu3o-v7">
+            {error && <ErrorDisplay message={error} data-oid="d0.t1e9" />}
           </AnimatePresence>
-          <div className="grid md:grid-cols-4 gap-6 mb-8" data-oid="mcxf8u1">
+          <div className="grid md:grid-cols-4 gap-6 mb-8" data-oid="s3k:.ll">
             {refreshing ? (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="col-span-4 text-center py-12 bg-green-50/50 border border-green-100 rounded-lg shadow-inner"
-                data-oid="6ejeljz"
+                data-oid="wcf04kj"
               >
                 <RefreshCw
                   className="h-8 w-8 text-green-600 mx-auto animate-spin mb-4"
-                  data-oid="fh6kmbm"
+                  data-oid="7:pp6ac"
                 />
 
-                <p className="text-green-700" data-oid="4ys_hj7">
+                <p className="text-green-700" data-oid=":ufkd1i">
                   Refreshing dashboard statistics...
                 </p>
               </motion.div>
@@ -695,12 +695,12 @@ const AdminPanel: React.FC = () => {
                   icon={
                     <Users
                       className="h-4 w-4 text-green-600"
-                      data-oid="gn050a9"
+                      data-oid="u86yh.5"
                     />
                   }
                   subtitle="Parents & Students"
                   trend={stats.growth_rate || 0}
-                  data-oid="sk__-fs"
+                  data-oid="w1.4snb"
                 />
 
                 <StatCard
@@ -709,12 +709,12 @@ const AdminPanel: React.FC = () => {
                   icon={
                     <DollarSign
                       className="h-4 w-4 text-green-600"
-                      data-oid="4p4ngs5"
+                      data-oid="bukp8u7"
                     />
                   }
                   subtitle="This month"
                   trend={3.2}
-                  data-oid="78.5au7"
+                  data-oid="tluutuk"
                 />
 
                 <StatCard
@@ -723,12 +723,12 @@ const AdminPanel: React.FC = () => {
                   icon={
                     <BarChart3
                       className="h-4 w-4 text-green-600"
-                      data-oid="0.xa5pz"
+                      data-oid="r1vy09d"
                     />
                   }
                   subtitle="Total revenue"
                   trend={7.4}
-                  data-oid="e:xy:z7"
+                  data-oid="d:qe173"
                 />
 
                 <StatCard
@@ -737,12 +737,12 @@ const AdminPanel: React.FC = () => {
                   icon={
                     <MessageSquare
                       className="h-4 w-4 text-green-600"
-                      data-oid="8idgh5e"
+                      data-oid="ziv49w."
                     />
                   }
                   subtitle="Currently running"
                   trend={-2.5}
-                  data-oid="7vmveof"
+                  data-oid="0e.d4fq"
                 />
               </>
             )}
@@ -751,103 +751,103 @@ const AdminPanel: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            data-oid="q2hizyg"
+            data-oid="wacee9p"
           >
-            <Tabs defaultValue="users" className="space-y-6" data-oid="t25ouj4">
+            <Tabs defaultValue="users" className="space-y-6" data-oid="_v5tb3b">
               <TabsList
                 className="grid w-full grid-cols-5 bg-green-50 p-1 rounded-lg shadow-sm"
-                data-oid="3i0gkdr"
+                data-oid="wjjnnsg"
               >
                 <TabsTrigger
                   value="users"
                   className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
-                  data-oid=".c2uan_"
+                  data-oid="_vx75.8"
                 >
                   <div
                     className="flex items-center space-x-2"
-                    data-oid="rdr-kfw"
+                    data-oid="1401gjp"
                   >
-                    <Users className="w-4 h-4" data-oid="qkh1132" />
-                    <span data-oid="vjm8nbv">Users</span>
+                    <Users className="w-4 h-4" data-oid="l5b::5t" />
+                    <span data-oid="51jy83o">Users</span>
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
                   value="transactions"
                   className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
-                  data-oid="cav53se"
+                  data-oid="qg.9p--"
                 >
                   <div
                     className="flex items-center space-x-2"
-                    data-oid="lzhit1t"
+                    data-oid="shlop2e"
                   >
-                    <DollarSign className="w-4 h-4" data-oid="d_va48v" />
-                    <span data-oid="_ikove8">Transactions</span>
+                    <DollarSign className="w-4 h-4" data-oid="-kruc.6" />
+                    <span data-oid="e.ujzlx">Transactions</span>
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
                   value="ads"
                   className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
-                  data-oid="r6h34.a"
+                  data-oid="o-ohidt"
                 >
                   <div
                     className="flex items-center space-x-2"
-                    data-oid="o77p3po"
+                    data-oid="43_u8ii"
                   >
-                    <MessageSquare className="w-4 h-4" data-oid="2y12-ps" />
-                    <span data-oid="_mfd6p.">Ads</span>
+                    <MessageSquare className="w-4 h-4" data-oid="pqbtvhu" />
+                    <span data-oid=":oy1grc">Ads</span>
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
                   value="shop"
                   className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
-                  data-oid="cqcw:uy"
+                  data-oid="zmh:6f2"
                 >
                   <div
                     className="flex items-center space-x-2"
-                    data-oid="y_u-d2o"
+                    data-oid="nmrvecd"
                   >
-                    <ShoppingBag className="w-4 h-4" data-oid="trj6o77" />
-                    <span data-oid="qv401ar">Shop</span>
+                    <ShoppingBag className="w-4 h-4" data-oid="c_s50qu" />
+                    <span data-oid="pbhq1r_">Shop</span>
                   </div>
                 </TabsTrigger>
                 <TabsTrigger
                   value="settings"
                   className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-md transition-all"
-                  data-oid="woswjni"
+                  data-oid=":3pm5:6"
                 >
                   <div
                     className="flex items-center space-x-2"
-                    data-oid=":56a8gj"
+                    data-oid="o5kfh:9"
                   >
-                    <Settings className="w-4 h-4" data-oid="yj0239e" />
-                    <span data-oid="ah9xneq">Settings</span>
+                    <Settings className="w-4 h-4" data-oid="vl4c5mk" />
+                    <span data-oid="xj09lqx">Settings</span>
                   </div>
                 </TabsTrigger>
               </TabsList>
               <div
                 className="bg-white border border-green-100 rounded-lg p-6 shadow-sm hover:shadow-md transition-all"
-                data-oid="jml3hc8"
+                data-oid="7pcny4-"
               >
-                <TabsContent value="users" data-oid="tsm9rpy">
-                  <UserManagement data-oid="ymi5s8y" />
+                <TabsContent value="users" data-oid="413pn.6">
+                  <UserManagement data-oid="2sl4xgi" />
                 </TabsContent>
-                <TabsContent value="transactions" data-oid="483k1o0">
-                  <TransactionManagement data-oid="2:yel-4" />
+                <TabsContent value="transactions" data-oid="5aatf6w">
+                  <TransactionManagement data-oid="y84mkta" />
                 </TabsContent>
-                <TabsContent value="ads" data-oid="8hvl1no">
-                  <AdManagement data-oid="ft8fclg" />
+                <TabsContent value="ads" data-oid="z7obrjx">
+                  <AdManagement data-oid="16gqhbk" />
                 </TabsContent>
-                <TabsContent value="shop" data-oid="lue0a2c">
-                  <ShopManagement data-oid="ysuo4im" />
+                <TabsContent value="shop" data-oid="48vd23j">
+                  <ShopManagement data-oid="0f4t:m3" />
                 </TabsContent>
-                <TabsContent value="settings" data-oid="d0bfty9">
-                  <AdminSettings data-oid="ze6ceev" />
+                <TabsContent value="settings" data-oid="dh4f6eo">
+                  <AdminSettings data-oid="e851z1s" />
                 </TabsContent>
               </div>
             </Tabs>
           </motion.div>
         </div>
-        <AnimatePresence data-oid="vbrmp:c">
+        <AnimatePresence data-oid="-i6xqjk">
           {showScrollTop && (
             <motion.button
               initial={{ opacity: 0, scale: 0.5 }}
@@ -855,9 +855,9 @@ const AdminPanel: React.FC = () => {
               exit={{ opacity: 0, scale: 0.5 }}
               onClick={scrollToTop}
               className="fixed bottom-8 right-8 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition-all z-50"
-              data-oid="ktitr5e"
+              data-oid="bv:kvoc"
             >
-              <ChevronUp className="h-6 w-6" data-oid="xo67b0i" />
+              <ChevronUp className="h-6 w-6" data-oid="iuotylg" />
             </motion.button>
           )}
         </AnimatePresence>

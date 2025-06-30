@@ -645,17 +645,17 @@ const AdManagement: React.FC = () => {
   const Loader = () => (
     <div
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-      data-oid="myxxh3s"
+      data-oid="yg1gwcz"
     >
       <div
         className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center"
-        data-oid="cngum1m"
+        data-oid="y4d1o_3"
       >
         <div
           className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500 mb-4"
-          data-oid="5jn33po"
+          data-oid="7uspyc5"
         ></div>
-        <p className="text-gray-700 font-semibold" data-oid="pp_8nc3">
+        <p className="text-gray-700 font-semibold" data-oid="ga_mf-x">
           Loading...
         </p>
       </div>
@@ -666,7 +666,7 @@ const AdManagement: React.FC = () => {
   const EmptyState = () => (
     <div
       className="flex flex-col items-center justify-center py-12 bg-white rounded-lg shadow-md"
-      data-oid="2pa1h03"
+      data-oid="lcma5ls"
     >
       <svg
         className="w-32 h-32 text-green-500 mb-4"
@@ -674,27 +674,27 @@ const AdManagement: React.FC = () => {
         stroke="currentColor"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        data-oid="2eda2rc"
+        data-oid="sivizyr"
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1"
           d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-          data-oid="o2mu19b"
+          data-oid="owjj8id"
         ></path>
       </svg>
-      <h3 className="text-xl font-bold text-gray-800 mb-2" data-oid="sz7utr2">
+      <h3 className="text-xl font-bold text-gray-800 mb-2" data-oid="8zsce4p">
         No Ads Available
       </h3>
-      <p className="text-gray-600 text-center mb-6 max-w-md" data-oid=".pdo0xi">
+      <p className="text-gray-600 text-center mb-6 max-w-md" data-oid="6vhwrbv">
         You haven't created any ads yet. Create your first ad to start promoting
         your content.
       </p>
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-        data-oid="s9liuge"
+        data-oid="d4nvsm1"
       >
         Create Your First Ad
       </button>
@@ -705,51 +705,51 @@ const AdManagement: React.FC = () => {
   const ErrorDisplay = ({ message }: { message: string }) => (
     <div
       className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-md"
-      data-oid="qsj-myy"
+      data-oid="xcp:sl7"
     >
-      <div className="flex items-center" data-oid="lj.fj38">
-        <div className="flex-shrink-0" data-oid="q4hcnfa">
+      <div className="flex items-center" data-oid="_1t91xv">
+        <div className="flex-shrink-0" data-oid="6:1_hb1">
           <svg
             className="h-5 w-5 text-red-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            data-oid="in398us"
+            data-oid="9l8ce:n"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
               d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-              data-oid="ob-gtgt"
+              data-oid="g_9e_mo"
             />
           </svg>
         </div>
-        <div className="ml-3" data-oid="6s-r044">
-          <p className="text-sm text-red-700" data-oid="lajl_c.">
+        <div className="ml-3" data-oid="uypgx6p">
+          <p className="text-sm text-red-700" data-oid="710vd56">
             {message}
           </p>
         </div>
-        <div className="ml-auto pl-3" data-oid="a085sc-">
-          <div className="-mx-1.5 -my-1.5" data-oid="9t5yj:b">
+        <div className="ml-auto pl-3" data-oid="4fm2b51">
+          <div className="-mx-1.5 -my-1.5" data-oid="2yv_-6i">
             <button
               onClick={() => setError("")}
               className="inline-flex rounded-md p-1.5 text-red-500 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-              data-oid="--9zpsx"
+              data-oid="a.7t:p9"
             >
               <svg
                 className="h-4 w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                data-oid="-squ4.d"
+                data-oid="myzqq8p"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
-                  data-oid="ss-woyz"
+                  data-oid="5afpk_j"
                 />
               </svg>
             </button>
@@ -762,21 +762,21 @@ const AdManagement: React.FC = () => {
   return (
     <div
       className="container mx-auto p-4 bg-gray-50 min-h-screen"
-      data-oid="ksb1lkh"
+      data-oid="smulnta"
     >
       {/* Loading overlay */}
-      {loading && <Loader data-oid="33hrm1v" />}
+      {loading && <Loader data-oid="gfa2tlq" />}
 
       {/* Header */}
       <div
         className="flex justify-between items-center mb-6 bg-white p-4 rounded-lg shadow-md"
-        data-oid="vm3ttpp"
+        data-oid="n7of.o1"
       >
-        <div data-oid="e090yzv">
-          <h2 className="text-2xl font-bold text-gray-800" data-oid="bpnsibw">
+        <div data-oid="nl7nte.">
+          <h2 className="text-2xl font-bold text-gray-800" data-oid="_qofpvw">
             Ad Management
           </h2>
-          <p className="text-sm text-gray-500" data-oid=".ansdag">
+          <p className="text-sm text-gray-500" data-oid="cjmn.zq">
             Create and manage your advertising campaigns
           </p>
         </div>
@@ -784,7 +784,7 @@ const AdManagement: React.FC = () => {
           onClick={handleRefresh}
           disabled={loading || isFetchingToken}
           className={`flex items-center px-4 py-2 rounded-md transition duration-300 ${loading || isFetchingToken ? "bg-gray-300 cursor-not-allowed" : "bg-green-500 hover:bg-green-600 text-white"}`}
-          data-oid="rx1xffl"
+          data-oid="xyctbs8"
         >
           <svg
             className={`w-4 h-4 mr-2 ${loading || isFetchingToken ? "animate-spin" : ""}`}
@@ -792,14 +792,14 @@ const AdManagement: React.FC = () => {
             stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            data-oid="v4n_f7-"
+            data-oid="3uamk2c"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
               d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-              data-oid="nsz834i"
+              data-oid="gbcnae5"
             ></path>
           </svg>
           Refresh
@@ -807,29 +807,29 @@ const AdManagement: React.FC = () => {
       </div>
 
       {/* Error display */}
-      {error && <ErrorDisplay message={error} data-oid="b_gmf.5" />}
+      {error && <ErrorDisplay message={error} data-oid="722ig-l" />}
 
       {/* Ad creation/editing form */}
       <div
         className="bg-white p-6 rounded-lg shadow-md mb-6 transition-all duration-300"
-        data-oid="a16hy:j"
+        data-oid="ooeaebb"
       >
         <h3
           className="text-lg font-semibold text-gray-800 mb-4 border-b pb-2"
-          data-oid="efxk59f"
+          data-oid="zagw_ve"
         >
           {editingAdId ? "Edit Advertisement" : "Create New Advertisement"}
         </h3>
         <div
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          data-oid="2pt_f_x"
+          data-oid="fd8qiaf"
         >
-          <div className="space-y-4" data-oid="k4yqzb-">
-            <div data-oid="3l90z:i">
+          <div className="space-y-4" data-oid="-dh8z-5">
+            <div data-oid="8j1x8vn">
               <label
                 className="block text-sm font-medium text-gray-700 mb-1"
                 htmlFor="title"
-                data-oid="h7zh7cg"
+                data-oid="ws0cv61"
               >
                 Title*
               </label>
@@ -842,15 +842,15 @@ const AdManagement: React.FC = () => {
                 placeholder="Enter ad title"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
-                data-oid="kru7ens"
+                data-oid="zh0:0_x"
               />
             </div>
 
-            <div data-oid="h0.3_qx">
+            <div data-oid="-k3gnma">
               <label
                 className="block text-sm font-medium text-gray-700 mb-1"
                 htmlFor="subtitle"
-                data-oid="oqlnd6k"
+                data-oid="6y4.5rm"
               >
                 Subtitle
               </label>
@@ -862,15 +862,15 @@ const AdManagement: React.FC = () => {
                 onChange={handleInputChange}
                 placeholder="Enter ad subtitle"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                data-oid="hnlrvlz"
+                data-oid="n0fn.jj"
               />
             </div>
 
-            <div data-oid="3h62hfy">
+            <div data-oid="n62m7o4">
               <label
                 className="block text-sm font-medium text-gray-700 mb-1"
                 htmlFor="cta_text"
-                data-oid=".ew61uu"
+                data-oid="6hbp3oj"
               >
                 CTA Text*
               </label>
@@ -883,15 +883,15 @@ const AdManagement: React.FC = () => {
                 placeholder="e.g., Learn More, Buy Now"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
-                data-oid="hmcvuy:"
+                data-oid="xy2612a"
               />
             </div>
 
-            <div data-oid="jgbm0_i">
+            <div data-oid="a8nddrc">
               <label
                 className="block text-sm font-medium text-gray-700 mb-1"
                 htmlFor="cta_link"
-                data-oid="gnw:bv_"
+                data-oid="b0bub:x"
               >
                 CTA Link*
               </label>
@@ -904,17 +904,17 @@ const AdManagement: React.FC = () => {
                 placeholder="https://example.com/landing-page"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
-                data-oid="pant3sl"
+                data-oid="ya6a1o7"
               />
             </div>
           </div>
 
-          <div className="space-y-4" data-oid="udcu1xz">
-            <div data-oid=".2jvdk8">
+          <div className="space-y-4" data-oid="3u0uxpv">
+            <div data-oid="uqmyj62">
               <label
                 className="block text-sm font-medium text-gray-700 mb-1"
                 htmlFor="image_url"
-                data-oid="givatvz"
+                data-oid="32j.3p-"
               >
                 Image URL*
               </label>
@@ -927,16 +927,16 @@ const AdManagement: React.FC = () => {
                 placeholder="https://example.com/ad-image.jpg"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
-                data-oid="3mo2yy8"
+                data-oid="fiola6d"
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4" data-oid="sbv8wgg">
-              <div data-oid="iqixl2t">
+            <div className="grid grid-cols-2 gap-4" data-oid="r8jqnml">
+              <div data-oid="95r:dsw">
                 <label
                   className="block text-sm font-medium text-gray-700 mb-1"
                   htmlFor="start_date"
-                  data-oid="b.zin2m"
+                  data-oid="brnyg9y"
                 >
                   Start Date*
                 </label>
@@ -948,15 +948,15 @@ const AdManagement: React.FC = () => {
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
-                  data-oid="lolf8n."
+                  data-oid="eol84p6"
                 />
               </div>
 
-              <div data-oid="xck38np">
+              <div data-oid="h38dla8">
                 <label
                   className="block text-sm font-medium text-gray-700 mb-1"
                   htmlFor="end_date"
-                  data-oid="68mpwre"
+                  data-oid="j8dp00m"
                 >
                   End Date*
                 </label>
@@ -968,17 +968,17 @@ const AdManagement: React.FC = () => {
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
-                  data-oid="dn6vu9t"
+                  data-oid="gjbfxfy"
                 />
               </div>
             </div>
 
             {editingAdId && (
-              <div data-oid="f_up5mr">
+              <div data-oid="_:ge17v">
                 <label
                   className="block text-sm font-medium text-gray-700 mb-1"
                   htmlFor="status"
-                  data-oid="uu_wk01"
+                  data-oid="618tf27"
                 >
                   Status
                 </label>
@@ -988,15 +988,15 @@ const AdManagement: React.FC = () => {
                   value={formData.status || "active"}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                  data-oid="wcyzjq9"
+                  data-oid="-0kp6w0"
                 >
-                  <option value="active" data-oid="nolj6e:">
+                  <option value="active" data-oid=".xhsj:d">
                     Active
                   </option>
-                  <option value="paused" data-oid="vf4noo-">
+                  <option value="paused" data-oid="unu14ae">
                     Paused
                   </option>
-                  <option value="scheduled" data-oid="fr2v72w">
+                  <option value="scheduled" data-oid="ltdm81l">
                     Scheduled
                   </option>
                 </select>
@@ -1004,16 +1004,16 @@ const AdManagement: React.FC = () => {
             )}
 
             {formData.image_url && (
-              <div className="mt-2" data-oid="iyqxvx2">
+              <div className="mt-2" data-oid="8fgxs33">
                 <label
                   className="block text-sm font-medium text-gray-700 mb-1"
-                  data-oid="c-v2uyf"
+                  data-oid="i120oa3"
                 >
                   Image Preview
                 </label>
                 <div
                   className="border rounded-md overflow-hidden h-32 bg-gray-100 flex items-center justify-center"
-                  data-oid="hsk27n:"
+                  data-oid=":ydc_9o"
                 >
                   <img
                     src={formData.image_url}
@@ -1023,7 +1023,7 @@ const AdManagement: React.FC = () => {
                       (e.target as HTMLImageElement).src =
                         "https://via.placeholder.com/300x150?text=Invalid+Image+URL";
                     }}
-                    data-oid="60-xl3r"
+                    data-oid="9pz4:wt"
                   />
                 </div>
               </div>
@@ -1031,12 +1031,12 @@ const AdManagement: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-6 flex items-center space-x-3" data-oid="b2h2zn3">
+        <div className="mt-6 flex items-center space-x-3" data-oid="5kdrp.0">
           <button
             onClick={handleCreateOrUpdateAd}
             disabled={isSubmitting}
             className={`flex items-center px-4 py-2 rounded-md transition duration-300 ${isSubmitting ? "bg-gray-300 cursor-not-allowed" : "bg-emerald-600 hover:bg-emerald-700 text-white"}`}
-            data-oid="7ihvtgr"
+            data-oid="9crem-c"
           >
             {isSubmitting && (
               <svg
@@ -1044,7 +1044,7 @@ const AdManagement: React.FC = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                data-oid="lwg0ppa"
+                data-oid="1hy78lu"
               >
                 <circle
                   className="opacity-25"
@@ -1053,13 +1053,13 @@ const AdManagement: React.FC = () => {
                   r="10"
                   stroke="currentColor"
                   strokeWidth="4"
-                  data-oid="1c4r_cs"
+                  data-oid="pon2:pk"
                 ></circle>
                 <path
                   className="opacity-75"
                   fill="currentColor"
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  data-oid="4hw.xoc"
+                  data-oid="lrgao3x"
                 ></path>
               </svg>
             )}
@@ -1073,13 +1073,13 @@ const AdManagement: React.FC = () => {
                 setEditingAdId(null);
               }}
               className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition duration-300"
-              data-oid="df-6cxi"
+              data-oid="vf7e3xy"
             >
               Cancel
             </button>
           )}
 
-          <p className="text-xs text-gray-500 ml-auto" data-oid="h6auujv">
+          <p className="text-xs text-gray-500 ml-auto" data-oid="9_9.1hd">
             * Required fields
           </p>
         </div>
@@ -1089,51 +1089,51 @@ const AdManagement: React.FC = () => {
       {!loading &&
         !error &&
         (showEmptyState || ads.length === 0 ? (
-          <EmptyState data-oid="3qw7su0" />
+          <EmptyState data-oid="1.9b5:a" />
         ) : (
           <div
             className="bg-white rounded-lg shadow-md overflow-hidden"
-            data-oid="8iiubw:"
+            data-oid="1hw39xj"
           >
-            <div className="overflow-x-auto" data-oid="ubr-g3y">
+            <div className="overflow-x-auto" data-oid="rdo8h27">
               <table
                 className="min-w-full divide-y divide-gray-200"
-                data-oid="kwhak0p"
+                data-oid="n.d-a-6"
               >
-                <thead className="bg-gray-50" data-oid="5re6hfe">
-                  <tr data-oid="-8n4wd6">
+                <thead className="bg-gray-50" data-oid="pwjhdxe">
+                  <tr data-oid="r_4:dlj">
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      data-oid="w:b.29k"
+                      data-oid="u:kce0r"
                     >
                       Ad Details
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      data-oid="lha389t"
+                      data-oid="3hkjqa3"
                     >
                       Status
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      data-oid="80xb5oh"
+                      data-oid="ynqey-0"
                     >
                       Performance
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      data-oid=".augbdt"
+                      data-oid="rlo1c3w"
                     >
                       Timeline
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      data-oid="yhva17j"
+                      data-oid="9kzf6:r"
                     >
                       Actions
                     </th>
@@ -1141,22 +1141,22 @@ const AdManagement: React.FC = () => {
                 </thead>
                 <tbody
                   className="bg-white divide-y divide-gray-200"
-                  data-oid="02gkw-."
+                  data-oid="akko9we"
                 >
                   {ads.map((ad: Ad) => (
                     <tr
                       key={ad.ad_id}
                       className="hover:bg-gray-50 transition-colors duration-150"
-                      data-oid="6.hnu_w"
+                      data-oid="xsla5tj"
                     >
                       <td
                         className="px-6 py-4 whitespace-nowrap"
-                        data-oid="51qu2jq"
+                        data-oid="i2viw0e"
                       >
-                        <div className="flex items-center" data-oid="mmm4iu4">
+                        <div className="flex items-center" data-oid="vm-lp0w">
                           <div
                             className="flex-shrink-0 h-10 w-10 bg-gray-100 rounded-md overflow-hidden"
-                            data-oid="0ru87ge"
+                            data-oid="9aqg2::"
                           >
                             <img
                               className="h-10 w-10 object-cover"
@@ -1166,31 +1166,31 @@ const AdManagement: React.FC = () => {
                                 (e.target as HTMLImageElement).src =
                                   "https://via.placeholder.com/40?text=Error";
                               }}
-                              data-oid="omajm0b"
+                              data-oid="fy.d8n-"
                             />
                           </div>
-                          <div className="ml-4" data-oid="7_ca3qt">
+                          <div className="ml-4" data-oid="4g6f4so">
                             <div
                               className="text-sm font-medium text-gray-900"
-                              data-oid="3i1z4_y"
+                              data-oid="csd:dca"
                             >
                               {ad.title}
                             </div>
                             <div
                               className="text-sm text-gray-500"
-                              data-oid="sy9w7qt"
+                              data-oid="r5aoh:5"
                             >
                               {ad.subtitle}
                             </div>
                             <div
                               className="text-xs text-blue-500 hover:underline"
-                              data-oid="9osla3v"
+                              data-oid="lte91ux"
                             >
                               <a
                                 href={ad.cta_link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                data-oid="7z8j0in"
+                                data-oid="x14n5li"
                               >
                                 {ad.cta_text}
                               </a>
@@ -1200,11 +1200,11 @@ const AdManagement: React.FC = () => {
                       </td>
                       <td
                         className="px-6 py-4 whitespace-nowrap"
-                        data-oid="0is_.ni"
+                        data-oid=".hu69ov"
                       >
                         <span
                           className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${ad.status === "active" ? "bg-green-100 text-green-800" : ad.status === "paused" ? "bg-yellow-100 text-yellow-800" : "bg-blue-100 text-blue-800"}`}
-                          data-oid="dzhl-jl"
+                          data-oid="q82jrgb"
                         >
                           {ad.status.charAt(0).toUpperCase() +
                             ad.status.slice(1)}
@@ -1212,34 +1212,34 @@ const AdManagement: React.FC = () => {
                       </td>
                       <td
                         className="px-6 py-4 whitespace-nowrap"
-                        data-oid="x0gbd2y"
+                        data-oid="cgs5n0v"
                       >
                         <div
                           className="text-sm text-gray-900"
-                          data-oid="lcgqs8x"
+                          data-oid="im.rc60"
                         >
-                          <div className="flex items-center" data-oid=":osubxp">
+                          <div className="flex items-center" data-oid="_htykqh">
                             <svg
                               className="w-4 h-4 text-gray-400 mr-1"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
                               xmlns="http://www.w3.org/2000/svg"
-                              data-oid="cyv:u4v"
+                              data-oid="dauclih"
                             >
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth="2"
                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                data-oid="sxfonqh"
+                                data-oid="yqz2kr9"
                               ></path>
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth="2"
                                 d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                data-oid="9:waztd"
+                                data-oid="8qnq4vs"
                               ></path>
                             </svg>
                             {(ad.impressions || 0).toLocaleString()}
@@ -1247,23 +1247,23 @@ const AdManagement: React.FC = () => {
                         </div>
                         <div
                           className="text-sm text-gray-900"
-                          data-oid="pnjmt:a"
+                          data-oid="3f69gcm"
                         >
-                          <div className="flex items-center" data-oid="ae7pgqa">
+                          <div className="flex items-center" data-oid="tgmuwlh">
                             <svg
                               className="w-4 h-4 text-gray-400 mr-1"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
                               xmlns="http://www.w3.org/2000/svg"
-                              data-oid="wt34-g:"
+                              data-oid="l0:-9in"
                             >
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth="2"
                                 d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-                                data-oid="x_fa0qs"
+                                data-oid="l84h:pb"
                               ></path>
                             </svg>
                             {(ad.clicks || 0).toLocaleString()}
@@ -1272,7 +1272,7 @@ const AdManagement: React.FC = () => {
                         {ad.impressions > 0 && (
                           <div
                             className="text-xs text-gray-500"
-                            data-oid="5_x6kdv"
+                            data-oid="6075u-2"
                           >
                             CTR:{" "}
                             {((ad.clicks / ad.impressions) * 100).toFixed(2)}%
@@ -1281,25 +1281,25 @@ const AdManagement: React.FC = () => {
                       </td>
                       <td
                         className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
-                        data-oid="drnh1os"
+                        data-oid="hk:azj4"
                       >
-                        <div data-oid="ib86ib9">
+                        <div data-oid="6ahh3d6">
                           Start: {new Date(ad.start_date).toLocaleDateString()}
                         </div>
-                        <div data-oid="xthluft">
+                        <div data-oid="fsvho7m">
                           End: {new Date(ad.end_date).toLocaleDateString()}
                         </div>
                       </td>
                       <td
                         className="px-6 py-4 whitespace-nowrap text-sm font-medium"
-                        data-oid="m-_kx:q"
+                        data-oid="1qai61w"
                       >
-                        <div className="flex space-x-2" data-oid="q3dx666">
+                        <div className="flex space-x-2" data-oid="inhxwpo">
                           <button
                             onClick={() => handleEditAd(ad)}
                             className="text-indigo-600 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 p-1 rounded-md transition-colors duration-150"
                             title="Edit"
-                            data-oid="ay9:o8d"
+                            data-oid="yw8vdw-"
                           >
                             <svg
                               className="w-5 h-5"
@@ -1307,14 +1307,14 @@ const AdManagement: React.FC = () => {
                               stroke="currentColor"
                               viewBox="0 0 24 24"
                               xmlns="http://www.w3.org/2000/svg"
-                              data-oid="hpembze"
+                              data-oid="-xozulv"
                             >
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth="2"
                                 d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                data-oid="9c8.vhh"
+                                data-oid="40c:2r8"
                               ></path>
                             </svg>
                           </button>
@@ -1327,7 +1327,7 @@ const AdManagement: React.FC = () => {
                             title={
                               ad.status === "active" ? "Pause" : "Activate"
                             }
-                            data-oid="h7b56s4"
+                            data-oid="i.y5rsg"
                           >
                             {ad.status === "active" ? (
                               <svg
@@ -1336,14 +1336,14 @@ const AdManagement: React.FC = () => {
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
-                                data-oid="829c8x2"
+                                data-oid="to11ijm"
                               >
                                 <path
                                   strokeLinecap="round"
                                   strokeLinejoin="round"
                                   strokeWidth="2"
                                   d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  data-oid="9924j5n"
+                                  data-oid="k452hp4"
                                 ></path>
                               </svg>
                             ) : (
@@ -1353,21 +1353,21 @@ const AdManagement: React.FC = () => {
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
-                                data-oid="ue.lqjj"
+                                data-oid="zjbo0_9"
                               >
                                 <path
                                   strokeLinecap="round"
                                   strokeLinejoin="round"
                                   strokeWidth="2"
                                   d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                                  data-oid="tm6yh2:"
+                                  data-oid="c6m6k9p"
                                 ></path>
                                 <path
                                   strokeLinecap="round"
                                   strokeLinejoin="round"
                                   strokeWidth="2"
                                   d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  data-oid="7z:x-zy"
+                                  data-oid="vpc-kei"
                                 ></path>
                               </svg>
                             )}
@@ -1376,7 +1376,7 @@ const AdManagement: React.FC = () => {
                             onClick={() => handleDeleteAd(ad.ad_id)}
                             className="text-red-600 hover:text-red-900 bg-red-50 hover:bg-red-100 p-1 rounded-md transition-colors duration-150"
                             title="Delete"
-                            data-oid="92_ycly"
+                            data-oid="grile.w"
                           >
                             <svg
                               className="w-5 h-5"
@@ -1384,14 +1384,14 @@ const AdManagement: React.FC = () => {
                               stroke="currentColor"
                               viewBox="0 0 24 24"
                               xmlns="http://www.w3.org/2000/svg"
-                              data-oid="tuq-rz1"
+                              data-oid="v6ezo_:"
                             >
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth="2"
                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                data-oid="jh0m4vh"
+                                data-oid="h3zjkqn"
                               ></path>
                             </svg>
                           </button>

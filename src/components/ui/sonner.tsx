@@ -22,7 +22,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         },
       }}
       {...props}
-      data-oid="wd_s6zv"
+      data-oid="ek-6l72"
     />
   );
 };

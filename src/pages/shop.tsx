@@ -243,15 +243,15 @@ const Shop: React.FC = () => {
   const ProductSkeleton = () => (
     <div
       className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100"
-      data-oid="64r.r-f"
+      data-oid="ptae6_e"
     >
-      <Skeleton className="w-full h-48" data-oid="ewawexc" />
-      <div className="p-4" data-oid="fbm_stj">
-        <Skeleton className="h-6 w-3/4 mb-2" data-oid="-v-o3:1" />
-        <Skeleton className="h-4 w-full mb-2" data-oid="maxituz" />
-        <Skeleton className="h-4 w-2/3 mb-4" data-oid="b2tzon8" />
-        <Skeleton className="h-6 w-1/4 mb-2" data-oid="a-atndd" />
-        <Skeleton className="h-10 w-full rounded" data-oid="i4:0hzv" />
+      <Skeleton className="w-full h-48" data-oid="dvhb_7a" />
+      <div className="p-4" data-oid="0v:hlkp">
+        <Skeleton className="h-6 w-3/4 mb-2" data-oid="ddn0rta" />
+        <Skeleton className="h-4 w-full mb-2" data-oid="69kbac4" />
+        <Skeleton className="h-4 w-2/3 mb-4" data-oid="ityilvy" />
+        <Skeleton className="h-6 w-1/4 mb-2" data-oid="sherhdc" />
+        <Skeleton className="h-10 w-full rounded" data-oid="3:t201j" />
       </div>
     </div>
   );
@@ -260,20 +260,20 @@ const Shop: React.FC = () => {
   const Loader = () => (
     <div
       className="fixed inset-0 bg-white bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50"
-      data-oid="2cemzv-"
+      data-oid="eq436sm"
     >
-      <div className="relative" data-oid="j2av67h">
+      <div className="relative" data-oid="ab:-r1a">
         <div
           className="h-24 w-24 rounded-full border-t-4 border-b-4 border-brand animate-spin"
-          data-oid="xk6mf73"
+          data-oid="-n:nnh_"
         ></div>
         {/* <div className="h-16 w-16 rounded-full border-t-4 border-b-4 border-brand animate-spin absolute top-4 left-4"></div> */}
         <div
           className="h-8 w-8 rounded-full border-t-4 border-b-4 border-brand animate-spin absolute top-8 left-8"
-          data-oid="_eds97a"
+          data-oid="k-._cez"
         ></div>
       </div>
-      <p className="text-green-700 font-medium mt-4 ml-4" data-oid="09k9kdl">
+      <p className="text-green-700 font-medium mt-4 ml-4" data-oid="t3fb-pq">
         Loading products...
       </p>
     </div>
@@ -284,19 +284,19 @@ const Shop: React.FC = () => {
     return (
       <div
         className="min-h-screen bg-gray-50 flex items-center justify-center p-4"
-        data-oid="f9k_q1w"
+        data-oid="-a1vl2x"
       >
         <div
           className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full border-l-4 border-red-500"
-          data-oid="5kb0zit"
+          data-oid="e1ic-17"
         >
           <h2
             className="text-2xl font-bold text-gray-800 mb-4"
-            data-oid=":uweqet"
+            data-oid="1niez2r"
           >
             Error
           </h2>
-          <p className="text-red-600 mb-4" data-oid="ztjaijq">
+          <p className="text-red-600 mb-4" data-oid="r273v37">
             {error}
           </p>
           <Button
@@ -304,7 +304,7 @@ const Shop: React.FC = () => {
               fetchCsrfToken().then((token) => token && fetchProducts())
             }
             className="w-full bg-green-600 hover:bg-green-700 text-white"
-            data-oid="2nb7yi-"
+            data-oid="_t57bdk"
           >
             Try Again
           </Button>
@@ -321,35 +321,35 @@ const Shop: React.FC = () => {
         backgroundRepeat: "repeat",
         backgroundSize: "auto",
       }}
-      data-oid="02ik8ya"
+      data-oid="6wm-eud"
     >
       {/* Full-page loader */}
-      {loading && <Loader data-oid="bpnuyvk" />}
+      {loading && <Loader data-oid="xq3ffuv" />}
 
       {/* Hero section */}
-      <div className="bg-brand text-white py-16" data-oid="xe.1se.">
-        <div className="container mx-auto px-4" data-oid="c9c5j63">
-          <div className="max-w-3xl mx-auto text-center" data-oid="h9:qom1">
+      <div className="bg-brand text-white py-16" data-oid="k9x:p4n">
+        <div className="container mx-auto px-4" data-oid="fuexwzv">
+          <div className="max-w-3xl mx-auto text-center" data-oid=":d1dp.g">
             <ShoppingBag
               className="h-16 w-16 mx-auto mb-6 opacity-90"
-              data-oid="3w-n-3u"
+              data-oid="ugflx4a"
             />
 
-            <h1 className="text-4xl font-bold mb-4" data-oid="_tow8gd">
+            <h1 className="text-4xl font-bold mb-4" data-oid="zdvxs-7">
               School Shop
             </h1>
             <p
               className="text-xl text-yellow-400 opacity-90 mb-8"
-              data-oid="u:6_0l0"
+              data-oid="ww:3naf"
             >
               Find the best products for your school needs
             </p>
 
             {/* Search bar */}
-            <div className="relative max-w-xl mx-auto" data-oid="orfzu.b">
+            <div className="relative max-w-xl mx-auto" data-oid="0gln4n3">
               <Search
                 className="absolute left-3 top-3 h-5 w-5 text-gray-100"
-                data-oid="t8rk8qg"
+                data-oid="tti0-tt"
               />
 
               <Input
@@ -358,7 +358,7 @@ const Shop: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 py-6 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/70 rounded-full focus:ring-2 focus:ring-white/50 focus:border-transparent w-full"
-                data-oid="l30ot7l"
+                data-oid="14nvtjw"
               />
             </div>
           </div>
@@ -366,20 +366,20 @@ const Shop: React.FC = () => {
       </div>
 
       {/* Main content */}
-      <div className="container mx-auto p-4 md:p-6 lg:p-8" data-oid="z6j06px">
+      <div className="container mx-auto p-4 md:p-6 lg:p-8" data-oid="y:_mm14">
         {/* Category filters */}
         <div
           className="mb-8 flex items-center overflow-x-auto pb-2"
-          data-oid="khre69x"
+          data-oid="ikh6j4o"
         >
           <Filter
             className="h-5 w-5 text-brand mr-2 flex-shrink-0"
-            data-oid="u-6s125"
+            data-oid="m54pa4c"
           />
 
           <span
             className="text-brand mr-4 font-medium flex-shrink-0"
-            data-oid="pj2vdwn"
+            data-oid="1ypwt7a"
           >
             Filter by:
           </span>
@@ -389,7 +389,7 @@ const Shop: React.FC = () => {
               variant={selectedCategory === category ? "default" : "outline"}
               className={`mr-2 cursor-pointer px-3 py-1 ${selectedCategory === category ? "bg-brand hover:bg-green-700" : "hover:bg-green-50"}`}
               onClick={() => setSelectedCategory(category)}
-              data-oid="3atmf2t"
+              data-oid=".:dy06."
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </Badge>
@@ -398,81 +398,81 @@ const Shop: React.FC = () => {
 
         {/* Products grid */}
         {filteredProducts.length === 0 && !loading ? (
-          <EmptyProductState data-oid="s9ucct9" />
+          <EmptyProductState data-oid="w2s.jva" />
         ) : (
           <div
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-            data-oid="d5v1j80"
+            data-oid="8c.wuyt"
           >
             {loading
               ? // Skeleton loaders
                 Array(8)
                   .fill(0)
                   .map((_, index) => (
-                    <ProductSkeleton key={index} data-oid="qer.-ap" />
+                    <ProductSkeleton key={index} data-oid="tt_7bxn" />
                   ))
               : // Actual products
                 filteredProducts.map((product) => (
                   <Card
                     key={product.product_id}
                     className="overflow-hidden hover:shadow-lg transition-all duration-300 group"
-                    data-oid="q:j7.tp"
+                    data-oid="hon2x_n"
                   >
-                    <div className="relative" data-oid="n4o8k2z">
+                    <div className="relative" data-oid="u5bm46r">
                       {product.image_url ? (
                         <img
                           src={product.image_url}
                           alt={product.name}
                           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                          data-oid="g60.zo2"
+                          data-oid="cqpppui"
                         />
                       ) : (
                         <div
                           className="w-full h-48 bg-gray-100 flex items-center justify-center"
-                          data-oid="-uw.047"
+                          data-oid="xx21eza"
                         >
                           <ShoppingBag
                             className="h-12 w-12 text-gray-300"
-                            data-oid="biyai30"
+                            data-oid="wobgtki"
                           />
                         </div>
                       )}
                       <button
                         onClick={() => toggleFavorite(product.product_id)}
                         className="absolute top-2 right-2 h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors"
-                        data-oid="q26l181"
+                        data-oid="47n.1-o"
                       >
                         <Heart
                           className={`h-4 w-4 ${favorites.has(product.product_id) ? "fill-red-500 text-red-500" : "text-gray-600"}`}
-                          data-oid="ih3ww2o"
+                          data-oid="r949lj7"
                         />
                       </button>
                     </div>
 
-                    <CardHeader className="pb-2" data-oid="u5mdajq">
+                    <CardHeader className="pb-2" data-oid="o2_3w3.">
                       <div
                         className="flex justify-between items-start"
-                        data-oid="15zua9l"
+                        data-oid="_2i59ol"
                       >
                         <h3
                           className="text-lg font-bold text-gray-800 line-clamp-2"
-                          data-oid="54n8vy3"
+                          data-oid="t_egod9"
                         >
                           {product.name}
                         </h3>
                         {product.rating && (
                           <div
                             className="flex items-center bg-brand text-white px-2 py-1 rounded"
-                            data-oid="8h-ejq8"
+                            data-oid="tj2qpp."
                           >
                             <Star
                               className="h-3 w-3 text-yellow-500 fill-yellow-500 mr-1"
-                              data-oid="oyzcmwq"
+                              data-oid="ay5-l0i"
                             />
 
                             <span
                               className="text-xs font-medium"
-                              data-oid="y5n790o"
+                              data-oid="ti_-erx"
                             >
                               {product.rating}
                             </span>
@@ -483,39 +483,39 @@ const Shop: React.FC = () => {
                         <Badge
                           variant="outline"
                           className="mt-1 text-xs bg-gray-50"
-                          data-oid="fx6d4xv"
+                          data-oid="em7wkaw"
                         >
                           {product.category}
                         </Badge>
                       )}
                     </CardHeader>
 
-                    <CardContent data-oid="2v1:3t4">
+                    <CardContent data-oid="t:eul5x">
                       <p
                         className="text-gray-600 text-sm line-clamp-2 mb-2"
-                        data-oid="av:iaqq"
+                        data-oid="r69-p69"
                       >
                         {product.description || "No description available"}
                       </p>
                       <p
                         className="text-brand font-bold text-lg"
-                        data-oid="n.x8qca"
+                        data-oid="0ov6sn:"
                       >
                         RWF {product.price.toFixed(2)}
                       </p>
                     </CardContent>
 
-                    <CardFooter className="flex gap-2" data-oid="7vod488">
+                    <CardFooter className="flex gap-2" data-oid="0f5.b_a">
                       <Button
                         className="flex-1 bg-brand hover:bg-brand text-white"
                         asChild
-                        data-oid="::19wu4"
+                        data-oid="65fhlue"
                       >
                         <a
                           href={product.affiliate_link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          data-oid="nm3g1d5"
+                          data-oid="7387nj."
                         >
                           Buy Now
                         </a>
@@ -524,11 +524,11 @@ const Shop: React.FC = () => {
                         variant="outline"
                         className={`${cartItems.has(product.product_id) ? "bg-green-50 border-brand" : ""}`}
                         onClick={() => toggleCart(product.product_id)}
-                        data-oid="wvi.7d8"
+                        data-oid="zpkqlmo"
                       >
                         <ShoppingCart
                           className={`h-4 w-4 ${cartItems.has(product.product_id) ? "text-green-600" : ""}`}
-                          data-oid="_gkyet-"
+                          data-oid="t9c63lk"
                         />
                       </Button>
                     </CardFooter>
@@ -539,15 +539,15 @@ const Shop: React.FC = () => {
 
         {/* Cart indicator */}
         {cartItems.size > 0 && (
-          <div className="fixed bottom-6 right-6" data-oid="z8.wfdq">
+          <div className="fixed bottom-6 right-6" data-oid="uiuw3n5">
             <Button
               className="h-14 w-14 rounded-full bg-green-600 hover:bg-green-700 shadow-lg flex items-center justify-center relative"
-              data-oid=":qi0aoj"
+              data-oid="f71mbhn"
             >
-              <ShoppingCart className="h-6 w-6 text-white" data-oid="gykkh41" />
+              <ShoppingCart className="h-6 w-6 text-white" data-oid="8f9p.wu" />
               <span
                 className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
-                data-oid="xc6cuib"
+                data-oid="rdhhzuv"
               >
                 {cartItems.size}
               </span>
@@ -563,28 +563,28 @@ export default Shop;
 
 // Add this component for when no products are found but we're not in an error state
 const EmptyProductState = () => (
-  <div className="text-center py-16" data-oid="g.bjnqm">
+  <div className="text-center py-16" data-oid="x_9d_1q">
     <div
       className="bg-green-50 rounded-full h-24 w-24 flex items-center justify-center mx-auto mb-4"
-      data-oid="yyw--me"
+      data-oid="iook08f"
     >
-      <ShoppingBag className="h-12 w-12 text-green-500" data-oid="zz2lc:8" />
+      <ShoppingBag className="h-12 w-12 text-green-500" data-oid=":j43x17" />
     </div>
-    <h3 className="text-2xl font-bold text-gray-700 mb-2" data-oid="c_n-f_m">
+    <h3 className="text-2xl font-bold text-gray-700 mb-2" data-oid="0yn9-ae">
       No products found
     </h3>
-    <p className="text-gray-500 mb-6 max-w-md mx-auto" data-oid="11rl-q:">
+    <p className="text-gray-500 mb-6 max-w-md mx-auto" data-oid="w_79y6:">
       We couldn't find any products matching your criteria. Try adjusting your
       search or check back later.
     </p>
-    <div className="flex justify-center gap-4" data-oid="ntm5lh4">
+    <div className="flex justify-center gap-4" data-oid=":2i7vhg">
       <Button
         onClick={() => {
           setSearchQuery("");
           setSelectedCategory("all");
         }}
         className="bg-green-600 hover:bg-green-700 text-white"
-        data-oid="sme:z.t"
+        data-oid="0aieidx"
       >
         Clear Filters
       </Button>
@@ -592,7 +592,7 @@ const EmptyProductState = () => (
         variant="outline"
         onClick={() => fetchProducts()}
         className="border-brand text-green-700 hover:bg-green-50"
-        data-oid="gdm.4_m"
+        data-oid="4peypfy"
       >
         Refresh Products
       </Button>

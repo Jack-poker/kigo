@@ -23,7 +23,7 @@ const WalletSection = ({
   return (
     <div
       className="bg-brand-10 dark:from-gray-900 dark:to-gray-800 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-blue-200/10 relative overflow-hidden"
-      data-oid="436kyys"
+      data-oid="ab5ocb0"
     >
       <div
         className="absolute inset-0 opacity-20 bg-[#FFFFFF]"
@@ -34,30 +34,30 @@ const WalletSection = ({
         `,
           backgroundSize: "24px 24px",
         }}
-        data-oid="clgg8v9"
+        data-oid="4oyb8zz"
       ></div>
-      <div className="relative z-10" data-oid="eqw0dx9">
+      <div className="relative z-10" data-oid=":2_74dz">
         <div
           className="flex items-center justify-between mb-8"
-          data-oid="ljfv35b"
+          data-oid=":dds9jh"
         >
-          <div className="flex items-center space-x-4" data-oid="kz2ax7.">
+          <div className="flex items-center space-x-4" data-oid="1slkyce">
             <div
               className="p-4 bg-brand rounded-2xl shadow-lg"
-              data-oid="p5x1_1g"
+              data-oid="4xkz2al"
             >
-              <Wallet className="w-8 h-8 text-white" data-oid="d:y2pwn" />
+              <Wallet className="w-8 h-8 text-white" data-oid="3pe-aax" />
             </div>
-            <div data-oid="joiw5t9">
+            <div data-oid=".jy7mdg">
               <h3
                 className="font-bold text-white dark:text-white text-xl"
-                data-oid="zjmdtv."
+                data-oid="l56mc6n"
               >
                 {t("walletBalance")}
               </h3>
               <p
                 className="text-zinc-900 dark:text-gray-400 font-medium"
-                data-oid="6ncql9u"
+                data-oid="i2-hddk"
               >
                 {t("availableFunds")}
               </p>
@@ -65,50 +65,50 @@ const WalletSection = ({
           </div>
         </div>
         <div
-          className="mb-8 p-6 bg-white dark:bg-gray-800 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-700"
-          data-oid="3a7iijb"
+          className="mb-8 p-6 bg-white dark:bg-gray-800 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-700 bg-[url(/images/lr1g.png)]"
+          data-oid="y3jhou1"
         >
-          <div className="flex items-center space-x-4" data-oid="-.-7fkz">
+          <div className="flex items-center space-x-4" data-oid="x-5m34d">
             <span
               className="text-4xl font-bold text-brand dark:text-white"
-              data-oid="5j0vih2"
+              data-oid="_ove7h7"
             >
               {isVisible ? formatBalance(balance) : "••••••"}
             </span>
             <button
               onClick={onToggleVisibility}
               className="p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 border border-gray-200 dark:border-gray-600"
-              data-oid="ihc-xht"
+              data-oid=".ra6z1i"
             >
               {isVisible ? (
-                <EyeOff className="w-6 h-6 text-brand" data-oid="yawld0g" />
+                <EyeOff className="w-6 h-6 text-brand" data-oid="xr27tct" />
               ) : (
-                <Eye className="w-6 h-6 text-brand" data-oid="mhhsjf1" />
+                <Eye className="w-6 h-6 text-brand" data-oid="n-pv292" />
               )}
             </button>
           </div>
-          {<PaymentStatusListener data-oid="74dufu9" />}
+          {<PaymentStatusListener data-oid="m5-xb_5" />}
           <p
             className="text-sm text-zinc-900 mt-2 font-semibold"
-            data-oid="f0lr2f6"
+            data-oid="1vzo:lb"
           >
             {t("percentChange")}
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-4" data-oid="pbpf-ll">
+        <div className="grid grid-cols-2 gap-4" data-oid="slkgjfy">
           <button
             onClick={onDeposit}
             className="group flex items-center justify-center space-x-3 bg-brand text-white py-4 px-6 rounded-2xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden"
-            data-oid="gbkl-u6"
+            data-oid="z.i91ey"
           >
             <div
               className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              data-oid="5r8a4mj"
+              data-oid="ngf:6p0"
             ></div>
-            <Plus className="w-6 h-6 relative z-10" data-oid="44467no" />
+            <Plus className="w-6 h-6 relative z-10" data-oid="asoxv.a" />
             <span
               className="font-bold text-lg relative z-10"
-              data-oid="rszz8tl"
+              data-oid=".ce4a:x"
             >
               {t("deposit")}
             </span>
@@ -116,16 +116,16 @@ const WalletSection = ({
           <button
             onClick={onWithdraw}
             className="group flex items-center justify-center space-x-3 bg-gradient-to-br from-orange-500 to-red-600 text-white py-4 px-6 rounded-2xl hover:from-orange-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden"
-            data-oid="oqf9130"
+            data-oid="bucscgi"
           >
             <div
               className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              data-oid="bdfq1i0"
+              data-oid="5dnnauv"
             ></div>
-            <Minus className="w-6 h-6 relative z-10" data-oid="g:w04gl" />
+            <Minus className="w-6 h-6 relative z-10" data-oid="lxaksz8" />
             <span
               className="font-bold text-lg relative z-10"
-              data-oid="4:.fv4o"
+              data-oid="uvmtag9"
             >
               {t("withdraw")}
             </span>

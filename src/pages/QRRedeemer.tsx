@@ -99,7 +99,7 @@ const QRRedeemer = () => {
       <TransactionSuccess
         onReset={resetScanner}
         scannedData={scannedData}
-        data-oid="xy3e4ga"
+        data-oid="qnlz-:_"
       />
     );
   }
@@ -112,46 +112,46 @@ const QRRedeemer = () => {
         backgroundRepeat: "repeat",
         backgroundSize: "auto",
       }}
-      data-oid="ahunhv7"
+      data-oid=".__by33"
     >
-      <div className="max-w-md mx-auto" data-oid="7fe0qa:">
+      <div className="max-w-md mx-auto" data-oid="-3ck9y.">
         {/* Header with Language Switcher */}
         <div
           className="flex items-center justify-between mb-6"
-          data-oid="8.tgxrk"
+          data-oid="97nhw5u"
         >
           <Button
             variant="ghost"
             size="sm"
             onClick={() => navigate("/admin")}
             className="text-emerald-700 hover:text-brand"
-            data-oid="s:u2fhy"
+            data-oid="e8zsasj"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" data-oid="-7jnx4w" />
+            <ArrowLeft className="w-4 h-4 mr-2" data-oid="a2lp:vr" />
             {t("back")}
           </Button>
-          <LanguageSwitcher data-oid="w1d7h:l" />
+          <LanguageSwitcher data-oid="4qcr7kc" />
           <Badge
             variant="secondary"
             className="bg-emerald-100 text-brand"
-            data-oid="3yy8w:m"
+            data-oid="b5pp60w"
           >
             {t("moneyReceiver")}
           </Badge>
         </div>
 
         {/* Title */}
-        <div className="text-center mb-8" data-oid="9pxswcs">
+        <div className="text-center mb-8" data-oid="s76o616">
           <div
             className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
-            data-oid="b.5wema"
+            data-oid="yr2q6md"
           >
-            <QrCodeIcon className="w-8 h-8 text-white" data-oid="tux_u24" />
+            <QrCodeIcon className="w-8 h-8 text-white" data-oid="8ld_o7i" />
           </div>
-          <h1 className="text-3xl font-bold text-brand mb-2" data-oid="onrqhtb">
+          <h1 className="text-3xl font-bold text-brand mb-2" data-oid="_pj2_qb">
             {t("qrRedeemer")}
           </h1>
-          <p className="text-emerald-600" data-oid="e8hw:y.">
+          <p className="text-emerald-600" data-oid="haoscz7">
             {t("scanStudentQR")}
           </p>
         </div>
@@ -160,16 +160,16 @@ const QRRedeemer = () => {
         {error && (
           <Card
             className="mb-6 border-red-200 bg-red-50 animate-fade-in"
-            data-oid="5c.2rsk"
+            data-oid="fbkxldh"
           >
-            <CardContent className="p-4" data-oid="wlfi5ei">
-              <div className="flex items-center space-x-2" data-oid="y33guzy">
+            <CardContent className="p-4" data-oid="1mqbc6q">
+              <div className="flex items-center space-x-2" data-oid="6a1fswm">
                 <AlertCircle
                   className="w-5 h-5 text-red-600"
-                  data-oid="xhdzqe-"
+                  data-oid="gq6r6fn"
                 />
 
-                <span className="text-red-700" data-oid="gkp.ucd">
+                <span className="text-red-700" data-oid="npkls73">
                   {error}
                 </span>
               </div>
@@ -181,46 +181,46 @@ const QRRedeemer = () => {
         {!scannedData && (
           <Card
             className="mb-6 border-emerald-200 shadow-xl bg-white/80 backdrop-blur-sm"
-            data-oid="cp1ni-i"
+            data-oid="co7ubwi"
           >
-            <CardHeader className="text-center" data-oid="p_xhxsy">
+            <CardHeader className="text-center" data-oid="afkz7bu">
               <CardTitle
                 className="text-brand flex items-center justify-center space-x-2"
-                data-oid="qmr1tlc"
+                data-oid="8s2cctg"
               >
-                <Scan className="w-5 h-5" data-oid="g49neea" />
-                <span className="text-brand" data-oid="-0s0oz.">
+                <Scan className="w-5 h-5" data-oid="lete45a" />
+                <span className="text-brand" data-oid="kyeqamn">
                   {t("qrCodeScanner")}
                 </span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4" data-oid="gfk5bi3">
+            <CardContent className="space-y-4" data-oid="36-1w8.">
               {!isScanning ? (
-                <div className="text-center space-y-4" data-oid="p78_f0f">
+                <div className="text-center space-y-4" data-oid="f2txlsy">
                   <div
                     className="w-80 h-80 mx-auto  flex items-center justify-center "
-                    data-oid=":6p1ku4"
+                    data-oid="2mr8t.7"
                   >
                     {/* <Smartphone className="w-12 h-12 text-brand" /> */}
                     <div
                       className={`flex flex-col items-center justify-center text-center text-sm ${1 ? "text-emerald-200" : "text-emerald-600"}`}
-                      data-oid="3.py8ug"
+                      data-oid="wdsp4js"
                     >
                       <div
                         className="w-45 h-45 mx-auto mb-2"
-                        data-oid="lcqdy66"
+                        data-oid="0nizo6b"
                       >
                         <img
                           src="/assets/Scan to pay-amico.svg"
                           alt="No ads illustration"
                           className="w-full h-full object-contain"
                           draggable={false}
-                          data-oid="g_l1ybs"
+                          data-oid="l9n6dnu"
                         />
                       </div>
                       <p
                         className="text-zinc-900 font-medium mb-2"
-                        data-oid="hhnw-xx"
+                        data-oid="od.zr:."
                       >
                         {t("scanGuide", {
                           defaultValue:
@@ -232,33 +232,33 @@ const QRRedeemer = () => {
                     defaultValue: 'After scanning, select a payment method, enter your phone number, and follow the prompts to complete the transaction.'
                     })}
                     </p> */}
-                      <br data-oid="fbk1t78"></br>
+                      <br data-oid="c2y2ely"></br>
                     </div>
                   </div>
                   <Button
                     onClick={() => setIsScanning(true)}
                     className="w-full bg-brand  text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
-                    data-oid="xozfdke"
+                    data-oid="a76uh88"
                   >
-                    <Scan className="w-5 h-5 mr-2" data-oid=":3h-32c" />
+                    <Scan className="w-5 h-5 mr-2" data-oid="esot0ys" />
                     {t("startScanning")}
                   </Button>
                 </div>
               ) : (
-                <div className="relative" data-oid="mppiplg">
+                <div className="relative" data-oid=".kl5tb1">
                   <QRScanner
                     onScan={handleScanResult}
                     onError={handleScanError}
-                    data-oid="enobyct"
+                    data-oid="9r9k-ir"
                   />
 
-                  <ScannerOverlay data-oid="6e2z0ep" />
-                  <div className="mt-4 text-center" data-oid="ke4wt6w">
+                  <ScannerOverlay data-oid="_kubo6p" />
+                  <div className="mt-4 text-center" data-oid="7ovx6y.">
                     <Button
                       variant="outline"
                       onClick={() => setIsScanning(false)}
                       className="border-emerald-300 text-emerald-700"
-                      data-oid="kjjpzt5"
+                      data-oid="0shnvxs"
                     >
                       {t("cancelScan")}
                     </Button>
@@ -273,60 +273,60 @@ const QRRedeemer = () => {
         {scannedData && (
           <Card
             className="mb-6 border-emerald-200 shadow-xl bg-white/80 backdrop-blur-sm animate-scale-in"
-            data-oid="-ywj3xp"
+            data-oid="9vhsehn"
           >
-            <CardHeader data-oid="-6dpt0w">
+            <CardHeader data-oid=":d9pblx">
               <CardTitle
                 className="text-brand flex items-center space-x-2"
-                data-oid="wkcqq2t"
+                data-oid="nonhbm."
               >
                 <CheckCircle
                   className="w-5 h-5 text-green-600"
-                  data-oid="eajapg0"
+                  data-oid="b_zir_a"
                 />
 
-                <span data-oid="4x1uhx:">{t("studentDetails")}</span>
+                <span data-oid=":p4kv4w">{t("studentDetails")}</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4" data-oid="3ibpwyg">
-              <div className="bg-emerald-50 p-4 rounded-lg" data-oid="18wq.t6">
+            <CardContent className="space-y-4" data-oid="93oipz5">
+              <div className="bg-emerald-50 p-4 rounded-lg" data-oid="v4tss-n">
                 <div
                   className="grid grid-cols-2 gap-2 text-sm"
-                  data-oid="57omzv4"
+                  data-oid="5bj12gl"
                 >
-                  <div data-oid="m7dxxml">
+                  <div data-oid="n03tn-d">
                     <span
                       className="text-emerald-600 font-medium"
-                      data-oid="0zrchp1"
+                      data-oid="7nazu1a"
                     >
                       {t("name")}:
                     </span>
                   </div>
-                  <div className="text-brand font-semibold" data-oid="in8io.-">
+                  <div className="text-brand font-semibold" data-oid="dj8u09w">
                     {scannedData.studentName || "John Doe"}
                   </div>
-                  <div data-oid="nk-w6pd">
+                  <div data-oid="1ar51ti">
                     <span
                       className="text-emerald-600 font-medium"
-                      data-oid="ze0c.ig"
+                      data-oid="tjqe1jt"
                     >
                       {t("id")}:
                     </span>
                   </div>
-                  <div className="text-brand font-semibold" data-oid="1uivxiz">
+                  <div className="text-brand font-semibold" data-oid="fhg1fro">
                     {scannedData.studentId || "STU001"}
                   </div>
-                  <div data-oid="kizz67w">
+                  <div data-oid=":if52wp">
                     <span
                       className="text-emerald-600 font-medium"
-                      data-oid="a5cfgwo"
+                      data-oid="wk77t-p"
                     >
                       {t("amount")}:
                     </span>
                   </div>
                   <div
                     className="text-brand font-bold text-lg"
-                    data-oid="anu18sk"
+                    data-oid="oj4fgir"
                   >
                     ${scannedData.amount || "50.00"}
                   </div>
@@ -338,17 +338,17 @@ const QRRedeemer = () => {
                 onGatewaySelect={setSelectedGateway}
                 phoneNumber={phoneNumber}
                 onPhoneNumberChange={setPhoneNumber}
-                data-oid="54s4l_o"
+                data-oid="xivot2y"
               />
 
-              <div className="flex space-x-2" data-oid="21.j034">
+              <div className="flex space-x-2" data-oid="qkzxbvy">
                 <Button
                   onClick={handlePayment}
                   disabled={
                     !selectedGateway || !phoneNumber || phoneNumber.length < 10
                   }
                   className="flex-1 bg-gradient-to-r from-emerald-600 to-green-600  text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300"
-                  data-oid="_7hsgkw"
+                  data-oid="uzc0hm5"
                 >
                   {t("processPayment")}
                 </Button>
@@ -356,7 +356,7 @@ const QRRedeemer = () => {
                   variant="outline"
                   onClick={resetScanner}
                   className="border-emerald-300 text-emerald-700 "
-                  data-oid="wnp6prq"
+                  data-oid="2h019--"
                 >
                   {t("reset")}
                 </Button>
@@ -371,7 +371,7 @@ const QRRedeemer = () => {
           onClose={() => setShowPinInput(false)}
           onConfirm={handlePinConfirm}
           isProcessing={isProcessing}
-          data-oid="eqmub6u"
+          data-oid="q3-:akl"
         />
       </div>
     </div>
