@@ -6,6 +6,20 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
+import { 
+  User, 
+  Phone, 
+  Lock, 
+  Shield, 
+  CheckCircle, 
+  Eye, 
+  EyeOff,
+  Loader2,
+  Heart,
+  Star,
+  Users,
+  CreditCard
+} from "lucide-react";
 
 export function SignupForm({
   className,
@@ -19,9 +33,55 @@ export function SignupForm({
   const [phonenumber, setPhonenumber] = useState("");
   const [password, setPassword] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [passwordStrength, setPasswordStrength] = useState(0);
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!fullnames.trim()) {
+      newErrors.fullnames = "Full name is required";
+    } else if (fullnames.trim().length < 2) {
+      newErrors.fullnames = "Name must be at least 2 characters";
+    }
+    
+    if (!phonenumber.trim()) {
+      newErrors.phonenumber = "Phone number is required";
+    } else if (!/^(\+250|250|0)?[7][0-9]{8}$/.test(phonenumber.replace(/\s/g, ''))) {
+      newErrors.phonenumber = "Please enter a valid Rwandan phone number";
+    }
+    
+    if (!password) {
+      newErrors.password = "Password is required";
+    } else if (password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const calculatePasswordStrength = (pwd) => {
+    let strength = 0;
+    if (pwd.length >= 6) strength += 25;
+    if (pwd.length >= 8) strength += 25;
+    if (/[A-Z]/.test(pwd)) strength += 25;
+    if (/[0-9]/.test(pwd)) strength += 25;
+    return strength;
+  };
+
+  useEffect(() => {
+    setPasswordStrength(calculatePasswordStrength(password));
+  }, [password]);
 
   function signup_submit() {
-    setSubmitted(true);
+    if (validateForm()) {
+      setIsLoading(true);
+      setSubmitted(true);
+    }
   }
 
   useEffect(() => {
@@ -63,11 +123,14 @@ export function SignupForm({
           console.log("[✅] Signup successful");
         } else {
           console.error("[❌] Signup failed:", data.detail || data.message);
+          setErrors({ general: data.detail || data.message || "Signup failed" });
         }
       } catch (err) {
         console.error("[❌] Unexpected signup error:", err);
+        setErrors({ general: "Network error. Please try again." });
       } finally {
         setSubmitted(false);
+        setIsLoading(false);
       }
     }
 
@@ -79,128 +142,332 @@ export function SignupForm({
       className={cn("flex flex-col gap-6", className)}
       {...props}
       data-oid="dce9d0p"
-    >
-      <div className="flex justify-center" data-oid="v--3lf2">
-        <img
-          src="/assets/logo.png"
-          alt="kaascan logo"
-          className="w-64 h-20 object-contain"
-          data-oid="5ms0_r."
-        />
+    {/* Logo Section */}
+      <div className="flex justify-center mb-8" data-oid="v--3lf2">
+        <div className="relative">
+          <img
+            src="/assets/logo.png"
+            alt="kaascan logo"
+            className="w-64 h-20 object-contain drop-shadow-lg"
+            data-oid="5ms0_r."
+          />
+          <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs px-2 py-1 rounded-full font-bold animate-pulse">
+            For Parents
+          </div>
+        </div>
       </div>
 
-      <Card className="bg-brand text-white" data-oid="7lxa5fp">
+      {/* Benefits Banner */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-700">
+          <div className="p-2 bg-green-500 rounded-lg">
+            <Shield className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-green-800 dark:text-green-300 text-sm">Secure Payments</h3>
+            <p className="text-green-600 dark:text-green-400 text-xs">Bank-level security</p>
+          </div>
+        </div>
+        
+        <div className="flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-700">
+          <div className="p-2 bg-blue-500 rounded-lg">
+            <Users className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-blue-800 dark:text-blue-300 text-sm">Family Control</h3>
+            <p className="text-blue-600 dark:text-blue-400 text-xs">Monitor spending</p>
+          </div>
+        </div>
+        
+        <div className="flex items-center space-x-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-700">
+          <div className="p-2 bg-purple-500 rounded-lg">
+            <Heart className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-purple-800 dark:text-purple-300 text-sm">Peace of Mind</h3>
+            <p className="text-purple-600 dark:text-purple-400 text-xs">Real-time alerts</p>
+          </div>
+        </div>
+      </div>
+
+      <Card className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl border-0 overflow-hidden" data-oid="7lxa5fp">
         <CardContent className="grid p-0 md:grid-cols-2" data-oid="-8a5vfi">
-          <form className="p-6 md:p-8 w-full" data-oid="e5xv8zv">
+          <form className="p-8 md:p-10 w-full bg-white dark:bg-gray-800" data-oid="e5xv8zv">
             <div className="flex flex-col gap-6" data-oid="l15kwmf">
-              <div className="text-center" data-oid="wu.::c2">
-                <h1 className="text-2xl font-bold" data-oid="z5uxei:">
-                  {isSignupComplete ? "Enter OTP Code" : "Create your account"}
+              {/* Header */}
+              <div className="text-center mb-6" data-oid="wu.::c2">
+                <div className="flex justify-center mb-4">
+                  <div className="p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg">
+                    {isSignupComplete ? (
+                      <Shield className="w-8 h-8 text-white" />
+                    ) : (
+                      <User className="w-8 h-8 text-white" />
+                    )}
+                  </div>
+                </div>
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2" data-oid="z5uxei:">
+                  {isSignupComplete ? "Verify Your Phone" : "Join Our Family"}
                 </h1>
-                <p className="text-sm text-muted-foreground" data-oid="9b9fqu0">
+                <p className="text-gray-600 dark:text-gray-400" data-oid="9b9fqu0">
                   {isSignupComplete
-                    ? "An OTP has been sent to your phone."
-                    : "Provide your details to sign up."}
+                    ? "We've sent a 6-digit code to your phone number"
+                    : "Create your account to start managing your children's finances safely"}
                 </p>
               </div>
 
+              {/* Error Message */}
+              {errors.general && (
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-4 flex items-center space-x-3">
+                  <div className="p-1 bg-red-500 rounded-full">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <p className="text-red-700 dark:text-red-400 text-sm">{errors.general}</p>
+                </div>
+              )}
+
               {!isSignupComplete ? (
                 <>
-                  <div className="grid gap-2 " data-oid="yuqp7b_">
-                    <Label htmlFor="fullnames" data-oid="td8vuxd">
-                      Full names
+                  {/* Full Name Field */}
+                  <div className="space-y-2" data-oid="yuqp7b_">
+                    <Label htmlFor="fullnames" className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2" data-oid="td8vuxd">
+                      <User className="w-4 h-4" />
+                      <span>Full Name</span>
                     </Label>
-                    <Input
-                      id="fullnames"
-                      value={fullnames}
-                      onChange={(e) => setFullnames(e.target.value)}
-                      required
-                      className="text-zinc-900 placeholder:text-gray-300"
-                      placeholder="Enter your full names"
-                      data-oid="spjces_"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="fullnames"
+                        value={fullnames}
+                        onChange={(e) => {
+                          setFullnames(e.target.value);
+                          if (errors.fullnames) setErrors({...errors, fullnames: null});
+                        }}
+                        required
+                        className={`pl-12 h-12 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border-2 transition-all duration-200 ${
+                          errors.fullnames 
+                            ? 'border-red-500 focus:border-red-500' 
+                            : 'border-gray-200 dark:border-gray-600 focus:border-blue-500'
+                        }`}
+                        placeholder="Enter your full name"
+                        data-oid="spjces_"
+                      />
+                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    </div>
+                    {errors.fullnames && (
+                      <p className="text-red-500 text-sm flex items-center space-x-1">
+                        <span>⚠️</span>
+                        <span>{errors.fullnames}</span>
+                      </p>
+                    )}
                   </div>
 
-                  <div className="grid gap-2" data-oid="w5pzm.l">
-                    <Label htmlFor="phone" data-oid="4pj__0o">
-                      Phone number
+                  {/* Phone Number Field */}
+                  <div className="space-y-2" data-oid="w5pzm.l">
+                    <Label htmlFor="phone" className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2" data-oid="4pj__0o">
+                      <Phone className="w-4 h-4" />
+                      <span>Phone Number</span>
                     </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={phonenumber}
-                      onChange={(e) => setPhonenumber(e.target.value)}
-                      className="text-zinc-900 placeholder:text-gray-300"
-                      placeholder="Enter your phonenumber"
-                      required
-                      data-oid="4hiqpol"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={phonenumber}
+                        onChange={(e) => {
+                          setPhonenumber(e.target.value);
+                          if (errors.phonenumber) setErrors({...errors, phonenumber: null});
+                        }}
+                        className={`pl-12 h-12 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border-2 transition-all duration-200 ${
+                          errors.phonenumber 
+                            ? 'border-red-500 focus:border-red-500' 
+                            : 'border-gray-200 dark:border-gray-600 focus:border-blue-500'
+                        }`}
+                        placeholder="078XXXXXXX"
+                        required
+                        data-oid="4hiqpol"
+                      />
+                      <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded">
+                        🇷🇼 Rwanda
+                      </div>
+                    </div>
+                    {errors.phonenumber && (
+                      <p className="text-red-500 text-sm flex items-center space-x-1">
+                        <span>⚠️</span>
+                        <span>{errors.phonenumber}</span>
+                      </p>
+                    )}
                   </div>
 
-                  <div className="grid gap-2" data-oid="z17yna3">
-                    <Label htmlFor="password" data-oid="qklimtx">
-                      Password
+                  {/* Password Field */}
+                  <div className="space-y-2" data-oid="z17yna3">
+                    <Label htmlFor="password" className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2" data-oid="qklimtx">
+                      <Lock className="w-4 h-4" />
+                      <span>Password</span>
                     </Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="text-zinc-900 placeholder:text-gray-300"
-                      placeholder="Create Password"
-                      required
-                      data-oid="py44:g8"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        value={password}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                          if (errors.password) setErrors({...errors, password: null});
+                        }}
+                        className={`pl-12 pr-12 h-12 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border-2 transition-all duration-200 ${
+                          errors.password 
+                            ? 'border-red-500 focus:border-red-500' 
+                            : 'border-gray-200 dark:border-gray-600 focus:border-blue-500'
+                        }`}
+                        placeholder="Create a secure password"
+                        required
+                        data-oid="py44:g8"
+                      />
+                      <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      >
+                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                    
+                    {/* Password Strength Indicator */}
+                    {password && (
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2">
+                          <div className="flex-1 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div 
+                              className={`h-2 rounded-full transition-all duration-300 ${
+                                passwordStrength < 50 ? 'bg-red-500' : 
+                                passwordStrength < 75 ? 'bg-yellow-500' : 'bg-green-500'
+                              }`}
+                              style={{ width: `${passwordStrength}%` }}
+                            />
+                          </div>
+                          <span className={`text-xs font-medium ${
+                            passwordStrength < 50 ? 'text-red-500' : 
+                            passwordStrength < 75 ? 'text-yellow-500' : 'text-green-500'
+                          }`}>
+                            {passwordStrength < 50 ? 'Weak' : 
+                             passwordStrength < 75 ? 'Good' : 'Strong'}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {errors.password && (
+                      <p className="text-red-500 text-sm flex items-center space-x-1">
+                        <span>⚠️</span>
+                        <span>{errors.password}</span>
+                      </p>
+                    )}
                   </div>
 
+                  {/* Submit Button */}
                   <Button
                     type="button"
                     onClick={signup_submit}
-                    className="w-full bg-amber-500 hover:bg-amber-500"
+                    disabled={isLoading}
+                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                     data-oid="omeyfyx"
                   >
-                    Sign Up
+                    {isLoading ? (
+                      <div className="flex items-center space-x-2">
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <span>Creating Account...</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center space-x-2">
+                        <Star className="w-5 h-5" />
+                        <span>Create My Account</span>
+                      </div>
+                    )}
                   </Button>
                 </>
               ) : (
                 <>
-                  <div className="grid gap-2" data-oid="6_ugmmn">
-                    <Label htmlFor="otp" data-oid="ae:v.3:">
-                      OTP Code
+                  {/* OTP Field */}
+                  <div className="space-y-4" data-oid="6_ugmmn">
+                    <Label htmlFor="otp" className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2" data-oid="ae:v.3:">
+                      <Shield className="w-4 h-4" />
+                      <span>Verification Code</span>
                     </Label>
-                    <Input
-                      id="otp"
-                      type="text"
-                      placeholder="6-digit code"
-                      maxLength={6}
-                      className="text-center tracking-widest"
-                      required
-                      data-oid=".:iga70"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="otp"
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                        placeholder="000000"
+                        maxLength={6}
+                        className="text-center tracking-[0.5em] text-2xl font-bold h-16 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 focus:border-blue-500"
+                        required
+                        data-oid=".:iga70"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        Code sent to: <span className="font-semibold">{phonenumber}</span>
+                      </p>
+                      <button
+                        type="button"
+                        className="text-blue-600 hover:text-blue-700 text-sm font-medium underline"
+                      >
+                        Resend Code
+                      </button>
+                    </div>
                   </div>
 
+                  {/* Verify Button */}
                   <Button
                     type="submit"
-                    className="w-full bg-amber-400 hover:bg-amber-500"
+                    disabled={otp.length !== 6}
+                    className="w-full h-12 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     data-oid="6coxfdx"
                   >
-                    Verify OTP
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-5 h-5" />
+                      <span>Verify & Continue</span>
+                    </div>
                   </Button>
                 </>
               )}
             </div>
           </form>
 
-          <div
-            className="relative hidden md:block rounded-xl overflow-hidden"
-            data-oid="7durq:s"
-          >
+          {/* Side Image */}
+          <div className="relative hidden md:block bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden" data-oid="7durq:s">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-700/90"></div>
             <img
               src="/banner5.png"
-              alt="Side visual"
-              className="absolute inset-0 object-cover h-full w-full"
+              alt="Happy family managing finances"
+              className="absolute inset-0 object-cover h-full w-full opacity-80"
               data-oid="tg0_aoc"
             />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-8">
+              <div className="text-center space-y-6">
+                <h2 className="text-3xl font-bold">Trusted by 10,000+ Parents</h2>
+                <p className="text-lg opacity-90">
+                  Join families across Rwanda who trust us with their children's financial education
+                </p>
+                <div className="flex items-center justify-center space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                  ))}
+                  <span className="ml-2 text-lg font-semibold">4.9/5</span>
+                </div>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                    <CreditCard className="w-8 h-8 mx-auto mb-2" />
+                    <p className="text-sm font-medium">Secure Payments</p>
+                  </div>
+                  <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                    <Users className="w-8 h-8 mx-auto mb-2" />
+                    <p className="text-sm font-medium">Family Control</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
