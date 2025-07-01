@@ -6,6 +6,23 @@ import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
+import {
+  Phone,
+  Lock,
+  Shield,
+  Eye,
+  EyeOff,
+  Loader2,
+  CheckCircle,
+  Heart,
+  Star,
+  Users,
+  CreditCard,
+  ArrowRight,
+  RefreshCw,
+  Home,
+  AlertCircle,
+} from "lucide-react";
 
 export function LoginForm({
   className,
@@ -18,7 +35,44 @@ export function LoginForm({
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [totpCode, setTotpCode] = useState(["", "", "", ""]);
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [resendCooldown, setResendCooldown] = useState(0);
   const baseUrl = "http://localhost:8001"; // Updated to match backend
+
+  // Validation functions
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!phoneNumber.trim()) {
+      newErrors.phoneNumber = "Phone number is required";
+    } else if (
+      !/^(\+250|250|0)?[7][0-9]{8}$/.test(phoneNumber.replace(/\s/g, ""))
+    ) {
+      newErrors.phoneNumber = "Please enter a valid Rwandan phone number";
+    }
+
+    if (!password) {
+      newErrors.password = "Password is required";
+    } else if (password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Resend cooldown timer
+  useEffect(() => {
+    if (resendCooldown > 0) {
+      const timer = setTimeout(
+        () => setResendCooldown(resendCooldown - 1),
+        1000,
+      );
+      return () => clearTimeout(timer);
+    }
+  }, [resendCooldown]);
 
   // Fetch CSRF token on component mount
   useEffect(() => {
