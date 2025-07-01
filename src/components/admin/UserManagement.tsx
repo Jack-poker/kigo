@@ -49,7 +49,7 @@ const UserManagement: React.FC = () => {
     const fetchCsrfToken = async () => {
       try {
         const response = await axios.get(
-          "https://api.kaascan.com/admin/get-csrf-token",
+          "http://localhost:8001/admin/get-csrf-token",
           {
             withCredentials: true, // Ensure session_id cookie is sent
           },
@@ -70,7 +70,7 @@ const UserManagement: React.FC = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "https://api.kaascan.com/admin/parents",
+          "http://localhost:8001/admin/parents",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("adminToken")}`,

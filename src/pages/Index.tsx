@@ -99,7 +99,7 @@ const Index = () => {
     );
   }
 
-  const API_URL = "https://api.kaascan.com";
+  const API_URL = "http://localhost:8001";
 
   // Global variable to store parent's phone number
   const [parentPhone, setParentPhone] = useState("");
@@ -534,7 +534,7 @@ const Index = () => {
                     </p>
                   </div>
                   <div
-                    className="p-3 dark:bg-purple-900/30 rounded-xl bg-[#320064]"
+                    className="p-3 dark:bg-purple-900/30 rounded-xl bg-[#00000000]"
                     data-oid="o0kwiif"
                   >
                     <Activity
@@ -588,7 +588,7 @@ const Index = () => {
                     </button>
                     <button
                       onClick={() => setActiveModal("withdraw")}
-                      className="w-full flex items-center justify-center space-x-3 bg-yellow-500 0 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 bg-blackp 0 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                       data-oid="y_8w67u"
                     >
                       <TrendingDown className="w-5 h-5" data-oid="85devot" />
@@ -642,7 +642,7 @@ const Index = () => {
                           <div
                             className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                               transaction.type === "deposit"
-                                ? "bg-yellow-400 dark:bg-yellow-400 text-zinc-900 dark:text-zinc-900"
+                                ? "bg-white dark:bg-yellow-400 text-brand dark:text-brand"
                                 : transaction.type === "withdraw"
                                   ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                                   : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
@@ -833,10 +833,15 @@ const Index = () => {
     // bg-gradient-to-br from-brand via-white to-brand0
     <div
       className="min-h-screen bg-white dark:bg-zinc-900 transition-colors duration-200"
+      // style={{
+      //   backgroundImage: "url('/assets/background.png')",
+      //   backgroundRepeat: "no-repeat",
+      //   backgroundSize: "cover",
+      // }}
       style={{
-        backgroundImage: "url('/assets/background.png')",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        backgroundImage:
+          "linear-gradient(45deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(0deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(135deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(90deg, rgb(79, 35, 157),rgb(43, 171, 222))",
+        backgroundBlendMode: "overlay,overlay,overlay,normal",
       }}
       data-oid="953wnnr"
     >

@@ -26,7 +26,7 @@ export function AdminLogin({
   const [isFetchingToken, setIsFetchingToken] = useState(false);
   const tokenContext = useContext(TokenContext);
   const tokenPromise = useRef<Promise<string | null> | null>(null);
-  const baseUrl = "https://api.kaascan.com";
+  const baseUrl = "http://localhost:8001";
 
   // Prioritize TokenContext CSRF token, fallback to local
   const effectiveCsrfToken = tokenContext?.csrfToken || localCsrfToken;

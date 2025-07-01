@@ -25,7 +25,7 @@ const logger = {
 
 // API configuration
 const API_CONFIG = {
-  BASE_URL: "https://api.kaascan.com",
+  BASE_URL: "http://localhost:8001",
   TIMEOUT: 15000, // 15 seconds
   RETRY_DELAY: 1000,
   MAX_RETRIES: 3,

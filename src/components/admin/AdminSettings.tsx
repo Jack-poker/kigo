@@ -52,7 +52,7 @@ const AdminSettings: React.FC = () => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await axios.get(
-          "https://api.kaascan.com/admin/get-csrf-token",
+          "http://localhost:8001/admin/get-csrf-token",
           {
             withCredentials: true, // Send session_id cookie
           },
@@ -80,16 +80,13 @@ const AdminSettings: React.FC = () => {
     if (!csrfToken) return;
     try {
       setLoading(true);
-      const response = await axios.get(
-        "https://api.kaascan.com/admin/settings",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-            "X-CSRF-Token": csrfToken,
-          },
-          withCredentials: true, // Send session_id cookie
+      const response = await axios.get("http://localhost:8001/admin/settings", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+          "X-CSRF-Token": csrfToken,
         },
-      );
+        withCredentials: true, // Send session_id cookie
+      });
       setSettings(response.data);
       setLoading(false);
       setError("");
@@ -159,7 +156,7 @@ const AdminSettings: React.FC = () => {
       return;
     }
     try {
-      await axios.put("https://api.kaascan.com/admin/settings", settings, {
+      await axios.put("http://localhost:8001/admin/settings", settings, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
           "X-CSRF-Token": csrfToken,

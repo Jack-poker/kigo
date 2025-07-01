@@ -38,7 +38,7 @@ const ShopManagement: React.FC = () => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await axios.get(
-          "https://api.kaascan.com/admin/get-csrf-token",
+          "http://localhost:8001/admin/get-csrf-token",
           {
             withCredentials: true, // Send session_id cookie
             timeout: 5000, // 5 second timeout
@@ -107,7 +107,7 @@ const ShopManagement: React.FC = () => {
         setRefreshing(true);
 
         const response = await axios.get(
-          "https://api.kaascan.com/admin/products",
+          "http://localhost:8001/admin/products",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
@@ -216,7 +216,7 @@ const ShopManagement: React.FC = () => {
 
         try {
           const response = await axios.put(
-            `https://api.kaascan.com/admin/products/${editingProductId}`,
+            `http://localhost:8001/admin/products/${editingProductId}`,
             formData,
             {
               headers,
@@ -250,7 +250,7 @@ const ShopManagement: React.FC = () => {
 
         try {
           const response = await axios.post(
-            "https://api.kaascan.com/admin/products",
+            "http://localhost:8001/admin/products",
             formData,
             {
               headers,
@@ -313,16 +313,13 @@ const ShopManagement: React.FC = () => {
     );
 
     try {
-      await axios.delete(
-        `https://api.kaascan.com/admin/products/${product_id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-            "X-CSRF-Token": csrfToken,
-          },
-          withCredentials: true,
+      await axios.delete(`http://localhost:8001/admin/products/${product_id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+          "X-CSRF-Token": csrfToken,
         },
-      );
+        withCredentials: true,
+      });
 
       // Update cache
       if (productsCache.current) {

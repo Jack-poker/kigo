@@ -315,7 +315,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                       />
                     ) : (
                       <div
-                        className="w-16 h-16 rounded-full from-blue-500 to-purple-600 flex items-center justify-center shadow-lg bg-none bg-[#35065B]"
+                        className="w-16 h-16 rounded-full from-blue-500 to-purple-600 flex items-center justify-center shadow-lg bg-none bg-brand"
                         data-oid="7iskn5_"
                       >
                         <User

@@ -3,7 +3,7 @@ import React from "react";
 const BinanceLoader: React.FC = () => {
   return (
     <div
-      className="fixed inset-0 backdrop-blur-sm flex items-center justify-center z-[100] bg-[#EAB600]"
+      className="fixed inset-0 backdrop-blur-sm flex items-center justify-center z-[100] bg-brand"
       data-oid="xsl_zvk"
     >
       <div className="flex flex-col items-center space-y-4" data-oid="sw7f-jx">
@@ -37,7 +37,7 @@ const BinanceLoader: React.FC = () => {
           ></div>
         </div>
 
-        <p className="text-gray-600 font-medium" data-oid="jv8byjr">
+        <p className="text-white font-medium" data-oid="jv8byjr">
           Processing...
         </p>
       </div>

@@ -11,7 +11,7 @@ export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const baseurl = "https://api.kaascan.com";
+  const baseurl = "http://localhost:8001";
 
   const [isSubmitted, setSubmitted] = useState(false);
   const [isSignupComplete, setSignupComplete] = useState(false);

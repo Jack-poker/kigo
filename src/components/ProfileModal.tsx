@@ -33,7 +33,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
   });
   const [csrfToken, setCsrfToken] = useState("");
 
-  const API_URL = "https://api.kaascan.com";
+  const API_URL = "http://localhost:8001";
 
   const fetchCsrfToken = async () => {
     try {

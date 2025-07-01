@@ -30,7 +30,7 @@ const AdBanner: React.FC = () => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await axios.get(
-          "https://api.kaascan.com/admin/get-csrf-token",
+          "http://localhost:8001/admin/get-csrf-token",
           {
             withCredentials: true, // Send session_id cookie
           },
@@ -59,7 +59,7 @@ const AdBanner: React.FC = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        "https://api.kaascan.com/admin/ads/active",
+        "http://localhost:8001/admin/ads/active",
         {
           headers: {
             "X-CSRF-Token": csrfToken,

@@ -65,7 +65,7 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       const token = localStorage.getItem("token");
       const csrfToken = await getCsrfToken();
       const response = await axios.post(
-        "https://api.kaascan.com/wallet/request-otp",
+        "http://localhost:8001/wallet/request-otp",
         { phone, amount: numericAmount, csrf_token: csrfToken },
         {
           headers: {
@@ -87,7 +87,7 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
 
   // Get CSRF token
   const getCsrfToken = async () => {
-    const response = await axios.get("https://api.kaascan.com/get-csrf-token");
+    const response = await axios.get("http://localhost:8001/get-csrf-token");
     return response.data.csrf_token;
   };
 
@@ -115,7 +115,7 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       const token = localStorage.getItem("token");
       const csrfToken = await getCsrfToken();
       const response = await axios.post(
-        "https://api.kaascan.com/wallet/confirm-withdraw",
+        "http://localhost:8001/wallet/confirm-withdraw",
         {
           phone,
           amount: numericAmount,

@@ -88,7 +88,7 @@ const AdminPanel: React.FC = () => {
   });
   const tokenPromise = useRef<Promise<string | null> | null>(null);
 
-  const API_BASE_URL = "https://api.kaascan.com";
+  const API_BASE_URL = "http://localhost:8001";
   const TOKEN_REFRESH_BUFFER = 5 * 60 * 1000; // 5 minutes
   const STATS_CACHE_TTL = 60 * 1000; // 1 minute
 
