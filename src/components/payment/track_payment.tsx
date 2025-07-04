@@ -18,8 +18,6 @@ export default function PaymentStatusChip() {
   // Do not render anything if no pending transaction
   if (!payment) return null;
 
-
-
   return null;
 
   // return (

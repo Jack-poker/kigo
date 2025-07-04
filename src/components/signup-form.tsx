@@ -168,76 +168,76 @@ export function SignupForm({
 
       {/* Benefits Banner */}
       {/* <div
-             className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
-             data-oid="nm06:re"
-            >
-             <div
-               className="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-700"
-               data-oid="u3doe48"
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
+              data-oid="nm06:re"
              >
-               <div className="p-2 bg-green-500 rounded-lg" data-oid="cwvt87.">
-                 <Shield className="w-5 h-5 text-white" data-oid=":il2tuu" />
-               </div>
-               <div data-oid="-dldapz">
-                 <h3
-                   className="font-semibold text-green-800 dark:text-green-300 text-sm"
-                   data-oid="wwghd.9"
-                 >
-                   Secure Payments
-                 </h3>
-                 <p
-                   className="text-green-600 dark:text-green-400 text-xs"
-                   data-oid="3i-k352"
-                 >
-                   Bank-level security
-                 </p>
-               </div>
-             </div>
               <div
-               className="flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-700"
-               data-oid="nd_mp4c"
-             >
-               <div className="p-2 bg-blue-500 rounded-lg" data-oid=".r_xnfg">
-                 <Users className="w-5 h-5 text-white" data-oid="glgp5ow" />
-               </div>
-               <div data-oid="tu61zae">
-                 <h3
-                   className="font-semibold text-blue-800 dark:text-blue-300 text-sm"
-                   data-oid="sfthb0d"
-                 >
-                   Family Control
-                 </h3>
-                 <p
-                   className="text-blue-600 dark:text-blue-400 text-xs"
-                   data-oid="t-yr7ri"
-                 >
-                   Monitor spending
-                 </p>
-               </div>
-             </div>
-              <div
-               className="flex items-center space-x-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-700"
-               data-oid="z02j7qb"
-             >
-               <div className="p-2 bg-purple-500 rounded-lg" data-oid="y4c8dao">
-                 <Heart className="w-5 h-5 text-white" data-oid="gyyqdo7" />
-               </div>
-               <div data-oid="_y1h9k6">
-                 <h3
-                   className="font-semibold text-purple-800 dark:text-purple-300 text-sm"
-                   data-oid="bf6.o-v"
-                 >
-                   Peace of Mind
-                 </h3>
-                 <p
-                   className="text-purple-600 dark:text-purple-400 text-xs"
-                   data-oid="lfff0mj"
-                 >
-                   Real-time alerts
-                 </p>
-               </div>
-             </div>
-            </div> */}
+                className="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-700"
+                data-oid="u3doe48"
+              >
+                <div className="p-2 bg-green-500 rounded-lg" data-oid="cwvt87.">
+                  <Shield className="w-5 h-5 text-white" data-oid=":il2tuu" />
+                </div>
+                <div data-oid="-dldapz">
+                  <h3
+                    className="font-semibold text-green-800 dark:text-green-300 text-sm"
+                    data-oid="wwghd.9"
+                  >
+                    Secure Payments
+                  </h3>
+                  <p
+                    className="text-green-600 dark:text-green-400 text-xs"
+                    data-oid="3i-k352"
+                  >
+                    Bank-level security
+                  </p>
+                </div>
+              </div>
+               <div
+                className="flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-700"
+                data-oid="nd_mp4c"
+              >
+                <div className="p-2 bg-blue-500 rounded-lg" data-oid=".r_xnfg">
+                  <Users className="w-5 h-5 text-white" data-oid="glgp5ow" />
+                </div>
+                <div data-oid="tu61zae">
+                  <h3
+                    className="font-semibold text-blue-800 dark:text-blue-300 text-sm"
+                    data-oid="sfthb0d"
+                  >
+                    Family Control
+                  </h3>
+                  <p
+                    className="text-blue-600 dark:text-blue-400 text-xs"
+                    data-oid="t-yr7ri"
+                  >
+                    Monitor spending
+                  </p>
+                </div>
+              </div>
+               <div
+                className="flex items-center space-x-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-700"
+                data-oid="z02j7qb"
+              >
+                <div className="p-2 bg-purple-500 rounded-lg" data-oid="y4c8dao">
+                  <Heart className="w-5 h-5 text-white" data-oid="gyyqdo7" />
+                </div>
+                <div data-oid="_y1h9k6">
+                  <h3
+                    className="font-semibold text-purple-800 dark:text-purple-300 text-sm"
+                    data-oid="bf6.o-v"
+                  >
+                    Peace of Mind
+                  </h3>
+                  <p
+                    className="text-purple-600 dark:text-purple-400 text-xs"
+                    data-oid="lfff0mj"
+                  >
+                    Real-time alerts
+                  </p>
+                </div>
+              </div>
+             </div> */}
 
       <Card
         className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl border-0 overflow-hidden"
