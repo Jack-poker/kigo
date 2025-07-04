@@ -53,44 +53,29 @@ export default function Component() {
       onOpenChange={(open) => {
         if (open) setStep(1);
       }}
-      data-oid="3xvl_77"
     >
-      <DialogTrigger asChild data-oid="k0d9sv9">
-        <Button variant="outline" data-oid="1hvtoqx">
-          Onboarding
-        </Button>
+      <DialogTrigger asChild>
+        <Button variant="outline">Onboarding</Button>
       </DialogTrigger>
-      <DialogContent
-        className="gap-0 p-0 [&>button:last-child]:text-white"
-        data-oid="agx.qmq"
-      >
-        <div className="p-2" data-oid="4g-q0fj">
+      <DialogContent className="gap-0 p-0 [&>button:last-child]:text-white">
+        <div className="p-2">
           <img
             className="w-full rounded-md"
             src="/dialog-content.png"
             width={382}
             height={216}
             alt="dialog"
-            data-oid="i4g3bd:"
           />
         </div>
-        <div className="space-y-6 px-6 pt-3 pb-6" data-oid="r2vdn.n">
-          <DialogHeader data-oid="lqwrusm">
-            <DialogTitle data-oid="-bc2ea8">
-              {stepContent[step - 1].title}
-            </DialogTitle>
-            <DialogDescription data-oid="s2cu4qr">
+        <div className="space-y-6 px-6 pt-3 pb-6">
+          <DialogHeader>
+            <DialogTitle>{stepContent[step - 1].title}</DialogTitle>
+            <DialogDescription>
               {stepContent[step - 1].description}
             </DialogDescription>
           </DialogHeader>
-          <div
-            className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center"
-            data-oid="i_q330r"
-          >
-            <div
-              className="flex justify-center space-x-1.5 max-sm:order-1"
-              data-oid="6dudhc9"
-            >
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+            <div className="flex justify-center space-x-1.5 max-sm:order-1">
               {[...Array(totalSteps)].map((_, index) => (
                 <div
                   key={index}
@@ -98,13 +83,12 @@ export default function Component() {
                     "bg-primary size-1.5 rounded-full",
                     index + 1 === step ? "bg-primary" : "opacity-20",
                   )}
-                  data-oid="nvj3g7c"
                 />
               ))}
             </div>
-            <DialogFooter data-oid="_j6wp:8">
-              <DialogClose asChild data-oid="u19mmc9">
-                <Button type="button" variant="ghost" data-oid="tabg._r">
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button type="button" variant="ghost">
                   Skip
                 </Button>
               </DialogClose>
@@ -113,21 +97,17 @@ export default function Component() {
                   className="group"
                   type="button"
                   onClick={handleContinue}
-                  data-oid="oxb3nic"
                 >
                   Next
                   <ArrowRightIcon
                     className="-me-1 opacity-60 transition-transform group-hover:translate-x-0.5"
                     size={16}
                     aria-hidden="true"
-                    data-oid="8mlx5-x"
                   />
                 </Button>
               ) : (
-                <DialogClose asChild data-oid="gwxf9d4">
-                  <Button type="button" data-oid="zzx4sc6">
-                    Okay
-                  </Button>
+                <DialogClose asChild>
+                  <Button type="button">Okay</Button>
                 </DialogClose>
               )}
             </DialogFooter>

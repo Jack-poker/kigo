@@ -138,7 +138,7 @@ export function AdminLogin({
             title: "Success",
             description: "Login successful!",
             action: (
-              <ToastAction altText="Go to dashboard" data-oid="i23jk1d">
+              <ToastAction altText="Go to dashboard" data-oid=":hieukp">
                 Go to dashboard
               </ToastAction>
             ),
@@ -166,41 +166,41 @@ export function AdminLogin({
         className,
       )}
       {...props}
-      data-oid=".2fk8_3"
+      data-oid="1l5s0:p"
     >
-      <div className="w-full max-w-4xl flex flex-col gap-6" data-oid="1aj0kmq">
-        <div className="flex justify-center mb-4" data-oid="qoqbe-o">
+      <div className="w-full max-w-4xl flex flex-col gap-6" data-oid="vny9uih">
+        <div className="flex justify-center mb-4" data-oid="-36v3ae">
           <img
             src="/assets/logo.png"
             alt="Kaascan logo"
             className="w-48 sm:w-56 md:w-64 h-auto object-contain"
-            data-oid="8iq-gqu"
+            data-oid="d--:nhg"
           />
         </div>
         <Card
           className="overflow-hidden bg-[hsl(var(--primary))] shadow-lg w-full mx-auto"
-          data-oid="glxadbp"
+          data-oid="y0z5s7r"
         >
-          <CardContent className="grid p-0 md:grid-cols-2" data-oid="nowwjq9">
+          <CardContent className="grid p-0 md:grid-cols-2" data-oid="gr-3p2t">
             <form
               className="p-4 sm:p-6 md:p-8"
               onSubmit={(e) => e.preventDefault()}
-              data-oid="o9n7e9v"
+              data-oid="ludp5-h"
             >
-              <div className="flex flex-col gap-6" data-oid="qqh49bc">
+              <div className="flex flex-col gap-6" data-oid="a86x34l">
                 <div
                   className="flex flex-col items-center text-center"
-                  data-oid="yb.7tl:"
+                  data-oid="c0_ys77"
                 >
                   <h1
                     className="text-xl sm:text-2xl font-bold text-white"
-                    data-oid="grfu0pg"
+                    data-oid="c.bzb-t"
                   >
                     Admin Login
                   </h1>
                   <p
                     className="text-sm sm:text-base text-white/90"
-                    data-oid="sblzey7"
+                    data-oid="cjero6d"
                   >
                     Login to your Kaascan Admin account
                   </p>
@@ -208,14 +208,14 @@ export function AdminLogin({
                 {isFetchingToken && !effectiveCsrfToken && (
                   <p
                     className="text-center text-sm text-white/90"
-                    data-oid="36cj_6b"
+                    data-oid="opl:96p"
                   >
                     Fetching token...
                   </p>
                 )}
-                <div className="grid gap-4" data-oid="bwig.mn">
-                  <div className="grid gap-2 text-white" data-oid=":9yvypb">
-                    <Label htmlFor="email" data-oid="og2g0i5">
+                <div className="grid gap-4" data-oid="po9i694">
+                  <div className="grid gap-2 text-white" data-oid=":ckew91">
+                    <Label htmlFor="email" data-oid="7.ro9om">
                       Email
                     </Label>
                     <Input
@@ -226,21 +226,21 @@ export function AdminLogin({
                       placeholder="Email address"
                       className="bg-white/10 text-white border-amber-400/50 focus:border-amber-400 text-sm sm:text-base"
                       required
-                      data-oid="wnkimr:"
+                      data-oid="290k_s1"
                     />
                   </div>
-                  <div className="grid gap-2 text-white" data-oid="2rf26ov">
+                  <div className="grid gap-2 text-white" data-oid="nsiw80g">
                     <div
                       className="flex items-center justify-between"
-                      data-oid="_r8_7ow"
+                      data-oid="jsk.jhn"
                     >
-                      <Label htmlFor="password" data-oid="dy2dg98">
+                      <Label htmlFor="password" data-oid="k5cj.qo">
                         Password
                       </Label>
                       <a
                         href="/admin/forgot-password"
                         className="text-xs sm:text-sm text-amber-400 hover:underline"
-                        data-oid="bs0hbd9"
+                        data-oid="86m1o4e"
                       >
                         Forgot your password?
                       </a>
@@ -253,7 +253,7 @@ export function AdminLogin({
                       placeholder="Password"
                       className="bg-white/10 text-white border-amber-400/50 focus:border-amber-400 text-sm sm:text-base"
                       required
-                      data-oid="v9c1erd"
+                      data-oid="g_8p5_k"
                     />
                   </div>
                   <Button
@@ -262,20 +262,20 @@ export function AdminLogin({
                     className="w-full bg-amber-400 hover:bg-amber-500 text-black font-medium text-sm sm:text-base py-2 sm:py-3"
                     disabled={isSubmitted || isFetchingToken}
                     aria-label="Login to admin dashboard"
-                    data-oid="5089w.z"
+                    data-oid="vtwvif0"
                   >
                     {isSubmitted ? "Logging in..." : "Login"}
                   </Button>
                 </div>
                 <div
                   className="text-center text-xs sm:text-sm text-white/90"
-                  data-oid="qmo34tt"
+                  data-oid="d:wxxd4"
                 >
                   Need assistance?{" "}
                   <a
                     href="/support"
                     className="text-amber-400 hover:text-amber-500 underline underline-offset-4"
-                    data-oid="7uh6c9i"
+                    data-oid="kyq03fv"
                   >
                     Contact support
                   </a>
@@ -284,32 +284,32 @@ export function AdminLogin({
             </form>
             <div
               className="relative hidden md:block bg-white h-full"
-              data-oid="ei.r1.1"
+              data-oid="35-3f_a"
             >
               <div
                 className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 z-10"
-                data-oid="923ciak"
+                data-oid="1la0pz:"
               ></div>
               <img
                 src="/assets/side.png"
                 alt="Kaascan Admin Portal"
                 className="absolute inset-0 h-full w-full object-contain"
-                data-oid="xqsrpth"
+                data-oid="kpcds8l"
               />
 
               <div
                 className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8 z-20 text-white"
-                data-oid="e.a_c-j"
+                data-oid=".3vv4:w"
               >
                 <h2
                   className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2"
-                  data-oid="m5tsldl"
+                  data-oid="x-t6k8z"
                 >
                   Welcome to Kaascan Admin Portal
                 </h2>
                 <p
                   className="text-sm sm:text-base md:text-lg opacity-90"
-                  data-oid="ce1v2le"
+                  data-oid="i5oaa0c"
                 >
                   Manage school payments, ads, and parent accounts with ease and
                   security.
@@ -320,14 +320,14 @@ export function AdminLogin({
         </Card>
         <div
           className="text-center text-xs sm:text-sm text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary"
-          data-oid="cvkqvah"
+          data-oid="r3j5juh"
         >
           By clicking continue, you agree to our{" "}
-          <a href="#" data-oid="hzh11u1">
+          <a href="#" data-oid="4ev297s">
             Terms of Service
           </a>{" "}
           and{" "}
-          <a href="#" data-oid="8o9jh4q">
+          <a href="#" data-oid="8k:yuim">
             Privacy Policy
           </a>
           .
