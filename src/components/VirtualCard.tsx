@@ -21,7 +21,7 @@ const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
         data-oid="wr5x_.x"
       ></div>
       <div
-        className="relative bg-blackp  dark:bg-brand rounded-3xl p-8 text-white shadow-2xl transform group-hover:scale-105 transition-all duration-500 overflow-hidden"
+        className="relative   dark:bg-b rounded-3xl p-8 text-white shadow-2xl transform group-hover:scale-105 transition-all duration-500 overflow-hidden"
         data-oid="xr2.97e"
       >
         <div

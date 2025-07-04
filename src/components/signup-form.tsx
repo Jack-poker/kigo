@@ -151,7 +151,7 @@ export function SignupForm({
       <div className="flex justify-center mb-8" data-oid="v--3lf2">
         <div className="relative" data-oid="7_b90if">
           <img
-            src="/assets/logo.png"
+            src="/assets/white_logo.png"
             alt="kaascan logo"
             className="w-64 h-20 object-contain drop-shadow-lg"
             data-oid="5ms0_r."
@@ -167,79 +167,77 @@ export function SignupForm({
       </div>
 
       {/* Benefits Banner */}
-      <div
-        className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
-        data-oid="nm06:re"
-      >
-        <div
-          className="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-700"
-          data-oid="u3doe48"
-        >
-          <div className="p-2 bg-green-500 rounded-lg" data-oid="cwvt87.">
-            <Shield className="w-5 h-5 text-white" data-oid=":il2tuu" />
-          </div>
-          <div data-oid="-dldapz">
-            <h3
-              className="font-semibold text-green-800 dark:text-green-300 text-sm"
-              data-oid="wwghd.9"
+      {/* <div
+             className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
+             data-oid="nm06:re"
             >
-              Secure Payments
-            </h3>
-            <p
-              className="text-green-600 dark:text-green-400 text-xs"
-              data-oid="3i-k352"
-            >
-              Bank-level security
-            </p>
-          </div>
-        </div>
-
-        <div
-          className="flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-700"
-          data-oid="nd_mp4c"
-        >
-          <div className="p-2 bg-blue-500 rounded-lg" data-oid=".r_xnfg">
-            <Users className="w-5 h-5 text-white" data-oid="glgp5ow" />
-          </div>
-          <div data-oid="tu61zae">
-            <h3
-              className="font-semibold text-blue-800 dark:text-blue-300 text-sm"
-              data-oid="sfthb0d"
-            >
-              Family Control
-            </h3>
-            <p
-              className="text-blue-600 dark:text-blue-400 text-xs"
-              data-oid="t-yr7ri"
-            >
-              Monitor spending
-            </p>
-          </div>
-        </div>
-
-        <div
-          className="flex items-center space-x-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-700"
-          data-oid="z02j7qb"
-        >
-          <div className="p-2 bg-purple-500 rounded-lg" data-oid="y4c8dao">
-            <Heart className="w-5 h-5 text-white" data-oid="gyyqdo7" />
-          </div>
-          <div data-oid="_y1h9k6">
-            <h3
-              className="font-semibold text-purple-800 dark:text-purple-300 text-sm"
-              data-oid="bf6.o-v"
-            >
-              Peace of Mind
-            </h3>
-            <p
-              className="text-purple-600 dark:text-purple-400 text-xs"
-              data-oid="lfff0mj"
-            >
-              Real-time alerts
-            </p>
-          </div>
-        </div>
-      </div>
+             <div
+               className="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-700"
+               data-oid="u3doe48"
+             >
+               <div className="p-2 bg-green-500 rounded-lg" data-oid="cwvt87.">
+                 <Shield className="w-5 h-5 text-white" data-oid=":il2tuu" />
+               </div>
+               <div data-oid="-dldapz">
+                 <h3
+                   className="font-semibold text-green-800 dark:text-green-300 text-sm"
+                   data-oid="wwghd.9"
+                 >
+                   Secure Payments
+                 </h3>
+                 <p
+                   className="text-green-600 dark:text-green-400 text-xs"
+                   data-oid="3i-k352"
+                 >
+                   Bank-level security
+                 </p>
+               </div>
+             </div>
+              <div
+               className="flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-700"
+               data-oid="nd_mp4c"
+             >
+               <div className="p-2 bg-blue-500 rounded-lg" data-oid=".r_xnfg">
+                 <Users className="w-5 h-5 text-white" data-oid="glgp5ow" />
+               </div>
+               <div data-oid="tu61zae">
+                 <h3
+                   className="font-semibold text-blue-800 dark:text-blue-300 text-sm"
+                   data-oid="sfthb0d"
+                 >
+                   Family Control
+                 </h3>
+                 <p
+                   className="text-blue-600 dark:text-blue-400 text-xs"
+                   data-oid="t-yr7ri"
+                 >
+                   Monitor spending
+                 </p>
+               </div>
+             </div>
+              <div
+               className="flex items-center space-x-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-700"
+               data-oid="z02j7qb"
+             >
+               <div className="p-2 bg-purple-500 rounded-lg" data-oid="y4c8dao">
+                 <Heart className="w-5 h-5 text-white" data-oid="gyyqdo7" />
+               </div>
+               <div data-oid="_y1h9k6">
+                 <h3
+                   className="font-semibold text-purple-800 dark:text-purple-300 text-sm"
+                   data-oid="bf6.o-v"
+                 >
+                   Peace of Mind
+                 </h3>
+                 <p
+                   className="text-purple-600 dark:text-purple-400 text-xs"
+                   data-oid="lfff0mj"
+                 >
+                   Real-time alerts
+                 </p>
+               </div>
+             </div>
+            </div> */}
 
       <Card
         className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl border-0 overflow-hidden"
@@ -247,7 +245,7 @@ export function SignupForm({
       >
         <CardContent className="grid p-0 md:grid-cols-2" data-oid="-8a5vfi">
           <form
-            className="p-8 md:p-10 w-full bg-white dark:bg-gray-800"
+            className="p-8 md:p-10 w-full bg-brand dark:bg-brand"
             data-oid="e5xv8zv"
           >
             <div className="flex flex-col gap-6" data-oid="l15kwmf">
@@ -255,7 +253,7 @@ export function SignupForm({
               <div className="text-center mb-6" data-oid="wu.::c2">
                 <div className="flex justify-center mb-4" data-oid="dh6xn4e">
                   <div
-                    className="p-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg"
+                    className="p-4 bg-white text-brand rounded-full shadow-lg"
                     data-oid="1169b3n"
                   >
                     {isSignupComplete ? (
@@ -264,20 +262,17 @@ export function SignupForm({
                         data-oid="p9urkcm"
                       />
                     ) : (
-                      <User className="w-8 h-8 text-white" data-oid="sckmk5w" />
+                      <User className="w-8 h-8 text-brand" data-oid="sckmk5w" />
                     )}
                   </div>
                 </div>
                 <h1
-                  className="text-3xl font-bold text-gray-900 dark:text-white mb-2"
+                  className="text-3xl font-bold text-white dark:text-white mb-2"
                   data-oid="z5uxei:"
                 >
                   {isSignupComplete ? "Verify Your Phone" : "Join Our Family"}
                 </h1>
-                <p
-                  className="text-gray-600 dark:text-gray-400"
-                  data-oid="9b9fqu0"
-                >
+                <p className="text-white dark:text-white" data-oid="9b9fqu0">
                   {isSignupComplete
                     ? "We've sent a 6-digit code to your phone number"
                     : "Create your account to start managing your children's finances safely"}
@@ -330,10 +325,10 @@ export function SignupForm({
                             setErrors({ ...errors, fullnames: null });
                         }}
                         required
-                        className={`pl-12 h-12 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border-2 transition-all duration-200 ${
+                        className={`pl-12 h-12 text-brand dark:text-white bg-white dark:bg-white  transition-all duration-200 ${
                           errors.fullnames
                             ? "border-red-500 focus:border-red-500"
-                            : "border-gray-200 dark:border-gray-600 focus:border-blue-500"
+                            : "border-brand dark:border-gray-600 focus:border-blue-500"
                         }`}
                         placeholder="Enter your full name"
                         data-oid="spjces_"
@@ -359,7 +354,7 @@ export function SignupForm({
                   <div className="space-y-2" data-oid="w5pzm.l">
                     <Label
                       htmlFor="phone"
-                      className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2"
+                      className="text-white font-medium flex items-center space-x-2"
                       data-oid="4pj__0o"
                     >
                       <Phone className="w-4 h-4" data-oid="pn60653" />
@@ -375,7 +370,7 @@ export function SignupForm({
                           if (errors.phonenumber)
                             setErrors({ ...errors, phonenumber: null });
                         }}
-                        className={`pl-12 h-12 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border-2 transition-all duration-200 ${
+                        className={`pl-12 h-12  text-brand dark:text-white bg-white dark:bg-white border-brand transition-all duration-200 ${
                           errors.phonenumber
                             ? "border-red-500 focus:border-red-500"
                             : "border-gray-200 dark:border-gray-600 focus:border-blue-500"
@@ -391,7 +386,7 @@ export function SignupForm({
                       />
 
                       <div
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-xs bg-blue-100 dark:bg-brand text-blue-700 dark:text-blue-300 px-2 py-1 rounded"
                         data-oid="axodf3:"
                       >
                         🇷🇼 Rwanda
@@ -412,7 +407,7 @@ export function SignupForm({
                   <div className="space-y-2" data-oid="z17yna3">
                     <Label
                       htmlFor="password"
-                      className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2"
+                      className="text-white font-medium flex items-center space-x-2"
                       data-oid="qklimtx"
                     >
                       <Lock className="w-4 h-4" data-oid="nzzp.ut" />
@@ -428,7 +423,7 @@ export function SignupForm({
                           if (errors.password)
                             setErrors({ ...errors, password: null });
                         }}
-                        className={`pl-12 pr-12 h-12 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border-2 transition-all duration-200 ${
+                        className={`pl-12 pr-12 h-12  text-brand dark:text-white bg-white dark:bg-white border-2 transition-all duration-200 ${
                           errors.password
                             ? "border-red-500 focus:border-red-500"
                             : "border-gray-200 dark:border-gray-600 focus:border-blue-500"
@@ -516,7 +511,7 @@ export function SignupForm({
                     type="button"
                     onClick={signup_submit}
                     disabled={isLoading}
-                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                    className="w-full h-12 bg-white text-brand hover:bg-brand font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                     data-oid="omeyfyx"
                   >
                     {isLoading ? (
@@ -611,13 +606,10 @@ export function SignupForm({
 
           {/* Side Image */}
           <div
-            className="relative hidden md:block bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden"
+            className="relative hidden md:block bg-brand overflow-hidden"
             data-oid="7durq:s"
           >
-            <div
-              className="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-700/90"
-              data-oid="uz-1bg_"
-            ></div>
+            <div className="absolute inset-0 bg-brand" data-oid="uz-1bg_"></div>
             <img
               src="/banner5.png"
               alt="Happy family managing finances"

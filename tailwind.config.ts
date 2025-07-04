@@ -28,7 +28,7 @@ export default {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
-				brand: 'hsl(221.2 83.2% 53.3%)',
+				brand: 'hsl(221, 83%, 53%)',
 				'23074e': 'hsl(240, 68%, 16%)', // 23074e as hsl
 				blackp:'hsl(240, 68%, 16%)',
 				secondary: {

@@ -396,7 +396,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
             data-oid="xcvc8x3"
           >
             <div
-              className="p-2 sm:p-3 from-purple-500 to-indigo-600 rounded-xl shadow-lg bg-none bg-[#000000]"
+              className="p-2 sm:p-3 from-purple-500 to-indigo-600 rounded-xl shadow-lg bg-none bg-[#1350D2]"
               data-oid="9diip6z"
             >
               <Activity
@@ -406,7 +406,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
             </div>
             <div data-oid="-cmtu6_">
               <h3
-                className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white"
+                className="text-lg sm:text-xl font-bold text-brand dark:text-brand"
                 data-oid="l3yrh3b"
               >
                 Transaction Monitor
@@ -422,11 +422,16 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
           <button
             type="button"
             onClick={onViewAll}
-            className="flex items-center space-x-2 from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-3 sm:px-4 py-2 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none bg-[#000000] min-h-[48px] w-full sm:w-auto"
+            className="flex items-center space-x-2 from-indigo-500 to-purple-600 hover:from-indigo-600 
+            hover:to-purple-700 text-white px-3 sm:px-4 py-2 rounded-xl transition-all duration-200 font-medium shadow-lg
+             hover:shadow-xl transform hover:scale-105 bg-none bg-brand min-h-[48px] w-full sm:w-auto"
             data-oid="8.sk0i-"
           >
             <span data-oid=":4o.-1h">{t("viewAll")}</span>
-            <ExternalLink className="w-4 h-4" data-oid="68ldhft" />
+            <ExternalLink
+              className="w-4 h-4 bg-[rgba(0,_0,_0,_0)]"
+              data-oid="68ldhft"
+            />
           </button>
         </div>
 
@@ -445,6 +450,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                 data-oid="80p3:tk"
               >
                 {/* Transaction Header */}
+
                 <div
                   className="flex flex-col sm:flex-row items-start justify-between mb-4 gap-3"
                   data-oid="j5r7cbf"
@@ -454,7 +460,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                     data-oid="guc5-00"
                   >
                     <div
-                      className={`p-2 sm:p-3 bg-zinc-900 ${getTransactionColor(transaction.type)} rounded-xl shadow-lg text-white`}
+                      className={`p-2 sm:p-3 bg-brand ${getTransactionColor(transaction.type)} rounded-xl shadow-lg text-white`}
                       data-oid="p5sf26_"
                     >
                       {getTransactionIcon(transaction.type)}
@@ -465,7 +471,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                         data-oid="sb_7r89"
                       >
                         <h4
-                          className="font-bold text-base sm:text-lg text-gray-900 dark:text-white"
+                          className="font-bold text-base sm:text-lg text-brand dark:text-white"
                           data-oid="p6vvis7"
                         >
                           {transaction.title}
@@ -506,11 +512,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                   </div>
                   <div className="text-right mt-2 sm:mt-0" data-oid="yfervje">
                     <div
-                      className={`text-lg sm:text-2xl font-bold ${
-                        transaction.amount > 0
-                          ? "text-yellow-400"
-                          : "text-red-600"
-                      }`}
+                      className={`text-lg sm:text-2xl font-bold ${transaction.amount > 0 ? "text-brand" : "text-red"}`}
                       data-oid="_5lwt1w"
                     >
                       {transaction.amount > 0 ? "+" : ""}
@@ -524,11 +526,10 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                     </div>
                   </div>
                 </div>
-
-                {/* Location & Merchant Info */}
                 <div
-                  className="dark:bg-gray-800 rounded-xl p-3 sm:p-4 mb-4 border border-gray-100 dark:border-gray-600 bg-[#2C0850]"
+                  className="dark:bg-brand rounded-xl p-3 sm:p-4 mb-4 border border-brand dark:border-gray-600 bg-brand"
                   data-oid="e.w75as"
+                  key="olk-mnRM"
                 >
                   <div
                     className="flex flex-col sm:grid sm:grid-cols-2 gap-3"
@@ -582,7 +583,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                       <button
                         type="button"
                         onClick={() => setSelectedTransaction(enhanced)}
-                        className="flex items-center space-x-2 text-white px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm font-medium min-h-[48px] bg-[#EAB400]"
+                        className="flex items-center space-x-2 text-brand px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm font-medium min-h-[48px] bg-white"
                         data-oid="mxa1r4f"
                       >
                         <Eye className="w-4 h-4" data-oid="kzm7_2h" />
@@ -600,6 +601,8 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                     </div>
                   </div>
                 </div>
+
+                {/* Location & Merchant Info */}
 
                 {/* Security Info */}
                 <div
@@ -620,16 +623,16 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
           {transactions.length === 0 && (
             <div className="text-center py-8 sm:py-12" data-oid="vgrmdiv">
               <div
-                className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
+                className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 dark:bg-brand rounded-full flex items-center justify-center bg-[#1350D2]"
                 data-oid="m:d6s0."
               >
                 <Activity
-                  className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400"
+                  className="w-6 h-6 sm:w-8 sm:h-8 text-white"
                   data-oid="aj5ujwm"
                 />
               </div>
               <h3
-                className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2"
+                className="text-base sm:text-lg font-semibold text-brand dark:text-white mb-2 bg-[rgba(0,_0,_0,_0)]"
                 data-oid="n1q:_k:"
               >
                 No Recent Transactions
@@ -684,7 +687,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
             <div className="space-y-4 sm:space-y-6" data-oid="9u7j2pd">
               {/* Amount & Status */}
               <div
-                className="text-center p-4 sm:p-6 from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl bg-none bg-[#2C0850]"
+                className="text-center p-4 sm:p-6 from-indigo-50 to-purple-50 dark: rounded-xl bg-none bg-brand"
                 data-oid="nbo:4.d"
               >
                 <div

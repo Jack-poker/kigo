@@ -144,7 +144,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
         <div className="flex items-center justify-between" data-oid="qc4if_0">
           <div className="flex items-center space-x-3" data-oid="i-nks:o">
             <div
-              className="p-3 from-blue-500 to-purple-600 rounded-xl shadow-lg bg-none bg-[#2F0763]"
+              className="p-3 from-blue-500 to-purple-600 rounded-xl shadow-lg bg-none bg-brand"
               data-oid="89goeiv"
             >
               <Users className="w-6 h-6 text-white" data-oid="50zm.95" />
@@ -157,7 +157,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                 {t("linkedStudents")}
               </h2>
               <p
-                className="dark:text-gray-400 text-sm bg-[#11000000] text-[#000000FE]"
+                className="dark:text-gray-400 text-sm bg-[#11000000] text-white"
                 data-oid="odq3f94"
               >
                 Manage your children's accounts
@@ -264,7 +264,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
               />
             </div>
             <h3
-              className="text-xl font-semibold text-gray-900 dark:text-white mb-2"
+              className="text-xl font-semibold text-brand dark:text-white mb-2"
               data-oid="066gyqb"
             >
               {students.length === 0
@@ -342,7 +342,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                       {student.name}
                     </h3>
                     <p
-                      className="dark:text-blue-400 text-sm font-medium text-[#2C095E]"
+                      className="dark:text-brand text-sm font-medium text-brand"
                       data-oid="esluo88"
                     >
                       ID: {student.studentId}
@@ -369,7 +369,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                       Daily Spending
                     </span>
                     <span
-                      className="text-sm font-bold text-gray-900 dark:text-white"
+                      className="text-sm font-bold text-brand dark:text-white"
                       data-oid="p-7htee"
                     >
                       {formatLimitDisplay(
@@ -409,7 +409,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                     {recentTransactions.slice(0, 2).map((transaction) => (
                       <div
                         key={transaction.id}
-                        className="flex items-center justify-between p-3 dark:bg-brand rounded-lg bg-brand"
+                        className="flex items-center justify-between p-3 dark:bg-white rounded-lg bg-white border-2"
                         data-oid="l4:-n-d"
                       >
                         <div
@@ -419,7 +419,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                           {getStatusIcon(transaction.status)}
                           <div data-oid="e4c:17t">
                             <p
-                              className="text-sm font-medium dark:text-white text-[#FCF2F2FE]"
+                              className="text-sm font-medium dark:text-white text-brand "
                               data-oid="8b28yc_"
                             >
                               {transaction.title}
@@ -457,7 +457,9 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                 <div className="flex space-x-3" data-oid="8lsv7lg">
                   <button
                     onClick={() => onViewTransactions(student)}
-                    className="flex-1 flex items-center justify-center space-x-2 from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none bg-[#440B6DFC]"
+                    className="flex-1 flex items-center justify-center space-x-2 from-green-500 to-emerald-600 hover:from-green-600
+                     hover:to-emerald-700 text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none
+                      bg-brand"
                     data-oid="ja_7:w4"
                   >
                     <Activity className="w-5 h-5" data-oid="t2weuak" />

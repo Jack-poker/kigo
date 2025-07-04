@@ -245,7 +245,10 @@ export function LoginForm({
           data-oid="_paj8yk"
         />
       </div>
-      <Card className="overflow-hidden bg-brand" data-oid="u_q2ppc">
+      <Card
+        className="overflow-hidden bg-brand border-brand"
+        data-oid="u_q2ppc"
+      >
         <CardContent className="grid p-0 md:grid-cols-2" data-oid="t5h8iti">
           <form
             className="p-6 md:p-8"
@@ -264,7 +267,7 @@ export function LoginForm({
                   {isLoginComplete ? "Enter OTP Code" : "Welcome back"}
                 </h1>
                 <p className="text-balance text-white" data-oid="m0px0yc">
-                  Login to your Acme Inc account
+                  Login to your kaascan account
                 </p>
               </div>
               <div className="grid gap-4" data-oid="scu.r_i">
@@ -317,7 +320,7 @@ export function LoginForm({
                     <Button
                       type="button"
                       onClick={totpSubmit}
-                      className="w-full bg-amber-400 hover:bg-amber-500 mt-2"
+                      className="w-full bg-white hover:bg-white mt-2 text-brand"
                       disabled={isSubmitted}
                       data-oid="5gby.mn"
                     >
@@ -368,7 +371,7 @@ export function LoginForm({
                     <Button
                       type="button"
                       onClick={loginSubmit}
-                      className="w-full bg-amber-400 hover:bg-amber-500"
+                      className="w-full bg-white hover:bg-white text-brand"
                       disabled={isSubmitted || !csrfToken}
                       data-oid=":f5qs5p"
                     >

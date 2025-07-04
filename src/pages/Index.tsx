@@ -588,7 +588,7 @@ const Index = () => {
                     </button>
                     <button
                       onClick={() => setActiveModal("withdraw")}
-                      className="w-full flex items-center justify-center space-x-3 bg-blackp 0 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 bg-brand 0 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                       data-oid="y_8w67u"
                     >
                       <TrendingDown className="w-5 h-5" data-oid="85devot" />
@@ -744,16 +744,16 @@ const Index = () => {
                         data-oid="5:l45hz"
                       >
                         <div
-                          className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
+                          className="w-24 h-24 mx-auto mb-4 bg-brand dark:bg-brand rounded-full flex items-center justify-center"
                           data-oid="h62c5vx"
                         >
                           <Activity
-                            className="w-8 h-8 text-gray-400 dark:text-gray-500"
+                            className="w-8 h-8 text-gray-400 dark:text-white border-0"
                             data-oid="p4q4b_-"
                           />
                         </div>
                         <h4
-                          className="text-gray-900 dark:text-white font-medium mb-2"
+                          className="dark:text-white font-medium mb-2 text-[rgb(81,_157,_243)]"
                           data-oid="n8pu683"
                         >
                           No Recent Activity
