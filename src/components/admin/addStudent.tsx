@@ -592,34 +592,24 @@ const QRScanner: React.FC<{
   const { t } = useLanguage();
   const scannerRef = useRef<HTMLDivElement>(null);
   const [isScanning, setIsScanning] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [scanner, setScanner] = useState<Html5QrcodeScanner | null>(null);
-  const [scanStatus, setScanStatus] = useState<
-    "initializing" | "ready" | "scanning" | "error"
-  >("initializing");
 
   useEffect(() => {
     let html5QrcodeScanner: Html5QrcodeScanner | null = null;
 
-    const initializeScanner = async () => {
+    const initializeScanner = () => {
       if (!scannerRef.current) return;
 
       try {
-        setScanStatus("initializing");
-
-        // Simple configuration - automatically selects best camera
+        // Ultra-simple configuration - everything automatic
         html5QrcodeScanner = new Html5QrcodeScanner(
           "qr-scanner",
           {
             fps: 10,
             qrbox: { width: 250, height: 250 },
-            aspectRatio: 1.0,
-            // Remove camera selection UI - auto-select best camera
-            showTorchButtonIfSupported: true,
-            showZoomSliderIfSupported: false,
-            defaultZoomValueIfSupported: 1,
-            // Auto-select rear camera if available
-            facingMode: { ideal: "environment" },
+            // Completely automatic - no UI controls
+            rememberLastUsedCamera: true,
+            supportedScanTypes: [],
           },
           /* verbose= */ false,
         );
@@ -634,57 +624,29 @@ const QRScanner: React.FC<{
               decodedText,
             )
           ) {
-            setScanStatus("ready");
             setIsLoading(true);
             onStudentFound(decodedText);
             setIsScanning(false);
-          } else {
-            setError(t("invalidStudentId"));
-            setScanStatus("error");
           }
         };
 
-        // Error callback - only for critical errors
-        const onScanError = (errorMessage: string) => {
-          // Ignore common scanning errors (no QR code found, etc.)
-          if (
-            errorMessage.includes("No MultiFormat Readers") ||
-            errorMessage.includes("NotFoundException")
-          ) {
-            return; // These are normal when no QR code is in view
-          }
-
-          console.warn("QR scan error:", errorMessage);
-
-          if (
-            errorMessage.includes("Permission denied") ||
-            errorMessage.includes("NotAllowedError")
-          ) {
-            setError("Please allow camera access to scan QR codes");
-            setScanStatus("error");
-          } else if (
-            errorMessage.includes("NotFoundError") ||
-            errorMessage.includes("No devices found")
-          ) {
-            setError("No camera found on this device");
-            setScanStatus("error");
-          }
+        // Error callback - completely silent for parent-friendly experience
+        const onScanError = () => {
+          // Silently ignore all errors - no user interruption
+          return;
         };
 
-        // Start the scanner
-        await html5QrcodeScanner.render(onScanSuccess, onScanError);
-
-        setScanStatus("scanning");
+        // Start the scanner automatically
+        html5QrcodeScanner.render(onScanSuccess, onScanError);
         setIsScanning(true);
       } catch (err: any) {
-        console.error("Scanner initialization error:", err);
-        setError("Failed to start camera. Please check permissions.");
-        setScanStatus("error");
+        // Silent fallback - no error messages to confuse parents
+        console.warn("Scanner initialization:", err);
       }
     };
 
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(initializeScanner, 100);
+    // Start immediately
+    const timer = setTimeout(initializeScanner, 200);
 
     return () => {
       clearTimeout(timer);
@@ -695,21 +657,12 @@ const QRScanner: React.FC<{
             setScanner(null);
             setIsScanning(false);
           })
-          .catch((err) => console.warn("Error clearing scanner:", err));
+          .catch(() => {
+            // Silent cleanup
+          });
       }
     };
-  }, [t, onStudentFound, setIsLoading]);
-
-  const handleRetry = () => {
-    setError(null);
-    setScanStatus("initializing");
-    // Re-trigger the useEffect by clearing and setting scanner
-    if (scanner) {
-      scanner.clear().then(() => {
-        setScanner(null);
-      });
-    }
-  };
+  }, [onStudentFound, setIsLoading]);
 
   return (
     <motion.div
@@ -727,7 +680,7 @@ const QRScanner: React.FC<{
       >
         {/* Header */}
         <div
-          className="relative p-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+          className="relative p-6 bg-gradient-to-r from-green-500 to-blue-600 text-white"
           data-oid="z26:by5"
         >
           <button
@@ -746,10 +699,10 @@ const QRScanner: React.FC<{
               <Camera className="w-8 h-8" data-oid="coi9nhg" />
             </div>
             <h2 className="text-2xl font-bold mb-2" data-oid="cc6lyx-">
-              Scan Student QR Code
+              📱 Scan QR Code
             </h2>
-            <p className="text-blue-100" data-oid="4cgkxkn">
-              Point your camera at the student's QR code
+            <p className="text-green-100" data-oid="4cgkxkn">
+              Simply point your camera at the QR code
             </p>
           </div>
         </div>
@@ -757,10 +710,10 @@ const QRScanner: React.FC<{
         {/* Scanner Area */}
         <div className="p-6" data-oid="r6_at4:">
           <div
-            className="relative mx-auto w-80 h-80 rounded-2xl overflow-hidden bg-gray-100"
+            className="relative mx-auto w-80 h-80 rounded-2xl overflow-hidden bg-gray-50"
             data-oid="e0b4_22"
           >
-            {/* Scanner Container */}
+            {/* Scanner Container - Completely automatic */}
             <div
               id="qr-scanner"
               ref={scannerRef}
@@ -768,35 +721,16 @@ const QRScanner: React.FC<{
               data-oid="_3bla9z"
             />
 
-            {/* Status Overlays */}
-            {scanStatus === "initializing" && (
-              <div
-                className="absolute inset-0 flex items-center justify-center bg-gray-900/80"
-                data-oid="goser:q"
-              >
-                <div className="text-center text-white" data-oid="6-2zx.5">
-                  <Loader2
-                    className="w-12 h-12 mx-auto mb-4 animate-spin"
-                    data-oid="octi:h6"
-                  />
-
-                  <p className="font-medium" data-oid="uq9asqb">
-                    Starting camera...
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {scanStatus === "scanning" && (
+            {/* Simple scanning overlay - always visible when scanning */}
+            {isScanning && (
               <div
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
                 data-oid="dssfn-a"
               >
-                {/* Clean scanning overlay */}
                 <div className="relative" data-oid="ly5wlh3">
-                  {/* Scanning frame */}
+                  {/* Clean scanning frame */}
                   <div
-                    className="w-64 h-64 border-4 border-white/80 rounded-2xl bg-transparent"
+                    className="w-64 h-64 border-4 border-green-400/80 rounded-2xl bg-transparent"
                     data-oid="aio6ow7"
                   />
 
@@ -821,7 +755,7 @@ const QRScanner: React.FC<{
                     data-oid="wyea2o6"
                   />
 
-                  {/* Scanning line */}
+                  {/* Scanning line animation */}
                   <motion.div
                     className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent"
                     animate={{ y: [0, 256, 0] }}
@@ -833,85 +767,35 @@ const QRScanner: React.FC<{
                     data-oid="0li7h_r"
                   />
 
-                  {/* Pulse effect */}
+                  {/* Gentle pulse effect */}
                   <motion.div
-                    className="absolute inset-0 border-2 border-green-400/50 rounded-2xl"
-                    animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="absolute inset-0 border-2 border-green-400/30 rounded-2xl"
+                    animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity }}
                     data-oid="27b3z_a"
                   />
                 </div>
               </div>
             )}
-
-            {error && (
-              <div
-                className="absolute inset-0 flex items-center justify-center bg-red-900/80"
-                data-oid="30syev4"
-              >
-                <div className="text-center text-white p-6" data-oid="16k6.h6">
-                  <AlertCircle
-                    className="w-12 h-12 mx-auto mb-4 text-red-400"
-                    data-oid="7t:96u:"
-                  />
-
-                  <h3 className="font-bold mb-2" data-oid="jaq2.7j">
-                    Camera Error
-                  </h3>
-                  <p className="text-sm mb-4" data-oid="yw_l10:">
-                    {error}
-                  </p>
-                  <button
-                    onClick={handleRetry}
-                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                    data-oid="bos1_qp"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
 
-          {/* Instructions */}
+          {/* Simple status indicator */}
           <div className="mt-6 text-center" data-oid="v2c48_v">
-            {scanStatus === "scanning" ? (
-              <div
-                className="flex items-center justify-center gap-2 text-green-600"
-                data-oid="vdoe10p"
+            <div
+              className="flex items-center justify-center gap-2 text-green-600"
+              data-oid="vdoe10p"
+            >
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                data-oid="fz7j1::"
               >
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                  data-oid="fz7j1::"
-                >
-                  <Camera className="w-5 h-5" data-oid="1pdh5:0" />
-                </motion.div>
-                <span className="font-medium" data-oid="5lyl2db">
-                  Ready to scan
-                </span>
-              </div>
-            ) : scanStatus === "initializing" ? (
-              <div
-                className="flex items-center justify-center gap-2 text-blue-600"
-                data-oid="6sadl5u"
-              >
-                <Loader2 className="w-5 h-5 animate-spin" data-oid="yrd_wy7" />
-                <span className="font-medium" data-oid="d-s_i9w">
-                  Preparing camera...
-                </span>
-              </div>
-            ) : (
-              <div
-                className="flex items-center justify-center gap-2 text-gray-500"
-                data-oid="ye.2zq7"
-              >
-                <Camera className="w-5 h-5" data-oid="69yfesn" />
-                <span className="font-medium" data-oid="jacesha">
-                  Camera not ready
-                </span>
-              </div>
-            )}
+                <Camera className="w-5 h-5" data-oid="1pdh5:0" />
+              </motion.div>
+              <span className="font-medium" data-oid="5lyl2db">
+                🎯 Ready to scan - Point at QR code
+              </span>
+            </div>
           </div>
 
           {/* Back Button */}
@@ -922,8 +806,8 @@ const QRScanner: React.FC<{
             className="w-full mt-6 px-6 py-3 bg-gray-100 text-gray-700 rounded-2xl font-semibold hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-3"
             data-oid="emvbv.w"
           >
-            <ArrowLeft className="w-5 h-5" data-oid="w:3184z" />
-            Back to Options
+            <ArrowLeft className="w-5 h-5" data-oid="w:3184z" />← Back to
+            Options
           </motion.button>
         </div>
       </motion.div>
