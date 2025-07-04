@@ -594,83 +594,100 @@ const QRScanner: React.FC<{
   const [isScanning, setIsScanning] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [scanner, setScanner] = useState<Html5QrcodeScanner | null>(null);
-  const [hasCamera, setHasCamera] = useState<boolean | null>(null);
+  const [scanStatus, setScanStatus] = useState<
+    "initializing" | "ready" | "scanning" | "error"
+  >("initializing");
 
   useEffect(() => {
-    const checkCamera = async () => {
+    let html5QrcodeScanner: Html5QrcodeScanner | null = null;
+
+    const initializeScanner = async () => {
+      if (!scannerRef.current) return;
+
       try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        const hasVideoInput = devices.some(
-          (device) => device.kind === "videoinput",
+        setScanStatus("initializing");
+
+        // Simple configuration - automatically selects best camera
+        html5QrcodeScanner = new Html5QrcodeScanner(
+          "qr-scanner",
+          {
+            fps: 10,
+            qrbox: { width: 250, height: 250 },
+            aspectRatio: 1.0,
+            // Remove camera selection UI - auto-select best camera
+            showTorchButtonIfSupported: true,
+            showZoomSliderIfSupported: false,
+            defaultZoomValueIfSupported: 1,
+            // Auto-select rear camera if available
+            facingMode: { ideal: "environment" },
+          },
+          /* verbose= */ false,
         );
-        setHasCamera(hasVideoInput);
-        if (!hasVideoInput) {
-          setError(t("noCameraFound"));
-        }
-      } catch (err) {
-        console.error("Error checking camera:", err);
-        setHasCamera(false);
-        setError(t("noCameraFound"));
+
+        setScanner(html5QrcodeScanner);
+
+        // Success callback - when QR code is detected
+        const onScanSuccess = (decodedText: string) => {
+          // Validate if it's a valid student ID (UUID format)
+          if (
+            /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+              decodedText,
+            )
+          ) {
+            setScanStatus("ready");
+            setIsLoading(true);
+            onStudentFound(decodedText);
+            setIsScanning(false);
+          } else {
+            setError(t("invalidStudentId"));
+            setScanStatus("error");
+          }
+        };
+
+        // Error callback - only for critical errors
+        const onScanError = (errorMessage: string) => {
+          // Ignore common scanning errors (no QR code found, etc.)
+          if (
+            errorMessage.includes("No MultiFormat Readers") ||
+            errorMessage.includes("NotFoundException")
+          ) {
+            return; // These are normal when no QR code is in view
+          }
+
+          console.warn("QR scan error:", errorMessage);
+
+          if (
+            errorMessage.includes("Permission denied") ||
+            errorMessage.includes("NotAllowedError")
+          ) {
+            setError("Please allow camera access to scan QR codes");
+            setScanStatus("error");
+          } else if (
+            errorMessage.includes("NotFoundError") ||
+            errorMessage.includes("No devices found")
+          ) {
+            setError("No camera found on this device");
+            setScanStatus("error");
+          }
+        };
+
+        // Start the scanner
+        await html5QrcodeScanner.render(onScanSuccess, onScanError);
+
+        setScanStatus("scanning");
+        setIsScanning(true);
+      } catch (err: any) {
+        console.error("Scanner initialization error:", err);
+        setError("Failed to start camera. Please check permissions.");
+        setScanStatus("error");
       }
     };
 
-    checkCamera();
-
-    let html5QrcodeScanner: Html5QrcodeScanner | null = null;
-    if (scannerRef.current && !scanner && hasCamera) {
-      try {
-        html5QrcodeScanner = new Html5QrcodeScanner(
-          scannerRef.current.id,
-          {
-            fps: 10,
-            qrbox: {
-              width: window.innerWidth < 640 ? 250 : 300,
-              height: window.innerWidth < 640 ? 250 : 300,
-            },
-            aspectRatio: 1.0,
-            disableFlip: false,
-            facingMode: "environment",
-          },
-          false,
-        );
-        setScanner(html5QrcodeScanner);
-
-        html5QrcodeScanner.render(
-          (decodedText) => {
-            if (
-              /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-                decodedText,
-              )
-            ) {
-              setIsLoading(true);
-              onStudentFound(decodedText);
-              setIsScanning(false);
-            } else {
-              setError(t("invalidStudentId"));
-            }
-          },
-          (err) => {
-            console.warn("QR scan error:", err);
-            if (err.message.includes("Permission denied")) {
-              setError(t("cameraPermissionDenied"));
-            } else if (
-              err.message.includes("No MultiFormat Readers") ||
-              err.message.includes("No devices found")
-            ) {
-              setError(t("noCameraFound"));
-            } else {
-              setError(t("qrScanError"));
-            }
-          },
-        );
-        setIsScanning(true);
-      } catch (err) {
-        console.error("Scanner initialization error:", err);
-        setError(t("qrScanError"));
-      }
-    }
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(initializeScanner, 100);
 
     return () => {
+      clearTimeout(timer);
       if (html5QrcodeScanner) {
         html5QrcodeScanner
           .clear()
@@ -681,211 +698,233 @@ const QRScanner: React.FC<{
           .catch((err) => console.warn("Error clearing scanner:", err));
       }
     };
-  }, [t, onStudentFound, hasCamera, setIsLoading]);
+  }, [t, onStudentFound, setIsLoading]);
+
+  const handleRetry = () => {
+    setError(null);
+    setScanStatus("initializing");
+    // Re-trigger the useEffect by clearing and setting scanner
+    if (scanner) {
+      scanner.clear().then(() => {
+        setScanner(null);
+      });
+    }
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 z-50"
+      className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 z-50"
       data-oid="8bynvdo"
     >
       <motion.div
         initial={{ y: 50 }}
         animate={{ y: 0 }}
-        className="bg-white rounded-3xl shadow-2xl max-w-[90vw] sm:max-w-md w-full overflow-hidden"
+        className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden"
         data-oid="2fx_7d8"
       >
+        {/* Header */}
         <div
-          className="relative p-4 sm:p-6 from-indigo-900 to-yellow-500 text-white bg-[#05000000] bg-[url(/images/1ev8.png)]"
+          className="relative p-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
           data-oid="z26:by5"
         >
           <button
             onClick={onClose}
-            className="absolute top-3 sm:top-4 right-3 sm:right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
             data-oid="i3ub129"
           >
-            <X className="w-4 h-4 sm:w-5 sm:h-5" data-oid="e8mz_yj" />
+            <X className="w-5 h-5" data-oid="e8mz_yj" />
           </button>
+
           <div className="text-center" data-oid="94a2m1t">
             <div
-              className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4"
+              className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4"
               data-oid="fuq.rt3"
             >
-              <Camera className="w-6 h-6 sm:w-8 sm:h-8" data-oid="coi9nhg" />
+              <Camera className="w-8 h-8" data-oid="coi9nhg" />
             </div>
-            <h2
-              className="text-xl sm:text-2xl font-bold mb-2"
-              data-oid="cc6lyx-"
-            >
-              {t("scanQRCode")}
+            <h2 className="text-2xl font-bold mb-2" data-oid="cc6lyx-">
+              Scan Student QR Code
             </h2>
-            <p
-              className="text-indigo-100 text-sm sm:text-base"
-              data-oid="4cgkxkn"
-            >
-              {t("positionQRCode")}
+            <p className="text-blue-100" data-oid="4cgkxkn">
+              Point your camera at the student's QR code
             </p>
           </div>
         </div>
 
-        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6" data-oid="r6_at4:">
-          {hasCamera !== false && (
-            <div
-              className="relative mx-auto w-[80vw] sm:w-80 h-[80vw] sm:h-80 max-w-[300px] max-h-[300px] rounded-2xl overflow-hidden bg-gray-900"
-              data-oid="e0b4_22"
-            >
-              <div
-                id="qr-scanner"
-                ref={scannerRef}
-                className="w-full h-full"
-                data-oid="_3bla9z"
-              />
-
-              {isScanning && (
-                <div
-                  className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                  data-oid="dssfn-a"
-                >
-                  <div className="relative" data-oid="x5a7k9q">
-                    <div
-                      className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] border-4 border-white/80 rounded-2xl bg-transparent"
-                      data-oid="75hif__"
-                    />
-
-                    <motion.div
-                      className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
-                      animate={{
-                        y: [0, window.innerWidth < 640 ? 250 : 300, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      data-oid="j8mweth"
-                    />
-
-                    <div
-                      className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 border-l-4 border-t-4 border-yellow-400 rounded-tl-lg"
-                      data-oid="8_q10z7"
-                    />
-
-                    <div
-                      className="absolute -top-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 border-r-4 border-t-4 border-yellow-400 rounded-tr-lg"
-                      data-oid="spku8g8"
-                    />
-
-                    <div
-                      className="absolute -bottom-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 border-l-4 border-b-4 border-yellow-400 rounded-bl-lg"
-                      data-oid=".7xtkfs"
-                    />
-
-                    <div
-                      className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 border-r-4 border-b-4 border-yellow-400 rounded-br-lg"
-                      data-oid="99u6f79"
-                    />
-
-                    <motion.div
-                      className="absolute inset-0 border-2 border-yellow-400/50 rounded-2xl"
-                      animate={{
-                        scale: [1, 1.05, 1],
-                        opacity: [0.5, 0.8, 0.5],
-                      }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                      data-oid="id5nt6t"
-                    />
-                  </div>
-                </div>
-              )}
-              {error && (
-                <div
-                  className="absolute inset-0 flex items-center justify-center bg-black/50"
-                  data-oid="30syev4"
-                >
-                  <div
-                    className="text-center text-white p-4"
-                    data-oid="16k6.h6"
-                  >
-                    <AlertCircle
-                      className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 text-red-400"
-                      data-oid="7t:96u:"
-                    />
-
-                    <p className="text-xs sm:text-sm" data-oid="yw_l10:">
-                      {error}
-                    </p>
-                    <button
-                      onClick={() => {
-                        setError(null);
-                        if (
-                          error === t("cameraPermissionDenied") ||
-                          error === t("noCameraFound")
-                        ) {
-                          setHasCamera(false);
-                        }
-                      }}
-                      className="mt-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-600 text-white rounded-lg text-xs sm:text-sm hover:bg-indigo-700 transition-colors"
-                      data-oid="bos1_qp"
-                    >
-                      {t("tryAgain")}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onBack}
-            className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-white/80 backdrop-blur-sm text-gray-700 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 text-sm sm:text-base"
-            data-oid="emvbv.w"
+        {/* Scanner Area */}
+        <div className="p-6" data-oid="r6_at4:">
+          <div
+            className="relative mx-auto w-80 h-80 rounded-2xl overflow-hidden bg-gray-100"
+            data-oid="e0b4_22"
           >
-            <ArrowLeft className="w-5 h-5" data-oid="w:3184z" />
-            {t("backToMethod")}
-          </motion.button>
+            {/* Scanner Container */}
+            <div
+              id="qr-scanner"
+              ref={scannerRef}
+              className="w-full h-full"
+              data-oid="_3bla9z"
+            />
 
-          <div className="text-center" data-oid="5q6ttju">
-            {isScanning && hasCamera ? (
+            {/* Status Overlays */}
+            {scanStatus === "initializing" && (
               <div
-                className="flex items-center justify-center gap-2 text-indigo-700"
-                data-oid="jur5utf"
+                className="absolute inset-0 flex items-center justify-center bg-gray-900/80"
+                data-oid="goser:q"
+              >
+                <div className="text-center text-white" data-oid="6-2zx.5">
+                  <Loader2
+                    className="w-12 h-12 mx-auto mb-4 animate-spin"
+                    data-oid="octi:h6"
+                  />
+
+                  <p className="font-medium" data-oid="uq9asqb">
+                    Starting camera...
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {scanStatus === "scanning" && (
+              <div
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                data-oid="dssfn-a"
+              >
+                {/* Clean scanning overlay */}
+                <div className="relative" data-oid="ly5wlh3">
+                  {/* Scanning frame */}
+                  <div
+                    className="w-64 h-64 border-4 border-white/80 rounded-2xl bg-transparent"
+                    data-oid="aio6ow7"
+                  />
+
+                  {/* Corner indicators */}
+                  <div
+                    className="absolute -top-2 -left-2 w-8 h-8 border-l-4 border-t-4 border-green-400 rounded-tl-lg"
+                    data-oid="3:wnnqz"
+                  />
+
+                  <div
+                    className="absolute -top-2 -right-2 w-8 h-8 border-r-4 border-t-4 border-green-400 rounded-tr-lg"
+                    data-oid="6m5j4e-"
+                  />
+
+                  <div
+                    className="absolute -bottom-2 -left-2 w-8 h-8 border-l-4 border-b-4 border-green-400 rounded-bl-lg"
+                    data-oid="59uh:z."
+                  />
+
+                  <div
+                    className="absolute -bottom-2 -right-2 w-8 h-8 border-r-4 border-b-4 border-green-400 rounded-br-lg"
+                    data-oid="wyea2o6"
+                  />
+
+                  {/* Scanning line */}
+                  <motion.div
+                    className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent"
+                    animate={{ y: [0, 256, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    data-oid="0li7h_r"
+                  />
+
+                  {/* Pulse effect */}
+                  <motion.div
+                    className="absolute inset-0 border-2 border-green-400/50 rounded-2xl"
+                    animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    data-oid="27b3z_a"
+                  />
+                </div>
+              </div>
+            )}
+
+            {error && (
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-red-900/80"
+                data-oid="30syev4"
+              >
+                <div className="text-center text-white p-6" data-oid="16k6.h6">
+                  <AlertCircle
+                    className="w-12 h-12 mx-auto mb-4 text-red-400"
+                    data-oid="7t:96u:"
+                  />
+
+                  <h3 className="font-bold mb-2" data-oid="jaq2.7j">
+                    Camera Error
+                  </h3>
+                  <p className="text-sm mb-4" data-oid="yw_l10:">
+                    {error}
+                  </p>
+                  <button
+                    onClick={handleRetry}
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    data-oid="bos1_qp"
+                  >
+                    Try Again
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Instructions */}
+          <div className="mt-6 text-center" data-oid="v2c48_v">
+            {scanStatus === "scanning" ? (
+              <div
+                className="flex items-center justify-center gap-2 text-green-600"
+                data-oid="vdoe10p"
               >
                 <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  data-oid="t:i1076"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                  data-oid="fz7j1::"
                 >
-                  <Camera
-                    className="w-4 h-4 sm:w-5 sm:h-5"
-                    data-oid="_ybkwmy"
-                  />
+                  <Camera className="w-5 h-5" data-oid="1pdh5:0" />
                 </motion.div>
-                <span
-                  className="font-medium text-sm sm:text-base"
-                  data-oid="7lviu:2"
-                >
-                  {t("scanningQRCode")}
+                <span className="font-medium" data-oid="5lyl2db">
+                  Ready to scan
+                </span>
+              </div>
+            ) : scanStatus === "initializing" ? (
+              <div
+                className="flex items-center justify-center gap-2 text-blue-600"
+                data-oid="6sadl5u"
+              >
+                <Loader2 className="w-5 h-5 animate-spin" data-oid="yrd_wy7" />
+                <span className="font-medium" data-oid="d-s_i9w">
+                  Preparing camera...
                 </span>
               </div>
             ) : (
               <div
                 className="flex items-center justify-center gap-2 text-gray-500"
-                data-oid="ttgdzd-"
+                data-oid="ye.2zq7"
               >
-                <Camera className="w-4 h-4 sm:w-5 sm:h-5" data-oid="ldaj5rc" />
-                <span
-                  className="font-medium text-sm sm:text-base"
-                  data-oid="qesq6jj"
-                >
-                  {hasCamera === false ? t("noCameraFound") : t("cameraReady")}
+                <Camera className="w-5 h-5" data-oid="69yfesn" />
+                <span className="font-medium" data-oid="jacesha">
+                  Camera not ready
                 </span>
               </div>
             )}
           </div>
+
+          {/* Back Button */}
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={onBack}
+            className="w-full mt-6 px-6 py-3 bg-gray-100 text-gray-700 rounded-2xl font-semibold hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-3"
+            data-oid="emvbv.w"
+          >
+            <ArrowLeft className="w-5 h-5" data-oid="w:3184z" />
+            Back to Options
+          </motion.button>
         </div>
       </motion.div>
     </motion.div>
