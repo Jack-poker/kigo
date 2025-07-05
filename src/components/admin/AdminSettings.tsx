@@ -52,7 +52,7 @@ const AdminSettings: React.FC = () => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await axios.get(
-          "http://localhost:8001/admin/get-csrf-token",
+          "http://localhost:8002/admin/get-csrf-token",
           {
             withCredentials: true, // Send session_id cookie
           },
@@ -80,7 +80,7 @@ const AdminSettings: React.FC = () => {
     if (!csrfToken) return;
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:8001/admin/settings", {
+      const response = await axios.get("http://localhost:8002/admin/settings", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
           "X-CSRF-Token": csrfToken,
@@ -156,7 +156,7 @@ const AdminSettings: React.FC = () => {
       return;
     }
     try {
-      await axios.put("http://localhost:8001/admin/settings", settings, {
+      await axios.put("http://localhost:8002/admin/settings", settings, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
           "X-CSRF-Token": csrfToken,
@@ -194,47 +194,47 @@ const AdminSettings: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="text-center p-4" data-oid="s3cmw92">
+      <div className="text-center p-4" data-oid="1:z6sgq">
         Loading settings...
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-4 space-y-6" data-oid="5xgi4jj">
+    <div className="container mx-auto p-4 space-y-6" data-oid="yk:r.cl">
       {error && (
-        <div className="text-red-500 text-center p-4" data-oid="vpqd2hv">
+        <div className="text-red-500 text-center p-4" data-oid="2nc3qbf">
           {error}
         </div>
       )}
       {success && (
-        <div className="text-green-500 text-center p-4" data-oid="l-bkbp9">
+        <div className="text-green-500 text-center p-4" data-oid="-5krf_6">
           {success}
         </div>
       )}
       {/* Platform Settings */}
-      <Card data-oid="oa2vgee">
-        <CardHeader data-oid="50pm7xf">
-          <CardTitle className="flex items-center space-x-2" data-oid="-q4jz:j">
-            <Shield className="w-5 h-5 text-emerald-600" data-oid="85m88.-" />
-            <span data-oid=".4b0wgw">Platform Settings</span>
+      <Card data-oid="62r4igy">
+        <CardHeader data-oid="ft1-o0q">
+          <CardTitle className="flex items-center space-x-2" data-oid="p5dwfi9">
+            <Shield className="w-5 h-5 text-emerald-600" data-oid=":6-e2nk" />
+            <span data-oid="3l7yh-a">Platform Settings</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4" data-oid="mmoasi.">
-          <div className="grid md:grid-cols-2 gap-4" data-oid="ngyu2zg">
-            <div data-oid="wh0twsd">
-              <label className="text-sm font-medium" data-oid="-651nxt">
+        <CardContent className="space-y-4" data-oid="w4y_qsy">
+          <div className="grid md:grid-cols-2 gap-4" data-oid=":0uay_l">
+            <div data-oid="0f-s7wl">
+              <label className="text-sm font-medium" data-oid="0rg5z3g">
                 Platform Name
               </label>
               <Input
                 name="platform_name"
                 value={settings.platform_name}
                 onChange={handleInputChange}
-                data-oid="lyd6a2:"
+                data-oid="_4x-b0d"
               />
             </div>
-            <div data-oid="xjl8rz0">
-              <label className="text-sm font-medium" data-oid="_v0pdg7">
+            <div data-oid="wrwi-r5">
+              <label className="text-sm font-medium" data-oid="seo9wvo">
                 Platform Email
               </label>
               <Input
@@ -242,11 +242,11 @@ const AdminSettings: React.FC = () => {
                 name="platform_email"
                 value={settings.platform_email}
                 onChange={handleInputChange}
-                data-oid="6g85y2q"
+                data-oid="_bgnov2"
               />
             </div>
-            <div data-oid="bn-zlea">
-              <label className="text-sm font-medium" data-oid="kmr2n3b">
+            <div data-oid="p-8-f96">
+              <label className="text-sm font-medium" data-oid="rqval8u">
                 Support Email
               </label>
               <Input
@@ -254,7 +254,7 @@ const AdminSettings: React.FC = () => {
                 name="support_email"
                 value={settings.support_email}
                 onChange={handleInputChange}
-                data-oid="j8ou4bz"
+                data-oid="wyq:k22"
               />
             </div>
           </div>
@@ -262,21 +262,21 @@ const AdminSettings: React.FC = () => {
       </Card>
 
       {/* Transaction Settings */}
-      <Card data-oid="br7dmdg">
-        <CardHeader data-oid="5maf4kx">
-          <CardTitle className="flex items-center space-x-2" data-oid="bq6w8da">
+      <Card data-oid="qc2rd50">
+        <CardHeader data-oid="7..9t01">
+          <CardTitle className="flex items-center space-x-2" data-oid="cjjm1nd">
             <DollarSign
               className="w-5 h-5 text-emerald-600"
-              data-oid="p5upx0v"
+              data-oid="26-gblo"
             />
 
-            <span data-oid="p3lme6b">Transaction Settings</span>
+            <span data-oid="f23plvn">Transaction Settings</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4" data-oid="ont.wwk">
-          <div className="grid md:grid-cols-3 gap-4" data-oid="6z3y230">
-            <div data-oid="g035lu0">
-              <label className="text-sm font-medium" data-oid="hoj-526">
+        <CardContent className="space-y-4" data-oid="72ku5ly">
+          <div className="grid md:grid-cols-3 gap-4" data-oid="_.t2fwz">
+            <div data-oid="0m:v8iw">
+              <label className="text-sm font-medium" data-oid="q1967a2">
                 Max Transaction Amount ($)
               </label>
               <Input
@@ -285,11 +285,11 @@ const AdminSettings: React.FC = () => {
                 value={settings.max_transaction_amount}
                 onChange={handleInputChange}
                 min={0}
-                data-oid="igahai2"
+                data-oid="6v65em2"
               />
             </div>
-            <div data-oid="a1iph2d">
-              <label className="text-sm font-medium" data-oid="y_dp--l">
+            <div data-oid="yw3-4wg">
+              <label className="text-sm font-medium" data-oid="vsggl2:">
                 Min Transaction Amount ($)
               </label>
               <Input
@@ -298,11 +298,11 @@ const AdminSettings: React.FC = () => {
                 value={settings.min_transaction_amount}
                 onChange={handleInputChange}
                 min={0}
-                data-oid="_t.afxk"
+                data-oid="-p7u26:"
               />
             </div>
-            <div data-oid="h5-j::1">
-              <label className="text-sm font-medium" data-oid="2:pdi8i">
+            <div data-oid=".k5mdae">
+              <label className="text-sm font-medium" data-oid="njsp839">
                 Transaction Fee (%)
               </label>
               <Input
@@ -313,7 +313,7 @@ const AdminSettings: React.FC = () => {
                 onChange={handleInputChange}
                 min={0}
                 max={100}
-                data-oid="rfn7wig"
+                data-oid="hv_0ncf"
               />
             </div>
           </div>
@@ -321,16 +321,16 @@ const AdminSettings: React.FC = () => {
       </Card>
 
       {/* Notification Settings */}
-      <Card data-oid="u4e:-f2">
-        <CardHeader data-oid="2:zjwip">
-          <CardTitle className="flex items-center space-x-2" data-oid="k0bui1.">
-            <Bell className="w-5 h-5 text-emerald-600" data-oid="-b4q6p." />
-            <span data-oid="zat.hpx">Notification Settings</span>
+      <Card data-oid="yaj648r">
+        <CardHeader data-oid="a564.he">
+          <CardTitle className="flex items-center space-x-2" data-oid="jgoi4xt">
+            <Bell className="w-5 h-5 text-emerald-600" data-oid="jc5ewx_" />
+            <span data-oid="oqr-lgy">Notification Settings</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4" data-oid="lc_v:b-">
-          <div className="grid md:grid-cols-3 gap-4" data-oid="m--wy7t">
-            <div className="flex items-center space-x-2" data-oid="o1-jv-s">
+        <CardContent className="space-y-4" data-oid="d:i8qr_">
+          <div className="grid md:grid-cols-3 gap-4" data-oid="tl1p201">
+            <div className="flex items-center space-x-2" data-oid="k:gpgs7">
               <input
                 type="checkbox"
                 id="email_notifications"
@@ -338,18 +338,18 @@ const AdminSettings: React.FC = () => {
                 checked={settings.email_notifications}
                 onChange={handleCheckboxChange}
                 className="w-4 h-4 text-emerald-600"
-                data-oid="4-twp1:"
+                data-oid="s5fmo1l"
               />
 
               <label
                 htmlFor="email_notifications"
                 className="text-sm font-medium"
-                data-oid="vp.09k9"
+                data-oid="bq9voql"
               >
                 Email Notifications
               </label>
             </div>
-            <div className="flex items-center space-x-2" data-oid="7u9ms.1">
+            <div className="flex items-center space-x-2" data-oid="i-y:nc2">
               <input
                 type="checkbox"
                 id="sms_notifications"
@@ -357,18 +357,18 @@ const AdminSettings: React.FC = () => {
                 checked={settings.sms_notifications}
                 onChange={handleCheckboxChange}
                 className="w-4 h-4 text-emerald-600"
-                data-oid="me63ma6"
+                data-oid="pdxxrxs"
               />
 
               <label
                 htmlFor="sms_notifications"
                 className="text-sm font-medium"
-                data-oid="0ujk22p"
+                data-oid="r2b9epw"
               >
                 SMS Notifications
               </label>
             </div>
-            <div className="flex items-center space-x-2" data-oid=".w:p8:9">
+            <div className="flex items-center space-x-2" data-oid=":f0wxuw">
               <input
                 type="checkbox"
                 id="push_notifications"
@@ -376,13 +376,13 @@ const AdminSettings: React.FC = () => {
                 checked={settings.push_notifications}
                 onChange={handleCheckboxChange}
                 className="w-4 h-4 text-emerald-600"
-                data-oid="kl33zxq"
+                data-oid="o9xe0d6"
               />
 
               <label
                 htmlFor="push_notifications"
                 className="text-sm font-medium"
-                data-oid="5v5w3g7"
+                data-oid="gxh9ri0"
               >
                 Push Notifications
               </label>
@@ -392,56 +392,56 @@ const AdminSettings: React.FC = () => {
       </Card>
 
       {/* Theme Settings */}
-      <Card data-oid="ix4jv13">
-        <CardHeader data-oid="84j8:ze">
-          <CardTitle className="flex items-center space-x-2" data-oid="s2cxtpq">
-            <Palette className="w-5 h-5 text-emerald-600" data-oid="4o_ut2w" />
-            <span data-oid="90nl3ar">Theme Settings</span>
+      <Card data-oid="hy5x2b8">
+        <CardHeader data-oid="bez41e8">
+          <CardTitle className="flex items-center space-x-2" data-oid="fd3ei6o">
+            <Palette className="w-5 h-5 text-emerald-600" data-oid="fg0q2wf" />
+            <span data-oid="tgc.pjb">Theme Settings</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4" data-oid="f_2bnbv">
-          <div className="grid md:grid-cols-2 gap-4" data-oid="17wxse0">
-            <div data-oid="6lttikh">
-              <label className="text-sm font-medium" data-oid="16udx3f">
+        <CardContent className="space-y-4" data-oid="s2lryym">
+          <div className="grid md:grid-cols-2 gap-4" data-oid="c70bybe">
+            <div data-oid="t7aj86o">
+              <label className="text-sm font-medium" data-oid="p2i7zw7">
                 Primary Color
               </label>
-              <div className="flex items-center space-x-2" data-oid="5.g60uc">
+              <div className="flex items-center space-x-2" data-oid="tkxh81d">
                 <input
                   type="color"
                   name="primary_color"
                   value={settings.primary_color}
                   onChange={handleInputChange}
                   className="w-12 h-10 rounded border"
-                  data-oid="_sm5th3"
+                  data-oid="peki14f"
                 />
 
                 <Input
                   name="primary_color"
                   value={settings.primary_color}
                   onChange={handleInputChange}
-                  data-oid="_5cmoti"
+                  data-oid="tpfnqnt"
                 />
               </div>
             </div>
-            <div data-oid="rix-i2o">
-              <label className="text-sm font-medium" data-oid="q27tadx">
+            <div data-oid="j-67af0">
+              <label className="text-sm font-medium" data-oid="wrbmlk:">
                 Secondary Color
               </label>
-              <div className="flex items-center space-x-2" data-oid="d.j3sd7">
+              <div className="flex items-center space-x-2" data-oid="3k6ntgp">
                 <input
                   type="color"
                   name="secondary_color"
                   value={settings.secondary_color}
                   onChange={handleInputChange}
                   className="w-12 h-10 rounded border"
-                  data-oid="78-fnjn"
+                  data-oid="f:::1jh"
                 />
 
                 <Input
                   name="secondary_color"
                   value={settings.secondary_color}
                   onChange={handleInputChange}
-                  data-oid="q3cswvp"
+                  data-oid="2sne:2."
                 />
               </div>
             </div>
@@ -450,13 +450,13 @@ const AdminSettings: React.FC = () => {
       </Card>
 
       {/* Save Button */}
-      <div className="flex justify-end" data-oid="68o4t74">
+      <div className="flex justify-end" data-oid="q7i.7y_">
         <Button
           onClick={handleSave}
           className="bg-emerald-600 hover:bg-emerald-700"
-          data-oid="2hs552f"
+          data-oid="3k4jwrp"
         >
-          <Save className="w-4 h-4 mr-2" data-oid="_68mfs2" />
+          <Save className="w-4 h-4 mr-2" data-oid="fq-1c.8" />
           Save Settings
         </Button>
       </div>

@@ -98,11 +98,11 @@ function Button({
       disabled={disabled || isLoading}
       onClick={handleClick}
       {...props}
-      data-oid="rvzpyt1"
+      data-oid="bzsp5gw"
     >
       {/* Loading spinner */}
       {isLoading && (
-        <Loader2 className="w-4 h-4 animate-spin" data-oid="rqkon7v" />
+        <Loader2 className="w-4 h-4 animate-spin" data-oid="97jxvp0" />
       )}
 
       {/* Button content with loading state */}
@@ -111,7 +111,7 @@ function Button({
           "flex items-center gap-2 transition-opacity duration-200",
           isLoading && !loadingText && "opacity-70",
         )}
-        data-oid="1:znjba"
+        data-oid="41d.arm"
       >
         {displayText}
       </span>
@@ -120,7 +120,7 @@ function Button({
       {isLoading && (
         <div
           className="absolute inset-0 bg-current opacity-10 animate-pulse"
-          data-oid="t.503et"
+          data-oid="s-z2i3d"
         />
       )}
     </Comp>

@@ -22,7 +22,7 @@ export const Ripple = React.memo(function Ripple({
         className,
       )}
       {...props}
-      data-oid="ofrmkb3"
+      data-oid="o38:3ds"
     >
       {Array.from({ length: numCircles }, (_, i) => {
         const size = mainCircleSize + i * 70;
@@ -49,7 +49,7 @@ export const Ripple = React.memo(function Ripple({
                 transform: "translate(-50%, -50%) scale(1)",
               } as CSSProperties
             }
-            data-oid="mch:rll"
+            data-oid="3dq7895"
           />
         );
       })}

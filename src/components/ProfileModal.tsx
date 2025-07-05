@@ -96,44 +96,44 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
   return (
     <div
       className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
-      data-oid="pfqj6ge"
+      data-oid="zn5syx."
     >
       <div
         className="bg-white dark:bg-gray-900 rounded-2xl max-w-2xl w-full shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden"
-        data-oid="vjy8t-7"
+        data-oid="xlw--bq"
       >
         <div
           className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20"
-          data-oid=".cc-8k_"
+          data-oid="ht1j:5_"
         >
           <h2
             className="text-xl font-bold text-gray-900 dark:text-white"
-            data-oid="s9txg:4"
+            data-oid="o930_q_"
           >
             {t("profileSettings")}
           </h2>
-          <div className="flex items-center space-x-2" data-oid="g9ifl0_">
+          <div className="flex items-center space-x-2" data-oid="g0hgir2">
             <button
               onClick={isEditing ? handleSave : () => setIsEditing(true)}
               className="flex items-center space-x-2 px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition-all duration-200 font-medium"
               disabled={isLoading}
-              data-oid="b6r2hj1"
+              data-oid="drmylmu"
             >
               {isEditing ? (
-                <Save className="w-4 h-4" data-oid="becqmro" />
+                <Save className="w-4 h-4" data-oid="ea3n_g2" />
               ) : (
-                <Edit3 className="w-4 h-4" data-oid="t:r2:lo" />
+                <Edit3 className="w-4 h-4" data-oid="bex_6yx" />
               )}
-              <span data-oid="no789xy">
+              <span data-oid="l-__56w">
                 {isEditing ? t("save") : t("edit")}
               </span>
             </button>
             <button
               onClick={onClose}
               className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all duration-200"
-              data-oid="qbvrjt2"
+              data-oid="bdr0.20"
             >
-              <X className="w-5 h-5" data-oid="tyxdd7s" />
+              <X className="w-5 h-5" data-oid="jloe2-a" />
             </button>
           </div>
         </div>
@@ -141,61 +141,61 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
         {error && (
           <div
             className="m-6 p-4 bg-red-100 text-red-700 rounded-xl"
-            data-oid="0bis8rr"
+            data-oid="s1v:f:6"
           >
             {error}
             <button
               onClick={() => setError("")}
               className="ml-2 text-red-900"
-              data-oid="yb5oyr0"
+              data-oid="-79-4nr"
             >
               X
             </button>
           </div>
         )}
 
-        <div className="p-6" data-oid="nrimuna">
-          <div className="flex items-center space-x-6 mb-8" data-oid="wq-7zb0">
-            <div className="relative" data-oid="g2diesy">
+        <div className="p-6" data-oid="2jbuzw4">
+          <div className="flex items-center space-x-6 mb-8" data-oid="sctpocg">
+            <div className="relative" data-oid="x56epov">
               <div
                 className="w-24 h-24 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-full flex items-center justify-center shadow-xl"
-                data-oid="zn1kxob"
+                data-oid="kri2p4-"
               >
-                <User className="w-12 h-12 text-white" data-oid="2kss.pv" />
+                <User className="w-12 h-12 text-white" data-oid=":lv-5ik" />
               </div>
               {isEditing && (
                 <button
                   className="absolute -bottom-2 -right-2 w-8 h-8 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200"
-                  data-oid="lakqztf"
+                  data-oid="rxtl::u"
                 >
-                  <Camera className="w-4 h-4" data-oid="31xdh6j" />
+                  <Camera className="w-4 h-4" data-oid="ut0-cv2" />
                 </button>
               )}
             </div>
-            <div data-oid="8qp0uq4">
+            <div data-oid="xg8cmku">
               <h3
                 className="text-2xl font-bold text-gray-900 dark:text-white"
-                data-oid=":l47:6i"
+                data-oid="9j7tbmj"
               >
                 {profile.full_name}
               </h3>
               <p
                 className="text-gray-600 dark:text-gray-400"
-                data-oid="c2vqf2:"
+                data-oid="gywxevu"
               >
                 {t("trustedGuardian")}
               </p>
               <div
                 className="flex items-center space-x-2 mt-2"
-                data-oid="4xfbb9r"
+                data-oid="u5y_3lz"
               >
                 <div
                   className="w-3 h-3 bg-green-500 rounded-full"
-                  data-oid="j1vqk5x"
+                  data-oid="1d-cjle"
                 ></div>
                 <span
                   className="text-sm text-green-600 dark:text-green-400 font-medium"
-                  data-oid="ur3utbv"
+                  data-oid="67fofn0"
                 >
                   {t("activeAccount")}
                 </span>
@@ -205,15 +205,15 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
 
           <div
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            data-oid="x7pjboc"
+            data-oid="dgni-lo"
           >
-            <div className="space-y-6" data-oid="d6kq51o">
-              <div data-oid="zbzx_e3">
+            <div className="space-y-6" data-oid="as7xryq">
+              <div data-oid="jea0u-q">
                 <label
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  data-oid="4j9hx5y"
+                  data-oid="r765x5m"
                 >
-                  <User className="w-4 h-4 inline mr-2" data-oid="g3:hwpq" />
+                  <User className="w-4 h-4 inline mr-2" data-oid="8.ex-ay" />
                   {t("fullName")}
                 </label>
                 {isEditing ? (
@@ -224,24 +224,24 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
                       setProfile({ ...profile, full_name: e.target.value })
                     }
                     className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200"
-                    data-oid="y-r059x"
+                    data-oid="u91ntq-"
                   />
                 ) : (
                   <p
                     className="text-gray-900 dark:text-white font-medium"
-                    data-oid="nyw6jhw"
+                    data-oid="9g-95w_"
                   >
                     {profile.full_name}
                   </p>
                 )}
               </div>
 
-              <div data-oid="8tlc8h6">
+              <div data-oid="53332fr">
                 <label
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  data-oid="mnhbazr"
+                  data-oid="t53eowd"
                 >
-                  <Mail className="w-4 h-4 inline mr-2" data-oid="rtyqrfl" />
+                  <Mail className="w-4 h-4 inline mr-2" data-oid="bocp8vz" />
                   {t("emailAddress")}
                 </label>
                 {isEditing ? (
@@ -252,12 +252,12 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
                       setProfile({ ...profile, email: e.target.value })
                     }
                     className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200"
-                    data-oid=":uuflmp"
+                    data-oid="ztgiucf"
                   />
                 ) : (
                   <p
                     className="text-gray-900 dark:text-white font-medium"
-                    data-oid="sd3rks4"
+                    data-oid="9o-2qes"
                   >
                     {profile.email || "N/A"}
                   </p>
@@ -265,13 +265,13 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
               </div>
             </div>
 
-            <div className="space-y-6" data-oid="e94fd4z">
-              <div data-oid="4hovla:">
+            <div className="space-y-6" data-oid="ld61lu4">
+              <div data-oid="ar6ken7">
                 <label
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  data-oid="_y6ibqu"
+                  data-oid="bpmwwg8"
                 >
-                  <Phone className="w-4 h-4 inline mr-2" data-oid="h7yhepp" />
+                  <Phone className="w-4 h-4 inline mr-2" data-oid=":rog1_3" />
                   {t("phoneNumber")}
                 </label>
                 {isEditing ? (
@@ -282,24 +282,24 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
                       setProfile({ ...profile, phone_number: e.target.value })
                     }
                     className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200"
-                    data-oid="s_:txoq"
+                    data-oid="xm_vgx1"
                   />
                 ) : (
                   <p
                     className="text-gray-900 dark:text-white font-medium"
-                    data-oid="ziari8-"
+                    data-oid="7bmjhe0"
                   >
                     {profile.phone_number}
                   </p>
                 )}
               </div>
 
-              <div data-oid="tpwa:vq">
+              <div data-oid="2g_hw9e">
                 <label
                   className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  data-oid="p791qp6"
+                  data-oid="qpoubdl"
                 >
-                  <MapPin className="w-4 h-4 inline mr-2" data-oid="jol:hd6" />
+                  <MapPin className="w-4 h-4 inline mr-2" data-oid="9:wlfq2" />
                   {t("address")}
                 </label>
                 {isEditing ? (
@@ -310,12 +310,12 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
                       setProfile({ ...profile, address: e.target.value })
                     }
                     className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200"
-                    data-oid="-435jyg"
+                    data-oid=":pxyrgh"
                   />
                 ) : (
                   <p
                     className="text-gray-900 dark:text-white font-medium"
-                    data-oid="am.f0ea"
+                    data-oid="co.6bj3"
                   >
                     {profile.address || "N/A"}
                   </p>
@@ -324,10 +324,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
             </div>
           </div>
 
-          <div className="mt-6" data-oid="3r_5ni1">
+          <div className="mt-6" data-oid="6ph2s:g">
             <label
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-              data-oid="zlf1qxn"
+              data-oid="b1hnk1-"
             >
               {t("about")}
             </label>
@@ -339,12 +339,12 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
                 }
                 rows={3}
                 className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-200 resize-none"
-                data-oid="hf_-ak3"
+                data-oid="nlg7r2i"
               />
             ) : (
               <p
                 className="text-gray-600 dark:text-gray-400"
-                data-oid="bo2vot6"
+                data-oid="64aldsj"
               >
                 {profile.about || "N/A"}
               </p>
@@ -353,46 +353,46 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
 
           <div
             className="grid grid-cols-3 gap-4 mt-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl"
-            data-oid="06iybm_"
+            data-oid="bdamrx-"
           >
-            <div className="text-center" data-oid="w.kgv48">
+            <div className="text-center" data-oid="c7tq589">
               <p
                 className="text-2xl font-bold text-yellow-600 dark:text-yellow-400"
-                data-oid="c2vo98y"
+                data-oid="tg2p.sd"
               >
                 {profile.linked_students}
               </p>
               <p
                 className="text-sm text-gray-600 dark:text-gray-400"
-                data-oid="6w.sibr"
+                data-oid="2gvm8ip"
               >
                 {t("linkedStudents")}
               </p>
             </div>
-            <div className="text-center" data-oid="4_j.:x:">
+            <div className="text-center" data-oid="gd9spns">
               <p
                 className="text-2xl font-bold text-green-600 dark:text-green-400"
-                data-oid="lil9hgv"
+                data-oid="_8z_h8-"
               >
                 {profile.total_transactions}
               </p>
               <p
                 className="text-sm text-gray-600 dark:text-gray-400"
-                data-oid="92y1uok"
+                data-oid="tfmqh.o"
               >
                 {t("totalTransactions")}
               </p>
             </div>
-            <div className="text-center" data-oid="mnvef7.">
+            <div className="text-center" data-oid="na-5o-d">
               <p
                 className="text-2xl font-bold text-blue-600 dark:text-blue-400"
-                data-oid="y41yyqo"
+                data-oid="numy1jw"
               >
                 {profile.days_active}
               </p>
               <p
                 className="text-sm text-gray-600 dark:text-gray-400"
-                data-oid="oe24v-n"
+                data-oid="h6jq68g"
               >
                 {t("daysActive")}
               </p>

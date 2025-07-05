@@ -183,14 +183,14 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       onClose={() => setActiveModal(null)}
       onSubmit={onSubmit}
       isLoading={isLoading}
-      data-oid="1o33.hz"
       submitText={otpRequested ? t("confirmWithdraw") : t("requestOtp")}
+      data-oid="snicnmw"
     >
-      <form className="space-y-6" data-oid="g:yps14" onSubmit={onSubmit}>
-        <div data-oid="m2_2zlh">
+      <form className="space-y-6" onSubmit={onSubmit} data-oid=".8.5krw">
+        <div data-oid="f4nv844">
           <label
             className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
-            data-oid="13rdapu"
+            data-oid="5i6v:te"
           >
             {t("phoneNumber")}
           </label>
@@ -203,13 +203,13 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
             disabled={otpRequested}
             className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50"
             placeholder="078XXXXXXX"
-            data-oid="p0x8q1m"
+            data-oid="2wj9b40"
           />
         </div>
-        <div data-oid="0:oi69p">
+        <div data-oid="l19x5w:">
           <label
             className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
-            data-oid="7pw8f9z"
+            data-oid="u4p8m_6"
           >
             {t("amount")}
           </label>
@@ -224,22 +224,22 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
             disabled={otpRequested}
             className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50"
             placeholder="10,000"
-            data-oid="d_a:7ro"
+            data-oid="n8p9qkw"
           />
         </div>
         {otpRequested && (
           <>
-            <div data-oid="4sp3784">
+            <div data-oid="rld.bbs">
               <label
                 className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
-                data-oid="_xx0h:_"
+                data-oid="2kw9hjn"
               >
                 {t("pin")}
               </label>
               <div
                 className="flex space-x-2"
                 onPaste={handlePaste}
-                data-oid="2mkkca7"
+                data-oid="6o0ovua"
               >
                 {otp.map((digit, index) => (
                   <input
@@ -252,21 +252,21 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
                     ref={(el) => (inputRefs.current[index] = el)}
                     className="w-12 h-12 text-center text-xl rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                     placeholder="0"
-                    data-oid={`d6--rta-${index}`}
+                    data-oid="obja_r4"
                   />
                 ))}
               </div>
             </div>
             <div
               className="text-sm text-brand dark:text-green-300"
-              data-oid="countdown"
+              data-oid="3nrx1:d"
             >
               {t("otpExpiresIn")} {formatCountdown()}
             </div>
           </>
         )}
         {error && (
-          <div className="text-red-500 text-sm mt-2" data-oid="error_msg">
+          <div className="text-red-500 text-sm mt-2" data-oid="rc4wd7m">
             {error}
           </div>
         )}

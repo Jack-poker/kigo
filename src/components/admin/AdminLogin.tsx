@@ -26,7 +26,7 @@ export function AdminLogin({
   const [isFetchingToken, setIsFetchingToken] = useState(false);
   const tokenContext = useContext(TokenContext);
   const tokenPromise = useRef<Promise<string | null> | null>(null);
-  const baseUrl = "http://localhost:8001";
+  const baseUrl = "http://localhost:8002";
 
   // Prioritize TokenContext CSRF token, fallback to local
   const effectiveCsrfToken = tokenContext?.csrfToken || localCsrfToken;
@@ -138,7 +138,7 @@ export function AdminLogin({
             title: "Success",
             description: "Login successful!",
             action: (
-              <ToastAction altText="Go to dashboard" data-oid=":hieukp">
+              <ToastAction altText="Go to dashboard" data-oid="lnje2mx">
                 Go to dashboard
               </ToastAction>
             ),
@@ -162,45 +162,50 @@ export function AdminLogin({
   return (
     <div
       className={cn(
-        "min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-amber-50/30 p-4",
+        "min-h-screen flex items-center justify-center ",
         className,
       )}
+      style={{
+        backgroundImage:
+          "linear-gradient(45deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(0deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(135deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(90deg, rgb(79, 35, 157),rgb(43, 171, 222))",
+        backgroundBlendMode: "overlay,overlay,overlay,normal",
+      }}
       {...props}
-      data-oid="1l5s0:p"
+      data-oid="x4kzbst"
     >
-      <div className="w-full max-w-4xl flex flex-col gap-6" data-oid="vny9uih">
-        <div className="flex justify-center mb-4" data-oid="-36v3ae">
+      <div className="w-full max-w-4xl flex flex-col gap-6" data-oid="9x84:id">
+        <div className="flex justify-center mb-4" data-oid="sq.3yeb">
           <img
-            src="/assets/logo.png"
+            src="/assets/white_logo.png"
             alt="Kaascan logo"
             className="w-48 sm:w-56 md:w-64 h-auto object-contain"
-            data-oid="d--:nhg"
+            data-oid="_k9i-63"
           />
         </div>
         <Card
-          className="overflow-hidden bg-[hsl(var(--primary))] shadow-lg w-full mx-auto"
-          data-oid="y0z5s7r"
+          className="overflow-hidden bg-brand shadow-lg w-full mx-auto border-brand"
+          data-oid="p6:rexw"
         >
-          <CardContent className="grid p-0 md:grid-cols-2" data-oid="gr-3p2t">
+          <CardContent className="grid p-0 md:grid-cols-2" data-oid="f4e2y14">
             <form
               className="p-4 sm:p-6 md:p-8"
               onSubmit={(e) => e.preventDefault()}
-              data-oid="ludp5-h"
+              data-oid="yucq97q"
             >
-              <div className="flex flex-col gap-6" data-oid="a86x34l">
+              <div className="flex flex-col gap-6" data-oid="0htyl2d">
                 <div
                   className="flex flex-col items-center text-center"
-                  data-oid="c0_ys77"
+                  data-oid="ve_p3_k"
                 >
                   <h1
                     className="text-xl sm:text-2xl font-bold text-white"
-                    data-oid="c.bzb-t"
+                    data-oid="u7o34oj"
                   >
                     Admin Login
                   </h1>
                   <p
                     className="text-sm sm:text-base text-white/90"
-                    data-oid="cjero6d"
+                    data-oid="dhi-w_r"
                   >
                     Login to your Kaascan Admin account
                   </p>
@@ -208,14 +213,14 @@ export function AdminLogin({
                 {isFetchingToken && !effectiveCsrfToken && (
                   <p
                     className="text-center text-sm text-white/90"
-                    data-oid="opl:96p"
+                    data-oid="bddf49b"
                   >
                     Fetching token...
                   </p>
                 )}
-                <div className="grid gap-4" data-oid="po9i694">
-                  <div className="grid gap-2 text-white" data-oid=":ckew91">
-                    <Label htmlFor="email" data-oid="7.ro9om">
+                <div className="grid gap-4" data-oid="z1yxycn">
+                  <div className="grid gap-2 text-white" data-oid="27k0fro">
+                    <Label htmlFor="email" data-oid="rdg6rny">
                       Email
                     </Label>
                     <Input
@@ -226,21 +231,21 @@ export function AdminLogin({
                       placeholder="Email address"
                       className="bg-white/10 text-white border-amber-400/50 focus:border-amber-400 text-sm sm:text-base"
                       required
-                      data-oid="290k_s1"
+                      data-oid="t.xkbuu"
                     />
                   </div>
-                  <div className="grid gap-2 text-white" data-oid="nsiw80g">
+                  <div className="grid gap-2 text-white" data-oid="ovla18u">
                     <div
                       className="flex items-center justify-between"
-                      data-oid="jsk.jhn"
+                      data-oid="yprfc7b"
                     >
-                      <Label htmlFor="password" data-oid="k5cj.qo">
+                      <Label htmlFor="password" data-oid="oav:3a1">
                         Password
                       </Label>
                       <a
                         href="/admin/forgot-password"
                         className="text-xs sm:text-sm text-amber-400 hover:underline"
-                        data-oid="86m1o4e"
+                        data-oid="uo3:vhh"
                       >
                         Forgot your password?
                       </a>
@@ -253,29 +258,29 @@ export function AdminLogin({
                       placeholder="Password"
                       className="bg-white/10 text-white border-amber-400/50 focus:border-amber-400 text-sm sm:text-base"
                       required
-                      data-oid="g_8p5_k"
+                      data-oid="wxyku27"
                     />
                   </div>
                   <Button
                     type="button"
                     onClick={handleSubmit}
-                    className="w-full bg-amber-400 hover:bg-amber-500 text-black font-medium text-sm sm:text-base py-2 sm:py-3"
+                    className="w-full bg-white text-brand hover:bg-white font-medium text-sm sm:text-base py-2 sm:py-3"
                     disabled={isSubmitted || isFetchingToken}
                     aria-label="Login to admin dashboard"
-                    data-oid="vtwvif0"
+                    data-oid="dn7qpy9"
                   >
                     {isSubmitted ? "Logging in..." : "Login"}
                   </Button>
                 </div>
                 <div
                   className="text-center text-xs sm:text-sm text-white/90"
-                  data-oid="d:wxxd4"
+                  data-oid="qmxp8lh"
                 >
                   Need assistance?{" "}
                   <a
                     href="/support"
                     className="text-amber-400 hover:text-amber-500 underline underline-offset-4"
-                    data-oid="kyq03fv"
+                    data-oid="ltg:_4e"
                   >
                     Contact support
                   </a>
@@ -284,32 +289,32 @@ export function AdminLogin({
             </form>
             <div
               className="relative hidden md:block bg-white h-full"
-              data-oid="35-3f_a"
+              data-oid=".njzfuj"
             >
               <div
                 className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 z-10"
-                data-oid="1la0pz:"
+                data-oid="jaw1jz5"
               ></div>
               <img
-                src="/assets/side.png"
+                src="/banner5.png"
                 alt="Kaascan Admin Portal"
-                className="absolute inset-0 h-full w-full object-contain"
-                data-oid="kpcds8l"
+                className="absolute inset-0 h-full w-full object-cover"
+                data-oid="13l4sfu"
               />
 
               <div
                 className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8 z-20 text-white"
-                data-oid=".3vv4:w"
+                data-oid="2um_r29"
               >
                 <h2
                   className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2"
-                  data-oid="x-t6k8z"
+                  data-oid="97fy8_4"
                 >
                   Welcome to Kaascan Admin Portal
                 </h2>
                 <p
                   className="text-sm sm:text-base md:text-lg opacity-90"
-                  data-oid="i5oaa0c"
+                  data-oid="06n5_if"
                 >
                   Manage school payments, ads, and parent accounts with ease and
                   security.
@@ -320,14 +325,14 @@ export function AdminLogin({
         </Card>
         <div
           className="text-center text-xs sm:text-sm text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary"
-          data-oid="r3j5juh"
+          data-oid="k2k7lr8"
         >
           By clicking continue, you agree to our{" "}
-          <a href="#" data-oid="4ev297s">
+          <a href="#" data-oid="3tl46ns">
             Terms of Service
           </a>{" "}
           and{" "}
-          <a href="#" data-oid="8k:yuim">
+          <a href="#" data-oid="8i6ywl5">
             Privacy Policy
           </a>
           .

@@ -145,21 +145,21 @@ export function SignupForm({
     <div
       className={cn("flex flex-col gap-6", className)}
       {...props}
-      data-oid="dce9d0p"
+      data-oid="1wqbflh"
     >
       {/* Logo Section */}
-      <div className="flex justify-center mb-8" data-oid="v--3lf2">
-        <div className="relative" data-oid="7_b90if">
+      <div className="flex justify-center mb-8" data-oid=".c6wgxd">
+        <div className="relative" data-oid="wp:oi23">
           <img
             src="/assets/white_logo.png"
             alt="kaascan logo"
             className="w-64 h-20 object-contain drop-shadow-lg"
-            data-oid="5ms0_r."
+            data-oid="pch6y9-"
           />
 
           <div
             className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs px-2 py-1 rounded-full font-bold animate-pulse"
-            data-oid="lzf-25k"
+            data-oid="upwdu8d"
           >
             For Parents
           </div>
@@ -168,111 +168,111 @@ export function SignupForm({
 
       {/* Benefits Banner */}
       {/* <div
-               className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
-               data-oid="nm06:re"
-              >
-               <div
-                 className="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-700"
-                 data-oid="u3doe48"
-               >
-                 <div className="p-2 bg-green-500 rounded-lg" data-oid="cwvt87.">
-                   <Shield className="w-5 h-5 text-white" data-oid=":il2tuu" />
-                 </div>
-                 <div data-oid="-dldapz">
-                   <h3
-                     className="font-semibold text-green-800 dark:text-green-300 text-sm"
-                     data-oid="wwghd.9"
-                   >
-                     Secure Payments
-                   </h3>
-                   <p
-                     className="text-green-600 dark:text-green-400 text-xs"
-                     data-oid="3i-k352"
-                   >
-                     Bank-level security
-                   </p>
-                 </div>
-               </div>
-                <div
-                 className="flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-700"
-                 data-oid="nd_mp4c"
-               >
-                 <div className="p-2 bg-blue-500 rounded-lg" data-oid=".r_xnfg">
-                   <Users className="w-5 h-5 text-white" data-oid="glgp5ow" />
-                 </div>
-                 <div data-oid="tu61zae">
-                   <h3
-                     className="font-semibold text-blue-800 dark:text-blue-300 text-sm"
-                     data-oid="sfthb0d"
-                   >
-                     Family Control
-                   </h3>
-                   <p
-                     className="text-blue-600 dark:text-blue-400 text-xs"
-                     data-oid="t-yr7ri"
-                   >
-                     Monitor spending
-                   </p>
-                 </div>
-               </div>
-                <div
-                 className="flex items-center space-x-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-700"
-                 data-oid="z02j7qb"
-               >
-                 <div className="p-2 bg-purple-500 rounded-lg" data-oid="y4c8dao">
-                   <Heart className="w-5 h-5 text-white" data-oid="gyyqdo7" />
-                 </div>
-                 <div data-oid="_y1h9k6">
-                   <h3
-                     className="font-semibold text-purple-800 dark:text-purple-300 text-sm"
-                     data-oid="bf6.o-v"
-                   >
-                     Peace of Mind
-                   </h3>
-                   <p
-                     className="text-purple-600 dark:text-purple-400 text-xs"
-                     data-oid="lfff0mj"
-                   >
-                     Real-time alerts
-                   </p>
-                 </div>
-               </div>
-              </div> */}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
+                  data-oid="nm06:re"
+                 >
+                  <div
+                    className="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-xl border border-green-200 dark:border-green-700"
+                    data-oid="u3doe48"
+                  >
+                    <div className="p-2 bg-green-500 rounded-lg" data-oid="cwvt87.">
+                      <Shield className="w-5 h-5 text-white" data-oid=":il2tuu" />
+                    </div>
+                    <div data-oid="-dldapz">
+                      <h3
+                        className="font-semibold text-green-800 dark:text-green-300 text-sm"
+                        data-oid="wwghd.9"
+                      >
+                        Secure Payments
+                      </h3>
+                      <p
+                        className="text-green-600 dark:text-green-400 text-xs"
+                        data-oid="3i-k352"
+                      >
+                        Bank-level security
+                      </p>
+                    </div>
+                  </div>
+                   <div
+                    className="flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-700"
+                    data-oid="nd_mp4c"
+                  >
+                    <div className="p-2 bg-blue-500 rounded-lg" data-oid=".r_xnfg">
+                      <Users className="w-5 h-5 text-white" data-oid="glgp5ow" />
+                    </div>
+                    <div data-oid="tu61zae">
+                      <h3
+                        className="font-semibold text-blue-800 dark:text-blue-300 text-sm"
+                        data-oid="sfthb0d"
+                      >
+                        Family Control
+                      </h3>
+                      <p
+                        className="text-blue-600 dark:text-blue-400 text-xs"
+                        data-oid="t-yr7ri"
+                      >
+                        Monitor spending
+                      </p>
+                    </div>
+                  </div>
+                   <div
+                    className="flex items-center space-x-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-xl border border-purple-200 dark:border-purple-700"
+                    data-oid="z02j7qb"
+                  >
+                    <div className="p-2 bg-purple-500 rounded-lg" data-oid="y4c8dao">
+                      <Heart className="w-5 h-5 text-white" data-oid="gyyqdo7" />
+                    </div>
+                    <div data-oid="_y1h9k6">
+                      <h3
+                        className="font-semibold text-purple-800 dark:text-purple-300 text-sm"
+                        data-oid="bf6.o-v"
+                      >
+                        Peace of Mind
+                      </h3>
+                      <p
+                        className="text-purple-600 dark:text-purple-400 text-xs"
+                        data-oid="lfff0mj"
+                      >
+                        Real-time alerts
+                      </p>
+                    </div>
+                  </div>
+                 </div> */}
 
       <Card
         className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-2xl border-0 overflow-hidden"
-        data-oid="7lxa5fp"
+        data-oid="6tiv-3_"
       >
-        <CardContent className="grid p-0 md:grid-cols-2" data-oid="-8a5vfi">
+        <CardContent className="grid p-0 md:grid-cols-2" data-oid="xxwhrbc">
           <form
             className="p-8 md:p-10 w-full bg-brand dark:bg-brand"
-            data-oid="e5xv8zv"
+            data-oid="z4p5wxf"
           >
-            <div className="flex flex-col gap-6" data-oid="l15kwmf">
+            <div className="flex flex-col gap-6" data-oid="ao..h0s">
               {/* Header */}
-              <div className="text-center mb-6" data-oid="wu.::c2">
-                <div className="flex justify-center mb-4" data-oid="dh6xn4e">
+              <div className="text-center mb-6" data-oid="3kx0fx6">
+                <div className="flex justify-center mb-4" data-oid="bwq-kxz">
                   <div
                     className="p-4 bg-white text-brand rounded-full shadow-lg"
-                    data-oid="1169b3n"
+                    data-oid="l998qo-"
                   >
                     {isSignupComplete ? (
                       <Shield
                         className="w-8 h-8 text-white"
-                        data-oid="p9urkcm"
+                        data-oid=".u5ze29"
                       />
                     ) : (
-                      <User className="w-8 h-8 text-brand" data-oid="sckmk5w" />
+                      <User className="w-8 h-8 text-brand" data-oid=".u-ajl1" />
                     )}
                   </div>
                 </div>
                 <h1
                   className="text-3xl font-bold text-white dark:text-white mb-2"
-                  data-oid="z5uxei:"
+                  data-oid="dlfzk6a"
                 >
                   {isSignupComplete ? "Verify Your Phone" : "Join Our Family"}
                 </h1>
-                <p className="text-white dark:text-white" data-oid="9b9fqu0">
+                <p className="text-white dark:text-white" data-oid="zloscb6">
                   {isSignupComplete
                     ? "We've sent a 6-digit code to your phone number"
                     : "Create your account to start managing your children's finances safely"}
@@ -283,20 +283,20 @@ export function SignupForm({
               {errors.general && (
                 <div
                   className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-4 flex items-center space-x-3"
-                  data-oid="-p:wr9n"
+                  data-oid="9vg_rsk"
                 >
                   <div
                     className="p-1 bg-red-500 rounded-full"
-                    data-oid="avq7.1h"
+                    data-oid="y5mur8d"
                   >
                     <CheckCircle
                       className="w-4 h-4 text-white"
-                      data-oid="de0nfao"
+                      data-oid="qbai9lx"
                     />
                   </div>
                   <p
                     className="text-red-700 dark:text-red-400 text-sm"
-                    data-oid="9:dtl:9"
+                    data-oid="qg:9j7m"
                   >
                     {errors.general}
                   </p>
@@ -306,16 +306,16 @@ export function SignupForm({
               {!isSignupComplete ? (
                 <>
                   {/* Full Name Field */}
-                  <div className="space-y-2" data-oid="yuqp7b_">
+                  <div className="space-y-2" data-oid="x4b0rps">
                     <Label
                       htmlFor="fullnames"
                       className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2"
-                      data-oid="td8vuxd"
+                      data-oid="impoozi"
                     >
-                      <User className="w-4 h-4" data-oid="2840i5i" />
-                      <span data-oid="mnsuw:7">Full Name</span>
+                      <User className="w-4 h-4" data-oid="_.clhh1" />
+                      <span data-oid="f7tlfnu">Full Name</span>
                     </Label>
-                    <div className="relative" data-oid="mwnh:h-">
+                    <div className="relative" data-oid="2:8qfvg">
                       <Input
                         id="fullnames"
                         value={fullnames}
@@ -331,36 +331,36 @@ export function SignupForm({
                             : "border-brand dark:border-gray-600 focus:border-blue-500"
                         }`}
                         placeholder="Enter your full name"
-                        data-oid="spjces_"
+                        data-oid="k-wjris"
                       />
 
                       <User
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-                        data-oid="1cjjqp6"
+                        data-oid="a:yt4i0"
                       />
                     </div>
                     {errors.fullnames && (
                       <p
                         className="text-red-500 text-sm flex items-center space-x-1"
-                        data-oid="h3y-qll"
+                        data-oid="yizgruq"
                       >
-                        <span data-oid="ehlv8mz">⚠️</span>
-                        <span data-oid="xvyesm5">{errors.fullnames}</span>
+                        <span data-oid="j-8:xry">⚠️</span>
+                        <span data-oid="_bn4qt2">{errors.fullnames}</span>
                       </p>
                     )}
                   </div>
 
                   {/* Phone Number Field */}
-                  <div className="space-y-2" data-oid="w5pzm.l">
+                  <div className="space-y-2" data-oid="xx_w1md">
                     <Label
                       htmlFor="phone"
                       className="text-white font-medium flex items-center space-x-2"
-                      data-oid="4pj__0o"
+                      data-oid="7h3okku"
                     >
-                      <Phone className="w-4 h-4" data-oid="pn60653" />
-                      <span data-oid="1jw7.65">Phone Number</span>
+                      <Phone className="w-4 h-4" data-oid="omx:kn3" />
+                      <span data-oid="6uwnh3w">Phone Number</span>
                     </Label>
-                    <div className="relative" data-oid="78cu8f0">
+                    <div className="relative" data-oid="7z1127b">
                       <Input
                         id="phone"
                         type="tel"
@@ -377,17 +377,17 @@ export function SignupForm({
                         }`}
                         placeholder="078XXXXXXX"
                         required
-                        data-oid="4hiqpol"
+                        data-oid="f::-35m"
                       />
 
                       <Phone
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-                        data-oid="a0gryou"
+                        data-oid="awc9ypj"
                       />
 
                       <div
                         className="absolute right-4 top-1/2 transform -translate-y-1/2 text-xs bg-blue-100 dark:bg-brand text-blue-700 dark:text-blue-300 px-2 py-1 rounded"
-                        data-oid="axodf3:"
+                        data-oid="a.-e.na"
                       >
                         🇷🇼 Rwanda
                       </div>
@@ -395,25 +395,25 @@ export function SignupForm({
                     {errors.phonenumber && (
                       <p
                         className="text-red-500 text-sm flex items-center space-x-1"
-                        data-oid="rqridny"
+                        data-oid="8px23-:"
                       >
-                        <span data-oid="drnp0-l">⚠️</span>
-                        <span data-oid="cp:panu">{errors.phonenumber}</span>
+                        <span data-oid=":j4awjq">⚠️</span>
+                        <span data-oid="wx9cs62">{errors.phonenumber}</span>
                       </p>
                     )}
                   </div>
 
                   {/* Password Field */}
-                  <div className="space-y-2" data-oid="z17yna3">
+                  <div className="space-y-2" data-oid=".:my8t8">
                     <Label
                       htmlFor="password"
                       className="text-white font-medium flex items-center space-x-2"
-                      data-oid="qklimtx"
+                      data-oid="0_ckxz4"
                     >
-                      <Lock className="w-4 h-4" data-oid="nzzp.ut" />
-                      <span data-oid="xm2n:u5">Password</span>
+                      <Lock className="w-4 h-4" data-oid="cd1g44-" />
+                      <span data-oid="uzfa44r">Password</span>
                     </Label>
-                    <div className="relative" data-oid="q54dmxt">
+                    <div className="relative" data-oid="-v7et_z">
                       <Input
                         id="password"
                         type={showPassword ? "text" : "password"}
@@ -430,38 +430,38 @@ export function SignupForm({
                         }`}
                         placeholder="Create a secure password"
                         required
-                        data-oid="py44:g8"
+                        data-oid="n:tl5ak"
                       />
 
                       <Lock
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-                        data-oid="031sdkj"
+                        data-oid="_60.lz7"
                       />
 
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                        data-oid="1bpn_2h"
+                        data-oid="hbgd57."
                       >
                         {showPassword ? (
-                          <EyeOff className="w-5 h-5" data-oid="0ewakrt" />
+                          <EyeOff className="w-5 h-5" data-oid="-gr3alw" />
                         ) : (
-                          <Eye className="w-5 h-5" data-oid="pqe.wk1" />
+                          <Eye className="w-5 h-5" data-oid="v:eo9dm" />
                         )}
                       </button>
                     </div>
 
                     {/* Password Strength Indicator */}
                     {password && (
-                      <div className="space-y-2" data-oid="xzxj440">
+                      <div className="space-y-2" data-oid="35ny0a0">
                         <div
                           className="flex items-center space-x-2"
-                          data-oid="k:x-ukb"
+                          data-oid="21itml7"
                         >
                           <div
                             className="flex-1 bg-gray-200 dark:bg-gray-600 rounded-full h-2"
-                            data-oid="uhlqxlf"
+                            data-oid="3mob_:1"
                           >
                             <div
                               className={`h-2 rounded-full transition-all duration-300 ${
@@ -472,7 +472,7 @@ export function SignupForm({
                                     : "bg-green-500"
                               }`}
                               style={{ width: `${passwordStrength}%` }}
-                              data-oid="vbvs9.a"
+                              data-oid="ghd70lu"
                             />
                           </div>
                           <span
@@ -483,7 +483,7 @@ export function SignupForm({
                                   ? "text-yellow-500"
                                   : "text-green-500"
                             }`}
-                            data-oid="_:2q.oq"
+                            data-oid=":mkqr3-"
                           >
                             {passwordStrength < 50
                               ? "Weak"
@@ -498,10 +498,10 @@ export function SignupForm({
                     {errors.password && (
                       <p
                         className="text-red-500 text-sm flex items-center space-x-1"
-                        data-oid="l9oohep"
+                        data-oid="oe.0rhu"
                       >
-                        <span data-oid="m57h:15">⚠️</span>
-                        <span data-oid="sbilqv7">{errors.password}</span>
+                        <span data-oid="dl748_w">⚠️</span>
+                        <span data-oid="ed-8gok">{errors.password}</span>
                       </p>
                     )}
                   </div>
@@ -512,27 +512,27 @@ export function SignupForm({
                     onClick={signup_submit}
                     disabled={isLoading}
                     className="w-full h-12 bg-white text-brand hover:bg-brand font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                    data-oid="omeyfyx"
+                    data-oid="rkb6d9h"
                   >
                     {isLoading ? (
                       <div
                         className="flex items-center space-x-2"
-                        data-oid="347lbv."
+                        data-oid="ym1_v25"
                       >
                         <Loader2
                           className="w-5 h-5 animate-spin"
-                          data-oid="f21xwz_"
+                          data-oid="-qxi1s0"
                         />
 
-                        <span data-oid="tqzp6dg">Creating Account...</span>
+                        <span data-oid="sph8iun">Creating Account...</span>
                       </div>
                     ) : (
                       <div
                         className="flex items-center space-x-2"
-                        data-oid="s2cqzr-"
+                        data-oid="f84y.du"
                       >
-                        <Star className="w-5 h-5" data-oid="._lib1y" />
-                        <span data-oid="vyth:nd">Create My Account</span>
+                        <Star className="w-5 h-5" data-oid="v52i80u" />
+                        <span data-oid="up12oz-">Create My Account</span>
                       </div>
                     )}
                   </Button>
@@ -540,16 +540,16 @@ export function SignupForm({
               ) : (
                 <>
                   {/* OTP Field */}
-                  <div className="space-y-4" data-oid="6_ugmmn">
+                  <div className="space-y-4" data-oid="bw256jk">
                     <Label
                       htmlFor="otp"
                       className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2"
-                      data-oid="ae:v.3:"
+                      data-oid="c9vk_87"
                     >
-                      <Shield className="w-4 h-4" data-oid="ss6:i.n" />
-                      <span data-oid="yznwdqm">Verification Code</span>
+                      <Shield className="w-4 h-4" data-oid="c7b1zj8" />
+                      <span data-oid="lwbv.:_">Verification Code</span>
                     </Label>
-                    <div className="relative" data-oid="cnxqiyv">
+                    <div className="relative" data-oid="wua2934">
                       <Input
                         id="otp"
                         type="text"
@@ -561,23 +561,23 @@ export function SignupForm({
                         maxLength={6}
                         className="text-center tracking-[0.5em] text-2xl font-bold h-16 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 focus:border-blue-500"
                         required
-                        data-oid=".:iga70"
+                        data-oid="0f28ifn"
                       />
                     </div>
-                    <div className="text-center" data-oid="75_w2dk">
+                    <div className="text-center" data-oid="-2n_cyu">
                       <p
                         className="text-sm text-gray-600 dark:text-gray-400 mb-2"
-                        data-oid="cjlve18"
+                        data-oid="4xjcjyj"
                       >
                         Code sent to:{" "}
-                        <span className="font-semibold" data-oid="c4z1u4x">
+                        <span className="font-semibold" data-oid="r9d9fck">
                           {phonenumber}
                         </span>
                       </p>
                       <button
                         type="button"
                         className="text-blue-600 hover:text-blue-700 text-sm font-medium underline"
-                        data-oid="pmz0ily"
+                        data-oid="4xof2z."
                       >
                         Resend Code
                       </button>
@@ -589,14 +589,14 @@ export function SignupForm({
                     type="submit"
                     disabled={otp.length !== 6}
                     className="w-full h-12 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                    data-oid="6coxfdx"
+                    data-oid="hk480bn"
                   >
                     <div
                       className="flex items-center space-x-2"
-                      data-oid="cq:f298"
+                      data-oid="gxsuzf-"
                     >
-                      <CheckCircle className="w-5 h-5" data-oid=".bo1q74" />
-                      <span data-oid=".o.s934">Verify & Continue</span>
+                      <CheckCircle className="w-5 h-5" data-oid="5202vp-" />
+                      <span data-oid="v.a_5ce">Verify & Continue</span>
                     </div>
                   </Button>
                 </>
@@ -607,73 +607,73 @@ export function SignupForm({
           {/* Side Image */}
           <div
             className="relative hidden md:block bg-brand overflow-hidden"
-            data-oid="7durq:s"
+            data-oid="t4vt4tr"
           >
-            <div className="absolute inset-0 bg-brand" data-oid="uz-1bg_"></div>
+            <div className="absolute inset-0 bg-brand" data-oid="l89ccii"></div>
             <img
               src="/banner5.png"
               alt="Happy family managing finances"
               className="absolute inset-0 object-cover h-full w-full opacity-80"
-              data-oid="tg0_aoc"
+              data-oid="jo-3let"
             />
 
             <div
               className="absolute inset-0 flex flex-col justify-center items-center text-white p-8"
-              data-oid="10y_sf7"
+              data-oid="3hv4w.7"
             >
-              <div className="text-center space-y-6" data-oid="1:z6b:b">
-                <h2 className="text-3xl font-bold" data-oid="de1g02.">
+              <div className="text-center space-y-6" data-oid="7vankly">
+                <h2 className="text-3xl font-bold" data-oid="faqs-aq">
                   Trusted by 10,000+ Parents
                 </h2>
-                <p className="text-lg opacity-90" data-oid="w7gduma">
+                <p className="text-lg opacity-90" data-oid="novot3d">
                   Join families across Rwanda who trust us with their children's
                   financial education
                 </p>
                 <div
                   className="flex items-center justify-center space-x-1"
-                  data-oid="f11p3iw"
+                  data-oid="zjz247s"
                 >
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className="w-6 h-6 fill-yellow-400 text-yellow-400"
-                      data-oid="gk9q_qw"
+                      data-oid="i_94ddv"
                     />
                   ))}
                   <span
                     className="ml-2 text-lg font-semibold"
-                    data-oid="-9fad9r"
+                    data-oid="z-x8_r."
                   >
                     4.9/5
                   </span>
                 </div>
                 <div
                   className="grid grid-cols-2 gap-4 text-center"
-                  data-oid="flgiyqj"
+                  data-oid="nra:zg."
                 >
                   <div
                     className="bg-white/20 backdrop-blur-sm rounded-lg p-4"
-                    data-oid="r87ysyq"
+                    data-oid="z4:dqrw"
                   >
                     <CreditCard
                       className="w-8 h-8 mx-auto mb-2"
-                      data-oid="d.hz0xt"
+                      data-oid="402hld3"
                     />
 
-                    <p className="text-sm font-medium" data-oid="7kk_01k">
+                    <p className="text-sm font-medium" data-oid="0n1yep9">
                       Secure Payments
                     </p>
                   </div>
                   <div
                     className="bg-white/20 backdrop-blur-sm rounded-lg p-4"
-                    data-oid="ca5sl4n"
+                    data-oid="dhhp63j"
                   >
                     <Users
                       className="w-8 h-8 mx-auto mb-2"
-                      data-oid="zspsfk1"
+                      data-oid="szrt9vo"
                     />
 
-                    <p className="text-sm font-medium" data-oid="x06vzw0">
+                    <p className="text-sm font-medium" data-oid="sd9yg:o">
                       Family Control
                     </p>
                   </div>
@@ -686,14 +686,14 @@ export function SignupForm({
 
       <p
         className="text-xs text-center text-muted-foreground"
-        data-oid="l707lyp"
+        data-oid="7k0plsv"
       >
         By clicking continue, you agree to our{" "}
-        <a href="#" className="underline" data-oid="pp5hxa0">
+        <a href="#" className="underline" data-oid=".rcz:rb">
           Terms of Service
         </a>{" "}
         and{" "}
-        <a href="#" className="underline" data-oid="19:jnfq">
+        <a href="#" className="underline" data-oid="et461dc">
           Privacy Policy
         </a>
         .

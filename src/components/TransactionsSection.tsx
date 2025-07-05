@@ -72,22 +72,22 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
     switch (type) {
       case "deposit":
         return (
-          <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" data-oid="z7a2ge6" />
+          <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" data-oid="gs7tm58" />
         );
 
       case "withdraw":
         return (
-          <TrendingDown className="w-4 h-4 sm:w-5 sm:h-5" data-oid="9oo41bc" />
+          <TrendingDown className="w-4 h-4 sm:w-5 sm:h-5" data-oid="_6e2tp." />
         );
 
       case "payment":
         return (
-          <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" data-oid="8pkmwqu" />
+          <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" data-oid="l7pc41d" />
         );
 
       default:
         return (
-          <Activity className="w-4 h-4 sm:w-5 sm:h-5" data-oid="3qpetfu" />
+          <Activity className="w-4 h-4 sm:w-5 sm:h-5" data-oid="4wb4565" />
         );
     }
   };
@@ -111,7 +111,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <CheckCircle
             className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400"
-            data-oid="nckbno-"
+            data-oid="jt_zs9a"
           />
         );
 
@@ -119,7 +119,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <Clock
             className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500"
-            data-oid="vmbb85z"
+            data-oid="9fh8s8y"
           />
         );
 
@@ -127,7 +127,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <XCircle
             className="w-3 h-3 sm:w-4 sm:h-4 text-red-500"
-            data-oid="rw30ou6"
+            data-oid="rq6pmmq"
           />
         );
 
@@ -135,7 +135,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <Info
             className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500"
-            data-oid="bxtpaef"
+            data-oid="d2gctiy"
           />
         );
     }
@@ -147,9 +147,9 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <span
             className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"
-            data-oid="cc2e965"
+            data-oid="auewu.m"
           >
-            <AlertTriangle className="w-3 h-3 mr-1" data-oid="-vfjtrl" />
+            <AlertTriangle className="w-3 h-3 mr-1" data-oid="8dzw8gy" />
             High Risk
           </span>
         );
@@ -158,9 +158,9 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <span
             className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400"
-            data-oid="2iy-2sz"
+            data-oid="qdw-c96"
           >
-            <AlertTriangle className="w-3 h-3 mr-1" data-oid="5h_5b3:" />
+            <AlertTriangle className="w-3 h-3 mr-1" data-oid="s:osgxk" />
             Medium Risk
           </span>
         );
@@ -169,9 +169,9 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <span
             className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
-            data-oid="8xfqv-b"
+            data-oid="ra_2f3u"
           >
-            <Shield className="w-3 h-3 mr-1" data-oid="2z4203q" />
+            <Shield className="w-3 h-3 mr-1" data-oid="ra__5ep" />
             Secure
           </span>
         );
@@ -181,12 +181,12 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
   const getReportButtonStyle = (riskLevel) => {
     return riskLevel === "low"
       ? {
-          icon: <Lock className="w-4 h-4" data-oid="vt:rgh9" />,
+          icon: <Lock className="w-4 h-4" data-oid="kii_d:i" />,
           className:
             "flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm font-medium min-h-[48px]",
         }
       : {
-          icon: <AlertOctagon className="w-4 h-4" data-oid="h201.rs" />,
+          icon: <AlertOctagon className="w-4 h-4" data-oid="54bvd8j" />,
           className:
             "flex items-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm font-medium min-h-[48px]",
         };
@@ -299,14 +299,14 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <div
             className="text-sm text-gray-700 dark:text-gray-300"
-            data-oid="risk-explanation-high"
+            data-oid="_glhg-o"
           >
-            <p className="mb-2" data-oid="v9lmtx.">
+            <p className="mb-2" data-oid="ftqj-y3">
               This transaction has been flagged as high risk due to unusual
               activity, such as an unrecognized device or location.
             </p>
-            <p data-oid="4vxz-82">
-              <strong data-oid="19c97j-">What you can do:</strong> Review the
+            <p data-oid="gl.gw2t">
+              <strong data-oid="uxuh7qz">What you can do:</strong> Review the
               transaction details, contact our support team for assistance, or
               block the student’s account to prevent further transactions until
               resolved.
@@ -318,14 +318,14 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <div
             className="text-sm text-gray-700 dark:text-gray-300"
-            data-oid="risk-explanation-medium"
+            data-oid="3b6imlh"
           >
-            <p className="mb-2" data-oid="i2f5ozf">
+            <p className="mb-2" data-oid="9cqyost">
               This transaction is marked as medium risk, possibly due to a new
               merchant or a large amount.
             </p>
-            <p data-oid="jrx34kq">
-              <strong data-oid="mzqbtl2">What you can do:</strong> Monitor the
+            <p data-oid="c6a111w">
+              <strong data-oid="6s5kts5">What you can do:</strong> Monitor the
               account for further activity, verify the transaction with the
               student, or contact support for clarification.
             </p>
@@ -336,14 +336,14 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         return (
           <div
             className="text-sm text-gray-700 dark:text-gray-300"
-            data-oid="risk-explanation-low"
+            data-oid="r:py-5f"
           >
-            <p className="mb-2" data-oid="x2hn4sw">
+            <p className="mb-2" data-oid="pxt8:z0">
               This transaction is considered secure and low risk, with verified
               authentication and a known location.
             </p>
-            <p data-oid="_yrubim">
-              <strong data-oid="cxkv_:j">What you can do:</strong> No immediate
+            <p data-oid="7s98w0j">
+              <strong data-oid="6ixs3w:">What you can do:</strong> No immediate
               action is required, but you can report if something seems
               incorrect or block the student’s account if you have concerns.
             </p>
@@ -354,7 +354,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
 
   return (
     <>
-      <style data-oid="lo2fbsf">
+      <style data-oid="pkq6._c">
         {`
           .leaflet-container {
             background: #1a1a1a;
@@ -384,36 +384,36 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
       </style>
       <div
         className="dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700 bg-[#FFFFFF00] bg-[url(/images/lWqp.png)]"
-        data-oid="41h1g2:"
+        data-oid="tghkop."
       >
         {/* Header */}
         <div
           className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-3"
-          data-oid="lscw9h6"
+          data-oid="i:d__6u"
         >
           <div
             className="flex items-center space-x-3 sm:space-x-4"
-            data-oid="xcvc8x3"
+            data-oid="f3j:clv"
           >
             <div
               className="p-2 sm:p-3 from-purple-500 to-indigo-600 rounded-xl shadow-lg bg-none bg-[#1350D2]"
-              data-oid="9diip6z"
+              data-oid="s_yj2rq"
             >
               <Activity
                 className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-                data-oid="a0g6tn3"
+                data-oid="l.ga775"
               />
             </div>
-            <div data-oid="-cmtu6_">
+            <div data-oid="ef_5ucb">
               <h3
                 className="text-lg sm:text-xl font-bold text-brand dark:text-brand"
-                data-oid="l3yrh3b"
+                data-oid="cphni43"
               >
                 Transaction Monitor
               </h3>
               <p
                 className="text-xs sm:text-sm text-gray-500 dark:text-gray-400"
-                data-oid="xst0adj"
+                data-oid="njp-q.e"
               >
                 Real-time activity tracking with location data
               </p>
@@ -425,18 +425,18 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
             className="flex items-center space-x-2 from-indigo-500 to-purple-600 hover:from-indigo-600 
             hover:to-purple-700 text-white px-3 sm:px-4 py-2 rounded-xl transition-all duration-200 font-medium shadow-lg
              hover:shadow-xl transform hover:scale-105 bg-none bg-brand min-h-[48px] w-full sm:w-auto"
-            data-oid="8.sk0i-"
+            data-oid="h36k9ne"
           >
-            <span data-oid=":4o.-1h">{t("viewAll")}</span>
+            <span data-oid="1fe89nv">{t("viewAll")}</span>
             <ExternalLink
               className="w-4 h-4 bg-[rgba(0,_0,_0,_0)]"
-              data-oid="68ldhft"
+              data-oid="az082hs"
             />
           </button>
         </div>
 
         {/* Transactions List */}
-        <div className="space-y-4" data-oid="7lbk.89">
+        <div className="space-y-4" data-oid="2laeebz">
           {transactions.slice(0, 5).map((transaction) => {
             const enhanced = enhanceTransactionData(transaction);
             const reportButton = getReportButtonStyle(
@@ -447,32 +447,32 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
               <div
                 key={transaction.id}
                 className="group relative bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 rounded-2xl p-4 sm:p-5 hover:shadow-lg transition-all duration-300 border dark:border-gray-600 hover:border-indigo-300 dark:hover:border-indigo-500 border-[#1C0645E8]"
-                data-oid="80p3:tk"
+                data-oid="smx_hs3"
               >
                 {/* Transaction Header */}
 
                 <div
                   className="flex flex-col sm:flex-row items-start justify-between mb-4 gap-3"
-                  data-oid="j5r7cbf"
+                  data-oid="fm3tobh"
                 >
                   <div
                     className="flex items-center space-x-3 sm:space-x-4 w-full"
-                    data-oid="guc5-00"
+                    data-oid="1.-xqvu"
                   >
                     <div
                       className={`p-2 sm:p-3 bg-brand ${getTransactionColor(transaction.type)} rounded-xl shadow-lg text-white`}
-                      data-oid="p5sf26_"
+                      data-oid="ccdt-rv"
                     >
                       {getTransactionIcon(transaction.type)}
                     </div>
-                    <div className="flex-1" data-oid="s-mmvbs">
+                    <div className="flex-1" data-oid="f7yk1rm">
                       <div
                         className="flex items-center space-x-2 sm:space-x-3 mb-1 flex-wrap"
-                        data-oid="sb_7r89"
+                        data-oid="qlwmz.x"
                       >
                         <h4
                           className="font-bold text-base sm:text-lg text-brand dark:text-white"
-                          data-oid="p6vvis7"
+                          data-oid="upc9i-d"
                         >
                           {transaction.title}
                         </h4>
@@ -481,46 +481,46 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                       </div>
                       <div
                         className="flex flex-col sm:flex-row items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400"
-                        data-oid="dsq_7tq"
+                        data-oid="nm7mz3n"
                       >
                         <span
                           className="flex items-center space-x-1"
-                          data-oid="qe44m67"
+                          data-oid="bo0mie3"
                         >
                           <CreditCard
                             className="w-3 h-3 sm:w-4 sm:h-4"
-                            data-oid="jsmsq0b"
+                            data-oid="ngkmn4q"
                           />
 
-                          <span data-oid="zx2d794">
+                          <span data-oid="fpbp37-">
                             {transaction.student || "Main Wallet"}
                           </span>
                         </span>
                         <span
                           className="flex items-center space-x-1"
-                          data-oid="xf8nsza"
+                          data-oid="-psn:fr"
                         >
                           <Calendar
                             className="w-3 h-3 sm:w-4 sm:h-4"
-                            data-oid="ohlzeeo"
+                            data-oid="of6ys0n"
                           />
 
-                          <span data-oid="y6-o9oi">{transaction.date}</span>
+                          <span data-oid="6pyg2n6">{transaction.date}</span>
                         </span>
                       </div>
                     </div>
                   </div>
-                  <div className="text-right mt-2 sm:mt-0" data-oid="yfervje">
+                  <div className="text-right mt-2 sm:mt-0" data-oid="7ocmtjn">
                     <div
                       className={`text-lg sm:text-2xl font-bold ${transaction.amount > 0 ? "text-brand" : "text-red"}`}
-                      data-oid="_5lwt1w"
+                      data-oid="6hsrjbv"
                     >
                       {transaction.amount > 0 ? "+" : ""}
                       {formatCurrency(transaction.amount)}
                     </div>
                     <div
                       className="text-xs text-gray-500 dark:text-gray-400 mt-1"
-                      data-oid="4zn6lof"
+                      data-oid="p:i_ko4"
                     >
                       {enhanced.security.authMethod}
                     </div>
@@ -528,49 +528,48 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                 </div>
                 <div
                   className="dark:bg-brand rounded-xl p-3 sm:p-4 mb-4 border border-brand dark:border-gray-600 bg-brand"
-                  data-oid="e.w75as"
-                  key="olk-mnRM"
+                  data-oid="lnq6ihn"
                 >
                   <div
                     className="flex flex-col sm:grid sm:grid-cols-2 gap-3"
-                    data-oid="1.bjslb"
+                    data-oid="w.g41ny"
                   >
-                    <div className="space-y-2" data-oid="uc.xqef">
+                    <div className="space-y-2" data-oid="ig5eqll">
                       <div
                         className="flex items-center space-x-2"
-                        data-oid="aq_wqqt"
+                        data-oid="u7k06ce"
                       >
                         <MapPin
                           className="w-4 h-4 sm:w-5 sm:h-5 text-[#EBB300]"
-                          data-oid="9c244j7"
+                          data-oid="td_543t"
                         />
 
                         <span
                           className="font-semibold text-sm sm:text-base dark:text-white text-[#FBF4F4]"
-                          data-oid="ic4pe:."
+                          data-oid="qjrsad_"
                         >
                           {enhanced.location.name}
                         </span>
                         {enhanced.merchant.verified && (
                           <CheckCircle
                             className="w-4 h-4 sm:w-5 sm:h-5 text-green-500"
-                            data-oid="27fvk0x"
+                            data-oid="g7bq0q7"
                           />
                         )}
                       </div>
                       <p
                         className="text-xs sm:text-sm dark:text-gray-400 ml-6 text-[#F7EFEFFA]"
-                        data-oid="n2a_acv"
+                        data-oid="4695_l5"
                       >
                         {enhanced.location.address}
                       </p>
                       <div
                         className="flex items-center space-x-2 ml-6"
-                        data-oid="jkh5bhc"
+                        data-oid="ai57l4l"
                       >
                         <span
                           className="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 px-2 py-1 rounded-full"
-                          data-oid="waff0ph"
+                          data-oid=":0pq1gr"
                         >
                           {enhanced.merchant.category}
                         </span>
@@ -578,25 +577,25 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                     </div>
                     <div
                       className="flex flex-wrap items-center justify-start sm:justify-end gap-2 sm:gap-3"
-                      data-oid="q31o0x6"
+                      data-oid="8_x85i:"
                     >
                       <button
                         type="button"
                         onClick={() => setSelectedTransaction(enhanced)}
                         className="flex items-center space-x-2 text-brand px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 text-sm font-medium min-h-[48px] bg-white"
-                        data-oid="mxa1r4f"
+                        data-oid="9h33n61"
                       >
-                        <Eye className="w-4 h-4" data-oid="kzm7_2h" />
-                        <span data-oid="1gd1jxt">Details</span>
+                        <Eye className="w-4 h-4" data-oid="qlhhm5c" />
+                        <span data-oid="8hol0bx">Details</span>
                       </button>
                       <button
                         type="button"
                         onClick={(e) => handleReportTransaction(e, enhanced)}
                         className={reportButton.className}
-                        data-oid="_j5dyvn"
+                        data-oid="0.larq9"
                       >
                         {reportButton.icon}
-                        <span data-oid="2xso77s">Report</span>
+                        <span data-oid="qd1_my8">Report</span>
                       </button>
                     </div>
                   </div>
@@ -607,12 +606,12 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                 {/* Security Info */}
                 <div
                   className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400"
-                  data-oid="pq3z9kx"
+                  data-oid="qmdys5k"
                 >
-                  <span data-oid="bsc-u0f">
+                  <span data-oid="j25hfp4">
                     Device: {enhanced.security.deviceId}
                   </span>
-                  <span data-oid="a764qwr">
+                  <span data-oid=":mnru31">
                     Coordinates: {enhanced.location.coordinates.lat.toFixed(4)},{" "}
                     {enhanced.location.coordinates.lng.toFixed(4)}
                   </span>
@@ -621,25 +620,25 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
             );
           })}
           {transactions.length === 0 && (
-            <div className="text-center py-8 sm:py-12" data-oid="vgrmdiv">
+            <div className="text-center py-8 sm:py-12" data-oid="2yqbwm8">
               <div
                 className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 dark:bg-brand rounded-full flex items-center justify-center bg-[#1350D2]"
-                data-oid="m:d6s0."
+                data-oid="ij_tc9t"
               >
                 <Activity
                   className="w-6 h-6 sm:w-8 sm:h-8 text-white"
-                  data-oid="aj5ujwm"
+                  data-oid="tha83b_"
                 />
               </div>
               <h3
                 className="text-base sm:text-lg font-semibold text-brand dark:text-white mb-2 bg-[rgba(0,_0,_0,_0)]"
-                data-oid="n1q:_k:"
+                data-oid="o.fwvjf"
               >
                 No Recent Transactions
               </h3>
               <p
                 className="text-xs sm:text-sm text-gray-500 dark:text-gray-400"
-                data-oid="gu9wl30"
+                data-oid="_7-09zz"
               >
                 Transaction history will appear here when available
               </p>
@@ -652,19 +651,19 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
       {selectedTransaction && !showReportModal && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 sm:p-6"
-          data-oid="o7l3kas"
+          data-oid="3tptuea"
         >
           <div
             className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 max-w-md sm:max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-            data-oid="dyxm36b"
+            data-oid="228ib:f"
           >
             <div
               className="flex items-center justify-between mb-4 sm:mb-6"
-              data-oid=".ycc-_e"
+              data-oid="jk7218:"
             >
               <h3
                 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white"
-                data-oid="5j.1eti"
+                data-oid="r9tmu37"
               >
                 Transaction Details
               </h3>
@@ -675,20 +674,20 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                   setMapError(null);
                 }}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg min-h-[48px]"
-                data-oid="l9haa2t"
+                data-oid="4z1abl5"
               >
                 <XCircle
                   className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500"
-                  data-oid=":6684nw"
+                  data-oid="41-putz"
                 />
               </button>
             </div>
 
-            <div className="space-y-4 sm:space-y-6" data-oid="9u7j2pd">
+            <div className="space-y-4 sm:space-y-6" data-oid="ouocw_a">
               {/* Amount & Status */}
               <div
                 className="text-center p-4 sm:p-6 from-indigo-50 to-purple-50 dark: rounded-xl bg-none bg-brand"
-                data-oid="nbo:4.d"
+                data-oid="lfy9zp_"
               >
                 <div
                   className={`text-2xl sm:text-3xl font-bold mb-2 ${
@@ -696,19 +695,19 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                       ? "text-yellow-400"
                       : "text-yellow-400"
                   }`}
-                  data-oid="ljmcjzj"
+                  data-oid="aa63xyf"
                 >
                   {selectedTransaction.amount > 0 ? "+" : ""}
                   {formatCurrency(selectedTransaction.amount)}
                 </div>
                 <div
                   className="flex items-center justify-center space-x-2"
-                  data-oid="c0ongvg"
+                  data-oid="u4b:w.q"
                 >
                   {getStatusIcon(selectedTransaction.status)}
                   <span
                     className="text-base sm:text-lg font-medium dark:text-gray-300 capitalize text-[#F8F4F4]"
-                    data-oid="s52yjsz"
+                    data-oid="snp8kj6"
                   >
                     {selectedTransaction.status}
                   </span>
@@ -718,36 +717,36 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
               {/* Location Map Preview */}
               <div
                 className="bg-gray-100 dark:bg-gray-700 rounded-xl p-4"
-                data-oid="hyntsdo"
+                data-oid="cickaa9"
               >
                 <h4
                   className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white mb-3 flex items-center"
-                  data-oid="v3bsau1"
+                  data-oid="mr0fhhq"
                 >
                   <MapPin
                     className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
-                    data-oid="ndc3iyg"
+                    data-oid="ewi.4s4"
                   />
                   Transaction Location
                 </h4>
                 <div
                   className="bg-white dark:bg-gray-600 rounded-lg p-4 text-center"
-                  data-oid="kmnpg1u"
+                  data-oid="r0rhizy"
                 >
                   <div
                     className="text-base sm:text-lg font-medium text-gray-900 dark:text-white"
-                    data-oid="x:talxg"
+                    data-oid="8v:._hw"
                   >
                     {selectedTransaction.location.name}
                   </div>
                   <div
                     className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-3"
-                    data-oid="_7xw4dr"
+                    data-oid="paehdny"
                   >
                     {selectedTransaction.location.address}
                   </div>
                   {mapError ? (
-                    <div className="text-red-500 text-sm" data-oid="map-error">
+                    <div className="text-red-500 text-sm" data-oid="1efqbx5">
                       {mapError}
                     </div>
                   ) : (
@@ -755,7 +754,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                       id={`map-${selectedTransaction.id}`}
                       className="w-full h-64 sm:h-80 rounded-lg"
                       style={{ minHeight: "16rem" }}
-                      data-oid="vczott6"
+                      data-oid="-ryg.2."
                     ></div>
                   )}
                 </div>
@@ -764,63 +763,63 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
               {/* Security & Device Info */}
               <div
                 className="flex flex-col sm:grid sm:grid-cols-2 gap-4"
-                data-oid="hi9cjlq"
+                data-oid=".0lypt4"
               >
                 <div
                   className="dark:bg-gray-700 rounded-xl p-4 bg-[#4E2EBA40]"
-                  data-oid="soycrdv"
+                  data-oid="b8r32h:"
                 >
                   <h4
                     className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white mb-3 flex items-center"
-                    data-oid="duibi.t"
+                    data-oid="7:zaa-d"
                   >
                     <Shield
                       className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
-                      data-oid="4pzr7m-"
+                      data-oid="_26g034"
                     />
                     Security
                   </h4>
                   <div
                     className="space-y-2 text-xs sm:text-sm"
-                    data-oid="ek4elyq"
+                    data-oid="cuyg3sc"
                   >
-                    <div data-oid="tcxoxl5">
+                    <div data-oid="rcieu5l">
                       Risk Level:{" "}
                       {getRiskBadge(selectedTransaction.security.riskLevel)}
                     </div>
-                    <div data-oid="jegma3u">
+                    <div data-oid="evd87i7">
                       Auth Method: {selectedTransaction.security.authMethod}
                     </div>
-                    <div data-oid="o1admda">
+                    <div data-oid="csfpc1z">
                       Device ID: {selectedTransaction.security.deviceId}
                     </div>
                   </div>
                 </div>
                 <div
                   className="dark:bg-gray-700 rounded-xl p-4 bg-[#381A733A]"
-                  data-oid=".vd.j4v"
+                  data-oid="a.8skss"
                 >
                   <h4
                     className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white mb-3 flex items-center"
-                    data-oid="8q:npvv"
+                    data-oid="5ocj8hu"
                   >
                     <Info
                       className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
-                      data-oid="yq::p58"
+                      data-oid="hwfj.xf"
                     />
                     Details
                   </h4>
                   <div
                     className="space-y-2 text-xs sm:text-sm"
-                    data-oid="772x7b."
+                    data-oid="hzghim9"
                   >
-                    <div data-oid="_kkbo_0">
+                    <div data-oid="rz.gkyl">
                       Merchant: {selectedTransaction.merchant.name}
                     </div>
-                    <div data-oid="ubb_u3q">
+                    <div data-oid="n.8ck79">
                       Category: {selectedTransaction.merchant.category}
                     </div>
-                    <div data-oid="r5wm99:">
+                    <div data-oid="wy01shj">
                       Student: {selectedTransaction.student || "Main Wallet"}
                     </div>
                   </div>
@@ -835,23 +834,23 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
       {showReportModal && selectedTransaction && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 sm:p-6"
-          data-oid="enp0x.-"
+          data-oid="6uce06d"
         >
           <div
             className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 max-w-md w-full max-h-[90vh] overflow-y-auto"
-            data-oid="s49bc7s"
+            data-oid="4o8:gs5"
           >
             <div
               className="flex items-center justify-between mb-4 sm:mb-6"
-              data-oid="89ny8ah"
+              data-oid="qo7q4ek"
             >
               <h3
                 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center"
-                data-oid="uyy-ul."
+                data-oid="9escdaw"
               >
                 <Flag
                   className="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-red-500"
-                  data-oid="6:u-i78"
+                  data-oid="exdhj1_"
                 />
                 Report Transaction
               </h3>
@@ -859,23 +858,23 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                 type="button"
                 onClick={cancelReport}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg min-h-[48px]"
-                data-oid="1f8naa7"
+                data-oid="ryumoh."
               >
                 <XCircle
                   className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500"
-                  data-oid="uxikd6o"
+                  data-oid="t4_d9-t"
                 />
               </button>
             </div>
 
-            <div className="space-y-4" data-oid="kf__nmx">
-              <div data-oid="risk-info">
+            <div className="space-y-4" data-oid="r8dqn6g">
+              <div data-oid="73_.zya">
                 {getRiskExplanation(selectedTransaction.security.riskLevel)}
               </div>
-              <div data-oid="fuogczx">
+              <div data-oid=":rb6al-">
                 <label
                   className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  data-oid="inv0muo"
+                  data-oid="9h0:drd"
                 >
                   Reason for reporting:
                 </label>
@@ -883,58 +882,58 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                   value={reportReason}
                   onChange={(e) => setReportReason(e.target.value)}
                   className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm sm:text-base"
-                  data-oid="73.u9ys"
+                  data-oid="tlhn0ot"
                 >
-                  <option value="" data-oid="ft_3kuk">
+                  <option value="" data-oid="a16gl3q">
                     Select a reason
                   </option>
-                  <option value="unauthorized" data-oid="xidke.s">
+                  <option value="unauthorized" data-oid="mn-mra0">
                     Unauthorized transaction
                   </option>
-                  <option value="wrong_amount" data-oid=".373u0f">
+                  <option value="wrong_amount" data-oid="nf5lwd4">
                     Wrong amount charged
                   </option>
-                  <option value="duplicate" data-oid="yw29-4d">
+                  <option value="duplicate" data-oid="ux9ogh2">
                     Duplicate transaction
                   </option>
-                  <option value="fraud" data-oid="u:o52yo">
+                  <option value="fraud" data-oid="_bdkbp9">
                     Suspected fraud
                   </option>
-                  <option value="location_mismatch" data-oid="r5velsu">
+                  <option value="location_mismatch" data-oid="wsexdf7">
                     Location doesn't match
                   </option>
-                  <option value="other" data-oid="c:6hny6">
+                  <option value="other" data-oid="r7.nprv">
                     Other
                   </option>
                 </select>
               </div>
-              <div data-oid="block-student-option">
+              <div data-oid="lmvbe4-">
                 <label
                   className="flex items-center space-x-2 text-sm sm:text-base text-gray-700 dark:text-gray-300"
-                  data-oid="wnh5ltn"
+                  data-oid="8.7rd7a"
                 >
                   <input
                     type="checkbox"
                     checked={blockStudent}
                     onChange={(e) => setBlockStudent(e.target.checked)}
                     className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-gray-600 rounded"
-                    data-oid="block-student-checkbox"
+                    data-oid="mpaco.b"
                   />
 
-                  <span data-oid="block-student-label">
+                  <span data-oid="fmdo_vf">
                     Block student account (prevents further transactions)
                   </span>
                 </label>
               </div>
               <div
                 className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3"
-                data-oid="8661onl"
+                data-oid="-f9pim7"
               >
                 <button
                   type="button"
                   onClick={cancelReport}
                   className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 py-3 rounded-lg transition-all duration-200 font-medium min-h-[48px]"
-                  data-oid="37sybvh"
+                  data-oid="8yobjcu"
                 >
                   Cancel
                 </button>
@@ -943,10 +942,10 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                   onClick={submitReport}
                   disabled={!reportReason}
                   className="flex-1 bg-red-500 hover:bg-red-600 disabled:bg-gray-300 text-white py-3 rounded-lg transition-all duration-200 font-medium flex items-center justify-center space-x-2 min-h-[48px]"
-                  data-oid="dx6rnrf"
+                  data-oid="2tsc:v2"
                 >
-                  <Flag className="w-4 h-4" data-oid="fkhyihl" />
-                  <span data-oid="aw8_wvq">Submit Report</span>
+                  <Flag className="w-4 h-4" data-oid="_lckfw-" />
+                  <span data-oid="8ecr94q">Submit Report</span>
                 </button>
               </div>
             </div>

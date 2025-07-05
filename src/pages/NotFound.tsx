@@ -30,7 +30,7 @@ const AdBanner: React.FC = () => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await axios.get(
-          "http://localhost:8001/admin/get-csrf-token",
+          "http://localhost:8002/admin/get-csrf-token",
           {
             withCredentials: true, // Send session_id cookie
           },
@@ -59,7 +59,7 @@ const AdBanner: React.FC = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:8001/admin/ads/active",
+        "http://localhost:8002/admin/ads/active",
         {
           headers: {
             "X-CSRF-Token": csrfToken,
@@ -153,7 +153,7 @@ const AdBanner: React.FC = () => {
   return (
     <div
       className={`sticky top-0 z-40 transition-all duration-500 ease-in-out px-2 sm:px-4 ${isScrollHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
-      data-oid="bw_7kc6"
+      data-oid="6x17sla"
     >
       <div
         className={`relative w-full max-w-7xl mx-auto mb-4 sm:mb-6 rounded-3xl sm:rounded-[2rem] overflow-hidden backdrop-blur-xl transition-all duration-300 group ${
@@ -161,76 +161,76 @@ const AdBanner: React.FC = () => {
             ? "bg-brand border border-emerald-600/30 shadow-emerald-500/20"
             : "bg-orange"
         }`}
-        data-oid="z3ssun:"
+        data-oid="zb:m.n5"
       >
         {/* Enhanced Glass Effect Background */}
-        <div className="absolute inset-0 " data-oid="lz4bvzl"></div>
+        <div className="absolute inset-0 " data-oid="5wnc6ry"></div>
 
         {/* Animated Shimmer Effect */}
         <div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"
-          data-oid=":dignuz"
+          data-oid="l98royw"
         ></div>
 
         {/* Glass Reflections */}
         <div
           className="absolute -inset-[400px] bg-gradient-radial from-emerald-200/20 via-transparent to-transparent blur-2xl transform rotate-45"
-          data-oid="a0c.dr2"
+          data-oid="xka.n48"
         ></div>
 
         {/* Content Container with Enhanced Glass Effect */}
-        <div className="relative z-10 p-4 sm:p-8" data-oid="2rzq4..">
+        <div className="relative z-10 p-4 sm:p-8" data-oid="wsyd5pm">
           {error ? (
             <div
               className={`text-center text-sm ${isDark ? "text-red-400" : "text-red-500"}`}
-              data-oid="-pm7rl."
+              data-oid="ninj8b0"
             >
               {error}
             </div>
           ) : loading ? (
             <div
               className={`text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
-              data-oid="dliqh-5"
+              data-oid=":_yy0z3"
             >
               Loading ads...
             </div>
           ) : ads.length === 0 ? (
             <div
               className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
-              data-oid="89d8rl4"
+              data-oid="cw68x-i"
             >
-              <div className="w-32 h-32 mx-auto mb-2" data-oid="lcok2_a">
+              <div className="w-32 h-32 mx-auto mb-2" data-oid="5iu0mzg">
                 <img
                   src="/assets/Wallet-bro.svg"
                   alt="No ads illustration"
                   className="w-full h-full object-contain"
                   draggable={false}
-                  data-oid="vll88ot"
+                  data-oid="ha4304x"
                 />
               </div>
               No active ads
             </div>
           ) : (
             <>
-              <div className="flex justify-end mb-2" data-oid="4bzv:go">
+              <div className="flex justify-end mb-2" data-oid="74p723_">
                 <button
                   onClick={handleRefresh}
                   className={`inline-flex items-center px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                     isDark ? "bg-brand text-white" : "bg-brand text-white"
                   }`}
-                  data-oid="c9iv18i"
+                  data-oid="xf5jx4j"
                 >
                   Refresh Ads
                 </button>
               </div>
               <div
                 className="flex flex-col sm:flex-row items-center gap-6"
-                data-oid="t4d0zw8"
+                data-oid="0-fj4t7"
               >
                 {/* Enhanced Image Container */}
                 <div
                   className="flex-shrink-0 w-full sm:w-48 md:w-56 h-24 sm:h-32 md:h-36 rounded-2xl overflow-hidden shadow-xl relative group/image"
-                  data-oid="uk.775g"
+                  data-oid="fv6q26t"
                 >
                   <img
                     src={currentAd.src}
@@ -241,25 +241,25 @@ const AdBanner: React.FC = () => {
                         "https://via.placeholder.com/224x144?text=Ad+Image";
                     }}
                     className="w-full h-full object-cover transition-all duration-700 group-hover/image:scale-110"
-                    data-oid="4h.mcrf"
+                    data-oid="271wk1p"
                   />
 
                   <div
                     className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent opacity-60"
-                    data-oid="tojwp_7"
+                    data-oid="mt5kqu9"
                   ></div>
                 </div>
 
                 {/* Enhanced Text Content */}
                 <div
                   className="flex-1 text-center sm:text-left min-w-0"
-                  data-oid="tzyzocc"
+                  data-oid="1-b8h:1"
                 >
                   <h3
                     className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${
                       isDark ? "text-white" : "text-white"
                     }`}
-                    data-oid="k44.:y5"
+                    data-oid="l98.j_z"
                   >
                     {currentAd.title}
                   </h3>
@@ -268,7 +268,7 @@ const AdBanner: React.FC = () => {
                       className={`font-medium mb-4 sm:mb-5 text-sm sm:text-base lg:text-lg ${
                         isDark ? "text-white" : "text-zinc-900"
                       }`}
-                      data-oid="z0r-k_t"
+                      data-oid=".0sssin"
                     >
                       {currentAd.subtitle}
                     </p>
@@ -282,9 +282,9 @@ const AdBanner: React.FC = () => {
                       className={`inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                         isDark ? "bg-brand text-white" : "bg-brand text-white"
                       }`}
-                      data-oid="8zgf6zu"
+                      data-oid="26y13v7"
                     >
-                      <span className="relative z-10" data-oid="b-h3dh_">
+                      <span className="relative z-10" data-oid="2:2p:3:">
                         {currentAd.ctaText}
                       </span>
                     </button>
@@ -299,7 +299,7 @@ const AdBanner: React.FC = () => {
         {ads.length > 1 && !loading && !error && ads.length > 0 && (
           <div
             className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20"
-            data-oid="0u58vu_"
+            data-oid="do-r053"
           >
             {ads.map((_, index) => (
               <button
@@ -310,7 +310,7 @@ const AdBanner: React.FC = () => {
                     ? `w-8 sm:w-10 ${isDark ? "bg-emerald-400" : "bg-emerald-500"}`
                     : `w-2 sm:w-3 ${isDark ? "bg-emerald-700 hover:bg-emerald-600" : "bg-emerald-200 hover:bg-emerald-300"}`
                 }`}
-                data-oid="qtcjbq8"
+                data-oid="822b7z1"
               />
             ))}
           </div>
@@ -319,11 +319,11 @@ const AdBanner: React.FC = () => {
         {/* Enhanced Decorative Elements */}
         <div
           className="absolute top-0 left-0 w-48 h-48 rounded-full blur-3xl opacity-20 bg-emerald-300"
-          data-oid="zovkszz"
+          data-oid="q6hnjo-"
         ></div>
         <div
           className="absolute bottom-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-20 bg-green-300"
-          data-oid="-hmow8u"
+          data-oid="h-_oc57"
         ></div>
       </div>
     </div>

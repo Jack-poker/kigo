@@ -33,7 +33,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <LanguageContext.Provider
       value={{ language, setLanguage, t }}
-      data-oid="2mskyyt"
+      data-oid="ux8fyob"
     >
       {children}
     </LanguageContext.Provider>

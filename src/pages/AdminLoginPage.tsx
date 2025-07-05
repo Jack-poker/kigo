@@ -13,28 +13,28 @@ export default function AdminLoginPage() {
         "before:[background-size:30px_30px]",
         "before:[background-image:linear-gradient(to_right,#00994C15_1px,transparent_1px),linear-gradient(to_bottom,#00994C15_1px,transparent_1px)]",
       )}
-      data-oid="11.gfw5"
+      data-oid="6papesq"
     >
       {/* Decorative animated blobs */}
       <div
         className="absolute top-0 -left-4 w-72 h-72 bg-[#00994C] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"
-        data-oid="13qyb:i"
+        data-oid="8wc9b1y"
       ></div>
       <div
         className="absolute top-0 -right-4 w-72 h-72 bg-[#007E3A] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"
-        data-oid="uaekx0f"
+        data-oid="jfyu0zj"
       ></div>
 
       {/* Centered content container */}
       <div
         className="relative flex min-h-svh flex-col items-center justify-center px-4 sm:px-6 lg:px-8"
-        data-oid="zxt3o_3"
+        data-oid=".du5e0l"
       >
         <div
           className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl"
-          data-oid="0me6ax4"
+          data-oid="pim:res"
         >
-          <AdminLogin data-oid="6eh5lfb" />
+          <AdminLogin data-oid="87s0x_." />
         </div>
       </div>
     </div>

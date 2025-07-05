@@ -188,7 +188,7 @@ export function LoginForm({
               title: "Success",
               description: "Login successful!",
               action: (
-                <ToastAction altText="Go to dashboard" data-oid="jhk3lqf">
+                <ToastAction altText="Go to dashboard" data-oid="k_lxnx-">
                   Go to dashboard
                 </ToastAction>
               ),
@@ -235,56 +235,56 @@ export function LoginForm({
     <div
       className={cn("flex flex-col gap-6", className)}
       {...props}
-      data-oid="ipjzmqm"
+      data-oid="sgjl0w3"
     >
-      <div className="flex flex-col items-center mb-0" data-oid=".fvp.22">
+      <div className="flex flex-col items-center mb-0" data-oid="cpf.tcw">
         <img
           src="/assets/white_logo.png"
           alt="kigo logo"
           className="object-contain bg-[rgba(0,_0,_0,_0)] w-[290px] h-[126px] bg-none"
-          data-oid="_paj8yk"
+          data-oid="sb_-o-p"
         />
       </div>
       <Card
         className="overflow-hidden bg-brand border-brand"
-        data-oid="u_q2ppc"
+        data-oid="5r_1xii"
       >
-        <CardContent className="grid p-0 md:grid-cols-2" data-oid="t5h8iti">
+        <CardContent className="grid p-0 md:grid-cols-2" data-oid="kg9b5.r">
           <form
             className="p-6 md:p-8"
             onSubmit={(e) => e.preventDefault()}
-            data-oid="7ziq3h5"
+            data-oid="43z0rt:"
           >
-            <div className="flex flex-col gap-6" data-oid="8e31fd6">
+            <div className="flex flex-col gap-6" data-oid="_-1zw7:">
               <div
                 className="flex flex-col items-center text-center"
-                data-oid="1.vj5ok"
+                data-oid="8a7cu3w"
               >
                 <h1
                   className="text-2xl font-bold text-white"
-                  data-oid="_nf-i:a"
+                  data-oid="sgckd8p"
                 >
                   {isLoginComplete ? "Enter OTP Code" : "Welcome back"}
                 </h1>
-                <p className="text-balance text-white" data-oid="m0px0yc">
+                <p className="text-balance text-white" data-oid="tglvch7">
                   Login to your kaascan account
                 </p>
               </div>
-              <div className="grid gap-4" data-oid="scu.r_i">
+              <div className="grid gap-4" data-oid="rbkqrru">
                 {isLoginComplete ? (
                   <>
-                    <div className="text-center text-white" data-oid="zmn6_3v">
-                      <p className="text-sm mb-1" data-oid="w5:h6a-">
+                    <div className="text-center text-white" data-oid="b:_0yax">
+                      <p className="text-sm mb-1" data-oid="9ovby23">
                         Andika code yawe ya OTP / Enter your OTP code
                       </p>
-                      <p className="text-xs opacity-75" data-oid="4wb:zsd">
+                      <p className="text-xs opacity-75" data-oid="n0jd4y9">
                         Twayohereje kuri WhatsApp na SMS / Sent via WhatsApp and
                         SMS
                       </p>
                     </div>
                     <div
                       className="flex justify-center gap-3"
-                      data-oid="iyvk_8f"
+                      data-oid="uk_rqz-"
                     >
                       {[0, 1, 2, 3].map((index) => (
                         <Input
@@ -300,11 +300,11 @@ export function LoginForm({
                             handleTotpChange(index, e.target.value)
                           }
                           required
-                          data-oid="xfs.b-u"
+                          data-oid="ivy.vj6"
                         />
                       ))}
                     </div>
-                    <div className="text-center" data-oid="l35o.au">
+                    <div className="text-center" data-oid="q7_lle3">
                       <button
                         type="button"
                         className="text-amber-400 text-sm hover:underline mt-2"
@@ -312,7 +312,7 @@ export function LoginForm({
                           setIsLoginComplete(false);
                           setSubmitted(true);
                         }}
-                        data-oid="wranhrf"
+                        data-oid="qorj-9d"
                       >
                         Ntabwo wabonye? Ongera usabe / Didn't receive? Resend
                       </button>
@@ -322,15 +322,15 @@ export function LoginForm({
                       onClick={totpSubmit}
                       className="w-full bg-white hover:bg-white mt-2 text-brand"
                       disabled={isSubmitted}
-                      data-oid="5gby.mn"
+                      data-oid="u7lx01f"
                     >
                       Emeza / Verify
                     </Button>
                   </>
                 ) : (
                   <>
-                    <div className="grid gap-2 text-white" data-oid="ad84svv">
-                      <Label htmlFor="phone" data-oid="dux7y3k">
+                    <div className="grid gap-2 text-white" data-oid="9mmn_k2">
+                      <Label htmlFor="phone" data-oid="71o_7z4">
                         Phone number
                       </Label>
                       <Input
@@ -341,18 +341,18 @@ export function LoginForm({
                         placeholder="Phone number"
                         className="bg-white/10 text-white border-amber-400/50 focus:border-amber-400"
                         required
-                        data-oid="4pa7uub"
+                        data-oid="l2rp_sy"
                       />
                     </div>
-                    <div className="grid gap-2 text-white" data-oid="y7ru-kd">
-                      <div className="flex items-center" data-oid="nzq81_1">
-                        <Label htmlFor="password" data-oid=":h6r5gi">
+                    <div className="grid gap-2 text-white" data-oid="nu7q0do">
+                      <div className="flex items-center" data-oid="lih5x19">
+                        <Label htmlFor="password" data-oid="q_ga-.:">
                           Password
                         </Label>
                         <a
                           href="/forgot-password"
                           className="ml-auto text-sm text-amber-400 hover:underline"
-                          data-oid="niha2s7"
+                          data-oid="k-o3c4t"
                         >
                           Forgot your password?
                         </a>
@@ -365,7 +365,7 @@ export function LoginForm({
                         placeholder="Password"
                         className="bg-white/10 text-white border-amber-400/50 focus:border-amber-400"
                         required
-                        data-oid="j87ym3v"
+                        data-oid="gc.7hq2"
                       />
                     </div>
                     <Button
@@ -373,7 +373,7 @@ export function LoginForm({
                       onClick={loginSubmit}
                       className="w-full bg-white hover:bg-white text-brand"
                       disabled={isSubmitted || !csrfToken}
-                      data-oid=":f5qs5p"
+                      data-oid="wy3oubl"
                     >
                       Login
                     </Button>
@@ -382,13 +382,13 @@ export function LoginForm({
               </div>
               <div
                 className="text-center text-sm text-white"
-                data-oid="8onnw_9"
+                data-oid="lp0trcv"
               >
                 Don't have an account?{" "}
                 <a
                   href="/signup"
                   className="underline underline-offset-4 text-amber-400 hover:text-amber-500"
-                  data-oid="cvd97mj"
+                  data-oid="ggf:c-u"
                 >
                   Sign up
                 </a>
@@ -397,27 +397,27 @@ export function LoginForm({
           </form>
           <div
             className="relative hidden bg-white h-full md:block"
-            data-oid="u2toct5"
+            data-oid="qi31bs5"
           >
             <div
               className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 z-10"
-              data-oid="b3mr4nx"
+              data-oid="p.1xf0k"
             ></div>
             <img
               src="/banner5.png"
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover"
-              data-oid="e9rjc69"
+              data-oid="mcufbap"
             />
 
             <div
               className="absolute bottom-8 left-8 right-8 z-20 text-white"
-              data-oid="c4xyzdn"
+              data-oid="53fuhl8"
             >
-              <h2 className="text-3xl font-bold mb-2" data-oid="leh-98p">
+              <h2 className="text-3xl font-bold mb-2" data-oid="k8nc5o9">
                 Welcome to Kaascan Parent Portal
               </h2>
-              <p className="text-lg opacity-90" data-oid="bm.8:t8">
+              <p className="text-lg opacity-90" data-oid="_xss1m7">
                 Empowering parents with real-time insights into their children's
                 educational journey. Stay connected, stay informed.
               </p>
@@ -427,14 +427,14 @@ export function LoginForm({
       </Card>
       <div
         className="text-balance text-center text-xs text-white [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary"
-        data-oid="rf7isal"
+        data-oid="1ot2c0o"
       >
         By clicking continue, you agree to our{" "}
-        <a href="#" data-oid="qje-2yf">
+        <a href="#" data-oid="8gn6lg0">
           Terms of Service
         </a>{" "}
         and{" "}
-        <a href="#" data-oid="x2e3578">
+        <a href="#" data-oid="b9zoaio">
           Privacy Policy
         </a>
         .

@@ -13,14 +13,14 @@ const Toast = ({ message, type = "success", onClose }) => {
   const getIcon = () => {
     switch (type) {
       case "success":
-        return <Check className="w-5 h-5 text-green-600" data-oid="j97d_lz" />;
+        return <Check className="w-5 h-5 text-green-600" data-oid="z.ymlec" />;
       case "error":
         return (
-          <AlertCircle className="w-5 h-5 text-red-600" data-oid="-xl6xx-" />
+          <AlertCircle className="w-5 h-5 text-red-600" data-oid="24qhrqh" />
         );
 
       default:
-        return <Check className="w-5 h-5 text-blue-600" data-oid=":9:rtzv" />;
+        return <Check className="w-5 h-5 text-blue-600" data-oid="s5h-d-z" />;
     }
   };
 
@@ -38,21 +38,21 @@ const Toast = ({ message, type = "success", onClose }) => {
   return (
     <div
       className={`bg-white rounded-xl shadow-lg border-l-4 ${getBorderColor()} p-4 flex items-center space-x-3 min-w-[300px] animate-in slide-in-from-right duration-300`}
-      data-oid="fyei-lr"
+      data-oid="59sx8:1"
     >
       {getIcon()}
       <p
         className="text-sm font-medium text-gray-900 flex-1"
-        data-oid="1d2dven"
+        data-oid="sp5it9w"
       >
         {message}
       </p>
       <button
         onClick={onClose}
         className="p-1 text-gray-400 hover:text-gray-600 transition-colors duration-200"
-        data-oid="zjpnoeu"
+        data-oid="bp7mpti"
       >
-        <X className="w-4 h-4" data-oid="gzi-l4l" />
+        <X className="w-4 h-4" data-oid="zh3t3mi" />
       </button>
     </div>
   );

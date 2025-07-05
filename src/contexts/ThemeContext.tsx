@@ -30,7 +30,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   const toggleTheme = () => setIsDark(!isDark);
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }} data-oid="bpx:d85">
+    <ThemeContext.Provider value={{ isDark, toggleTheme }} data-oid="vj_cna7">
       {children}
     </ThemeContext.Provider>
   );

@@ -33,19 +33,19 @@ const News = () => {
   return (
     <div
       className="min-h-screen bg-gradient-radial from-slate-50 to-white dark:from-slate-900 dark:to-black p-6 sm:p-8 md:p-12"
-      data-oid="-xuhmmx"
+      data-oid="uqganrf"
     >
-      <div className="max-w-7xl mx-auto" data-oid="w9m-2l7">
-        <div className="mb-12 text-center animate-fade-in" data-oid="zbo4us_">
+      <div className="max-w-7xl mx-auto" data-oid="4rqmhcp">
+        <div className="mb-12 text-center animate-fade-in" data-oid="t1vlkp:">
           <h1
             className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-800 bg-clip-text text-transparent dark:from-emerald-400 dark:via-emerald-300 dark:to-green-400"
-            data-oid="3apezbe"
+            data-oid="-l1e1i6"
           >
             Latest News & Updates
           </h1>
           <p
             className="text-xl text-slate-600 dark:text-slate-400"
-            data-oid="3u5vl64"
+            data-oid="mdf:x._"
           >
             Stay informed with the latest happenings.
           </p>
@@ -53,50 +53,50 @@ const News = () => {
 
         <div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
-          data-oid="prp.5tk"
+          data-oid="w-__f4-"
         >
           {newsItems.map((item, index) => (
             <Card
               key={item.id}
               className="bg-white/60 dark:bg-slate-950/60 backdrop-blur-xl border border-emerald-200/80 dark:border-emerald-900/80 rounded-2xl overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-[1.03] hover:border-emerald-400 dark:hover:border-emerald-600 flex flex-col group animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
-              data-oid="urs6xwf"
+              data-oid="wep:q:i"
             >
-              <div className="overflow-hidden" data-oid="0pvgcfv">
+              <div className="overflow-hidden" data-oid="7dn8p81">
                 <img
                   src={item.imageUrl}
                   alt={item.title}
                   className="w-full h-56 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                  data-oid="b.dnw5j"
+                  data-oid="i9fjjls"
                 />
               </div>
-              <CardHeader className="p-6" data-oid="t7xib4l">
+              <CardHeader className="p-6" data-oid="r9v88_i">
                 <CardTitle
                   className="text-xl font-bold text-emerald-800 dark:text-emerald-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-200 transition-colors"
-                  data-oid="si.dlta"
+                  data-oid="gt:dl23"
                 >
                   {item.title}
                 </CardTitle>
                 <p
                   className="text-sm text-slate-500 dark:text-slate-400 pt-1"
-                  data-oid=".3ou2el"
+                  data-oid="-v60x-b"
                 >
                   {item.date}
                 </p>
               </CardHeader>
-              <CardContent className="p-6 pt-0 flex-grow" data-oid="_-d7sbe">
+              <CardContent className="p-6 pt-0 flex-grow" data-oid="slf5s-p">
                 <p
                   className="text-slate-600 dark:text-slate-400"
-                  data-oid="3r_k.yd"
+                  data-oid="-_nxsi2"
                 >
                   {item.excerpt}
                 </p>
               </CardContent>
-              <div className="p-6 pt-0 mt-auto" data-oid="kmd-..y">
+              <div className="p-6 pt-0 mt-auto" data-oid="p.s38-5">
                 <Button
                   variant="outline"
                   className="w-full font-semibold border-2 border-emerald-700 text-emerald-700 dark:border-emerald-400 dark:text-emerald-400 hover:bg-emerald-700 hover:text-white dark:hover:bg-emerald-400 dark:hover:text-slate-900 transition-colors duration-300"
-                  data-oid="oxdf6w9"
+                  data-oid="zpw00p."
                 >
                   Read More
                 </Button>

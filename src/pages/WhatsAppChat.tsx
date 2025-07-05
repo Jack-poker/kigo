@@ -89,62 +89,62 @@ const WhatsAppChat = () => {
   return (
     <div
       className="h-screen bg-gray-100 flex flex-col max-w-md mx-auto"
-      data-oid="d9qef68"
+      data-oid="ff4tf_n"
     >
       {/* Header */}
       <div
         className="bg-gradient-to-r from-green-600 to-green-700 text-white p-4 flex items-center justify-between shadow-lg"
-        data-oid="jiuqudz"
+        data-oid="0sfosyj"
       >
-        <div className="flex items-center space-x-3" data-oid="trw0fre">
+        <div className="flex items-center space-x-3" data-oid="ho-o7oq">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => navigate("/")}
             className="text-white hover:bg-green-700 p-1"
-            data-oid="1v67uy_"
+            data-oid="1f1zehy"
           >
-            <ArrowLeft className="w-5 h-5" data-oid="6esyql6" />
+            <ArrowLeft className="w-5 h-5" data-oid="g4gj6:j" />
           </Button>
           <div
             className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center font-bold text-lg"
-            data-oid="ce3pm2a"
+            data-oid="617scoj"
           >
             A
           </div>
-          <div data-oid="6693_vb">
-            <h3 className="font-semibold" data-oid="qyr0gun">
+          <div data-oid="d_6xyn7">
+            <h3 className="font-semibold" data-oid="u17-u_f">
               Alex (Student)
             </h3>
-            <p className="text-xs text-green-100" data-oid="46q:99u">
+            <p className="text-xs text-green-100" data-oid="wyqmscc">
               StudentPay Verified
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-2" data-oid="2fb56l7">
+        <div className="flex items-center space-x-2" data-oid="6r-1tg3">
           <Button
             variant="ghost"
             size="sm"
             className="text-white hover:bg-green-700 p-2"
-            data-oid="h0bs7bu"
+            data-oid="yvy9nm-"
           >
-            <Video className="w-5 h-5" data-oid="ax:lprv" />
+            <Video className="w-5 h-5" data-oid="9.pahw." />
           </Button>
           <Button
             variant="ghost"
             size="sm"
             className="text-white hover:bg-green-700 p-2"
-            data-oid="b8.jepm"
+            data-oid="0m_e_it"
           >
-            <Phone className="w-5 h-5" data-oid="uksajzc" />
+            <Phone className="w-5 h-5" data-oid="82d8j07" />
           </Button>
           <Button
             variant="ghost"
             size="sm"
             className="text-white hover:bg-green-700 p-2"
-            data-oid="qps0mey"
+            data-oid="rlz_-gz"
           >
-            <MoreVertical className="w-5 h-5" data-oid="h4d4imq" />
+            <MoreVertical className="w-5 h-5" data-oid="tyd.sz5" />
           </Button>
         </div>
       </div>
@@ -152,13 +152,13 @@ const WhatsAppChat = () => {
       {/* Messages */}
       <div
         className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50"
-        data-oid="2u9ump9"
+        data-oid="g:zx3ho"
       >
         {messages.map((msg) => (
           <div
             key={msg.id}
             className={`flex ${msg.sender === "parent" ? "justify-end" : "justify-start"}`}
-            data-oid="_fvar32"
+            data-oid=":4snkre"
           >
             <div
               className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl shadow-sm ${
@@ -170,43 +170,43 @@ const WhatsAppChat = () => {
                       ? "bg-green-500 text-white"
                       : "bg-white text-gray-800 border border-gray-200"
               }`}
-              data-oid="x.y9vdd"
+              data-oid="wh7a71f"
             >
               {msg.type === "payment" ? (
-                <div className="text-center" data-oid="s3f499w">
-                  <div className="text-2xl font-bold" data-oid="h2winlg">
+                <div className="text-center" data-oid="k6.kxkt">
+                  <div className="text-2xl font-bold" data-oid="kj262ct">
                     ${msg.amount}
                   </div>
-                  <div className="text-sm opacity-90" data-oid="o-fwyhe">
+                  <div className="text-sm opacity-90" data-oid="7hyly-3">
                     Money Transfer
                   </div>
-                  <div className="text-xs opacity-75 mt-1" data-oid="ow4t_sm">
+                  <div className="text-xs opacity-75 mt-1" data-oid="x3yrxi-">
                     via StudentPay
                   </div>
                 </div>
               ) : msg.type === "notification" ? (
-                <div className="text-center text-sm" data-oid="xt5ji4a">
-                  <div className="font-medium" data-oid="i2b6q19">
+                <div className="text-center text-sm" data-oid="g6hy9ha">
+                  <div className="font-medium" data-oid="ew9iqcj">
                     {msg.text}
                   </div>
                 </div>
               ) : (
-                <div data-oid="sqd.9wd">{msg.text}</div>
+                <div data-oid="o28:igf">{msg.text}</div>
               )}
               <div
                 className={`text-xs mt-1 flex items-center justify-end space-x-1 ${
                   msg.sender === "parent" ? "text-green-100" : "text-gray-500"
                 }`}
-                data-oid="xzvkiye"
+                data-oid="o_o1w75"
               >
-                <span data-oid="pw5h_z0">{msg.timestamp}</span>
+                <span data-oid=".qgv9vp">{msg.timestamp}</span>
                 {msg.sender === "parent" && (
-                  <div className="flex" data-oid="xhq4k:u">
+                  <div className="flex" data-oid="j_o5c49">
                     <div
                       className={`w-1 h-1 rounded-full ${
                         msg.status === "read" ? "bg-blue-300" : "bg-gray-300"
                       }`}
-                      data-oid="bj7gkkt"
+                      data-oid="-o4as8i"
                     ></div>
                     <div
                       className={`w-1 h-1 rounded-full ml-0.5 ${
@@ -216,7 +216,7 @@ const WhatsAppChat = () => {
                             ? "bg-gray-300"
                             : "bg-gray-400"
                       }`}
-                      data-oid="kte10_5"
+                      data-oid="l4psao2"
                     ></div>
                   </div>
                 )}
@@ -227,35 +227,35 @@ const WhatsAppChat = () => {
       </div>
 
       {/* Input Area */}
-      <div className="bg-white p-4 border-t border-gray-200" data-oid="5rbt4fn">
-        <div className="flex items-center space-x-3" data-oid="pk37_yj">
-          <div className="flex-1 relative" data-oid="stbmdjt">
+      <div className="bg-white p-4 border-t border-gray-200" data-oid="w5ycir1">
+        <div className="flex items-center space-x-3" data-oid="ontrgqs">
+          <div className="flex-1 relative" data-oid="gju7ln4">
             <Input
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Type a message..."
               className="rounded-full border-gray-300 pr-12 focus:border-green-500 focus:ring-green-500"
-              data-oid="n2l9_7w"
+              data-oid="imze.5q"
             />
           </div>
           <Button
             onClick={handleSendMessage}
             className="bg-green-600 hover:bg-green-700 rounded-full p-3"
             disabled={!message.trim()}
-            data-oid="0vcyxng"
+            data-oid="9mbqn3i"
           >
-            <Send className="w-5 h-5" data-oid="uxd35pc" />
+            <Send className="w-5 h-5" data-oid="5dunfec" />
           </Button>
         </div>
-        <div className="mt-2 flex justify-center" data-oid="157_zua">
+        <div className="mt-2 flex justify-center" data-oid="x99v41v">
           <div
             className="bg-green-50 px-3 py-1 rounded-full"
-            data-oid="3b4goz9"
+            data-oid="d6ivawj"
           >
             <span
               className="text-xs text-green-700 font-medium"
-              data-oid="wjpu.h6"
+              data-oid="7hr34vm"
             >
               🔒 Secured by StudentPay
             </span>

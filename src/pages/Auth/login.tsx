@@ -37,25 +37,25 @@ export default function LoginPage(baseUrl) {
           "linear-gradient(45deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(0deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(135deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(90deg, rgb(79, 35, 157),rgb(43, 171, 222))",
         backgroundBlendMode: "overlay,overlay,overlay,normal",
       }}
-      data-oid="jwuqmpr"
+      data-oid="4c0jug3"
     >
       {/* Decorative gradient blur */}
       <div
         className="absolute top-0 -left-4 w-72 h-72 bg-[#00994C] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"
-        data-oid="8w0_ikv"
+        data-oid="axgdhso"
       ></div>
       <div
         className="absolute top-0 -right-4 w-72 h-72 bg-[#007E3A] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"
-        data-oid="cc5_7us"
+        data-oid="u2elad_"
       ></div>
 
       {/* Content container */}
       <div
         className="relative flex min-h-svh flex-col items-center justify-center p-6 md:p-10"
-        data-oid="23--ju5"
+        data-oid="xa6ww5z"
       >
-        <div className="w-full max-w-sm md:max-w-3xl" data-oid="9jbj9eb">
-          <LoginForm data-oid="959oqhp" />
+        <div className="w-full max-w-sm md:max-w-3xl" data-oid="-g7amzs">
+          <LoginForm data-oid="q9_r0m-" />
         </div>
       </div>
     </div>

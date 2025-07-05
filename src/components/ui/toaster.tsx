@@ -12,24 +12,24 @@ export function Toaster() {
   const { toasts } = useToast();
 
   return (
-    <ToastProvider data-oid="w48lo90">
+    <ToastProvider data-oid="nrulq:w">
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
-          <Toast key={id} {...props} data-oid="29m:9az">
-            <div className="grid gap-1" data-oid="zhawhd-">
-              {title && <ToastTitle data-oid="xqv28l2">{title}</ToastTitle>}
+          <Toast key={id} {...props} data-oid="qutatm2">
+            <div className="grid gap-1" data-oid="_xo04eb">
+              {title && <ToastTitle data-oid="-0zd1xm">{title}</ToastTitle>}
               {description && (
-                <ToastDescription data-oid="jjl92ka">
+                <ToastDescription data-oid="4j:5wdc">
                   {description}
                 </ToastDescription>
               )}
             </div>
             {action}
-            <ToastClose data-oid="_cfgqn." />
+            <ToastClose data-oid="rngwdx:" />
           </Toast>
         );
       })}
-      <ToastViewport data-oid="3efxsck" />
+      <ToastViewport data-oid="7-jc-6." />
     </ToastProvider>
   );
 }

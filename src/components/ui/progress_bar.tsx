@@ -38,14 +38,14 @@ export function AnimatedCircularProgressBar({
           transform: "translateZ(0)",
         } as React.CSSProperties
       }
-      data-oid="59luoh1"
+      data-oid="02f8put"
     >
       <svg
         fill="none"
         className="size-full"
         strokeWidth="2"
         viewBox="0 0 100 100"
-        data-oid="23m4lj1"
+        data-oid="jj_x75o"
       >
         {currentPercent <= 90 && currentPercent >= 0 && (
           <circle
@@ -71,7 +71,7 @@ export function AnimatedCircularProgressBar({
                   "calc(var(--circle-size) / 2) calc(var(--circle-size) / 2)",
               } as React.CSSProperties
             }
-            data-oid="-qg-2r8"
+            data-oid="4p.8k10"
           />
         )}
         <circle
@@ -98,13 +98,13 @@ export function AnimatedCircularProgressBar({
                 "calc(var(--circle-size) / 2) calc(var(--circle-size) / 2)",
             } as React.CSSProperties
           }
-          data-oid="d4k29i0"
+          data-oid="xjesclv"
         />
       </svg>
       <span
         data-current-value={currentPercent}
         className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit ease-linear animate-in fade-in"
-        data-oid="q4jxbc-"
+        data-oid="k6fa93h"
       >
         {currentPercent}
       </span>

@@ -113,16 +113,16 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
     switch (status) {
       case "completed":
         return (
-          <CheckCircle className="w-4 h-4 text-[#EAB400]" data-oid="dth5xfe" />
+          <CheckCircle className="w-4 h-4 text-[#EAB400]" data-oid="yl:e_nb" />
         );
 
       case "pending":
-        return <Clock className="w-4 h-4 text-yellow-500" data-oid="q6ifa_k" />;
+        return <Clock className="w-4 h-4 text-yellow-500" data-oid="odxam9o" />;
       case "failed":
-        return <XCircle className="w-4 h-4 text-red-500" data-oid="_zya.f3" />;
+        return <XCircle className="w-4 h-4 text-red-500" data-oid="xonca0x" />;
       default:
         return (
-          <AlertCircle className="w-4 h-4 text-gray-500" data-oid="jdx8zc." />
+          <AlertCircle className="w-4 h-4 text-gray-500" data-oid="w071yu:" />
         );
     }
   };
@@ -139,26 +139,26 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
   };
 
   return (
-    <div className="space-y-6" data-oid="9jelfmz">
-      <div className="flex flex-col space-y-6" data-oid="1gj8.az">
-        <div className="flex items-center justify-between" data-oid="qc4if_0">
-          <div className="flex items-center space-x-3" data-oid="i-nks:o">
+    <div className="space-y-6" data-oid="s.apr7p">
+      <div className="flex flex-col space-y-6" data-oid="7yblb2x">
+        <div className="flex items-center justify-between" data-oid="gh71v:a">
+          <div className="flex items-center space-x-3" data-oid="ffe7inc">
             <div
               className="p-3 from-blue-500 to-purple-600 rounded-xl shadow-lg bg-none bg-brand"
-              data-oid="89goeiv"
+              data-oid="q9v1ebz"
             >
-              <Users className="w-6 h-6 text-white" data-oid="50zm.95" />
+              <Users className="w-6 h-6 text-white" data-oid="2kyoshy" />
             </div>
-            <div data-oid="8r8-:75">
+            <div data-oid="r8:0mcs">
               <h2
                 className="dark:text-white text-2xl font-bold bg-[#F9F1F100] text-[#F8F1F1]"
-                data-oid="b.3oj6_"
+                data-oid="7s0nqjl"
               >
                 {t("linkedStudents")}
               </h2>
               <p
                 className="dark:text-gray-400 text-sm bg-[#11000000] text-white"
-                data-oid="odq3f94"
+                data-oid="7f5m_ra"
               >
                 Manage your children's accounts
               </p>
@@ -167,23 +167,23 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
           <button
             onClick={() => onSetLimits({} as Student)}
             className="flex items-center space-x-2 from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-6 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none bg-brand"
-            data-oid="0r:4zrc"
+            data-oid=":8ddkum"
           >
-            <Users className="w-5 h-5" data-oid="z46me8-" />
-            <span data-oid="f0qn12i">{t("linkStudent")}</span>
+            <Users className="w-5 h-5" data-oid="gvn9:kc" />
+            <span data-oid="e2_wa6x">{t("linkStudent")}</span>
           </button>
         </div>
 
         {/* Search and Filter Section */}
         <div
           className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700"
-          data-oid="2dg8264"
+          data-oid="u5l12ip"
         >
-          <div className="flex flex-col md:flex-row gap-4" data-oid="4:38hbj">
-            <div className="flex-1 relative" data-oid="av:j:kc">
+          <div className="flex flex-col md:flex-row gap-4" data-oid="dp:8saz">
+            <div className="flex-1 relative" data-oid="k72918l">
               <Search
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"
-                data-oid="l-0lb8z"
+                data-oid="p6nz1u5"
               />
 
               <input
@@ -192,29 +192,29 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                data-oid="xp9md_3"
+                data-oid="a:1.mva"
               />
             </div>
-            <div className="flex gap-3" data-oid="qanrtvz">
-              <div className="relative" data-oid=":zs5a2l">
+            <div className="flex gap-3" data-oid="cm-lone">
+              <div className="relative" data-oid="5lural8">
                 <select
                   value={selectedSchool}
                   onChange={(e) => setSelectedSchool(e.target.value)}
                   className="appearance-none bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  data-oid="0b5xy-t"
+                  data-oid="ygg-igv"
                 >
-                  <option value="" data-oid="m2m27q4">
+                  <option value="" data-oid="3oegmjl">
                     All Schools
                   </option>
                   {schools.map((school) => (
-                    <option key={school} value={school} data-oid="1wlez_o">
+                    <option key={school} value={school} data-oid="vo1:ljv">
                       {school}
                     </option>
                   ))}
                 </select>
                 <Filter
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none"
-                  data-oid="cj59oje"
+                  data-oid="karsttd"
                 />
               </div>
             </div>
@@ -222,11 +222,11 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
           {(searchTerm || selectedSchool) && (
             <div
               className="mt-4 flex items-center justify-between"
-              data-oid="2rqe0p9"
+              data-oid="2gk4.pj"
             >
               <p
                 className="text-sm text-gray-600 dark:text-gray-400"
-                data-oid="_alem_d"
+                data-oid="t_c4:g5"
               >
                 Showing {filteredStudents.length} of {students.length} students
               </p>
@@ -236,7 +236,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                   setSelectedSchool("");
                 }}
                 className="text-sm text-blue-600 hover:text-blue-700 font-medium"
-                data-oid="z0bim1k"
+                data-oid="ksz4pi1"
               >
                 Clear filters
               </button>
@@ -248,24 +248,24 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
       {filteredStudents.length === 0 ? (
         <div
           className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-12 text-center shadow-sm"
-          data-oid="h85kc1z"
+          data-oid="08c27py"
         >
           <div
             className="flex flex-col items-center justify-center text-center"
-            data-oid="okm2qp7"
+            data-oid="znpcigj"
           >
-            <div className="w-64 h-64 mx-auto mb-6" data-oid="xrzkru5">
+            <div className="w-64 h-64 mx-auto mb-6" data-oid="oq.he5q">
               <img
                 src="/assets/kids wearing masks at school-bro.svg"
                 alt={t("noStudentsLinked")}
                 className="w-full h-full object-contain opacity-80"
                 draggable={false}
-                data-oid="oq8pbvz"
+                data-oid="phw7a79"
               />
             </div>
             <h3
               className="text-xl font-semibold text-brand dark:text-white mb-2"
-              data-oid="066gyqb"
+              data-oid="29e678z"
             >
               {students.length === 0
                 ? t("noStudentsLinked")
@@ -273,7 +273,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
             </h3>
             <p
               className="text-gray-500 dark:text-gray-400 text-sm max-w-md"
-              data-oid="p-ha38g"
+              data-oid="3_8yr4w"
             >
               {students.length === 0
                 ? t("linkStudentPrompt")
@@ -284,7 +284,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
       ) : (
         <div
           className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"
-          data-oid="tqr8m4c"
+          data-oid="d60sr5w"
         >
           {filteredStudents.map((student) => {
             const spendingPercentage = getSpendingPercentage(
@@ -297,59 +297,59 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
               <div
                 key={student.id}
                 className="dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-[#00000000] bg-[url(/images/o9tA.png)]"
-                data-oid="_r_f.zl"
+                data-oid="01_76a9"
               >
                 {/* Student Header */}
                 <div
                   className="flex items-center space-x-4 mb-6"
-                  data-oid="-58-z_e"
+                  data-oid=":_st_p_"
                 >
-                  <div className="relative" data-oid="_cc0xn6">
+                  <div className="relative" data-oid="f3__28v">
                     {student.photo &&
                     student.photo !== "/api/placeholder/48/48" ? (
                       <img
                         src={student.photo}
                         alt={student.name}
                         className="w-16 h-16 rounded-full object-cover border-3 border-gradient-to-r from-blue-500 to-purple-500 shadow-lg"
-                        data-oid="819vd4h"
+                        data-oid="-l4qw.o"
                       />
                     ) : (
                       <div
                         className="w-16 h-16 rounded-full from-blue-500 to-purple-600 flex items-center justify-center shadow-lg bg-none bg-brand"
-                        data-oid="7iskn5_"
+                        data-oid="lrtbo53"
                       >
                         <User
                           className="w-8 h-8 text-white"
-                          data-oid="d8v0yhn"
+                          data-oid="z82olwv"
                         />
                       </div>
                     )}
                     <div
                       className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center"
-                      data-oid="..x46z7"
+                      data-oid="guew9g6"
                     >
                       <CheckCircle
                         className="w-3 h-3 text-white"
-                        data-oid="j.99jtz"
+                        data-oid="jfitlj:"
                       />
                     </div>
                   </div>
-                  <div className="flex-1" data-oid="r460uf7">
+                  <div className="flex-1" data-oid="t0rt.ld">
                     <h3
                       className="text-gray-900 dark:text-white font-bold text-lg"
-                      data-oid="n4o6587"
+                      data-oid="23q430f"
                     >
                       {student.name}
                     </h3>
                     <p
                       className="dark:text-brand text-sm font-medium text-brand"
-                      data-oid="esluo88"
+                      data-oid="7pc0073"
                     >
                       ID: {student.studentId}
                     </p>
                     <p
                       className="text-gray-500 dark:text-gray-400 text-xs"
-                      data-oid="7zryia3"
+                      data-oid="xt9np25"
                     >
                       {student.class || t("notSpecified")}
                     </p>
@@ -357,20 +357,20 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                 </div>
 
                 {/* Spending Progress */}
-                <div className="mb-6" data-oid="ebrj4qk">
+                <div className="mb-6" data-oid="hy9cq27">
                   <div
                     className="flex justify-between items-center mb-2"
-                    data-oid="um-u:r."
+                    data-oid="8rb7ct7"
                   >
                     <span
                       className="text-sm font-medium text-gray-700 dark:text-gray-300"
-                      data-oid="lr4vkgv"
+                      data-oid="-2c15ud"
                     >
                       Daily Spending
                     </span>
                     <span
                       className="text-sm font-bold text-brand dark:text-white"
-                      data-oid="p-7htee"
+                      data-oid="23l959u"
                     >
                       {formatLimitDisplay(
                         student.todaySpent,
@@ -380,58 +380,58 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                   </div>
                   <div
                     className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3"
-                    data-oid="p1.g9nm"
+                    data-oid="tr6jthi"
                   >
                     <div
                       className={`h-3 rounded-full transition-all duration-300 ${getSpendingColor(spendingPercentage)}`}
                       style={{ width: `${spendingPercentage}%` }}
-                      data-oid="h46ovcc"
+                      data-oid="3c67kpl"
                     ></div>
                   </div>
                   <p
                     className="text-xs text-gray-500 dark:text-gray-400 mt-1"
-                    data-oid="qxeyhn9"
+                    data-oid="5q8l6gk"
                   >
                     {spendingPercentage.toFixed(0)}% of daily limit used
                   </p>
                 </div>
 
                 {/* Recent Transactions Preview */}
-                <div className="mb-6" data-oid="fifopnc">
+                <div className="mb-6" data-oid="-:50pq4">
                   <h4
                     className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center"
-                    data-oid="9vh34bf"
+                    data-oid="okgqmz1"
                   >
-                    <Activity className="w-4 h-4 mr-2" data-oid="jlknmsv" />
+                    <Activity className="w-4 h-4 mr-2" data-oid="b74ru20" />
                     Recent Activity
                   </h4>
-                  <div className="space-y-2" data-oid="6py.7mx">
+                  <div className="space-y-2" data-oid="u.iymik">
                     {recentTransactions.slice(0, 2).map((transaction) => (
                       <div
                         key={transaction.id}
                         className="flex items-center justify-between p-3 dark:bg-white rounded-lg bg-white border-2"
-                        data-oid="l4:-n-d"
+                        data-oid="nsdvp17"
                       >
                         <div
                           className="flex items-center space-x-3"
-                          data-oid="zvsxpym"
+                          data-oid="fst2y0."
                         >
                           {getStatusIcon(transaction.status)}
-                          <div data-oid="e4c:17t">
+                          <div data-oid="_6u6id-">
                             <p
                               className="text-sm font-medium dark:text-white text-brand "
-                              data-oid="8b28yc_"
+                              data-oid="uywrh-z"
                             >
                               {transaction.title}
                             </p>
                             <div
                               className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400"
-                              data-oid="-xrp.zs"
+                              data-oid="wb1re1e"
                             >
-                              <Clock className="w-3 h-3" data-oid="t96lgb5" />
-                              <span data-oid="lzzv1..">{transaction.time}</span>
-                              <MapPin className="w-3 h-3" data-oid="i028m_s" />
-                              <span data-oid="ql-r-l4">
+                              <Clock className="w-3 h-3" data-oid="k:r_t:b" />
+                              <span data-oid="4:-z7eo">{transaction.time}</span>
+                              <MapPin className="w-3 h-3" data-oid="z:katq1" />
+                              <span data-oid="jsno1_x">
                                 {transaction.location}
                               </span>
                             </div>
@@ -443,7 +443,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                               ? "text-yellow-400"
                               : "text-yellow-400"
                           }`}
-                          data-oid="qj.5t8a"
+                          data-oid=".q474bu"
                         >
                           {transaction.amount > 0 ? "+" : ""}
                           {Math.abs(transaction.amount).toLocaleString()} RWF
@@ -454,24 +454,24 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex space-x-3" data-oid="8lsv7lg">
+                <div className="flex space-x-3" data-oid="6drspa:">
                   <button
                     onClick={() => onViewTransactions(student)}
                     className="flex-1 flex items-center justify-center space-x-2 from-green-500 to-emerald-600 hover:from-green-600
                      hover:to-emerald-700 text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none
                       bg-brand"
-                    data-oid="ja_7:w4"
+                    data-oid="__51tap"
                   >
-                    <Activity className="w-5 h-5" data-oid="t2weuak" />
-                    <span data-oid="wuwia3m">View All</span>
+                    <Activity className="w-5 h-5" data-oid="fi40_86" />
+                    <span data-oid="b0.x0yq">View All</span>
                   </button>
                   <button
                     onClick={() => onSetLimits(student)}
                     className="flex-1 flex items-center justify-center space-x-2 from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none bg-[#EAB500]"
-                    data-oid="zm27nzt"
+                    data-oid="pa2h43m"
                   >
-                    <Settings className="w-5 h-5" data-oid="pnkoetn" />
-                    <span data-oid="wrk2qzp">Limits</span>
+                    <Settings className="w-5 h-5" data-oid="flzo8k4" />
+                    <span data-oid="b8qcdgd">Limits</span>
                   </button>
                 </div>
               </div>

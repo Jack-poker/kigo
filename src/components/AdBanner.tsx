@@ -59,7 +59,7 @@ const AdBanner: React.FC = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:8001/admin/ads/active",
+        "http://localhost:8002/admin/ads/active",
         {
           headers: {
             "X-CSRF-Token": csrfToken,
@@ -153,7 +153,7 @@ const AdBanner: React.FC = () => {
   return (
     <div
       className={`sticky top-0 z-40 transition-all duration-500 ease-in-out px-2 sm:px-4 ${isScrollHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
-      data-oid="p6t0iru"
+      data-oid="6cbdpqj"
     >
       <div
         className={`relative w-full max-w-7xl mx-auto mb-4 sm:mb-6 rounded-3xl sm:rounded-[2rem] overflow-hidden backdrop-blur-xl transition-all duration-300 group ${
@@ -161,76 +161,76 @@ const AdBanner: React.FC = () => {
             ? "bg-brand border border-emerald-600/30 shadow-emerald-500/20"
             : "bg-orange"
         }`}
-        data-oid="jis8dti"
+        data-oid="cqq16:-"
       >
         {/* Enhanced Glass Effect Background */}
-        <div className="absolute inset-0 " data-oid="3k6bjf9"></div>
+        <div className="absolute inset-0 " data-oid="84acp3b"></div>
 
         {/* Animated Shimmer Effect */}
         <div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"
-          data-oid="p0p41_3"
+          data-oid="wmd5r0:"
         ></div>
 
         {/* Glass Reflections */}
         <div
           className="absolute -inset-[400px] bg-gradient-radial from-emerald-200/20 via-transparent to-transparent blur-2xl transform rotate-45"
-          data-oid="n2wq0ri"
+          data-oid="bi.5cy2"
         ></div>
 
         {/* Content Container with Enhanced Glass Effect */}
-        <div className="relative z-10 p-4 sm:p-8" data-oid="wz7d44q">
+        <div className="relative z-10 p-4 sm:p-8" data-oid="b30dok7">
           {error ? (
             <div
               className={`text-center text-sm ${isDark ? "text-red-400" : "text-red-500"}`}
-              data-oid="i-onpn6"
+              data-oid="cdhbh7_"
             >
               {error}
             </div>
           ) : loading ? (
             <div
               className={`text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
-              data-oid="3rw4z59"
+              data-oid="ibw2g6k"
             >
               Loading ads...
             </div>
           ) : ads.length === 0 ? (
             <div
               className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
-              data-oid="xuy2.iw"
+              data-oid="dkwz35n"
             >
-              <div className="w-32 h-32 mx-auto mb-2" data-oid="_x3h56n">
+              <div className="w-32 h-32 mx-auto mb-2" data-oid="vj25qr1">
                 <img
                   src="/assets/Wallet-bro.svg"
                   alt="No ads illustration"
                   className="w-full h-full object-contain"
                   draggable={false}
-                  data-oid="e:92k.u"
+                  data-oid="yl-nrqx"
                 />
               </div>
               No active ads
             </div>
           ) : (
             <>
-              <div className="flex justify-end mb-2" data-oid="abcbb2o">
+              <div className="flex justify-end mb-2" data-oid=".qkwx_u">
                 <button
                   onClick={handleRefresh}
                   className={`inline-flex items-center px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                     isDark ? "bg-brand text-white" : "bg-brand text-white"
                   }`}
-                  data-oid="ejlt4wy"
+                  data-oid="q9uo0oj"
                 >
                   Refresh Ads
                 </button>
               </div>
               <div
                 className="flex flex-col sm:flex-row items-center gap-6"
-                data-oid="wrpu2gc"
+                data-oid="wolw1yq"
               >
                 {/* Enhanced Image Container */}
                 <div
                   className="flex-shrink-0 w-full sm:w-48 md:w-56 h-24 sm:h-32 md:h-36 rounded-2xl overflow-hidden shadow-xl relative group/image"
-                  data-oid="4jf2mka"
+                  data-oid="p4k6y4m"
                 >
                   <img
                     src={currentAd.src}
@@ -241,25 +241,25 @@ const AdBanner: React.FC = () => {
                         "https://via.placeholder.com/224x144?text=Ad+Image";
                     }}
                     className="w-full h-full object-cover transition-all duration-700 group-hover/image:scale-110"
-                    data-oid="bzdc8z8"
+                    data-oid="bkyx2:-"
                   />
 
                   <div
                     className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent opacity-60"
-                    data-oid="ywtvz24"
+                    data-oid="vyljicl"
                   ></div>
                 </div>
 
                 {/* Enhanced Text Content */}
                 <div
                   className="flex-1 text-center sm:text-left min-w-0"
-                  data-oid="iwufukw"
+                  data-oid="1mrn9s8"
                 >
                   <h3
                     className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 ${
                       isDark ? "text-white" : "text-white"
                     }`}
-                    data-oid="7_xkft7"
+                    data-oid="-861emn"
                   >
                     {currentAd.title}
                   </h3>
@@ -268,7 +268,7 @@ const AdBanner: React.FC = () => {
                       className={`font-medium mb-4 sm:mb-5 text-sm sm:text-base lg:text-lg ${
                         isDark ? "text-white" : "text-zinc-900"
                       }`}
-                      data-oid="vrcn8ek"
+                      data-oid="e.woyq5"
                     >
                       {currentAd.subtitle}
                     </p>
@@ -282,9 +282,9 @@ const AdBanner: React.FC = () => {
                       className={`inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                         isDark ? "bg-brand text-white" : "bg-brand text-white"
                       }`}
-                      data-oid="hddjtxk"
+                      data-oid="z7lrbq9"
                     >
-                      <span className="relative z-10" data-oid="cs_fsh0">
+                      <span className="relative z-10" data-oid="ny5wb-i">
                         {currentAd.ctaText}
                       </span>
                     </button>
@@ -299,7 +299,7 @@ const AdBanner: React.FC = () => {
         {ads.length > 1 && !loading && !error && ads.length > 0 && (
           <div
             className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20"
-            data-oid="d0_j2nq"
+            data-oid="z_95fx8"
           >
             {ads.map((_, index) => (
               <button
@@ -310,7 +310,7 @@ const AdBanner: React.FC = () => {
                     ? `w-8 sm:w-10 ${isDark ? "bg-emerald-400" : "bg-emerald-500"}`
                     : `w-2 sm:w-3 ${isDark ? "bg-emerald-700 hover:bg-emerald-600" : "bg-emerald-200 hover:bg-emerald-300"}`
                 }`}
-                data-oid="jatim1."
+                data-oid="qn1sv4c"
               />
             ))}
           </div>
@@ -319,11 +319,11 @@ const AdBanner: React.FC = () => {
         {/* Enhanced Decorative Elements */}
         <div
           className="absolute top-0 left-0 w-48 h-48 rounded-full blur-3xl opacity-20 bg-emerald-300"
-          data-oid="m_0fak3"
+          data-oid="7gx3xz7"
         ></div>
         <div
           className="absolute bottom-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-20 bg-green-300"
-          data-oid="rm585p6"
+          data-oid="em133m6"
         ></div>
       </div>
     </div>

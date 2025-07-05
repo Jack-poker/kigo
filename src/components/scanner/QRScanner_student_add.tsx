@@ -134,23 +134,23 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScan }) => {
   return (
     <div
       className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"
-      data-oid="kz2k678"
+      data-oid="tmnwhom"
     >
       <Card
         className="w-full max-w-md bg-white rounded-2xl shadow-2xl border-0 overflow-hidden"
-        data-oid="07fdqyc"
+        data-oid=".fe9nyu"
       >
         <CardHeader
           className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-6"
-          data-oid="o3scts3"
+          data-oid="dy.rux0"
         >
-          <div className="flex items-center justify-between" data-oid="rgs_nbn">
+          <div className="flex items-center justify-between" data-oid="e0lu3kz">
             <CardTitle
               className="flex items-center space-x-2 text-white"
-              data-oid="cg.3jvf"
+              data-oid="9zd4kid"
             >
-              <QrCode className="h-6 w-6" data-oid="9dp:nkv" />
-              <span className="text-xl font-bold" data-oid="gjcy:j:">
+              <QrCode className="h-6 w-6" data-oid="3tat8qr" />
+              <span className="text-xl font-bold" data-oid="oxfse56">
                 Scan Student QR Code
               </span>
             </CardTitle>
@@ -159,41 +159,41 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScan }) => {
               size="sm"
               onClick={onClose}
               className="h-8 w-8 p-0 rounded-full bg-white/20 hover:bg-white/30 text-white"
-              data-oid="lyb.qbw"
+              data-oid="qn7oi29"
             >
-              <X className="h-4 w-4" data-oid="uwtl69i" />
+              <X className="h-4 w-4" data-oid="7-du5mj" />
             </Button>
           </div>
         </CardHeader>
 
-        <CardContent className="p-6" data-oid="5.9-bx1">
+        <CardContent className="p-6" data-oid="bf8sl55">
           {cameraError ? (
-            <div className="text-center space-y-4 py-8" data-oid="shcxci.">
+            <div className="text-center space-y-4 py-8" data-oid="r67cv9g">
               <div
                 className="w-16 h-16 mx-auto rounded-full bg-red-50 flex items-center justify-center"
-                data-oid="tw-.p6h"
+                data-oid=".t96kqv"
               >
                 <AlertCircle
                   className="h-8 w-8 text-red-500"
-                  data-oid="hoyca0y"
+                  data-oid="mu58xo2"
                 />
               </div>
-              <div data-oid="znrr7t7">
+              <div data-oid="gsxxduj">
                 <h3
                   className="text-lg font-semibold text-gray-900 mb-2"
-                  data-oid="whj55a:"
+                  data-oid="8eegfr2"
                 >
                   Camera Access Denied
                 </h3>
-                <p className="text-gray-600 mb-6" data-oid="-z4cq67">
+                <p className="text-gray-600 mb-6" data-oid="u7_drj3">
                   Please allow camera access to scan QR codes
                 </p>
                 <Button
                   onClick={startCamera}
                   className="bg-yellow-500 hover:bg-yellow-600 text-white"
-                  data-oid="p4uyru7"
+                  data-oid="gskj5:b"
                 >
-                  <Camera className="h-4 w-4 mr-2" data-oid="sjas_4o" />
+                  <Camera className="h-4 w-4 mr-2" data-oid=".0j3g75" />
                   Try Again
                 </Button>
               </div>
@@ -202,7 +202,7 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScan }) => {
             <>
               <div
                 className="relative bg-black rounded-xl overflow-hidden aspect-square mb-6"
-                data-oid="j19-8pm"
+                data-oid="mn:jo1z"
               >
                 {/* Video feed */}
                 <video
@@ -211,7 +211,7 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScan }) => {
                   playsInline
                   muted
                   className="w-full h-full object-cover"
-                  data-oid="da7grxa"
+                  data-oid="gbejx-d"
                 />
 
                 {/* Canvas overlay for animations */}
@@ -220,45 +220,45 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScan }) => {
                   width={300}
                   height={300}
                   className="absolute inset-0 w-full h-full"
-                  data-oid="nsxzdjx"
+                  data-oid="qdhbetj"
                 />
 
                 {/* Scanning frame */}
                 <div
                   className="absolute inset-0 flex items-center justify-center"
-                  data-oid="s:g1s:e"
+                  data-oid="4.ypu2u"
                 >
                   <div
                     className="w-3/4 h-3/4 border-2 border-yellow-400 rounded-lg relative"
-                    data-oid="qmdtzgx"
+                    data-oid="yg_r346"
                   >
                     {/* Corner markers */}
                     <div
                       className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-yellow-400 rounded-tl"
-                      data-oid="2fm9usj"
+                      data-oid="j.f1uc_"
                     ></div>
                     <div
                       className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-yellow-400 rounded-tr"
-                      data-oid="iousl-t"
+                      data-oid="cxw.m-h"
                     ></div>
                     <div
                       className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-yellow-400 rounded-bl"
-                      data-oid=".cblsmr"
+                      data-oid="hyzdeuu"
                     ></div>
                     <div
                       className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-yellow-400 rounded-br"
-                      data-oid="pniqu76"
+                      data-oid="y3_yy3f"
                     ></div>
 
                     {/* Scanning animation */}
                     {isScanning && (
                       <div
                         className="absolute inset-0 overflow-hidden"
-                        data-oid="k8y40k."
+                        data-oid="6vlub4x"
                       >
                         <div
                           className="h-1 bg-yellow-400 w-full absolute top-1/2 transform -translate-y-1/2 animate-scan opacity-70 shadow-lg shadow-yellow-300"
-                          data-oid="yiuzj60"
+                          data-oid="8hmb_9g"
                         ></div>
                       </div>
                     )}
@@ -268,54 +268,54 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScan }) => {
                 {/* Overlay gradient */}
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"
-                  data-oid="nii:z77"
+                  data-oid="4a7otqk"
                 ></div>
               </div>
 
-              <div className="text-center space-y-4" data-oid="xx-0aga">
-                <p className="text-gray-700 font-medium" data-oid="0sfoom9">
+              <div className="text-center space-y-4" data-oid="qt9x0u2">
+                <p className="text-gray-700 font-medium" data-oid="6ccugx5">
                   Position the QR code within the frame
                 </p>
                 <Button
                   onClick={simulateQRScan}
                   className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white px-6 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all w-full"
-                  data-oid="l5qrfjq"
+                  data-oid="jyziav1"
                 >
                   Simulate QR Scan (Demo)
                 </Button>
               </div>
             </>
           ) : (
-            <div className="text-center space-y-6 py-4" data-oid="ye9_vh9">
+            <div className="text-center space-y-6 py-4" data-oid="01_npv8">
               {!isLinking ? (
-                <div className="space-y-4" data-oid="y41-d4x">
+                <div className="space-y-4" data-oid="1t1srfe">
                   <div
                     className="w-20 h-20 mx-auto rounded-full bg-green-50 flex items-center justify-center animate-in zoom-in duration-300"
-                    data-oid="agntcwo"
+                    data-oid="35fxtp:"
                   >
                     <CheckCircle
                       className="h-10 w-10 text-green-500"
-                      data-oid="8s4u9pz"
+                      data-oid="ad:gx4a"
                     />
                   </div>
-                  <div data-oid="6ddlx60">
+                  <div data-oid="733dr0h">
                     <h3
                       className="text-xl font-semibold text-gray-900 mb-2"
-                      data-oid="r5crdc:"
+                      data-oid="yv8jhba"
                     >
                       QR Code Detected!
                     </h3>
-                    <p className="text-gray-600 mb-2" data-oid="eek:grf">
+                    <p className="text-gray-600 mb-2" data-oid="rg4f8oq">
                       Student ID: {scanResult}
                     </p>
                     <div
                       className="flex space-x-3 justify-center mt-6"
-                      data-oid="wpumdjl"
+                      data-oid="o52gvt1"
                     >
                       <Button
                         onClick={() => handleStudentLink(scanResult)}
                         className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg"
-                        data-oid="0_ssr.8"
+                        data-oid="i7rq3.d"
                       >
                         Continue
                       </Button>
@@ -327,7 +327,7 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScan }) => {
                         }}
                         variant="outline"
                         className="border-gray-200 text-gray-700 px-6 py-2 rounded-lg"
-                        data-oid="b1knvvl"
+                        data-oid="u90fz5q"
                       >
                         Scan Again
                       </Button>
@@ -335,28 +335,28 @@ const QRScanner: React.FC<QRScannerProps> = ({ onClose, onScan }) => {
                   </div>
                 </div>
               ) : (
-                <div className="space-y-4" data-oid="zf0emvt">
+                <div className="space-y-4" data-oid="7tq3q-t">
                   <div
                     className="relative w-20 h-20 mx-auto"
-                    data-oid="7r55yab"
+                    data-oid="3mh725."
                   >
                     <div
                       className="absolute inset-0 rounded-full border-4 border-yellow-400 border-t-transparent animate-spin"
-                      data-oid="zvqt387"
+                      data-oid="gmc7odw"
                     ></div>
                     <div
                       className="absolute inset-3 rounded-full border-4 border-yellow-300 border-b-transparent animate-spin animation-delay-500"
-                      data-oid=".c:c4rr"
+                      data-oid="o:72jp8"
                     ></div>
                   </div>
-                  <div data-oid="0or0ypi">
+                  <div data-oid="b75j-w2">
                     <h3
                       className="text-xl font-semibold text-gray-900 mb-2"
-                      data-oid=".q2:wgl"
+                      data-oid="xb8okf-"
                     >
                       Linking Student...
                     </h3>
-                    <p className="text-gray-600" data-oid="c3m9k_d">
+                    <p className="text-gray-600" data-oid="_h77vfx">
                       Please wait while we connect the student to your account
                     </p>
                   </div>

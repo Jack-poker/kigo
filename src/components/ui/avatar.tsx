@@ -14,7 +14,7 @@ const Avatar = React.forwardRef<
       className,
     )}
     {...props}
-    data-oid="6u79hyu"
+    data-oid="hv5ge4."
   />
 ));
 Avatar.displayName = AvatarPrimitive.Root.displayName;
@@ -27,7 +27,7 @@ const AvatarImage = React.forwardRef<
     ref={ref}
     className={cn("aspect-square h-full w-full", className)}
     {...props}
-    data-oid="1et82cw"
+    data-oid="7jvdiq2"
   />
 ));
 AvatarImage.displayName = AvatarPrimitive.Image.displayName;
@@ -43,7 +43,7 @@ const AvatarFallback = React.forwardRef<
       className,
     )}
     {...props}
-    data-oid="h.n6b5r"
+    data-oid="hqijfwm"
   />
 ));
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;

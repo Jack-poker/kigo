@@ -45,36 +45,36 @@ const PaymentStatus: React.FC = () => {
         backgroundSize: "auto",
         backgroundColor: "rgba(0, 0, 0, 0.5)", // Fallback background
       }}
-      data-oid="fbv5ls:"
+      data-oid="dc54v2a"
     >
       {errorMessage ? (
         <div
           className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center"
-          data-oid="w10qz9b"
+          data-oid="ita3g56"
         >
           <div
             className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6"
-            data-oid="2vs1dt6"
+            data-oid="4q9gn3."
           >
             <AlertCircle
               className="w-10 h-10 text-red-500"
-              data-oid="xuh48dz"
+              data-oid="fk2ipv_"
             />
           </div>
           <h2
             className="text-2xl font-bold text-gray-800 mb-2"
-            data-oid="fvy9_5b"
+            data-oid="ptuye6f"
           >
             Transaction Error
           </h2>
-          <p className="text-gray-600 mb-6" data-oid="ryr757l">
+          <p className="text-gray-600 mb-6" data-oid="nr.:xsc">
             {errorMessage}
           </p>
           <button
             className="bg-gradient-to-r from-red-500 to-deep-red-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:from-red-600 hover:to-deep-red-600 transition"
             onClick={goToDashboard}
             type="button"
-            data-oid="s9nxf80"
+            data-oid="55eq01s"
           >
             Go to Dashboard
           </button>
@@ -84,38 +84,38 @@ const PaymentStatus: React.FC = () => {
           transactionAmount="2000 RWF"
           merchantName="Kohereza Amafaranga"
           transactionId={transactionId}
-          data-oid="7dcuty_"
+          data-oid="9s:ooux"
         />
       ) : (
         <div
           className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center animate-bounce-in"
-          data-oid="-4pz1-h"
+          data-oid="caolu9w"
         >
           {transactionStatus === "success" ? (
             <>
               <div
                 className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
-                data-oid="mvw7p:g"
+                data-oid="1i0lkl4"
               >
                 <CheckCircle
                   className="w-10 h-10 text-green-500"
-                  data-oid="0bhtr.:"
+                  data-oid="nri276q"
                 />
               </div>
               <h2
                 className="text-2xl font-bold text-gray-800 mb-2"
-                data-oid="g.g:uw0"
+                data-oid="a654ggi"
               >
                 Transaction Successful!
               </h2>
-              <p className="text-gray-600 mb-6" data-oid="jdo4jrh">
+              <p className="text-gray-600 mb-6" data-oid="jg5_y__">
                 Your payment of 2000 RWF to Kohereza Amafaranga was successful.
               </p>
               <button
                 className="bg-gradient-to-r from-green-500 to-deep-indigo-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:from-green-600 hover:to-deep-indigo-600 transition"
                 onClick={goToDashboard}
                 type="button"
-                data-oid="4ezin1:"
+                data-oid="q0u9rf3"
               >
                 Go to Dashboard
               </button>
@@ -124,20 +124,20 @@ const PaymentStatus: React.FC = () => {
             <>
               <div
                 className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6"
-                data-oid="2vrv5_d"
+                data-oid="a-5wp1q"
               >
                 <AlertCircle
                   className="w-10 h-10 text-red-500"
-                  data-oid="03:ools"
+                  data-oid=".o-yo.i"
                 />
               </div>
               <h2
                 className="text-2xl font-bold text-gray-800 mb-2"
-                data-oid="9wtnj.x"
+                data-oid="d.lshqg"
               >
                 Transaction Failed
               </h2>
-              <p className="text-gray-600 mb-6" data-oid="6-qknmg">
+              <p className="text-gray-600 mb-6" data-oid="g-ukbik">
                 Your payment of 2000 RWF to Kohereza Amafaranga could not be
                 processed.
               </p>
@@ -145,19 +145,19 @@ const PaymentStatus: React.FC = () => {
                 className="bg-gradient-to-r from-red-500 to-deep-red-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:from-red-600 hover:to-deep-red-600 transition"
                 onClick={goToDashboard}
                 type="button"
-                data-oid="utfii1m"
+                data-oid="4uruw-z"
               >
                 Go to Dashboard
               </button>
             </>
           ) : (
-            <div className="flex flex-col items-center" data-oid="o5h5-rz">
+            <div className="flex flex-col items-center" data-oid="qdo:g:r">
               <Loader2
                 className="w-10 h-10 text-indigo-600 animate-spin mb-4"
-                data-oid="r:n7vhe"
+                data-oid="l4wmrtw"
               />
 
-              <p className="text-gray-600" data-oid="a4s-t0g">
+              <p className="text-gray-600" data-oid="d76gmic">
                 Loading transaction status...
               </p>
             </div>

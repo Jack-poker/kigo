@@ -22,7 +22,6 @@ import {
   Bell,
   LogOut,
 } from "lucide-react";
-import { Ripple } from "@/components/magicui/ripple";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTheme } from "../contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
@@ -741,38 +740,30 @@ const Index = () => {
                     ))}
                     {transactions.slice(0, 4).length === 0 && (
                       <div
-                        className="relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand/10 via-purple-50 to-blue-50 dark:from-brand/20 dark:via-purple-900/20 dark:to-blue-900/20"
+                        className="flex flex-col items-center justify-center py-12 text-center"
                         data-oid="5:l45hz"
                       >
                         <div
-                          className="relative z-10 flex flex-col items-center justify-center text-center"
-                          data-oid="9r-vn60"
+                          className="w-24 h-24 mx-auto mb-4 bg-brand dark:bg-brand rounded-full flex items-center justify-center"
+                          data-oid="h62c5vx"
                         >
-                          <h4
-                            className="text-2xl font-bold bg-gradient-to-r from-brand to-purple-600 bg-clip-text text-transparent mb-3"
-                            data-oid="n8pu683"
-                          >
-                            ✨ No Recent Activity
-                          </h4>
-                          <p
-                            className="text-gray-600 dark:text-gray-300 text-base max-w-xs leading-relaxed"
-                            data-oid="6pma4x_"
-                          >
-                            {t("noTransactions" as any)}
-                          </p>
-                          <div
-                            className="mt-4 px-4 py-2 bg-white/80 dark:bg-gray-800/80 rounded-full backdrop-blur-sm border border-white/20"
-                            data-oid="05.1q:k"
-                          >
-                            <span
-                              className="text-sm text-gray-500 dark:text-gray-400 font-medium"
-                              data-oid="szfebeo"
-                            >
-                              💳 Start your first transaction
-                            </span>
-                          </div>
+                          <Activity
+                            className="w-8 h-8 text-gray-400 dark:text-white border-0"
+                            data-oid="p4q4b_-"
+                          />
                         </div>
-                        <Ripple data-oid="skleeoj" />
+                        <h4
+                          className="text-gray-900 dark:text-white font-medium mb-2"
+                          data-oid="n8pu683"
+                        >
+                          No Recent Activity
+                        </h4>
+                        <p
+                          className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
+                          data-oid="6pma4x_"
+                        >
+                          {t("noTransactions" as any)}
+                        </p>
                       </div>
                     )}
                   </div>
