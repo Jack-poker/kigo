@@ -115,7 +115,7 @@ const WalletSection = ({
           </button>
           <button
             onClick={onWithdraw}
-            className="group flex items-center justify-center space-x-3 bg-gradient-to-br from-orange-500 to-red-600 text-white py-4 px-6 rounded-2xl hover:from-orange-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden"
+            className="group flex items-center justify-center space-x-3 bg-white text-brand py-4 px-6 rounded-2xl hover:from-orange-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden"
             data-oid="bucscgi"
           >
             <div

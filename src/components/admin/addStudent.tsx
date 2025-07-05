@@ -593,28 +593,37 @@ const QRScanner: React.FC<{
   const scannerRef = useRef<HTMLDivElement>(null);
   const [isScanning, setIsScanning] = useState(false);
   const [scanner, setScanner] = useState<Html5QrcodeScanner | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     let html5QrcodeScanner: Html5QrcodeScanner | null = null;
 
     const initializeScanner = () => {
-      if (!scannerRef.current) return;
+      if (!scannerRef.current || isInitialized) return;
 
       try {
-        // Ultra-simple configuration - everything automatic
+        // Clean configuration to prevent camera view repetition
         html5QrcodeScanner = new Html5QrcodeScanner(
           "qr-scanner",
           {
             fps: 10,
             qrbox: { width: 250, height: 250 },
-            // Completely automatic - no UI controls
+            aspectRatio: 1.0,
+            // Prevent UI controls and overlays
+            disableFlip: false,
             rememberLastUsedCamera: true,
             supportedScanTypes: [],
+            // Hide all default UI elements
+            showTorchButtonIfSupported: false,
+            showZoomSliderIfSupported: false,
+            // Auto-select best camera
+            facingMode: "environment",
           },
           /* verbose= */ false,
         );
 
         setScanner(html5QrcodeScanner);
+        setIsInitialized(true);
 
         // Success callback - when QR code is detected
         const onScanSuccess = (decodedText: string) => {
@@ -630,9 +639,9 @@ const QRScanner: React.FC<{
           }
         };
 
-        // Error callback - completely silent for parent-friendly experience
+        // Error callback - completely silent
         const onScanError = () => {
-          // Silently ignore all errors - no user interruption
+          // Silently ignore all errors
           return;
         };
 
@@ -640,29 +649,32 @@ const QRScanner: React.FC<{
         html5QrcodeScanner.render(onScanSuccess, onScanError);
         setIsScanning(true);
       } catch (err: any) {
-        // Silent fallback - no error messages to confuse parents
+        // Silent fallback
         console.warn("Scanner initialization:", err);
       }
     };
 
-    // Start immediately
-    const timer = setTimeout(initializeScanner, 200);
+    // Start immediately but only once
+    if (!isInitialized) {
+      const timer = setTimeout(initializeScanner, 300);
+      return () => clearTimeout(timer);
+    }
 
     return () => {
-      clearTimeout(timer);
-      if (html5QrcodeScanner) {
+      if (html5QrcodeScanner && isInitialized) {
         html5QrcodeScanner
           .clear()
           .then(() => {
             setScanner(null);
             setIsScanning(false);
+            setIsInitialized(false);
           })
           .catch(() => {
             // Silent cleanup
           });
       }
     };
-  }, [onStudentFound, setIsLoading]);
+  }, [onStudentFound, setIsLoading, isInitialized]);
 
   return (
     <motion.div
@@ -679,10 +691,7 @@ const QRScanner: React.FC<{
         data-oid="2fx_7d8"
       >
         {/* Header */}
-        <div
-          className="relative p-6 bg-gradient-to-r from-green-500 to-blue-600 text-white"
-          data-oid="z26:by5"
-        >
+        <div className="relative p-6 bg-brand text-white" data-oid="z26:by5">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
@@ -699,9 +708,9 @@ const QRScanner: React.FC<{
               <Camera className="w-8 h-8" data-oid="coi9nhg" />
             </div>
             <h2 className="text-2xl font-bold mb-2" data-oid="cc6lyx-">
-              📱 Scan QR Code
+              Scan QR Code
             </h2>
-            <p className="text-green-100" data-oid="4cgkxkn">
+            <p className="text-yellow-100" data-oid="4cgkxkn">
               Simply point your camera at the QR code
             </p>
           </div>
@@ -713,15 +722,22 @@ const QRScanner: React.FC<{
             className="relative mx-auto w-80 h-80 rounded-2xl overflow-hidden bg-gray-50"
             data-oid="e0b4_22"
           >
-            {/* Scanner Container - Completely automatic */}
+            {/* Scanner Container - Clean and simple */}
             <div
               id="qr-scanner"
               ref={scannerRef}
-              className="w-full h-full"
+              className="w-full h-full [&>div]:!border-none [&>div]:!shadow-none [&_button]:!hidden [&_select]:!hidden [&_span]:!hidden"
+              style={
+                {
+                  // Hide all default UI elements
+                  "--qr-scanner-border": "none",
+                  "--qr-scanner-background": "transparent",
+                } as React.CSSProperties
+              }
               data-oid="_3bla9z"
             />
 
-            {/* Simple scanning overlay - always visible when scanning */}
+            {/* Clean scanning overlay - only when scanning */}
             {isScanning && (
               <div
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -730,34 +746,34 @@ const QRScanner: React.FC<{
                 <div className="relative" data-oid="ly5wlh3">
                   {/* Clean scanning frame */}
                   <div
-                    className="w-64 h-64 border-4 border-green-400/80 rounded-2xl bg-transparent"
+                    className="w-64 h-64 border-4 border-yellow-400 rounded-2xl bg-transparent"
                     data-oid="aio6ow7"
                   />
 
                   {/* Corner indicators */}
                   <div
-                    className="absolute -top-2 -left-2 w-8 h-8 border-l-4 border-t-4 border-green-400 rounded-tl-lg"
+                    className="absolute -top-2 -left-2 w-8 h-8 border-l-4 border-t-4 border-yellow-400 rounded-tl-lg"
                     data-oid="3:wnnqz"
                   />
 
                   <div
-                    className="absolute -top-2 -right-2 w-8 h-8 border-r-4 border-t-4 border-green-400 rounded-tr-lg"
+                    className="absolute -top-2 -right-2 w-8 h-8 border-r-4 border-t-4 border-yellow-400 rounded-tr-lg"
                     data-oid="6m5j4e-"
                   />
 
                   <div
-                    className="absolute -bottom-2 -left-2 w-8 h-8 border-l-4 border-b-4 border-green-400 rounded-bl-lg"
+                    className="absolute -bottom-2 -left-2 w-8 h-8 border-l-4 border-b-4 border-yellow-400 rounded-bl-lg"
                     data-oid="59uh:z."
                   />
 
                   <div
-                    className="absolute -bottom-2 -right-2 w-8 h-8 border-r-4 border-b-4 border-green-400 rounded-br-lg"
+                    className="absolute -bottom-2 -right-2 w-8 h-8 border-r-4 border-b-4 border-yellow-400 rounded-br-lg"
                     data-oid="wyea2o6"
                   />
 
                   {/* Scanning line animation */}
                   <motion.div
-                    className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent"
+                    className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
                     animate={{ y: [0, 256, 0] }}
                     transition={{
                       duration: 2,
@@ -769,7 +785,7 @@ const QRScanner: React.FC<{
 
                   {/* Gentle pulse effect */}
                   <motion.div
-                    className="absolute inset-0 border-2 border-green-400/30 rounded-2xl"
+                    className="absolute inset-0 border-2 border-yellow-400/30 rounded-2xl"
                     animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 2, repeat: Infinity }}
                     data-oid="27b3z_a"
@@ -782,7 +798,7 @@ const QRScanner: React.FC<{
           {/* Simple status indicator */}
           <div className="mt-6 text-center" data-oid="v2c48_v">
             <div
-              className="flex items-center justify-center gap-2 text-green-600"
+              className="flex items-center justify-center gap-2 text-yellow-600"
               data-oid="vdoe10p"
             >
               <motion.div
@@ -879,7 +895,7 @@ const StudentConfirmation: React.FC<{
     >
       <div className="text-center space-y-3" data-oid="t.wbr7.">
         <h2
-          className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-900 to-green-800 bg-clip-text text-transparent"
+          className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-900 to-yellow-800 bg-clip-text text-transparent"
           data-oid="z:hcmmd"
         >
           {t("confirmDetails")}
@@ -919,7 +935,7 @@ const StudentConfirmation: React.FC<{
               )}
             </div>
             <div
-              className="absolute -bottom-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg"
+              className="absolute -bottom-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-yellow-400 to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg"
               data-oid="d5xmu55"
             >
               <CheckCircle
@@ -1088,7 +1104,7 @@ const StudentConfirmation: React.FC<{
           whileTap={{ scale: 0.98 }}
           onClick={onConfirm}
           disabled={isLoading}
-          className="w-full px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+          className="w-full px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-yellow-500 via-emerald-500 to-teal-500 text-white rounded-2xl font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
           data-oid="c1j0xyr"
         >
           {isLoading ? (
@@ -1705,7 +1721,7 @@ const AddStudent: React.FC = () => {
                 exit={{ opacity: 0, x: 50 }}
                 className={`p-3 sm:p-4 rounded-2xl shadow-xl border text-xs sm:text-sm font-medium flex items-center gap-2 ${
                   toast.type === "success"
-                    ? "bg-green-50 border-green-200 text-green-700"
+                    ? "bg-yellow-50 border-yellow-200 text-yellow-700"
                     : "bg-red-50 border-red-200 text-red-700"
                 }`}
                 data-oid="pd:bjwd"
