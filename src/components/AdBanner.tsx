@@ -182,7 +182,7 @@ const AdBanner: React.FC = () => {
         <div className="relative z-10 p-4 sm:p-8" data-oid="b30dok7">
           {error ? (
             <div
-              className={`text-center text-sm ${isDark ? "text-red-400" : "text-red-500"}`}
+              className={`text-center text-sm ${isDark ? "text-white" : "text-white"}`}
               data-oid="cdhbh7_"
             >
               {error}
@@ -196,7 +196,7 @@ const AdBanner: React.FC = () => {
             </div>
           ) : ads.length === 0 ? (
             <div
-              className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
+              className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? "text-white" : "text-white"}`}
               data-oid="dkwz35n"
             >
               <div className="w-32 h-32 mx-auto mb-2" data-oid="vj25qr1">
@@ -266,7 +266,7 @@ const AdBanner: React.FC = () => {
                   {currentAd.subtitle && (
                     <p
                       className={`font-medium mb-4 sm:mb-5 text-sm sm:text-base lg:text-lg ${
-                        isDark ? "text-white" : "text-zinc-900"
+                        isDark ? "text-white" : "text-white"
                       }`}
                       data-oid="e.woyq5"
                     >
@@ -280,7 +280,7 @@ const AdBanner: React.FC = () => {
                         window.open(currentAd.ctaLink, "_blank")
                       }
                       className={`inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
-                        isDark ? "bg-brand text-white" : "bg-brand text-white"
+                        isDark ? "bg-white text-brand" : "bg-white text-brand"
                       }`}
                       data-oid="z7lrbq9"
                     >

@@ -250,7 +250,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
         data-oid="lzhj0fe"
       >
         <div
-          className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center animate-bounce"
+          className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center"
           data-oid="g8cs6gt"
         >
           <div
@@ -260,12 +260,12 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             <XCircle className="w-10 h-10 text-red-500" data-oid="v107o5s" />
           </div>
           <h2
-            className="text-2xl font-bold text-gray-800 mb-2"
+            className="text-2xl font-bold text-brand mb-2"
             data-oid="h143ryq"
           >
             Transaction Failed
           </h2>
-          <p className="text-gray-600 mb-4" data-oid="90i5icl">
+          <p className="text-brand-600 mb-4" data-oid="90i5icl">
             {error ||
               `Your payment of ${transactionAmount} to ${merchantName} was unsuccessful.`}
           </p>
@@ -279,7 +279,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
               Retry
             </button>
             <button
-              className="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-6 py-3 rounded-full font-semibold shadow hover:from-gray-600 hover:to-gray-700 transition bg-[#000000F2]"
+              className="bg-brand text-white px-6 py-3 rounded-full font-semibold shadow hover:from-gray-600 hover:to-gray-700 transition bg-[#000000F2]"
               onClick={() => (window.location.href = "/dashboard")}
               type="button"
               data-oid="vk75992"
@@ -296,11 +296,11 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
   if (isComplete) {
     return (
       <div
-        className="min-h-screen bg-gradient-to-br from-yellow-50 to-indigo-100 flex items-center justify-center p-4"
+        className="min-h-screen  flex items-center justify-center p-4"
         data-oid="djptbk5"
       >
         <div
-          className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center animate-bounce"
+          className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center"
           data-oid="spccqad"
         >
           <div
@@ -308,12 +308,12 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             data-oid="9y3g.lk"
           >
             <CheckCircle
-              className="w-10 h-10 text-green-500"
+              className="w-10 h-10 text-brand"
               data-oid="pg6s2qv"
             />
           </div>
           <h2
-            className="text-2xl font-bold text-gray-800 mb-2"
+            className="text-2xl font-bold text-brand mb-2"
             data-oid="23m.-w2"
           >
             Transaction Complete!
@@ -323,8 +323,8 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             successful.
           </p>
           <button
-            className="bg-gradient-to-r from-green-500 to-indigo-600 text-white px-6 py-3 rounded-full font-semibold shadow hover:from-green-600 hover:to-indigo-700 transition"
-            onClick={() => (window.location.href = "/dashboard")}
+            className="bg-brand text-white px-6 py-3 rounded-full font-semibold shadow hover:from-green-600 hover:to-indigo-700 transition"
+            onClick={() => (window.location.href = "/dashboard?refresh=true")}
             type="button"
             data-oid="3j8h_c6"
           >
@@ -338,7 +338,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
   // Render processing state
   return (
     <div
-      className="min-h-screen from-yellow-50 via-yellow-100 to-indigo-100 flex items-center justify-center p-4 relative overflow-hidden bg-none bg-[#D12D2D00]"
+      className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
       data-oid="n-b2:-m"
     >
       {Array.from({ length: 15 }).map((_, i) => (
@@ -350,18 +350,20 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
       >
         <div className="text-center mb-8" data-oid="-9q-eqd">
           <div
-            className="w-16 h-16 from-yellow-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse bg-[#29044F] bg-none opacity-[100%]"
+            className="w-16 h-16 
+             rounded-full flex items-center justify-center mx-auto mb-4
+             bg-brand"
             data-oid="3r5i2oj"
           >
             <Clock className="w-8 h-8 text-white" data-oid="ud3:6t9" />
           </div>
           <h1
-            className="text-2xl font-bold text-gray-800 mb-2"
+            className="text-2xl font-bold text-brand mb-2"
             data-oid="gn0axhx"
           >
             Processing Your Transaction
           </h1>
-          <p className="text-gray-600" data-oid="uyk4dw8">
+          <p className="text-brand-600" data-oid="uyk4dw8">
             Please wait while we securely process your payment
           </p>
           {error && (
@@ -371,7 +373,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
           )}
         </div>
         <div
-          className="bg-gradient-to-r from-yellow-50 to-indigo-50 rounded-2xl p-4 mb-6"
+          className="bg-gradient-to-r from-yellow-50 to-brand-50 rounded-2xl p-4 mb-6"
           data-oid="nqfkx35"
         >
           <div
@@ -382,7 +384,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
               Amount:
             </span>
             <span
-              className="font-bold text-lg text-indigo-700"
+              className="font-bold text-lg text-brand"
               data-oid=".qkj7rg"
             >
               {transactionAmount}
@@ -395,7 +397,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             <span className="text-gray-600" data-oid=":bttihk">
               Transaction Fee:
             </span>
-            <span className="font-semibold text-indigo-700" data-oid="ql5adv6">
+            <span className="font-semibold text-brand" data-oid="ql5adv6">
               $0.50
             </span>
           </div>
@@ -403,18 +405,18 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             <span className="text-gray-600" data-oid=":vt7_5h">
               Merchant:
             </span>
-            <span className="font-semibold text-indigo-700" data-oid="m692kan">
+            <span className="font-semibold text-brand" data-oid="m692kan">
               {merchantName}
             </span>
           </div>
         </div>
         <div className="relative w-32 h-32 mx-auto mb-6" data-oid="vejs7y-">
-          <svg
+            <svg
             className="w-full h-full"
             transform="rotate(-90)"
             viewBox="0 0 36 36"
             data-oid="580:dfs"
-          >
+            >
             <path
               d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               fill="none"
@@ -426,21 +428,21 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             <path
               d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               fill="none"
-              stroke="#4f46e5"
+              stroke="#3b82f6" // Tailwind blue-500
               strokeWidth="2"
               strokeDasharray={`${progress}, 100`}
               strokeLinecap="round"
               className="transition-all duration-1000 ease-out"
               data-oid="gxe9e.t"
             />
-          </svg>
+            </svg>
           <div
             className="absolute inset-0 flex items-center justify-center"
             data-oid="c4njt9m"
           >
             <div className="text-center" data-oid="y-l..b8">
               <div
-                className="text-2xl font-bold text-indigo-700"
+                className="text-2xl font-bold text-brand"
                 data-oid="ltklbhl"
               >
                 {formatTime(timeLeft)}
@@ -462,7 +464,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
                 key={index}
                 className={`flex items-center p-3 rounded-xl transition-all duration-500 ${
                   isActive
-                    ? "bg-gradient-to-r from-yellow-100 to-indigo-100 border-2 border-yellow-300"
+                    ? "bg-brand border-2 border-brand-300"
                     : isCompleted
                       ? "bg-green-50 border border-green-200"
                       : "bg-gray-50 border border-gray-200"
@@ -470,7 +472,8 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
                 data-oid="ozze76_"
               >
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 ${isActive ? "bg-gradient-to-r from-yellow-400 to-indigo-500 text-white" : isCompleted ? "bg-green-500 text-white" : "bg-gray-300 text-gray-600"}`}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center
+                     mr-3 ${isActive ? "bg-brand text-white" : isCompleted ? "bg-green-500 text-white" : "bg-gray-300 text-gray-600"}`}
                   data-oid="f01hd6p"
                 >
                   {isCompleted ? (
@@ -485,7 +488,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
                   )}
                 </div>
                 <span
-                  className={`font-medium ${isActive ? "text-indigo-700" : isCompleted ? "text-green-700" : "text-gray-600"}`}
+                  className={`font-medium ${isActive ? "text-white" : isCompleted ? "text-green-700" : "text-gray-600"}`}
                   data-oid="zyxyb:r"
                 >
                   {step.label}
@@ -498,13 +501,13 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
           className="bg-gradient-to-r from-yellow-100 to-indigo-100 rounded-2xl p-4 text-center"
           data-oid="3x9yt48"
         >
-          <p className="text-sm text-gray-700" data-oid="bp6.b.c">
+            <p className="text-sm text-gray-700" data-oid="bp6.b.c">
             <span className="font-semibold" data-oid="o73kx_n">
               💡 Did you know?
             </span>
             <br data-oid="1s28oed" />
-            Your transaction is protected by bank-level encryption!
-          </p>
+            Your payment is safe and secure!
+            </p>
         </div>
       </div>
     </div>

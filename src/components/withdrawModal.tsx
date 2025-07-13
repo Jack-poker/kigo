@@ -266,9 +266,27 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
           </>
         )}
         {error && (
-          <div className="text-red-500 text-sm mt-2" data-oid="rc4wd7m">
-            {error}
-          </div>
+            <div
+            className={`text-sm mt-2 px-3 py-2 rounded-xl transition-all duration-300 ${
+              error
+              ? "bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-white shadow-lg "
+              : "bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white shadow-lg "
+            }`}
+            data-oid="rc4wd7m"
+            >
+            {error
+              ? (
+              <>
+                <span role="img" aria-label="alert">⚡</span> {error}
+              </>
+              )
+              : (
+              <>
+                <span role="img" aria-label="success">🎉</span> {t("allGood")}
+              </>
+              )
+            }
+            </div>
         )}
       </form>
     </VercelModal>

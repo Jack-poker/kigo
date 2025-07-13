@@ -113,7 +113,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
     switch (status) {
       case "completed":
         return (
-          <CheckCircle className="w-4 h-4 text-[#EAB400]" data-oid="yl:e_nb" />
+          <CheckCircle className="w-4 h-4 text-brand" data-oid="yl:e_nb" />
         );
 
       case "pending":
@@ -256,9 +256,9 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
           >
             <div className="w-64 h-64 mx-auto mb-6" data-oid="oq.he5q">
               <img
-                src="/assets/kids wearing masks at school-bro.svg"
+                src="/assets/Add User-rafiki.svg"
                 alt={t("noStudentsLinked")}
-                className="w-full h-full object-contain opacity-80"
+                className="w-full h-full object-contain opacity-100"
                 draggable={false}
                 data-oid="phw7a79"
               />
@@ -295,186 +295,106 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
 
             return (
               <div
-                key={student.id}
-                className="dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-[#00000000] bg-[url(/images/o9tA.png)]"
-                data-oid="01_76a9"
-              >
-                {/* Student Header */}
-                <div
-                  className="flex items-center space-x-4 mb-6"
-                  data-oid=":_st_p_"
-                >
-                  <div className="relative" data-oid="f3__28v">
-                    {student.photo &&
-                    student.photo !== "/api/placeholder/48/48" ? (
-                      <img
-                        src={student.photo}
-                        alt={student.name}
-                        className="w-16 h-16 rounded-full object-cover border-3 border-gradient-to-r from-blue-500 to-purple-500 shadow-lg"
-                        data-oid="-l4qw.o"
-                      />
-                    ) : (
-                      <div
-                        className="w-16 h-16 rounded-full from-blue-500 to-purple-600 flex items-center justify-center shadow-lg bg-none bg-brand"
-                        data-oid="lrtbo53"
-                      >
-                        <User
-                          className="w-8 h-8 text-white"
-                          data-oid="z82olwv"
-                        />
-                      </div>
-                    )}
-                    <div
-                      className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center"
-                      data-oid="guew9g6"
-                    >
-                      <CheckCircle
-                        className="w-3 h-3 text-white"
-                        data-oid="jfitlj:"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1" data-oid="t0rt.ld">
-                    <h3
-                      className="text-gray-900 dark:text-white font-bold text-lg"
-                      data-oid="23q430f"
-                    >
-                      {student.name}
-                    </h3>
-                    <p
-                      className="dark:text-brand text-sm font-medium text-brand"
-                      data-oid="7pc0073"
-                    >
-                      ID: {student.studentId}
-                    </p>
-                    <p
-                      className="text-gray-500 dark:text-gray-400 text-xs"
-                      data-oid="xt9np25"
-                    >
-                      {student.class || t("notSpecified")}
-                    </p>
-                  </div>
-                </div>
+  key={student.id}
+  className="dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] bg-white"
+  data-oid="01_76a9"
+>
+  {/* Header */}
+  <div className="flex items-center space-x-4 mb-6">
+    <div className="relative">
+      {student.photo && student.photo !== "/api/placeholder/48/48" ? (
+        <img
+          src={student.photo}
+          alt={student.name}
+          className="w-16 h-16 rounded-full object-cover border-3 border-gradient-to-r from-blue-500 to-purple-500 shadow-md"
+        />
+      ) : (
+        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-lime-500 text-white flex items-center justify-center text-xl font-bold shadow-md">
+          {student.name?.[0]?.toUpperCase() || "?"}
+        </div>
+      )}
+      <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center">
+        <CheckCircle className="w-3 h-3 text-white" />
+      </div>
+    </div>
+    <div className="flex-1">
+      <h3 className="text-gray-900 dark:text-white font-bold text-lg">{student.name}</h3>
+      <p className="text-brand text-sm font-medium">ID: {student.studentId}</p>
+      <p className="text-gray-500 dark:text-gray-400 text-xs">{student.class || t("notSpecified")}</p>
+    </div>
+  </div>
 
-                {/* Spending Progress */}
-                <div className="mb-6" data-oid="hy9cq27">
-                  <div
-                    className="flex justify-between items-center mb-2"
-                    data-oid="8rb7ct7"
-                  >
-                    <span
-                      className="text-sm font-medium text-gray-700 dark:text-gray-300"
-                      data-oid="-2c15ud"
-                    >
-                      Daily Spending
-                    </span>
-                    <span
-                      className="text-sm font-bold text-brand dark:text-white"
-                      data-oid="23l959u"
-                    >
-                      {formatLimitDisplay(
-                        student.todaySpent,
-                        student.dailyLimit,
-                      )}
-                    </span>
-                  </div>
-                  <div
-                    className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3"
-                    data-oid="tr6jthi"
-                  >
-                    <div
-                      className={`h-3 rounded-full transition-all duration-300 ${getSpendingColor(spendingPercentage)}`}
-                      style={{ width: `${spendingPercentage}%` }}
-                      data-oid="3c67kpl"
-                    ></div>
-                  </div>
-                  <p
-                    className="text-xs text-gray-500 dark:text-gray-400 mt-1"
-                    data-oid="5q8l6gk"
-                  >
-                    {spendingPercentage.toFixed(0)}% of daily limit used
-                  </p>
-                </div>
+  {/* Spending */}
+  <div className="mb-6">
+    <div className="flex justify-between items-center mb-2">
+      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Daily Spending</span>
+      <span className="text-xs px-2 py-0.5 rounded-full bg-brand/10 text-brand font-semibold">
+        {spendingPercentage.toFixed(0)}% used
+      </span>
+    </div>
+    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+      <div
+        className={`h-3 rounded-full transition-all duration-300 ${getSpendingColor(spendingPercentage)}`}
+        style={{ width: `${spendingPercentage}%` }}
+      ></div>
+    </div>
+    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+      {formatLimitDisplay(student.todaySpent, student.dailyLimit)}
+    </p>
+  </div>
 
-                {/* Recent Transactions Preview */}
-                <div className="mb-6" data-oid="-:50pq4">
-                  <h4
-                    className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center"
-                    data-oid="okgqmz1"
-                  >
-                    <Activity className="w-4 h-4 mr-2" data-oid="b74ru20" />
-                    Recent Activity
-                  </h4>
-                  <div className="space-y-2" data-oid="u.iymik">
-                    {recentTransactions.slice(0, 2).map((transaction) => (
-                      <div
-                        key={transaction.id}
-                        className="flex items-center justify-between p-3 dark:bg-white rounded-lg bg-white border-2"
-                        data-oid="nsdvp17"
-                      >
-                        <div
-                          className="flex items-center space-x-3"
-                          data-oid="fst2y0."
-                        >
-                          {getStatusIcon(transaction.status)}
-                          <div data-oid="_6u6id-">
-                            <p
-                              className="text-sm font-medium dark:text-white text-brand "
-                              data-oid="uywrh-z"
-                            >
-                              {transaction.title}
-                            </p>
-                            <div
-                              className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400"
-                              data-oid="wb1re1e"
-                            >
-                              <Clock className="w-3 h-3" data-oid="k:r_t:b" />
-                              <span data-oid="4:-z7eo">{transaction.time}</span>
-                              <MapPin className="w-3 h-3" data-oid="z:katq1" />
-                              <span data-oid="jsno1_x">
-                                {transaction.location}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <span
-                          className={`text-sm font-bold ${
-                            transaction.amount > 0
-                              ? "text-yellow-400"
-                              : "text-yellow-400"
-                          }`}
-                          data-oid=".q474bu"
-                        >
-                          {transaction.amount > 0 ? "+" : ""}
-                          {Math.abs(transaction.amount).toLocaleString()} RWF
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex space-x-3" data-oid="6drspa:">
-                  <button
-                    onClick={() => onViewTransactions(student)}
-                    className="flex-1 flex items-center justify-center space-x-2 from-green-500 to-emerald-600 hover:from-green-600
-                     hover:to-emerald-700 text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none
-                      bg-brand"
-                    data-oid="__51tap"
-                  >
-                    <Activity className="w-5 h-5" data-oid="fi40_86" />
-                    <span data-oid="b0.x0yq">View All</span>
-                  </button>
-                  <button
-                    onClick={() => onSetLimits(student)}
-                    className="flex-1 flex items-center justify-center space-x-2 from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none bg-[#EAB500]"
-                    data-oid="pa2h43m"
-                  >
-                    <Settings className="w-5 h-5" data-oid="flzo8k4" />
-                    <span data-oid="b8qcdgd">Limits</span>
-                  </button>
-                </div>
+  {/* Transactions */}
+  <div className="mb-6">
+    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+      <Activity className="w-4 h-4 mr-2" />
+      Recent Activity
+    </h4>
+    <div className="space-y-2">
+      {recentTransactions.slice(0, 2).map((transaction) => (
+        <div
+          key={transaction.id}
+          className="flex items-center justify-between p-3 dark:bg-white rounded-lg bg-white border"
+        >
+          <div className="flex items-center space-x-3">
+            {getStatusIcon(transaction.status)}
+            <div>
+              <p className="text-sm font-medium text-brand">{transaction.title}</p>
+              <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
+                <Clock className="w-3 h-3" />
+                <span>{transaction.time}</span>
+                <MapPin className="w-3 h-3" />
+                <span>{transaction.location}</span>
               </div>
+            </div>
+          </div>
+          <span className="text-sm font-bold text-brand">
+            {transaction.amount > 0 ? "+" : ""}
+            {Math.abs(transaction.amount).toLocaleString()} RWF
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Buttons */}
+  <div className="flex space-x-3">
+    <button
+      onClick={() => onViewTransactions(student)}
+      className="flex-1 flex items-center justify-center space-x-2 from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-md hover:shadow-xl transform hover:scale-[1.02] bg-gradient-to-r"
+    >
+      <Activity className="w-5 h-5" />
+      <span>View All</span>
+    </button>
+    <button
+      onClick={() => onSetLimits(student)}
+      className="flex-1 flex items-center justify-center space-x-2 from-white to-white hover:from-gray-100 hover:to-gray-200 text-brand border border-brand py-3 rounded-xl transition-all duration-200 font-medium shadow-md hover:shadow-xl transform hover:scale-[1.02] bg-white"
+    >
+      <Settings className="w-5 h-5" />
+      <span>Limits</span>
+    </button>
+  </div>
+</div>
+
             );
           })}
         </div>

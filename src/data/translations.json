@@ -1,6 +1,10 @@
 
 {
   "en": {
+    "moneyReceiver":"umucuruzi",
+    "qrCodeScanner":"Qrcode Scanner",
+    "payGuide":"Soma QR, wemeze ibisobanuro, ubone ubwishyu ako kanya.",
+    "startScanning":"Startscan",
     "welcome": "Welcome to kaascan",
     "subtitle": "Manage your student's spending with ease",
     "overview": "Overview",
@@ -161,8 +165,11 @@
     "recentTransactions": "Transactions récentes",
     "qrRedeemer":"Qrcode-Redeemer",
     "scanGuide": "Soma QR code ukoresheje kamera yawe kugirango ubone amakuru cyangwa serivisi."
+    ,"startScanning":"Startscan",
+    "moneyReceiver":"umucuruzi"
   },
   "rw": {
+    "startScanning":"Startscan",
     "welcome": "Murakaza neza kuri kaascan",
     "subtitle": "Genzura amafaranga y'umunyeshuri wawe byoroshye",
     "overview": "Urwego Rusange",
@@ -240,7 +247,7 @@
     "parentUser": "Umubyeyi ukoresha konti",
     "linkStudentPrompt": "Nta munyeshuri wabonetse, ongeramo",
     "recentTransactions": "Ibikorwa biheruka",
-    "qrRedeemer":"Kwakira amafaranga",
+    "qrRedeemer":"Startscan",
     "scanGuide": "Soma QR code ukoresheje kamera yawe kugirango ubone amakuru cyangwa serivisi."
   }
 }

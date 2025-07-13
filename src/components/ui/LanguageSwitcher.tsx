@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
 
   return (
     <div className="flex items-center space-x-2" data-oid="6d1posy">
-      <Globe className="w-4 h-4 text-emerald-600" data-oid="idrsko1" />
+      <Globe className="w-4 h-4 text-white" data-oid="idrsko1" />
       <Select value={language} onValueChange={setLanguage} data-oid="4:ddxdr">
         <SelectTrigger
           className="w-[140px] border-emerald-300 bg-white/80 backdrop-blur-sm"

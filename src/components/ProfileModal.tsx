@@ -103,11 +103,12 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ onClose }) => {
         data-oid="xlw--bq"
       >
         <div
-          className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20"
+          className="flex items-center justify-between p-6 border-b border-gray-200 
+          dark:border-gray-800 bg-brand to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20"
           data-oid="ht1j:5_"
         >
           <h2
-            className="text-xl font-bold text-gray-900 dark:text-white"
+            className="text-xl font-bold text-white dark:text-white"
             data-oid="o930_q_"
           >
             {t("profileSettings")}

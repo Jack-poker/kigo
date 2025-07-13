@@ -112,7 +112,8 @@ const App = () => (
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route
                 path="*"
-                element={<NotFound data-oid=":-6oz71" />}
+                 element={<LoginPage data-oid="671-bx4" />}
+                // element={<NotFound data-oid=":-6oz71" />}
                 data-oid=".vfibfc"
               />
             </Routes>

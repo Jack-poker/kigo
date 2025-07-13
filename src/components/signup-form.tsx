@@ -309,7 +309,7 @@ export function SignupForm({
                   <div className="space-y-2" data-oid="x4b0rps">
                     <Label
                       htmlFor="fullnames"
-                      className="text-gray-700 dark:text-gray-300 font-medium flex items-center space-x-2"
+                      className="text-white dark:text-gray-300 font-medium flex items-center space-x-2"
                       data-oid="impoozi"
                     >
                       <User className="w-4 h-4" data-oid="_.clhh1" />
@@ -685,7 +685,7 @@ export function SignupForm({
       </Card>
 
       <p
-        className="text-xs text-center text-muted-foreground"
+        className="text-xs text-center text-white"
         data-oid="7k0plsv"
       >
         By clicking continue, you agree to our{" "}

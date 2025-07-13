@@ -56,7 +56,7 @@ const WalletSection = ({
                 {t("walletBalance")}
               </h3>
               <p
-                className="text-zinc-900 dark:text-gray-400 font-medium"
+                className="text-white dark:text-white font-medium"
                 data-oid="2c_:uxb"
               >
                 {t("availableFunds")}
@@ -65,7 +65,7 @@ const WalletSection = ({
           </div>
         </div>
         <div
-          className="mb-8 p-6 bg-white dark:bg-gray-800 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-700 bg-[url(/images/lr1g.png)]"
+          className="mb-8 p-6 bg-white dark:bg-gray-800 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-700 bg-white"
           data-oid="l6zjju2"
         >
           <div className="flex items-center space-x-4" data-oid="ndtb8aw">
@@ -89,7 +89,7 @@ const WalletSection = ({
           </div>
           {<PaymentStatusListener data-oid="j_f4_ne" />}
           <p
-            className="text-sm text-zinc-900 mt-2 font-semibold"
+            className="text-sm text-brand mt-2 font-semibold"
             data-oid="t1is1qk"
           >
             {t("percentChange")}

@@ -103,6 +103,8 @@ const Index = () => {
 
   // Global variable to store parent's phone number
   const [parentPhone, setParentPhone] = useState("");
+  const [parentId,setParentId] = useState("");
+  
 
   const fetchProfile = async () => {
     const token = localStorage.getItem("token");
@@ -388,7 +390,7 @@ const Index = () => {
               data-oid="hztznsj"
             >
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-[url(/images/Noqt.png)]"
+                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
                 data-oid="u1_v26w"
               >
                 <div
@@ -403,7 +405,7 @@ const Index = () => {
                       {t("totalBalance")}
                     </p>
                     <p
-                      className="text-white-950 dark:text-white text-2xl font-bold mt-1"
+                      className="text-brand dark:text-white text-2xl font-bold mt-1"
                       data-oid="gubp03n"
                     >
                       {isBalanceVisible
@@ -430,7 +432,7 @@ const Index = () => {
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-[url(/images/Ve2e.png)]"
+                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
                 data-oid="2ouz29j"
               >
                 <div
@@ -439,13 +441,13 @@ const Index = () => {
                 >
                   <div data-oid="k02aixm">
                     <p
-                      className="text-brand0 dark:text-brand text-sm font-medium"
+                      className="text-brand dark:text-brand text-sm font-medium"
                       data-oid="4y2uxz0"
                     >
                       {t("activeStudents")}
                     </p>
                     <p
-                      className="text-white-950 dark:text-white text-2xl font-bold mt-1"
+                      className="text-brand dark:text-white text-2xl font-bold mt-1"
                       data-oid="w5qn-vb"
                     >
                       {students.length}
@@ -470,7 +472,7 @@ const Index = () => {
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-[url(/images/VY9g.png)]"
+                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
                 data-oid="wnz.x6e"
               >
                 <div
@@ -479,13 +481,13 @@ const Index = () => {
                 >
                   <div data-oid="btpj8w7">
                     <p
-                      className="text-brand0 dark:text-brand text-sm font-medium"
+                      className="text-brand dark:text-brand text-sm font-medium"
                       data-oid=":uhoz7y"
                     >
                       {t("thisMonthSpent")}
                     </p>
                     <p
-                      className="text-white-950 dark:text-white text-2xl font-bold mt-1"
+                      className="text-brand dark:text-white text-2xl font-bold mt-1"
                       data-oid="4ze3k:e"
                     >
                       {isBalanceVisible
@@ -512,7 +514,7 @@ const Index = () => {
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-[url(/images/VY9g.png)]"
+                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
                 data-oid="z00ju-n"
               >
                 <div
@@ -521,13 +523,13 @@ const Index = () => {
                 >
                   <div data-oid="0ypla18">
                     <p
-                      className="text-brand0 dark:text-brand text-sm font-medium"
+                      className="text-brand dark:text-brand text-sm font-medium"
                       data-oid="q6:1q9_"
                     >
                       {t("todayActivity")}
                     </p>
                     <p
-                      className="text-white-950 dark:text-white text-2xl font-bold mt-1"
+                      className="text-brand dark:text-white text-2xl font-bold mt-1"
                       data-oid="fr3wwb7"
                     >
                       {transactions.length}
@@ -568,11 +570,11 @@ const Index = () => {
               </div>
               <div className="lg:col-span-1 h-[326px]" data-oid="2tkp5sm">
                 <div
-                  className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-[318px] bg-[url(/images/s-rg.png)]"
+                  className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-[318px] bg-white"
                   data-oid="b6_76fw"
                 >
                   <h3
-                    className="text-white-950 dark:text-white font-semibold text-lg mb-6"
+                    className="text-brand dark:text-white font-semibold text-lg mb-6"
                     data-oid="pzcjg1f"
                   >
                     {t("quickActions")}
@@ -580,7 +582,8 @@ const Index = () => {
                   <div className="space-y-3" data-oid="cwh5npe">
                     <button
                       onClick={() => setActiveModal("deposit")}
-                      className="w-full flex items-center justify-center space-x-3 bg-brand text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium bg-[#341E5A]"
+                      className="w-full flex items-center justify-center space-x-3 bg-white text-brand
+                       border border-brand py-4 px-6 rounded-xl transition-all duration-200 font-medium bg-[#341E5A]"
                       data-oid="knajrgr"
                     >
                       <Plus className="w-5 h-5" data-oid="2vc2jh_" />
@@ -596,7 +599,7 @@ const Index = () => {
                     </button>
                     <button
                       onClick={() => setActiveModal("linkStudent")}
-                      className="w-full flex items-center justify-center space-x-3 bg-zinc-600 hover:bg-blue-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
+                      className="w-full flex items-center justify-center space-x-3 bg-brand hover:bg-blue-700 text-white py-4 px-6 rounded-xl transition-all duration-200 font-medium"
                       data-oid="hfrp7o4"
                     >
                       <Users className="w-5 h-5" data-oid="md9vf_p" />
@@ -607,7 +610,7 @@ const Index = () => {
               </div>
               <div className="lg:col-span-1" data-oid="z_t67o1">
                 <div
-                  className="bg-white dark:bg-white-950 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-200 bg-[url(/images/s-rg.png)]"
+                  className="bg-white dark:bg-white-950 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-200 bg-white"
                   data-oid="u_0:xyp"
                 >
                   <div
@@ -615,14 +618,14 @@ const Index = () => {
                     data-oid="g0ny.0n"
                   >
                     <h3
-                      className="text-gray-900 dark:text-white font-semibold text-lg"
+                      className="text-brand dark:text-white font-semibold text-lg"
                       data-oid="668zz85"
                     >
                       {t("recentActivity")}
                     </h3>
                     <button
                       onClick={() => setActiveModal("allTransactions")}
-                      className="text-sm dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200 text-[#000000]"
+                      className="text-sm text-brand hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors duration-200 text-[#000000]"
                       data-oid="n6qqzx_"
                     >
                       View All
@@ -632,7 +635,9 @@ const Index = () => {
                     {transactions.slice(0, 4).map((transaction, index) => (
                       <div
                         key={transaction.id}
-                        className="group flex items-center justify-between p-4 rounded-xl bg-brand transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600 bg-[#4C2F7C]"
+                        className="group flex border-6 items-center
+                         justify-between p-4 rounded-xl bg-white 
+                         transition-all duration-200 border-2 hover:border-gray-200 dark:hover:border-gray-600 bg-[#4C2F7C]"
                         data-oid="_c6tgk2"
                       >
                         <div
@@ -640,7 +645,8 @@ const Index = () => {
                           data-oid="0sq3hbe"
                         >
                           <div
-                            className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
+                            className={`w-12 h-12 rounded-full border-2 flex items-center
+                               justify-center shadow-sm ${
                               transaction.type === "deposit"
                                 ? "bg-white dark:bg-yellow-400 text-brand dark:text-brand"
                                 : transaction.type === "withdraw"
@@ -668,7 +674,7 @@ const Index = () => {
                           </div>
                           <div className="flex-1" data-oid="0o7k9yq">
                             <p
-                              className="dark:text-white text-sm font-semibold mb-1 text-[#FAF5F5]"
+                              className="dark:text-white text-sm font-semibold mb-1 text-brand"
                               data-oid="5kn15q0"
                             >
                               {transaction.title}
@@ -678,7 +684,7 @@ const Index = () => {
                               data-oid="mo4e7bw"
                             >
                               <p
-                                className="text-gray-500 dark:text-gray-400 text-xs"
+                                className="text-brand/400 dark:text-gray-400 text-xs"
                                 data-oid="o_hr1yg"
                               >
                                 {transaction.date}
@@ -706,8 +712,8 @@ const Index = () => {
                           <span
                             className={`text-sm font-bold ${
                               transaction.amount > 0
-                                ? "text-yellow-400 dark:text-yellow-400"
-                                : "text-white-600 dark:text-white-400"
+                                ? "text-brand dark:text-yellow-400"
+                                : "text-brand dark:text-white-400"
                             }`}
                             data-oid="oqecucc"
                           >
@@ -729,7 +735,7 @@ const Index = () => {
                               data-oid="3bt-x3v"
                             ></div>
                             <span
-                              className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
+                              className="text-xs text-brand dark:text-gray-500 ml-1 capitalize"
                               data-oid="cldy9ly"
                             >
                               {transaction.status}
@@ -743,15 +749,19 @@ const Index = () => {
                         className="flex flex-col items-center justify-center py-12 text-center"
                         data-oid="5:l45hz"
                       >
-                        <div
+                        {/* <div
                           className="w-24 h-24 mx-auto mb-4 bg-brand dark:bg-brand rounded-full flex items-center justify-center"
                           data-oid="h62c5vx"
-                        >
-                          <Activity
-                            className="w-8 h-8 text-gray-400 dark:text-white border-0"
-                            data-oid="p4q4b_-"
-                          />
-                        </div>
+                        > */}
+
+<img
+  src="/assets/Coins-rafiki.svg"
+  alt="Activity Icon"
+  className="w-80 h-80"
+/>
+
+
+                        {/* </div> */}
                         <h4
                           className="text-gray-900 dark:text-white font-medium mb-2"
                           data-oid="n8pu683"
@@ -830,6 +840,7 @@ const Index = () => {
   };
 
   return (
+    
     // bg-gradient-to-br from-brand via-white to-brand0
     <div
       className="min-h-screen bg-white dark:bg-zinc-900 transition-colors duration-200"
@@ -850,7 +861,7 @@ const Index = () => {
         data-oid="bekm7eo"
       >
         <div
-          className="flex items-center justify-between px-6 py-4 bg-[url(/images/pygH.png)]"
+          className="flex items-center justify-between px-6 py-4 bg-white"
           data-oid="iqwyiw2"
         >
           <div className="flex items-center space-x-6" data-oid="muldqfn">
@@ -1127,10 +1138,11 @@ const Index = () => {
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`flex flex-col items-center space-y-1 py-2 px-3 rounded-lg transition-all duration-200 ${
+                className={`flex flex-col items-center space-y-1 py-2 px-3 
+                  rounded-lg transition-all duration-200 ${
                   activeTab === tab.id
                     ? "text-yellow-600 dark:text-yellow-400"
-                    : "text-brand0 dark:text-brand hover:text-white-950 dark:hover:text-white"
+                    : "text-brand dark:text-brand hover:text-white-950 dark:hover:text-white"
                 }`}
                 data-oid="q2qwin6"
               >
@@ -1164,6 +1176,7 @@ const Index = () => {
               >
                 {t("phoneNumber")}
               </label>
+             
               <input
                 type="tel"
                 name="phone"
@@ -1625,3 +1638,7 @@ const Index = () => {
   );
 };
 export default Index;
+function useAppContext(): { setParentPhone2: any; } {
+  throw new Error("Function not implemented.");
+}
+

@@ -86,7 +86,8 @@ const SpendingLimitsModal = ({ student, onClose, onSave, isLoading }) => {
         ></div>
 
         <div
-          className="relative z-10 from-emerald-500 via-green-400 to-emerald-600 rounded-t-3xl p-6 text-white shadow-lg bg-[url(/images/EVn7.png)]"
+          className="relative z-10 from-emerald-500 via-green-400 to-emerald-600
+           rounded-t-3xl p-6 text-white shadow-lg bg-brand"
           data-oid="g5yhj-g"
         >
           <div className="flex items-center justify-between" data-oid="zdpbzx0">
@@ -98,7 +99,7 @@ const SpendingLimitsModal = ({ student, onClose, onSave, isLoading }) => {
                 {t("spendingLimits")}
               </h2>
               <p
-                className="text-emerald-100 text-sm font-medium border border-[#ECF2EF]"
+                className="text-emerald-100 text-sm font-medium "
                 data-oid="gaubwg:"
               >
                 {student?.student_name || "Student"}
@@ -134,11 +135,11 @@ const SpendingLimitsModal = ({ student, onClose, onSave, isLoading }) => {
                     data-oid="p143fbu"
                   >
                     <DollarSign
-                      className="w-5 h-5 text-[#000000]"
+                      className="w-5 h-5 text-brand"
                       data-oid="0t:na3a"
                     />
                   </div>
-                  <h3 className="font-bold text-[#000000]" data-oid="yyqt-39">
+                  <h3 className="font-bold text-brand" data-oid="yyqt-39">
                     {t("spendingLimits")}
                   </h3>
                 </div>
@@ -201,12 +202,16 @@ const SpendingLimitsModal = ({ student, onClose, onSave, isLoading }) => {
             type="submit"
             disabled={isLoading}
             onClick={handleSubmit}
-            className="w-full from-emerald-500 to-green-400 text-white py-4 px-6 rounded-xl font-bold hover:from-emerald-600 hover:to-green-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 bg-none bg-[#07010A]"
+            className="w-full  text-brand border py-4 px-6 rounded-xl
+             font-bold hover:from-emerald-600 hover:to-green-500 focus:outline-none 
+             focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 transition-all duration-200
+              disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center 
+              space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 text-brand bg-white"
             data-oid="8l3lopq"
           >
             {isLoading ? (
               <div
-                className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"
+                className="w-5 h-5 border-2   rounded-full animate-spin"
                 data-oid="r1_ghls"
               ></div>
             ) : (

@@ -110,7 +110,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
       case "completed":
         return (
           <CheckCircle
-            className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400"
+            className="w-3 h-3 sm:w-4 sm:h-4 text-green-500"
             data-oid="jt_zs9a"
           />
         );
@@ -383,7 +383,8 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
         `}
       </style>
       <div
-        className="dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700 bg-[#FFFFFF00] bg-[url(/images/lWqp.png)]"
+        className="dark:bg-gray-800 backdrop-blur-sm rounded-2xl p-4 sm:p-6 
+         dark:border-gray-700 bg-none"
         data-oid="tghkop."
       >
         {/* Header */}
@@ -406,13 +407,13 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
             </div>
             <div data-oid="ef_5ucb">
               <h3
-                className="text-lg sm:text-xl font-bold text-brand dark:text-brand"
+                className="text-lg sm:text-xl font-bold text-white dark:text-white"
                 data-oid="cphni43"
               >
                 Transaction Monitor
               </h3>
               <p
-                className="text-xs sm:text-sm text-gray-500 dark:text-gray-400"
+                className="text-xs sm:text-sm text-white dark:text-gray-400"
                 data-oid="njp-q.e"
               >
                 Real-time activity tracking with location data
@@ -424,7 +425,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
             onClick={onViewAll}
             className="flex items-center space-x-2 from-indigo-500 to-purple-600 hover:from-indigo-600 
             hover:to-purple-700 text-white px-3 sm:px-4 py-2 rounded-xl transition-all duration-200 font-medium shadow-lg
-             hover:shadow-xl transform hover:scale-105 bg-none bg-brand min-h-[48px] w-full sm:w-auto"
+             hover:shadow-xl transform hover:scale-105 bg-none bg-brand min-h-[48px] w-full-[40px] sm:w-auto"
             data-oid="h36k9ne"
           >
             <span data-oid="1fe89nv">{t("viewAll")}</span>
@@ -540,7 +541,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                         data-oid="u7k06ce"
                       >
                         <MapPin
-                          className="w-4 h-4 sm:w-5 sm:h-5 text-[#EBB300]"
+                          className="w-4 h-4 sm:w-5 sm:h-5 text-white"
                           data-oid="td_543t"
                         />
 
@@ -622,22 +623,24 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
           {transactions.length === 0 && (
             <div className="text-center py-8 sm:py-12" data-oid="2yqbwm8">
               <div
-                className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 dark:bg-brand rounded-full flex items-center justify-center bg-[#1350D2]"
+                className="  mb-4 rounded-full flex items-center justify-center "
                 data-oid="ij_tc9t"
               >
-                <Activity
-                  className="w-6 h-6 sm:w-8 sm:h-8 text-white"
-                  data-oid="tha83b_"
-                />
+                            <img
+  src="/assets/transactions.svg"
+  alt="Activity Icon"
+  className="w-80 h-80"
+/>
+
               </div>
               <h3
-                className="text-base sm:text-lg font-semibold text-brand dark:text-white mb-2 bg-[rgba(0,_0,_0,_0)]"
+                className="text-base sm:text-lg font-semibold text-white dark:text-white mb-2 bg-[rgba(0,_0,_0,_0)]"
                 data-oid="o.fwvjf"
               >
                 No Recent Transactions
               </h3>
               <p
-                className="text-xs sm:text-sm text-gray-500 dark:text-gray-400"
+                className="text-xs sm:text-sm text-white dark:text-gray-400"
                 data-oid="_7-09zz"
               >
                 Transaction history will appear here when available
@@ -649,10 +652,12 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
 
       {/* Transaction Details Modal */}
       {selectedTransaction && !showReportModal && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 sm:p-6"
-          data-oid="3tptuea"
-        >
+       <div
+  className="fixed inset-0 flex items-center justify-center z-50 p-4 sm:p-6"
+  style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
+  data-oid="3tptuea"
+>
+
           <div
             className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 max-w-md sm:max-w-2xl w-full max-h-[90vh] overflow-y-auto"
             data-oid="228ib:f"
@@ -692,8 +697,8 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                 <div
                   className={`text-2xl sm:text-3xl font-bold mb-2 ${
                     selectedTransaction.amount > 0
-                      ? "text-yellow-400"
-                      : "text-yellow-400"
+                      ? "text-white"
+                      : "text-white"
                   }`}
                   data-oid="aa63xyf"
                 >
@@ -734,7 +739,7 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
                   data-oid="r0rhizy"
                 >
                   <div
-                    className="text-base sm:text-lg font-medium text-gray-900 dark:text-white"
+                    className="text-base sm:text-lg font-medium text-brand dark:text-white"
                     data-oid="8v:._hw"
                   >
                     {selectedTransaction.location.name}
@@ -832,10 +837,12 @@ const TransactionsSection = ({ transactions, onViewAll }) => {
 
       {/* Report Modal */}
       {showReportModal && selectedTransaction && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 sm:p-6"
-          data-oid="6uce06d"
-        >
+      <div
+  className="fixed inset-0 flex items-center justify-center z-50 p-4 sm:p-6"
+  style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
+  data-oid="3tptuea"
+>
+
           <div
             className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 max-w-md w-full max-h-[90vh] overflow-y-auto"
             data-oid="4o8:gs5"

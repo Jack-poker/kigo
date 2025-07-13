@@ -84,7 +84,7 @@ const VercelModal: React.FC<VercelModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-3 text-emerald-700 bg-white/80 border border-emerald-200 rounded-xl hover:bg-emerald-50/80 transition-all duration-200 font-semibold backdrop-blur-sm shadow-sm"
+              className="px-6 py-3 text-brand bg-white/80 border border-brand rounded-xl hover:bg-emerald-50/80 transition-all duration-200 font-semibold backdrop-blur-sm shadow-sm"
               data-oid="705t:le"
             >
               Cancel

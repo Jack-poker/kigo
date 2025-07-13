@@ -110,7 +110,7 @@ const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
               data-oid="5lk.giq"
             >
               <CreditCard
-                className="w-5 h-5 text-[#000000]"
+                className="w-5 h-5 text-brand"
                 data-oid="t0u0nj:"
               />
             </div>

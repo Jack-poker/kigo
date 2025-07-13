@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">kaascan</string>
+    <string name="title_activity_main">kaascan</string>
+    <string name="package_name">com.kaascan.app</string>
+    <string name="custom_url_scheme">com.kaascan.app</string>
+</resources>
