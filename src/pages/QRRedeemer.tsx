@@ -133,7 +133,7 @@ const OnboardingSection = ({ t, error, phoneNumber, setPhoneNumber, handlePhoneS
 };
 
 const API_ENDPOINT = "https://auto.kaascan.com/webhook/reedem";
-const TRANSFER_ENDPOINT = "http://localhost:8001/api/transfer";
+const TRANSFER_ENDPOINT = "https://api.kaascan.com/api/transfer";
 
 const QRRedeemer = () => {
   const navigate = useNavigate();

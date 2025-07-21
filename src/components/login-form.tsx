@@ -46,7 +46,7 @@ export function LoginForm({
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const isPasswordReset = params.get("resetPassword") === "true";
-  const baseUrl = "http://localhost:8001";
+  const baseUrl = "https://api.kaascan.com";
 
   // Validation functions
   const validateForm = () => {
