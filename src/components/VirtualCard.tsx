@@ -1,8 +1,8 @@
 import React from "react";
-import { Eye, EyeOff, CreditCard } from "lucide-react";
+import { Eye, EyeOff, GraduationCap, User } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 
-const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
+const StudentCard = ({ balance, isVisible, onToggleVisibility, studentName = "John Doe", studentId = "STU2024001", university = "University Name" }) => {
   const { t } = useLanguage();
 
   const formatCurrency = (amount) => {
@@ -14,170 +14,105 @@ const VirtualCard = ({ balance, isVisible, onToggleVisibility }) => {
   };
 
   return (
-    <div className="relative group perspective-1000" data-oid="zh:-2u3">
-      {/* bg-gradient-to-r from-emerald-400 via-green-300 to-emerald-500 make it glow */}
-      <div
-        className="absolute inset-0   rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"
-        data-oid="tet5x1o"
-      ></div>
-      <div
-        className="relative   dark:bg-b rounded-3xl p-8 text-white shadow-2xl transform group-hover:scale-105 transition-all duration-500 overflow-hidden"
-        data-oid="_fvrhoq"
-      >
-        <div
-          className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_25%_25%,_rgb(255,_255,_255)_2px,_rgba(0,_0,_0,_0)_2px),_radial-gradient(circle_at_75%_25%,_rgb(255,_255,_255)_2px,_rgba(0,_0,_0,_0)_2px),_radial-gradient(circle_at_25%_75%,_rgb(255,_255,_255)_2px,_rgba(0,_0,_0,_0)_2px),_radial-gradient(circle_at_75%_75%,_rgb(255,_255,_255)_2px,_rgba(0,_0,_0,_0)_2px)] bg-[rgb(0,_0,_0)]"
-          style={{
-            backgroundImage: `
-            radial-gradient(circle at 25% 25%, white 2px, transparent 2px),
-            radial-gradient(circle at 75% 25%, white 2px, transparent 2px),
-            radial-gradient(circle at 25% 75%, white 2px, transparent 2px),
-            radial-gradient(circle at 75% 75%, white 2px, transparent 2px)
-          `,
-            backgroundSize: "20px 20px",
-            backgroundPosition: "0 0, 0 0, 0 0, 0 0",
-          }}
-          data-oid="sspscg9"
-        ></div>
-        <div
-          className="absolute top-4 left-4 right-4 h-0.5 bg-white/30"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(90deg, transparent 0, transparent 8px, white 8px, white 12px)",
-          }}
-          data-oid="fzi7dp-"
-        ></div>
-        <div
-          className="absolute bottom-4 left-4 right-4 h-0.5 bg-white/30"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(90deg, transparent 0, transparent 8px, white 8px, white 12px)",
-          }}
-          data-oid="ub16u7q"
-        ></div>
-        <div
-          className="absolute top-4 bottom-4 left-4 w-0.5 bg-white/30"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg, transparent 0, transparent 8px, white 8px, white 12px)",
-          }}
-          data-oid="w7o:-_m"
-        ></div>
-        <div
-          className="absolute top-4 bottom-4 right-4 w-0.5 bg-white/30"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg, transparent 0, transparent 8px, white 8px, white 12px)",
-          }}
-          data-oid="77w7ht."
-        ></div>
-        <div
-          className="relative z-10 flex justify-between items-start mb-8"
-          data-oid="l:p.fbp"
-        >
-          <div className="space-y-2" data-oid="eqjmpdo">
-            <p
-              className="text-white/90 text-sm font-bold tracking-wide uppercase"
-              data-oid="1dld.tr"
+    <div className="w-full mx-auto">
+      {/* Card Container */}
+      <div className="relative group perspective-1000">
+        {/* Glow Effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-all duration-500"></div>
+        
+        {/* Main Card */}
+        <div className="relative bg-zinc-900 dark:from-slate-800 dark:via-blue-800 dark:to-indigo-800 rounded-2xl p-6 text-white shadow-2xl transform group-hover:scale-[1.02] transition-all duration-500 overflow-hidden">
+          
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
+          </div>
+          
+          {/* Header Section */}
+          <div className="relative z-10 flex items-center justify-between mb-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-brand rounded-xl flex items-center justify-center shadow-lg">
+                <GraduationCap className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-blue-200 uppercase tracking-wide">Parent Card</h3>
+                <p className="text-xs text-gray-300">Virtual Card</p>
+              </div>
+            </div>
+            
+            {/* Balance Toggle */}
+            <button
+              onClick={onToggleVisibility}
+              className="p-2 rounded-full hover:bg-white/10 transition-colors duration-200 backdrop-blur-sm border border-white/20"
             >
-              {t("wallet")}
-            </p>
-            <div className="flex items-center space-x-3" data-oid="-noovis">
-              <span
-                className="text-3xl font-bold drop-shadow-lg"
-                data-oid="6diek3."
-              >
-                {isVisible ? formatCurrency(balance) : "••••••"}
-              </span>
-              <button
-                onClick={onToggleVisibility}
-                className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200 backdrop-blur-sm"
-                data-oid="pmuq8t6"
-              >
-                {isVisible ? (
-                  <EyeOff className="w-5 h-5" data-oid="2t.nimp" />
-                ) : (
-                  <Eye className="w-5 h-5" data-oid="lw84awo" />
-                )}
-              </button>
+              {isVisible ? (
+                <EyeOff className="w-4 h-4 text-gray-300" />
+              ) : (
+                <Eye className="w-4 h-4 text-gray-300" />
+              )}
+            </button>
+          </div>
+
+          {/* Student Info Section */}
+          <div className="relative z-10 flex items-center space-x-4 mb-6">
+            {/* Avatar */}
+           <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 p-0.5 shadow-lg">
+  <div className="w-full h-full rounded-full 
+              bg-gradient-to-br from-gray-200 to-gray-300 flex items-center
+              justify-center overflow-hidden">
+    <img 
+      src="/assets/young-boy.png" 
+      alt="User Avatar"
+      className="w-50 h-50 object-cover"
+    />
+  </div>
+</div>
+
+            
+            {/* Student Details */}
+            <div className="flex-1">
+              <h2 className="text-lg font-bold text-white mb-1">{studentName}</h2>
+              <p className="text-sm text-blue-200 font-mono">{studentId}</p>
+              <div className="flex items-center space-x-2 mt-1">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs text-green-300 font-medium">Active</span>
+              </div>
             </div>
           </div>
-          <div
-            className="w-16 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/30"
-            data-oid="87_:g5d"
-          >
-            <div
-              className="w-8 h-8 bg-gradient-to-br from-white/80 to-white/60 rounded-lg flex items-center justify-center"
-              data-oid="5lk.giq"
-            >
-              <CreditCard
-                className="w-5 h-5 text-brand"
-                data-oid="t0u0nj:"
-              />
+
+          {/* Balance Section */}
+          
+
+          {/* Card Number */}
+          <div className="relative z-10 mt-4">
+            <p className="text-lg font-mono tracking-[0.2em] text-gray-300 text-center">
+              •••• •••• •••• 1234
+            </p>
+          </div>
+
+          {/* Footer */}
+          <div className="relative z-10 flex justify-between items-center mt-4 pt-4 border-t border-white/10">
+            <div>
+              <p className="text-xs text-gray-400 uppercase tracking-wider">Valid Thru</p>
+              <p className="text-sm font-semibold text-white">12/27</p>
+            </div>
+            <div className="text-right">
+              <p className="text-xs text-gray-400 uppercase tracking-wider">Type</p>
+              <p className="text-sm font-semibold text-white">Student</p>
             </div>
           </div>
+
+          {/* Decorative Elements */}
+          <div className="absolute top-4 right-4 w-20 h-20 rounded-full bg-gradient-to-br from-white/5 to-transparent"></div>
+          <div className="absolute bottom-4 left-4 w-16 h-16 rounded-full bg-gradient-to-tr from-white/5 to-transparent"></div>
+          
+          {/* Subtle Lines */}
+          <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+          <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
         </div>
-        <div className="relative z-10 mb-8" data-oid="iqos48.">
-          <p
-            className="text-2xl font-mono tracking-[0.2em] drop-shadow-lg font-bold"
-            data-oid="dnfaoal"
-          >
-            •••• •••• •••• 1234
-          </p>
-        </div>
-        <div
-          className="relative z-10 flex justify-between items-end"
-          data-oid="xd2r97s"
-        >
-          <div data-oid="5luo0ov">
-            <p
-              className="text-white/80 text-xs uppercase tracking-wider mb-1 font-semibold"
-              data-oid="vc:xkx:"
-            >
-              {t("cardHolder")}
-            </p>
-            <p className="font-bold text-lg drop-shadow-md" data-oid="av0z-mc">
-              {t("parentUser")}
-            </p>
-          </div>
-          <div className="text-right" data-oid="w_o3v.y">
-            <p
-              className="text-white/80 text-xs uppercase tracking-wider mb-1 font-semibold"
-              data-oid="gmpbkhr"
-            >
-              {t("secure")}
-            </p>
-            <p className="font-bold text-lg drop-shadow-md" data-oid="36255oj">
-              {t("wallet")}
-            </p>
-          </div>
-        </div>
-        <div
-          className="absolute top-8 right-8 w-24 h-24 rounded-full opacity-10"
-          style={{
-            background: "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "8px 8px",
-          }}
-          data-oid="layclwy"
-        ></div>
-        <div
-          className="absolute bottom-8 left-8 w-20 h-20 rounded-full opacity-10"
-          style={{
-            background: "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "6px 6px",
-          }}
-          data-oid="ju70:n_"
-        ></div>
-        <div
-          className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent transform rotate-12"
-          data-oid="k_07zjb"
-        ></div>
-        <div
-          className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent transform -rotate-12"
-          data-oid="xs34g08"
-        ></div>
       </div>
     </div>
   );
 };
 
-export default VirtualCard;
+export default StudentCard;

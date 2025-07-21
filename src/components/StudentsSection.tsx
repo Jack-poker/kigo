@@ -166,7 +166,9 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
           </div>
           <button
             onClick={() => onSetLimits({} as Student)}
-            className="flex items-center space-x-2 from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-6 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 bg-none bg-brand"
+            className="flex items-center space-x-2 from-blue-600 to-purple-600 hover:from-blue-700
+             hover:to-purple-700 text-white py-3 px-6 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105
+              bg-none bg-zinc-900"
             data-oid=":8ddkum"
           >
             <Users className="w-5 h-5" data-oid="gvn9:kc" />
@@ -310,7 +312,12 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
         />
       ) : (
         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-lime-500 text-white flex items-center justify-center text-xl font-bold shadow-md">
-          {student.name?.[0]?.toUpperCase() || "?"}
+          {/* {student.name?.[0]?.toUpperCase() || "?"} */}
+           <img
+    src="assets/young-boy.png"
+    alt="Student Avatar"
+    className="w-16 h-16 rounded-full object-cover shadow-md"
+  />
         </div>
       )}
       <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center">
@@ -328,7 +335,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
   <div className="mb-6">
     <div className="flex justify-between items-center mb-2">
       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Daily Spending</span>
-      <span className="text-xs px-2 py-0.5 rounded-full bg-brand/10 text-brand font-semibold">
+      <span className="text-xs px-2 py-0.5 rounded-full bg-brand/10 text-zinc-900 font-semibold">
         {spendingPercentage.toFixed(0)}% used
       </span>
     </div>
@@ -380,7 +387,9 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
   <div className="flex space-x-3">
     <button
       onClick={() => onViewTransactions(student)}
-      className="flex-1 flex items-center justify-center space-x-2 from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-3 rounded-xl transition-all duration-200 font-medium shadow-md hover:shadow-xl transform hover:scale-[1.02] bg-gradient-to-r"
+      className="flex-1 flex items-center justify-center space-x-2 from-green-500 to-emerald-600
+       hover:from-green-600 hover:to-emerald-700 text-white py-3 rounded-xl transition-all duration-200
+        font-medium shadow-md hover:shadow-xl transform hover:scale-[1.02] bg-zinc-900"
     >
       <Activity className="w-5 h-5" />
       <span>View All</span>
@@ -397,6 +406,7 @@ const LinkedStudents: React.FC<LinkedStudentsProps> = ({
 
             );
           })}
+          <div className="h-100"></div>
         </div>
       )}
     </div>

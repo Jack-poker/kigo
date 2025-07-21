@@ -1,103 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatGPT Style Chat</title>
   <style>
-  table{
-  width: 100%;
-  padding: 30px;
- 
-  
-   
-  }
-  .container{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgb(0, 53, 247);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .report-view{
-    width: 80%;
-    max-width: 500px;
-    height: 500px;
-    background-color: aliceblue;
-    padding: 20px;
-    border-radius: 5px;
-  
-  }
-  .report_title{
-    font-size: 30px;
-    color: blue;
-    font-weight: bolder;
-    font-style:initial;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    display: flex;
-    flex-direction: row;
-    justify-content:start;
- 
- }
-</style>
-
-
-
-
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #f0f2f5;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .chatbox {
+      background: #ffffff;
+      width: 100%;
+      max-width: 600px;
+      height: 90vh;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .chatview {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: #f9fafc;
+    }
+    .chatview::-webkit-scrollbar {
+      width: 6px;
+    }
+    .chatview::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+    }
+    .message {
+      margin: 12px 0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      max-width: 80%;
+      line-height: 1.4;
+      word-wrap: break-word;
+      white-space: pre-line;
+    }
+    .user {
+      background: #d9eaff;
+      align-self: flex-end;
+      text-align: right;
+    }
+    .bot {
+      background: #f0f0f0;
+      align-self: flex-start;
+    }
+    .input-box {
+      display: flex;
+      border-top: 1px solid #ccc;
+      padding: 15px;
+      gap: 10px;
+      background: #fff;
+    }
+    .input-box input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .input-box button {
+      padding: 10px 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <div class="report-view">
-
-      <table border="0">
-        <tr>
-          <th class="report_title">kaascan Receipt</th>
-           <th class="report_title"></th>
-        </tr>
-        <tr>
-          <td style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif;
-          color: blue;">
-          sent amount
-        </td>
-         <td style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif;
-          color: blue;">
-          100 RWF
-        </td>
-      
-        <tr>
-
-
-          <tr>
-          <td style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif;
-          color: blue;">
-          sent amount
-        </td>
-         <td style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif;
-          color: blue;">
-          100 RWF
-        </td>
-        
-       <tr>
-          <td style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif;
-          color: blue;">
-          Total Amount
-        </td>
-         <td   style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif;
-          color: blue;">
-          100 RWF
-        </td>
-        
-        <tr>
-      </table>
-
+    <div class="chatbox">
+      <div class="chatview" id="chatview"></div>
+      <div class="input-box">
+        <input type="text" id="prompt" placeholder="Type your message..." />
+        <button onclick="sendPrompt()">Send</button>
+      </div>
     </div>
   </div>
+
+  <script>
+    const promptInput = document.getElementById("prompt");
+    const chatView = document.getElementById("chatview");
+
+    function appendMessage(text, sender = "bot") {
+      const msg = document.createElement("div");
+      msg.classList.add("message", sender);
+      chatView.appendChild(msg);
+      typeMessage(msg, text);
+    }
+
+    function typeMessage(element, text, speed = 20) {
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          chatView.scrollTop = chatView.scrollHeight;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    }
+
+    async function sendPrompt() {
+      const prompt = promptInput.value.trim();
+      if (!prompt) return;
+      
+      appendMessage(prompt, "user");
+      promptInput.value = "";
+      chatView.scrollTop = chatView.scrollHeight;
+
+      try {
+        const response = await fetch("https://auto.kaascan.com/webhook/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        });
+        const data = await response.json();
+        appendMessage(data?.response || "No response from server.", "bot");
+      } catch (err) {
+        appendMessage("⚠️ Error connecting to server.", "bot");
+      }
+    }
+
+    // Optional: Press Enter to Send
+    promptInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        sendPrompt();
+      }
+    });
+  </script>
 </body>
 </html>

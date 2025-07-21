@@ -46,7 +46,7 @@ export function LoginForm({
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const isPasswordReset = params.get("resetPassword") === "true";
-  const baseUrl = "https://api.kaascan.com";
+  const baseUrl = "http://localhost:8001";
 
   // Validation functions
   const validateForm = () => {
@@ -363,7 +363,7 @@ export function LoginForm({
     >
       <div className="flex flex-col items-center mb-0" data-oid="cpf.tcw">
         <img
-          src="/assets/white_logo.png"
+          src="/assets/alllogo.png"
           alt="kigo logo"
           className="object-contain bg-[rgba(0,_0,_0,_0)] w-[290px] h-[126px] bg-none"
           data-oid="sb_-o-p"

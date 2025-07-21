@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import TransactionTracker from "../components/payment/Transaction_tracker";
 import { AlertCircle, CheckCircle, Loader2 } from "lucide-react";
+const transactionId = new URLSearchParams(window.location.search).get("txid");
+const amount = new URLSearchParams(window.location.search).get("amount_data");
+
 
 const PaymentStatus: React.FC = () => {
   const [showTracker, setShowTracker] = useState<boolean>(false);
@@ -9,6 +12,7 @@ const PaymentStatus: React.FC = () => {
   >(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const transactionId = new URLSearchParams(window.location.search).get("txid");
+  const amount = new URLSearchParams(window.location.search).get("amount_data");
 
   const handleStartTransaction = () => {
     if (!transactionId) {
@@ -80,8 +84,8 @@ const PaymentStatus: React.FC = () => {
         </div>
       ) : showTracker && transactionId ? (
         <TransactionTracker
-          transactionAmount="2000 RWF"
-          merchantName="Kohereza Amafaranga"
+          transactionAmount={amount + " RWF"}
+          merchantName="PARENT"
           transactionId={transactionId}
           data-oid="9s:ooux"
         />
@@ -108,7 +112,7 @@ const PaymentStatus: React.FC = () => {
                 Transaction Successful!
               </h2>
               <p className="text-gray-600 mb-6" data-oid="jg5_y__">
-                Your payment of 2000 RWF to Kohereza Amafaranga was successful.
+                Your payment of ${amount} RWF to Kohereza Amafaranga was successful.
               </p>
               <button
                 className="bg-gradient-to-r from-green-500 to-deep-indigo-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:from-green-600 hover:to-deep-indigo-600 transition"

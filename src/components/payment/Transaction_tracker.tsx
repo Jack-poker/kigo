@@ -19,11 +19,15 @@ interface TransactionTrackerProps {
   token?: string;
 }
 
+  const txid = new URLSearchParams(window.location.search).get("txid");
+  const amount = new URLSearchParams(window.location.search).get("amount_data");
+
+
 const TransactionTracker: React.FC<TransactionTrackerProps> = ({
   onComplete,
-  transactionAmount = "$25.99",
-  merchantName = "Kid's Store",
-  transactionId,
+  transactionAmount = amount,
+  merchantName = "Payment",
+  transactionId=txid,
   token,
 }) => {
   const [timeLeft, setTimeLeft] = useState(120);
@@ -100,7 +104,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
       const res = await axios.post(
-        "https://auto.kaascan.com/webhook/checkpaymentstatus",
+        "https://automation.kaascan.com/webhook/checkpaymentstatus",
         { transaction_id: transactionId },
         { headers, timeout: REQUEST_TIMEOUT },
       );
@@ -260,12 +264,12 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             <XCircle className="w-10 h-10 text-red-500" data-oid="v107o5s" />
           </div>
           <h2
-            className="text-2xl font-bold text-brand mb-2"
+            className="text-2xl font-bold text-white mb-2"
             data-oid="h143ryq"
           >
             Transaction Failed
           </h2>
-          <p className="text-brand-600 mb-4" data-oid="90i5icl">
+          <p className="text-white-600 mb-4" data-oid="90i5icl">
             {error ||
               `Your payment of ${transactionAmount} to ${merchantName} was unsuccessful.`}
           </p>
@@ -308,12 +312,12 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             data-oid="9y3g.lk"
           >
             <CheckCircle
-              className="w-10 h-10 text-brand"
+              className="w-10 h-10 text-white"
               data-oid="pg6s2qv"
             />
           </div>
           <h2
-            className="text-2xl font-bold text-brand mb-2"
+            className="text-2xl font-bold text-white mb-2"
             data-oid="23m.-w2"
           >
             Transaction Complete!
@@ -345,7 +349,7 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
         <FloatingParticle key={i} delay={i * 0.3} data-oid="2j426yf" />
       ))}
       <div
-        className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 max-w-md w-full relative z-10"
+        className="bg-zinc-900 backdrop-blur-sm rounded-3xl shadow-2xl p-8 max-w-md w-full relative z-10"
         data-oid="dzqzq.q"
       >
         <div className="text-center mb-8" data-oid="-9q-eqd">
@@ -358,12 +362,12 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             <Clock className="w-8 h-8 text-white" data-oid="ud3:6t9" />
           </div>
           <h1
-            className="text-2xl font-bold text-brand mb-2"
+            className="text-2xl font-bold text-yellow-400 mb-2"
             data-oid="gn0axhx"
           >
             Processing Your Transaction
           </h1>
-          <p className="text-brand-600" data-oid="uyk4dw8">
+          <p className="text-white" data-oid="uyk4dw8">
             Please wait while we securely process your payment
           </p>
           {error && (
@@ -373,18 +377,18 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
           )}
         </div>
         <div
-          className="bg-gradient-to-r from-yellow-50 to-brand-50 rounded-2xl p-4 mb-6"
+          className="bg-zinc-to-r from-yellow-50 to-brand-50 rounded-2xl p-4 mb-6"
           data-oid="nqfkx35"
         >
           <div
             className="flex justify-between items-center mb-2"
             data-oid="atfol9g"
           >
-            <span className="text-gray-600" data-oid="5tjpb45">
+            <span className="text-white" data-oid="5tjpb45">
               Amount:
             </span>
             <span
-              className="font-bold text-lg text-brand"
+              className="font-bold text-lg text-white"
               data-oid=".qkj7rg"
             >
               {transactionAmount}
@@ -394,18 +398,18 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
             className="flex justify-between items-center mb-2"
             data-oid="g5.m6tq"
           >
-            <span className="text-gray-600" data-oid=":bttihk">
+            <span className="text-white" data-oid=":bttihk">
               Transaction Fee:
             </span>
-            <span className="font-semibold text-brand" data-oid="ql5adv6">
-              $0.50
+            <span className="font-semibold text-white" data-oid="ql5adv6">
+              0.0
             </span>
           </div>
           <div className="flex justify-between items-center" data-oid="jj1dq-o">
-            <span className="text-gray-600" data-oid=":vt7_5h">
+            <span className="text-white" data-oid=":vt7_5h">
               Merchant:
             </span>
-            <span className="font-semibold text-brand" data-oid="m692kan">
+            <span className="font-semibold text-white" data-oid="m692kan">
               {merchantName}
             </span>
           </div>
@@ -442,12 +446,12 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
           >
             <div className="text-center" data-oid="y-l..b8">
               <div
-                className="text-2xl font-bold text-brand"
+                className="text-2xl font-bold text-white"
                 data-oid="ltklbhl"
               >
                 {formatTime(timeLeft)}
               </div>
-              <div className="text-sm text-gray-500" data-oid="5mddcho">
+              <div className="text-sm white" data-oid="5mddcho">
                 remaining
               </div>
             </div>
@@ -464,10 +468,10 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
                 key={index}
                 className={`flex items-center p-3 rounded-xl transition-all duration-500 ${
                   isActive
-                    ? "bg-brand border-2 border-brand-300"
+                    ? "bg-none border-1 border-white"
                     : isCompleted
-                      ? "bg-green-50 border border-green-200"
-                      : "bg-gray-50 border border-gray-200"
+                      ? "bg-zinc-300 border border-green-200"
+                      : "bg-gray-50 border  border-gray-200"
                 }`}
                 data-oid="ozze76_"
               >
@@ -498,10 +502,10 @@ const TransactionTracker: React.FC<TransactionTrackerProps> = ({
           })}
         </div>
         <div
-          className="bg-gradient-to-r from-yellow-100 to-indigo-100 rounded-2xl p-4 text-center"
+          className="bg-zinc-to-r from-yellow-100 to-indigo-100 rounded-2xl p-4 text-center"
           data-oid="3x9yt48"
         >
-            <p className="text-sm text-gray-700" data-oid="bp6.b.c">
+            <p className="text-sm text-white" data-oid="bp6.b.c">
             <span className="font-semibold" data-oid="o73kx_n">
               💡 Did you know?
             </span>

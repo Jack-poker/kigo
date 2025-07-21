@@ -30,7 +30,7 @@ const AdBanner: React.FC = () => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await axios.get(
-          "https://api.kaascan.com/get-csrf-token",
+          "http://localhost:8001/get-csrf-token",
           {
             withCredentials: true, // Send session_id cookie
           },
@@ -280,7 +280,7 @@ const AdBanner: React.FC = () => {
                         window.open(currentAd.ctaLink, "_blank")
                       }
                       className={`inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
-                        isDark ? "bg-white text-brand" : "bg-white text-brand"
+                        isDark ? "bg-zinc-900 text-white" : "bg-zinc-900 text-white"
                       }`}
                       data-oid="z7lrbq9"
                     >

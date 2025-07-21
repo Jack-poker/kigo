@@ -25,7 +25,7 @@ export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const baseurl = "https://api.kaascan.com";
+  const baseurl = "http://localhost:8001";
 
   const [isSubmitted, setSubmitted] = useState(false);
   const [isSignupComplete, setSignupComplete] = useState(false);
@@ -151,7 +151,7 @@ export function SignupForm({
       <div className="flex justify-center mb-8" data-oid=".c6wgxd">
         <div className="relative" data-oid="wp:oi23">
           <img
-            src="/assets/white_logo.png"
+            src="/assets/alllogo.png"
             alt="kaascan logo"
             className="w-64 h-20 object-contain drop-shadow-lg"
             data-oid="pch6y9-"

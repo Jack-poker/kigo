@@ -65,7 +65,7 @@ const steps = [
 ];
 
 // API base URL
-const API_URL = "https://api.kaascan.com";
+const API_URL = "http://localhost:8001";
 
 // StepIndicator Component
 interface StepIndicatorProps {
@@ -730,7 +730,7 @@ const AddStudent: React.FC = () => {
         setIsLoading(false);
         return;
       }
-      const parent_data = await axios.get("https://api.kaascan.com/profile", {
+      const parent_data = await axios.get("http://localhost:8001/profile", {
         headers: { Authorization: `Bearer ${token}`, "X-CSRF-Token": csrf },
       });
 
