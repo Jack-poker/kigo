@@ -59,7 +59,7 @@ const AdBanner: React.FC = () => {
     try {
       setLoading(true);
      const response = await axios.get(
-  "/api/flows/trigger/e2fa0562-8716-4fed-af4c-2ffe6d7c7a25",
+  "https://directus.kaascan.com/flows/trigger/e2fa0562-8716-4fed-af4c-2ffe6d7c7a25",
   { headers: { "Content-Type": "application/json" } }
 );
       // Map backend Ad to AdData
