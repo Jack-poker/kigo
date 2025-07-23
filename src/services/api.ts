@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
-const API_BASE_URL = 'https://api.kaascan.com';
+const API_BASE_URL = 'http://localhost:8001';
 
 // Create axios instance with default config
 const api = axios.create({

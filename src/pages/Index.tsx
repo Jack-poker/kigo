@@ -43,6 +43,10 @@ import AddStudent from "@/components/admin/addStudent";
 import AddStudentModal from "@/components/admin/addStudent";
 import WithdrawModal from "@/components/withdrawModal";
 import ModernNavbar from "@/components/ModernNavBar";
+import { CheckIcon } from "lucide-react"
+
+import { Badge } from "@/components/ui/badge"
+
 
 const Index = () => {
   const { t, language, setLanguage } = useLanguage();
@@ -103,7 +107,7 @@ const Index = () => {
     );
   }
 
-  const API_URL = "https://api.kaascan.com";
+  const API_URL = "http://localhost:8001";
 
   // Global variable to store parent's phone number
   const [parentPhone, setParentPhone] = useState("");
@@ -120,6 +124,8 @@ const Index = () => {
       // Extract phone_number and set as global state
       if (response.data.profile?.phone_number) {
         setParentPhone(response.data.profile.phone_number);
+        localStorage.setItem("phone_x990_0",response.data.profile.phone_number);
+        localStorage.setItem("full_name_x990_0",response.data.profile.full_name);
       }
     } catch (err) {
       console.error("Failed to fetch profile:", err);
@@ -406,11 +412,11 @@ const Index = () => {
               </div>
               <div className="lg:col-span-1 h-[326px]" data-oid="2tkp5sm">
                 <div
-                  className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 h-[318px] bg-white"
+                  className="bg-white bg-white-950 border border-brand border-brand rounded-xl p-6 h-[318px] bg-white"
                   data-oid="b6_76fw"
                 >
                   <h3
-                    className="text-zin-900 dark:text-white font-semibold text-lg mb-6"
+                    className="text-zin-900 text-white font-semibold text-lg mb-6"
                     data-oid="pzcjg1f"
                   >
                     {t("quickActions")}
@@ -446,7 +452,7 @@ const Index = () => {
               </div>
               <div className="lg:col-span-1" data-oid="z_t67o1">
                 <div
-                  className="bg-zinc-900 dark:bg-white-950  dark:border-gray-700 rounded-2xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-200 bg-white"
+                  className="bg-zinc-900 bg-white-950  border-gray-700 rounded-2xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-200 bg-white"
                   data-oid="u_0:xyp"
                 >
                   <div
@@ -454,14 +460,14 @@ const Index = () => {
                     data-oid="g0ny.0n"
                   >
                     <h3
-                      className="text-white dark:text-white font-semibold text-lg"
+                      className="text-white text-white font-semibold text-lg"
                       data-oid="668zz85"
                     >
                       {t("recentActivity")}
                     </h3>
                     <button
                       onClick={() => setActiveModal("allTransactions")}
-                      className="text-sm text-yellow-400  dark:hover:text-blue-300 font-medium transition-colors duration-200 text-[#000000]"
+                      className="text-sm text-yellow-400  hover:text-blue-300 font-medium transition-colors duration-200 text-[#000000]"
                       data-oid="n6qqzx_"
                     >
                       View All
@@ -473,7 +479,7 @@ const Index = () => {
                         key={transaction.id}
                         className="group flex border-6 items-center
                          justify-between p-4 rounded-xl bg-white 
-                         transition-all duration-200 border-2 hover:border-gray-200 dark:hover:border-gray-600 bg-[#4C2F7C]"
+                         transition-all duration-200 border-2 hover:border-gray-200 hover:border-gray-600 bg-[#4C2F7C]"
                         data-oid="_c6tgk2"
                       >
                         <div
@@ -484,10 +490,10 @@ const Index = () => {
                             className={`w-12 h-12 rounded-full border-2 flex items-center
                                justify-center shadow-sm ${
                               transaction.type === "deposit"
-                                ? "bg-zinc-900 dark:bg-yellow-400 text-brand dark:text-brand"
+                                ? "bg-zinc-900 bg-yellow-400 text-brand text-brand"
                                 : transaction.type === "withdraw"
-                                  ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
-                                  : "bg-yellow-400 dark:bg-blue-900/30 text-yellow-400 dark:text-blue-400"
+                                  ? "bg-red-100 bg-red-900/30 text-red-600 text-red-400"
+                                  : "bg-yellow-400 bg-blue-900/30 text-yellow-400 text-blue-400"
                             }`}
                             data-oid="pg11t:p"
                           >
@@ -503,14 +509,14 @@ const Index = () => {
                               />
                             ) : (
                               <ShoppingCart
-                                className="w-5 h-5"
+                                className="w-5 h-5 text-zinc-900"
                                 data-oid="9wsu9r3"
                               />
                             )}
                           </div>
                           <div className="flex-1" data-oid="0o7k9yq">
                             <p
-                              className="dark:text-white text-sm font-semibold mb-1 text-zinc-900"
+                              className="text-sm font-semibold mb-1 text-zinc-900"
                               data-oid="5kn15q0"
                             >
                               {transaction.title}
@@ -520,7 +526,7 @@ const Index = () => {
                               data-oid="mo4e7bw"
                             >
                               <p
-                                className="text-brand/400 dark:text-gray-400 text-xs"
+                                className="text-brand/400 text-gray-400 text-xs"
                                 data-oid="o_hr1yg"
                               >
                                 {transaction.date}
@@ -528,13 +534,13 @@ const Index = () => {
                               {transaction.student && (
                                 <>
                                   <span
-                                    className="text-gray-300 dark:text-gray-600"
+                                    className="text-gray-300 text-gray-600"
                                     data-oid="j86p5vm"
                                   >
                                     •
                                   </span>
                                   <p
-                                    className="text-gray-500 dark:text-gray-400 text-xs"
+                                    className="text-gray-500 text-gray-400 text-xs"
                                     data-oid="rpsp2e:"
                                   >
                                     {transaction.student}
@@ -548,8 +554,8 @@ const Index = () => {
                           <span
                             className={`text-sm font-bold ${
                               transaction.amount > 0
-                                ? "text-zinc-900 dark:text-yellow-400"
-                                : "text-zinc-900 dark:text-white-400"
+                                ? "text-zinc-900 text-yellow-400"
+                                : "text-zinc-900 text-white-400"
                             }`}
                             data-oid="oqecucc"
                           >
@@ -571,7 +577,7 @@ const Index = () => {
                               data-oid="3bt-x3v"
                             ></div>
                             <span
-                              className="text-xs text-zinc-900 dark:text-gray-500 ml-1 capitalize"
+                              className="text-xs text-zinc-900 text-gray-500 ml-1 capitalize"
                               data-oid="cldy9ly"
                             >
                               {transaction.status}
@@ -586,7 +592,7 @@ const Index = () => {
                         data-oid="5:l45hz"
                       >
                         {/* <div
-                          className="w-24 h-24 mx-auto mb-4 bg-brand dark:bg-brand rounded-full flex items-center justify-center"
+                          className="w-24 h-24 mx-auto mb-4 bg-brand bg-brand rounded-full flex items-center justify-center"
                           data-oid="h62c5vx"
                         > */}
 
@@ -599,13 +605,13 @@ const Index = () => {
 
                         {/* </div> */}
                         <h4
-                          className="text-gray-900 dark:text-white font-medium mb-2"
+                          className="text-gray-900 text-white font-medium mb-2"
                           data-oid="n8pu683"
                         >
                           No Recent Activity
                         </h4>
                         <p
-                          className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
+                          className="text-gray-500 text-gray-400 text-sm max-w-xs"
                           data-oid="6pma4x_"
                         >
                           {t("noTransactions" as any)}
@@ -623,7 +629,7 @@ const Index = () => {
               data-oid="hztznsj"
             >
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
+                className="bg-white bg-white-950 border border-brand border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
                 data-oid="u1_v26w"
               >
                 <div
@@ -632,13 +638,13 @@ const Index = () => {
                 >
                   <div data-oid="1-x672g">
                     <p
-                      className="text-brand dark:text-brand text-sm font-medium"
+                      className="text-brand text-brand text-sm font-medium"
                       data-oid="pg6je2."
                     >
                       {t("totalBalance")}
                     </p>
                     <p
-                      className="text-brand dark:text-white text-2xl font-bold mt-1"
+                      className="text-brand text-white text-2xl font-bold mt-1"
                       data-oid="gubp03n"
                     >
                       {isBalanceVisible
@@ -647,17 +653,17 @@ const Index = () => {
                     </p>
                   </div>
                   <div
-                    className="p-3 bg-brand dark:bg-green-900/30 rounded-xl"
+                    className="p-3 bg-brand bg-green-900/30 rounded-xl"
                     data-oid="iuf3zsv"
                   >
                     <Wallet
-                      className="w-6 h-6 text-white dark:text-brand"
+                      className="w-6 h-6 text-white text-brand"
                       data-oid="n2k.:t-"
                     />
                   </div>
                 </div>
                 <div
-                  className="flex items-center mt-4 text-green-600 dark:text-brand text-sm font-medium"
+                  className="flex items-center mt-4 text-green-600 text-brand text-sm font-medium"
                   data-oid="_c1rr-f"
                 >
                   <TrendingUp className="w-4 h-4 mr-1" data-oid="0jdwjjq" />
@@ -665,7 +671,7 @@ const Index = () => {
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
+                className="bg-white bg-white-950 border border-brand border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
                 data-oid="2ouz29j"
               >
                 <div
@@ -674,30 +680,30 @@ const Index = () => {
                 >
                   <div data-oid="k02aixm">
                     <p
-                      className="text-brand dark:text-brand text-sm font-medium"
+                      className="text-brand text-brand text-sm font-medium"
                       data-oid="4y2uxz0"
                     >
                       {t("activeStudents")}
                     </p>
                     <p
-                      className="text-brand dark:text-white text-2xl font-bold mt-1"
+                      className="text-brand text-white text-2xl font-bold mt-1"
                       data-oid="w5qn-vb"
                     >
                       {students.length}
                     </p>
                   </div>
                   <div
-                    className="p-3 bg-bland dark:bg-brand rounded-xl"
+                    className="p-3 bg-bland bg-brand rounded-xl"
                     data-oid="bf2z7g:"
                   >
                     <Users
-                      className="w-6 h-6 text-white dark:text-white"
+                      className="w-6 h-6 text-white text-white"
                       data-oid="3ai-z6w"
                     />
                   </div>
                 </div>
                 <div
-                  className="flex items-center mt-4 text-blue-600 dark:text-blue-400 text-sm font-medium"
+                  className="flex items-center mt-4 text-blue-600 text-blue-400 text-sm font-medium"
                   data-oid="kt72b6z"
                 >
                   <Plus className="w-4 h-4 mr-1" data-oid="xv-oc3m" />
@@ -705,7 +711,7 @@ const Index = () => {
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
+                className="bg-white bg-white-950 border border-brand border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
                 data-oid="wnz.x6e"
               >
                 <div
@@ -714,13 +720,13 @@ const Index = () => {
                 >
                   <div data-oid="btpj8w7">
                     <p
-                      className="text-brand dark:text-brand text-sm font-medium"
+                      className="text-brand text-brand text-sm font-medium"
                       data-oid=":uhoz7y"
                     >
                       {t("thisMonthSpent")}
                     </p>
                     <p
-                      className="text-brand dark:text-white text-2xl font-bold mt-1"
+                      className="text-brand text-white text-2xl font-bold mt-1"
                       data-oid="4ze3k:e"
                     >
                       {isBalanceVisible
@@ -729,17 +735,17 @@ const Index = () => {
                     </p>
                   </div>
                   <div
-                    className="p-3 dark:bg-brand rounded-xl bg-brand"
+                    className="p-3 bg-brand rounded-xl bg-brand"
                     data-oid="6yn3qjf"
                   >
                     <ShoppingCart
-                      className="w-6 h-6 dark:text-orange-400 text-[#FAF6F6]"
+                      className="w-6 h-6 text-orange-400 text-[#FAF6F6]"
                       data-oid="xec6xx5"
                     />
                   </div>
                 </div>
                 <div
-                  className="flex items-center mt-4 text-orange-600 dark:text-orange-400 text-sm font-medium"
+                  className="flex items-center mt-4 text-orange-600 text-orange-400 text-sm font-medium"
                   data-oid=".g50:dq"
                 >
                   <TrendingDown className="w-4 h-4 mr-1" data-oid="j37hh56" />
@@ -747,7 +753,7 @@ const Index = () => {
                 </div>
               </div>
               <div
-                className="bg-white dark:bg-white-950 border border-brand dark:border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
+                className="bg-white bg-white-950 border border-brand border-brand rounded-xl p-6 hover:shadow-lg transition-all duration-200 bg-white"
                 data-oid="z00ju-n"
               >
                 <div
@@ -756,30 +762,30 @@ const Index = () => {
                 >
                   <div data-oid="0ypla18">
                     <p
-                      className="text-brand dark:text-brand text-sm font-medium"
+                      className="text-brand text-brand text-sm font-medium"
                       data-oid="q6:1q9_"
                     >
                       {t("todayActivity")}
                     </p>
                     <p
-                      className="text-brand dark:text-white text-2xl font-bold mt-1"
+                      className="text-brand text-white text-2xl font-bold mt-1"
                       data-oid="fr3wwb7"
                     >
                       {transactions.length}
                     </p>
                   </div>
                   <div
-                    className="p-3 dark:bg-purple-900/30 rounded-xl bg-[#00000000]"
+                    className="p-3 bg-purple-900/30 rounded-xl bg-[#00000000]"
                     data-oid="o0kwiif"
                   >
                     <Activity
-                      className="w-6 h-6 dark:text-purple-400 text-[#F3EFEF]"
+                      className="w-6 h-6 text-purple-400 text-[#F3EFEF]"
                       data-oid="1-t8iaa"
                     />
                   </div>
                 </div>
                 <div
-                  className="flex items-center mt-4 text-purple-600 dark:text-purple-400 text-sm font-medium"
+                  className="flex items-center mt-4 text-purple-600 text-purple-400 text-sm font-medium"
                   data-oid="ud:yqur"
                 >
                   <PieChart className="w-4 h-4 mr-1" data-oid=":t4zlal" />
@@ -854,7 +860,7 @@ const Index = () => {
     
     // bg-gradient-to-br from-brand via-white to-brand0
     <div
-      className="min-h-screen bg-white dark:bg-zinc-900 transition-colors duration-200"
+      className="min-h-screen bg-white bg-zinc-900 transition-colors duration-200"
       // style={{
       //   backgroundImage: "url('/assets/background.png')",
       //   backgroundRepeat: "no-repeat",
@@ -868,7 +874,7 @@ const Index = () => {
       data-oid="953wnnr"
     >
       <div
-        className="sticky top-0 z-50 bg-white dark:bg-white-950 border-b border-brand shadow-sm"
+        className="sticky top-0 z-50 bg-white bg-white-950 border-b border-brand shadow-sm"
         data-oid="bekm7eo"
       >
         <ModernNavbar
@@ -897,13 +903,16 @@ const Index = () => {
       <AdBanner data-oid="x000t0." />
 
       <div
-        className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-white-950 border-t border-brand dark:border-brand z-50"
+        className="md:hidden fixed bottom-0 left-0 right-0 bg-white bg-white-950 
+         z-50"
         data-oid="okxz-u0"
       >
       
-<div className="relative flex items-center justify-around py-3 px-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-gray-200/20 dark:border-gray-700/20 shadow-lg">
+<div className="relative flex items-center justify-around 
+py-3 px-2 bg-zinc-900
+  shadow-lg">
   {/* Background Glow Effect */}
-  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-indigo-500/5 rounded-t-3xl"></div>
+  <div className="absolute inset-0 bg-zinc-900 rounded-t-3xl"></div>
   
   {/* Active Tab Indicator */}
   <div 
@@ -925,8 +934,8 @@ const Index = () => {
         onClick={() => handleTabChange(tab.id)}
         className={`relative flex flex-col items-center space-y-1.5 py-2.5 px-3 rounded-2xl transition-all duration-300 transform group ${
           isActive
-            ? "text-blue-600 dark:text-blue-400 scale-110"
-            : "text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-300 hover:scale-105 active:scale-95"
+            ? "text-blue-600 text-blue-400 scale-110"
+            : "text-gray-500 text-gray-400 hover:text-blue-500 hover:text-blue-300 hover:scale-105 active:scale-95"
         }`}
         style={{
           minWidth: '60px',
@@ -935,14 +944,14 @@ const Index = () => {
       >
         {/* Active Background */}
         {isActive && (
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-2xl animate-pulse"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 from-blue-900/30 to-purple-900/30 rounded-2xl animate-pulse"></div>
         )}
         
         {/* Icon Container with Animation */}
         <div className={`relative z-10 p-2 rounded-xl transition-all duration-300 ${
           isActive 
-            ? "bg-zinc-900 shadow-lg shadow-blue-500/25" 
-            : "group-hover:bg-gray-100 dark:group-hover:bg-gray-800/50"
+            ? "bg-zinc-900 shadow-lg" 
+            : "group-hover:bg-gray-100 group-hover:bg-gray-800/50"
         }`}>
           <IconComponent 
             className={`w-5 h-5 transition-all duration-300 ${
@@ -956,20 +965,20 @@ const Index = () => {
         {/* Label with Slide Animation */}
         <span className={`relative z-10 text-xs font-semibold transition-all duration-300 ${
           isActive 
-            ? "text-zinc-900 dark:text-blue-400 font-bold" 
-            : "group-hover:text-blue-500 dark:group-hover:text-blue-300"
+            ? "text-zinc-900 text-white font-bold" 
+            : "group-hover:text-blue-500 group-hover:text-blue-300"
         }`}>
           {tab.label}
         </span>
         
         {/* Active Dot Indicator */}
         {isActive && (
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-brand rounded-full animate-pulse"></div>
+          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-zinc-900 rounded-full animate-pulse"></div>
         )}
         
         {/* Ripple Effect on Touch */}
         <div className="absolute inset-0 rounded-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-blue-500/10 rounded-2xl scale-0 group-active:scale-100 transition-transform duration-200 ease-out"></div>
+          <div className="absolute inset-0 bg-zinc-900 rounded-2xl"></div>
         </div>
       </button>
     );
@@ -977,11 +986,11 @@ const Index = () => {
   
   {/* Floating Action Button (Optional) */}
   <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-    <button className="w-12 h-12 bg-zinc-900 rounded-full shadow-lg shadow-blue-500/25 flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300">
+    {/* <button className="w-12 h-12 bg-zinc-900 rounded-full shadow-lg shadow-blue-500/25 flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300">
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
       </svg>
-    </button>
+    </button> */}
   </div>
 </div>
       </div>
@@ -1001,18 +1010,22 @@ const Index = () => {
               {<PaymentStatusListener data-oid="dovsag5" />}
 
               <label
-                className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
+                className="py-3 block text-sm font-medium text-brand "
                 data-oid="br.huzj"
               >
-                {t("phoneNumber")}
+                {t("phoneNumber")} <Badge variant="outline" className="gap-1">
+      <CheckIcon className="text-emerald-500" size={12} aria-hidden="true" />
+      Gusomwa gusa
+    </Badge>
+
               </label>
-             
+            
               <input
                 type="tel"
                 name="phone"
                 value={parentPhone}
                 required
-                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-brand border-brand bg-white bg-white-950 text-white-950 text-brand focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="078XXXXXXX"
                 disabled
                 data-oid="2lsyidp"
@@ -1020,7 +1033,7 @@ const Index = () => {
             </div>
             <div data-oid="eblbe7n">
               <label
-                className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
+                className="block text-sm font-medium text-brand  mb-2"
                 data-oid="5m9dd:7"
               >
                 {t("amount")}
@@ -1030,13 +1043,14 @@ const Index = () => {
                 name="amount"
                 required
                 min="100"
-                className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                placeholder="10,000"
+                className="w-full px-4 py-3 rounded-xl border border-brand border-brand bg-white
+                 bg-white-950  text-brand focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                placeholder="100"
                 data-oid="zacwkpj"
               />
             </div>
             {/* <div>
-            <label className="block text-sm font-medium text-brand dark:text-green-300 mb-2">
+            <label className="block text-sm font-medium text-brand text-green-300 mb-2">
             {t('pin')}
             </label>
             <input
@@ -1044,7 +1058,7 @@ const Index = () => {
             name="pin"
             required
             maxLength={4}
-            className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 rounded-xl border border-brand border-brand bg-white bg-white-950 text-white-950 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
             placeholder="****"
             />
             </div> */}
@@ -1093,13 +1107,13 @@ const Index = () => {
             >
               <div data-oid="tjk0d39">
                 <h4
-                  className="text-sm font-medium text-white-950 dark:text-white"
+                  className="text-sm font-medium text-white-950 text-white"
                   data-oid="uk-l_44"
                 >
                   {t("notifications")}
                 </h4>
                 <p
-                  className="text-sm text-brand0 dark:text-brand"
+                  className="text-sm text-brand0 text-brand"
                   data-oid="lemr7qh"
                 >
                   {t("receiveAlerts")}
@@ -1121,13 +1135,13 @@ const Index = () => {
             >
               <div data-oid="8c7rmwz">
                 <h4
-                  className="text-sm font-medium text-white-950 dark:text-white"
+                  className="text-sm font-medium text-white-950 text-white"
                   data-oid="fr:v3lj"
                 >
                   {t("darkMode")}
                 </h4>
                 <p
-                  className="text-sm text-brand0 dark:text-brand"
+                  className="text-sm text-brand0 text-brand"
                   data-oid="etm9o09"
                 >
                   {t("switchTheme")}
@@ -1144,9 +1158,9 @@ const Index = () => {
                 ></div>
               </button>
             </div>
-            <div className="border-t dark:border-brand pt-4" data-oid="p6fm13k">
+            <div className="border-t border-brand pt-4" data-oid="p6fm13k">
               <h4
-                className="text-sm font-medium text-white-950 dark:text-white mb-2"
+                className="text-sm font-medium text-white-950 text-white mb-2"
                 data-oid="cyi-i2a"
               >
                 {t("language")}
@@ -1154,7 +1168,7 @@ const Index = () => {
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as any)}
-                className="w-full px-3 py-2 border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white rounded-lg"
+                className="w-full px-3 py-2 border border-brand border-brand bg-white bg-white-950 text-white-950 text-white rounded-lg"
                 data-oid="ymjse9t"
               >
                 {languages.map((lang) => (
@@ -1200,7 +1214,7 @@ const Index = () => {
               .map((tx) => (
                 <div
                   key={tx.id}
-                  className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
+                  className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 bg-gray-800/50 hover:bg-gray-100 hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 hover:border-gray-600"
                   data-oid="w8814tf"
                 >
                   <div
@@ -1210,10 +1224,10 @@ const Index = () => {
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                         tx.type === "deposit"
-                          ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+                          ? "bg-green-100 bg-green-900/30 text-green-600 text-green-400"
                           : tx.type === "withdraw"
-                            ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
-                            : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                            ? "bg-red-100 bg-red-900/30 text-red-600 text-red-400"
+                            : "bg-blue-100 bg-blue-900/30 text-blue-600 text-blue-400"
                       }`}
                       data-oid="xzcepq5"
                     >
@@ -1227,13 +1241,13 @@ const Index = () => {
                     </div>
                     <div className="flex-1" data-oid="tp3xj0p">
                       <p
-                        className="text-gray-900 dark:text-white text-sm font-semibold mb-1"
+                        className="text-gray-900 text-white text-sm font-semibold mb-1"
                         data-oid="wjlrgq0"
                       >
                         {tx.title}
                       </p>
                       <p
-                        className="text-gray-500 dark:text-gray-400 text-xs"
+                        className="text-gray-500 text-gray-400 text-xs"
                         data-oid="ri49c0g"
                       >
                         {tx.date}
@@ -1242,7 +1256,7 @@ const Index = () => {
                   </div>
                   <div className="text-right" data-oid="ii7v:bw">
                     <span
-                      className={`text-sm font-bold ${tx.amount > 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}
+                      className={`text-sm font-bold ${tx.amount > 0 ? "text-green-600 text-green-400" : "text-red-600 text-red-400"}`}
                       data-oid="18prrt4"
                     >
                       {tx.amount > 0 ? "+" : ""}
@@ -1263,7 +1277,7 @@ const Index = () => {
                         data-oid="lh5p:rx"
                       ></div>
                       <span
-                        className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
+                        className="text-xs text-gray-400 text-gray-500 ml-1 capitalize"
                         data-oid="bhc4bz-"
                       >
                         {tx.status}
@@ -1279,22 +1293,22 @@ const Index = () => {
                 data-oid="r8kxn0c"
               >
                 <div
-                  className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
+                  className="w-24 h-24 mx-auto mb-4 bg-gray-100 bg-gray-800 rounded-full flex items-center justify-center"
                   data-oid=".7bm0_0"
                 >
                   <Activity
-                    className="w-8 h-8 text-gray-400 dark:text-gray-500"
+                    className="w-8 h-8 text-gray-400 text-gray-500"
                     data-oid="o6vox02"
                   />
                 </div>
                 <h4
-                  className="text-gray-900 dark:text-white font-medium mb-2"
+                  className="text-gray-900 text-white font-medium mb-2"
                   data-oid="7jptmto"
                 >
                   No Transactions Found
                 </h4>
                 <p
-                  className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
+                  className="text-gray-500 text-gray-400 text-sm max-w-xs"
                   data-oid="-cejlyu"
                 >
                   {t("noTransactions")}
@@ -1320,17 +1334,18 @@ const Index = () => {
             {transactions.map((tx) => (
               <div
                 key={tx.id}
-                className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
+                className="group flex items-center justify-between p-4 rounded-xl 
+                  bg-zinc-900 transition-all duration-200 border border-transparent hover:border-gray-200 hover:border-gray-600"
                 data-oid="e8qs2a3"
               >
                 <div className="flex items-center space-x-4" data-oid="ksbsbm2">
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                       tx.type === "deposit"
-                        ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+                        ? "bg-green-100 bg-green-900/30 text-green-600 text-green-400"
                         : tx.type === "withdraw"
-                          ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
-                          : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                          ? "bg-red-100 bg-red-900/30 text-red-600 text-red-400"
+                          : "bg-blue-100 bg-blue-900/30 text-blue-600 text-blue-400"
                     }`}
                     data-oid="5.35:dr"
                   >
@@ -1344,7 +1359,7 @@ const Index = () => {
                   </div>
                   <div className="flex-1" data-oid="l854xe8">
                     <p
-                      className="text-gray-900 dark:text-white text-sm font-semibold mb-1"
+                      className="text-gray-900 text-white text-sm font-semibold mb-1"
                       data-oid="zc19gr_"
                     >
                       {tx.title}
@@ -1354,7 +1369,7 @@ const Index = () => {
                       data-oid="2pj1vgy"
                     >
                       <p
-                        className="text-gray-500 dark:text-gray-400 text-xs"
+                        className="text-gray-500 text-gray-400 text-xs"
                         data-oid="y-f-lp4"
                       >
                         {tx.date}
@@ -1362,13 +1377,13 @@ const Index = () => {
                       {tx.student && (
                         <>
                           <span
-                            className="text-gray-300 dark:text-gray-600"
+                            className="text-gray-300 text-gray-600"
                             data-oid="wlm5jbi"
                           >
                             •
                           </span>
                           <p
-                            className="text-gray-500 dark:text-gray-400 text-xs"
+                            className="text-gray-500 text-gray-400 text-xs"
                             data-oid="ug0onzz"
                           >
                             {tx.student}
@@ -1380,7 +1395,7 @@ const Index = () => {
                 </div>
                 <div className="text-right" data-oid="oav3edl">
                   <span
-                    className={`text-sm font-bold ${tx.amount > 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}
+                    className={`text-sm font-bold ${tx.amount > 0 ? "text-green-600 text-green-400" : "text-red-600 text-red-400"}`}
                     data-oid="qents:i"
                   >
                     {tx.amount > 0 ? "+" : ""}
@@ -1401,7 +1416,7 @@ const Index = () => {
                       data-oid="b7vmb5b"
                     ></div>
                     <span
-                      className="text-xs text-gray-400 dark:text-gray-500 ml-1 capitalize"
+                      className="text-xs text-gray-400 text-gray-500 ml-1 capitalize"
                       data-oid="ukf.tic"
                     >
                       {tx.status}
@@ -1416,22 +1431,22 @@ const Index = () => {
                 data-oid="rd0o5p."
               >
                 <div
-                  className="w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center"
+                  className="w-24 h-24 mx-auto mb-4 bg-gray-100 bg-gray-800 rounded-full flex items-center justify-center"
                   data-oid="fjz:0-2"
                 >
                   <Activity
-                    className="w-8 h-8 text-gray-400 dark:text-gray-500"
+                    className="w-8 h-8 text-gray-400 text-gray-500"
                     data-oid="6frhgnj"
                   />
                 </div>
                 <h4
-                  className="text-gray-900 dark:text-white font-medium mb-2"
+                  className="text-gray-900 text-white font-medium mb-2"
                   data-oid="ghzfyua"
                 >
                   No Transactions Found
                 </h4>
                 <p
-                  className="text-gray-500 dark:text-gray-400 text-sm max-w-xs"
+                  className="text-gray-500 text-gray-400 text-sm max-w-xs"
                   data-oid="po_5-58"
                 >
                   {t("noTransactions")}

@@ -42,7 +42,7 @@ const Shop: React.FC = () => {
   const [cartItems, setCartItems] = useState<Set<string>>(new Set());
 
   // API base URL
-  const API_BASE_URL = "https://api.kaascan.com";
+  const API_BASE_URL = "http://localhost:8001";
 
   // Enhanced CSRF token fetching with fallback mechanism
   const fetchCsrfToken = useCallback(

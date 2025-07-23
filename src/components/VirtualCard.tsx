@@ -1,8 +1,16 @@
 import React from "react";
 import { Eye, EyeOff, GraduationCap, User } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
+      
+var username = localStorage.getItem("full_name_x990_0");
+var parentId = "verified account";
+var phoneNumber =  localStorage.getItem("phone_x990_0");
 
-const StudentCard = ({ balance, isVisible, onToggleVisibility, studentName = "John Doe", studentId = "STU2024001", university = "University Name" }) => {
+const StudentCard = ({ balance, isVisible, onToggleVisibility, 
+  studentName = username,
+  studentId = parentId, 
+
+   university = "University Name" }) => {
   const { t } = useLanguage();
 
   const formatCurrency = (amount) => {
@@ -24,10 +32,10 @@ const StudentCard = ({ balance, isVisible, onToggleVisibility, studentName = "Jo
         <div className="relative bg-zinc-900 dark:from-slate-800 dark:via-blue-800 dark:to-indigo-800 rounded-2xl p-6 text-white shadow-2xl transform group-hover:scale-[1.02] transition-all duration-500 overflow-hidden">
           
           {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
+          {/* <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_25%_25%,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
           </div>
-          
+           */}
           {/* Header Section */}
           <div className="relative z-10 flex items-center justify-between mb-6">
             <div className="flex items-center space-x-3">
@@ -35,7 +43,7 @@ const StudentCard = ({ balance, isVisible, onToggleVisibility, studentName = "Jo
                 <GraduationCap className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-blue-200 uppercase tracking-wide">Parent Card</h3>
+                <h3 className="text-sm font-semibold text-blue-200 uppercase tracking-wide">Kaascan Card</h3>
                 <p className="text-xs text-gray-300">Virtual Card</p>
               </div>
             </div>
@@ -86,7 +94,8 @@ const StudentCard = ({ balance, isVisible, onToggleVisibility, studentName = "Jo
           {/* Card Number */}
           <div className="relative z-10 mt-4">
             <p className="text-lg font-mono tracking-[0.2em] text-gray-300 text-center">
-              •••• •••• •••• 1234
+              {/* •••• •••• •••• 1234 */}
+             {/* •••• 250 {phoneNumber.split("0")||  ""} */}
             </p>
           </div>
 
@@ -98,7 +107,7 @@ const StudentCard = ({ balance, isVisible, onToggleVisibility, studentName = "Jo
             </div>
             <div className="text-right">
               <p className="text-xs text-gray-400 uppercase tracking-wider">Type</p>
-              <p className="text-sm font-semibold text-white">Student</p>
+              <p className="text-sm font-semibold text-white">Virtual Card</p>
             </div>
           </div>
 

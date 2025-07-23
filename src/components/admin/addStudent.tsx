@@ -9,17 +9,26 @@ import {
   X,
   AlertCircle,
 } from "lucide-react";
-import React, { useState, useEffect, useRef, Component, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { Html5Qrcode, Html5QrcodeCameraScanConfig } from "html5-qrcode";
+import { Camera as CapacitorCamera, CameraPermissionState } from "@capacitor/camera";
+import { App } from "@capacitor/app";
 
 // Error Boundary Component
-class ErrorBoundary extends Component<{ children: React.ReactNode }, { hasError: boolean; error: string | null }> {
-  state = { hasError: false, error: null };
+interface ErrorBoundaryProps {
+  children: React.ReactNode;
+}
+interface ErrorBoundaryState {
+  hasError: boolean;
+  error: string | null;
+}
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  state: ErrorBoundaryState = { hasError: false, error: null };
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error: error.message };
   }
 
@@ -42,7 +51,7 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 const useLanguage = (): LanguageContextType => ({
-  t: (key: string) => key, // Replace with actual LanguageContext
+  t: (key: string) => key,
 });
 
 // Student interface
@@ -56,16 +65,20 @@ interface Student {
   parent_phone: string | null;
 }
 
-// Step definitions (Modified: Added Set PIN before Confirm Child)
-const steps = [
+// Step definitions
+interface Step {
+  label: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+}
+const steps: Step[] = [
   { label: "Choose Method", icon: Users },
   { label: "Find Child", icon: Search },
-  { label: "Set PIN", icon: Lock }, // Moved Set PIN here
+  { label: "Set PIN", icon: Lock },
   { label: "Confirm Child", icon: CheckCircle },
 ];
 
 // API base URL
-const API_URL = "https://api.kaascan.com";
+const API_URL = "http://localhost:8001";
 
 // StepIndicator Component
 interface StepIndicatorProps {
@@ -79,7 +92,7 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
         {steps.map((step, index) => (
           <div key={step.label} className="flex flex-col items-center flex-1 relative">
             <motion.div
-              className={`w-12 h-12 flex items-center justify-center rounded-full bg-brand text-white border-2 border-white/20 ${index <= currentStep ? "shadow-lg" : "opacity-70"}`}
+              className={`w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white border-2 border-white/20 ${index <= currentStep ? "shadow-lg" : "opacity-70"}`}
               animate={{ scale: index === currentStep ? 1.2 : 1 }}
               transition={{ duration: 0.4 }}
             >
@@ -89,7 +102,7 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
             {index < steps.length - 1 && (
               <div className="absolute top-6 left-1/2 w-full h-1 bg-white/20">
                 <motion.div
-                  className="h-full bg-brand"
+                  className="h-full bg-blue-600"
                   initial={{ width: "0%" }}
                   animate={{ width: index < currentStep ? "100%" : "0%" }}
                   transition={{ duration: 0.8 }}
@@ -123,7 +136,7 @@ const MethodSelection: React.FC<MethodSelectionProps> = ({ onMethodSelect }) => 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => onMethodSelect("manual")}
-          className="p-6 bg-brand text-white rounded-2xl shadow-lg flex items-center justify-center gap-4 text-xl"
+          className="p-6 bg-blue-600 text-white rounded-2xl shadow-lg flex items-center justify-center gap-4 text-xl"
         >
           <Search size={28} />
           Search by Name
@@ -132,7 +145,7 @@ const MethodSelection: React.FC<MethodSelectionProps> = ({ onMethodSelect }) => 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => onMethodSelect("qr")}
-          className="p-6 bg-brand text-white rounded-2xl shadow-lg flex items-center justify-center gap-4 text-xl"
+          className="p-6 bg-blue-600 text-white rounded-2xl shadow-lg flex items-center justify-center gap-4 text-xl"
         >
           <Camera size={28} />
           Scan QR Code
@@ -151,31 +164,53 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess, onError }) => {
   const { t } = useLanguage();
   const scannerRef = useRef<Html5Qrcode | null>(null);
   const [scannerStatus, setScannerStatus] = useState<"idle" | "scanning" | "paused" | "stopped">("idle");
-  const [isProcessing, setIsProcessing] = useState(false);
-  const isMounted = useRef(true);
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const isMounted = useRef<boolean>(true);
   const lastScannedText = useRef<string | null>(null);
+
+  const checkCameraPermission = useCallback(async (): Promise<boolean> => {
+    try {
+      const permission: CameraPermissionState = await CapacitorCamera.checkPermissions();
+      if (permission.camera !== "granted") {
+        const result = await CapacitorCamera.requestPermissions({ permissions: ["camera"] });
+        if (result.camera !== "granted") {
+          onError("Camera permission denied. Please enable it in settings.");
+          return false;
+        }
+      }
+      return true;
+    } catch (err: any) {
+      onError("Error checking camera permissions.");
+      return false;
+    }
+  }, [onError]);
 
   const startScanner = useCallback(async () => {
     if (!isMounted.current || !scannerRef.current || scannerStatus === "scanning") return;
+
+    const hasPermission = await checkCameraPermission();
+    if (!hasPermission) {
+      setScannerStatus("stopped");
+      return;
+    }
+
     try {
       setScannerStatus("scanning");
       const config: Html5QrcodeCameraScanConfig = { fps: 10, qrbox: { width: 250, height: 250 } };
       await scannerRef.current.start(
         { facingMode: "environment" },
         config,
-        async (decodedText) => {
+        async (decodedText: string) => {
           if (!isMounted.current || isProcessing || lastScannedText.current === decodedText) return;
           lastScannedText.current = decodedText;
           setIsProcessing(true);
           try {
-            const response = await axios.get(`${API_URL}/admin/students`, {
+            const response = await axios.get<{ students: Student[] }>(`${API_URL}/admin/students`, {
               headers: {
                 "X-API-KEY": "ykxiPah7Uc327P6sSeZ6KhXqnLwV6nxIYuVjooOInOO3ko26xgbJGz1VG",
               },
             });
-            const student = response.data.students.find(
-              (s: Student) => s.student_id === decodedText
-            );
+            const student = response.data.students.find((s: Student) => s.student_id === decodedText);
             if (student && isMounted.current) {
               await stopScanner();
               onScanSuccess(student);
@@ -183,14 +218,14 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess, onError }) => {
               onError("Student not found.");
               lastScannedText.current = null;
             }
-          } catch (err) {
+          } catch (err: any) {
             onError("Failed to fetch student data.");
             lastScannedText.current = null;
           } finally {
             setIsProcessing(false);
           }
         },
-        (error) => {
+        (error: string) => {
           if (process.env.NODE_ENV === "development") {
             console.warn("QR scan error:", error);
           }
@@ -203,8 +238,7 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess, onError }) => {
         console.error("Start scanner error:", err);
       }
     }
-    
-  }, [isProcessing, scannerStatus, onScanSuccess, onError]);
+  }, [isProcessing, scannerStatus, onScanSuccess, onError, checkCameraPermission]);
 
   const stopScanner = useCallback(async () => {
     if (!scannerRef.current || scannerStatus !== "scanning") {
@@ -226,32 +260,15 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScanSuccess, onError }) => {
     scannerRef.current = new Html5Qrcode("qr-reader");
     isMounted.current = true;
 
+    startScanner();
+
     return () => {
       isMounted.current = false;
       if (scannerRef.current && scannerStatus === "scanning") {
         stopScanner();
       }
     };
-  }, [stopScanner, scannerStatus]);
-
-useEffect(() => {
-  // Automatically start scanner when component mounts
-  startScanner();
-  // Cleanup: stop scanner when unmounting
-  return () => {
-    stopScanner();
-  };
-  // Only run once on mount/unmount
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
-
-  const handleStartStop = async () => {
-    if (scannerStatus === "scanning") {
-      await stopScanner();
-    } else {
-      await startScanner();
-    }
-  };
+  }, [startScanner, stopScanner]);
 
   return (
     <motion.div
@@ -260,7 +277,6 @@ useEffect(() => {
       transition={{ duration: 0.5 }}
       className="space-y-6 relative"
     >
-    
       <h2 className="text-2xl font-bold text-white text-center">Scan QR Code</h2>
       <p className="text-lg text-white/80 text-center">
         Point your camera at the student’s QR code.
@@ -281,26 +297,6 @@ useEffect(() => {
           </motion.div>
         )}
       </div>
-      {/* <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={handleStartStop}
-        disabled={isProcessing || scannerStatus === "scanning" && !scannerRef.current}
-        className="w-full p-4 bg-brand text-white rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 disabled:opacity-50 "
-        aria-label={scannerStatus === "scanning" ? "Stop Scanning" : "Start Scanning"}
-      >
-        {scannerStatus === "scanning" ? (
-          <>
-            <X size={24} />
-            Stop Scanning
-          </>
-        ) : (
-          <>
-            <Camera size={24} />
-            Start Scanning
-          </>
-        )}
-      </motion.button> */}
     </motion.div>
   );
 };
@@ -349,17 +345,17 @@ const ManualSearch: React.FC<ManualSearchProps> = ({
           <input
             type="text"
             value={searchName}
-            onChange={(e) => setSearchName(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchName(e.target.value)}
             placeholder="Child's Name"
-            className="w-full p-4 pl-12 bg-white text-brand rounded-2xl text-lg shadow-lg"
+            className="w-full p-4 pl-12 bg-white text-blue-600 rounded-2xl text-lg shadow-lg"
             aria-label="Child's Name"
           />
-          <Search className="absolute left-4 top-4 w-6 h-6 text-brand" />
+          <Search className="absolute left-4 top-4 w-6 h-6 text-blue-600" />
         </div>
         <select
           value={selectedSchool}
-          onChange={(e) => setSelectedSchool(e.target.value)}
-          className="w-full p-4 bg-white text-brand rounded-2xl text-lg shadow-lg"
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedSchool(e.target.value)}
+          className="w-full p-4 bg-white text-blue-600 rounded-2xl text-lg shadow-lg"
           aria-label="Select School"
         >
           <option value="">Select School</option>
@@ -371,8 +367,8 @@ const ManualSearch: React.FC<ManualSearchProps> = ({
         </select>
         <select
           value={selectedGrade}
-          onChange={(e) => setSelectedGrade(e.target.value)}
-          className="w-full p-4 bg-white text-brand rounded-2xl text-lg shadow-lg"
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedGrade(e.target.value)}
+          className="w-full p-4 bg-white text-blue-600 rounded-2xl text-lg shadow-lg"
           aria-label="Select Class or Grade"
         >
           <option value="">Select Class/Grade</option>
@@ -387,7 +383,7 @@ const ManualSearch: React.FC<ManualSearchProps> = ({
           whileTap={{ scale: 0.95 }}
           onClick={handleSearch}
           disabled={isLoading || !searchName || !selectedSchool}
-          className="w-full p-4 bg-brand text-white rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 disabled:opacity-50"
+          className="w-full p-4 bg-blue-600 text-white rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 disabled:opacity-50"
           aria-label="Find Child"
         >
           {isLoading ? (
@@ -413,14 +409,14 @@ const ManualSearch: React.FC<ManualSearchProps> = ({
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => onStudentSelect(student)}
-                className="w-full p-4 bg-white text-brand rounded-2xl shadow-lg flex items-center gap-4 mb-2"
+                className="w-full p-4 bg-white text-blue-600 rounded-2xl shadow-lg flex items-center gap-4 mb-2"
                 aria-label={`Select ${student.student_name}`}
               >
                 <img
                   src={student.student_photo_url}
                   alt={student.student_name}
                   className="w-12 h-12 rounded-full"
-                  onError={(e) => {
+                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                     e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(student.student_name)}`;
                   }}
                 />
@@ -437,71 +433,17 @@ const ManualSearch: React.FC<ManualSearchProps> = ({
   );
 };
 
-// StudentConfirmation Component
-interface StudentConfirmationProps {
-  student: Student;
-  pin: string; // Added pin prop
-  onConfirm: () => void;
-  isLoading: boolean;
-}
-const StudentConfirmation: React.FC<StudentConfirmationProps> = ({ student, pin, onConfirm, isLoading }) => {
-  const { t } = useLanguage();
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="space-y-6"
-    >
-      <h2 className="text-2xl font-bold text-white text-center">Is This Your Child?</h2>
-      <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
-        <img
-          src={student.student_photo_url}
-          alt={student.student_name}
-          className="w-24 h-24 rounded-full mx-auto mb-4"
-          onError={(e) => {
-            e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(student.student_name)}`;
-          }}
-        />
-        <p className="text-xl font-semibold text-brand">{student.student_name}</p>
-        <p className="text-lg text-brand/80">{student.school_name} - {student.grade}</p>
-        <p className="text-sm text-brand/80 mt-2">PIN: {pin}</p> {/* Display PIN for confirmation */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={onConfirm}
-          disabled={isLoading}
-          className="mt-4 w-full p-4 bg-brand text-white rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 disabled:opacity-50"
-          aria-label="Confirm Student"
-        >
-          {isLoading ? (
-            <>
-              <Loader2 className="w-6 h-6 animate-spin" />
-              Adding...
-            </>
-          ) : (
-            <>
-              <CheckCircle size={24} />
-              Yes, Add Them
-            </>
-          )}
-        </motion.button>
-      </div>
-    </motion.div>
-  );
-};
-
 // PinSetup Component
 interface PinSetupProps {
   student: Student;
-  onSetPin: (pin: string) => void; // Modified to pass PIN
+  onSetPin: (pin: string) => void;
   isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
 }
 const PinSetup: React.FC<PinSetupProps> = ({ student, onSetPin, isLoading, setIsLoading }) => {
   const { t } = useLanguage();
-  const [pin, setPin] = useState("");
-  const [currentInput, setCurrentInput] = useState("");
+  const [pin, setPin] = useState<string>("");
+  const [currentInput, setCurrentInput] = useState<string>("");
   const [stage, setStage] = useState<"enterPin" | "confirmPin">("enterPin");
   const [error, setError] = useState<string | null>(null);
 
@@ -513,7 +455,7 @@ const PinSetup: React.FC<PinSetupProps> = ({ student, onSetPin, isLoading, setIs
         setStage("confirmPin");
       } else if (stage === "confirmPin") {
         if (currentInput === pin) {
-          onSetPin(currentInput); // Pass the confirmed PIN
+          onSetPin(currentInput);
         } else {
           setError("PINs don’t match. Try again.");
           setCurrentInput("");
@@ -523,11 +465,11 @@ const PinSetup: React.FC<PinSetupProps> = ({ student, onSetPin, isLoading, setIs
     }
   }, [currentInput, stage, pin, onSetPin]);
 
-  const handleNumberPress = (num: string) => {
+  const handleNumberPress = (num: string): void => {
     if (currentInput.length < 4) setCurrentInput(currentInput + num);
   };
 
-  const handleBackspace = () => {
+  const handleBackspace = (): void => {
     setCurrentInput(currentInput.slice(0, -1));
   };
 
@@ -548,7 +490,7 @@ const PinSetup: React.FC<PinSetupProps> = ({ student, onSetPin, isLoading, setIs
         {[...Array(4)].map((_, i) => (
           <div
             key={i}
-            className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl text-brand"
+            className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl text-blue-600"
           >
             {currentInput[i] || ""}
           </div>
@@ -560,7 +502,7 @@ const PinSetup: React.FC<PinSetupProps> = ({ student, onSetPin, isLoading, setIs
             key={num}
             whileTap={{ scale: 0.9 }}
             onClick={() => handleNumberPress(num.toString())}
-            className="p-4 bg-brand text-white rounded-xl text-2xl border border-white-200"
+            className="p-4 bg-blue-600 text-white rounded-xl text-2xl border border-white-200"
             aria-label={`Number ${num}`}
           >
             {num}
@@ -569,7 +511,7 @@ const PinSetup: React.FC<PinSetupProps> = ({ student, onSetPin, isLoading, setIs
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={handleBackspace}
-          className="p-4 bg-brand text-white rounded-xl text-2xl"
+          className="p-4 bg-blue-600 text-white rounded-xl text-2xl"
           aria-label="Backspace"
         >
           ⌫
@@ -577,7 +519,7 @@ const PinSetup: React.FC<PinSetupProps> = ({ student, onSetPin, isLoading, setIs
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => handleNumberPress("0")}
-          className="p-4 bg-brand text-white rounded-xl text-2xl"
+          className="p-4 bg-blue-600 text-white rounded-xl text-2xl"
           aria-label="Number 0"
         >
           0
@@ -594,31 +536,85 @@ const PinSetup: React.FC<PinSetupProps> = ({ student, onSetPin, isLoading, setIs
   );
 };
 
+// StudentConfirmation Component
+interface StudentConfirmationProps {
+  student: Student;
+  pin: string;
+  onConfirm: () => void;
+  isLoading: boolean;
+}
+const StudentConfirmation: React.FC<StudentConfirmationProps> = ({ student, pin, onConfirm, isLoading }) => {
+  const { t } = useLanguage();
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="space-y-6"
+    >
+      <h2 className="text-2xl font-bold text-white text-center">Is This Your Child?</h2>
+      <div className="bg-white rounded-2xl p-6 shadow-lg text-center">
+        <img
+          src={student.student_photo_url}
+          alt={student.student_name}
+          className="w-24 h-24 rounded-full mx-auto mb-4"
+          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+            e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(student.student_name)}`;
+          }}
+        />
+        <p className="text-xl font-semibold text-blue-600">{student.student_name}</p>
+        <p className="text-lg text-blue-600/80">{student.school_name} - {student.grade}</p>
+        <p className="text-sm text-blue-600/80 mt-2">PIN: {pin}</p>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={onConfirm}
+          disabled={isLoading}
+          className="mt-4 w-full p-4 bg-blue-600 text-white rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 disabled:opacity-50"
+          aria-label="Confirm Student"
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="w-6 h-6 animate-spin" />
+              Adding...
+            </>
+          ) : (
+            <>
+              <CheckCircle size={24} />
+              Yes, Add Them
+            </>
+          )}
+        </motion.button>
+      </div>
+    </motion.div>
+  );
+};
+
 // Main AddStudent Component
 const AddStudent: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState<number>(0);
   const [searchMethod, setSearchMethod] = useState<"manual" | "qr">("manual");
   const [schools, setSchools] = useState<string[]>([]);
   const [grades, setGrades] = useState<string[]>([]);
-  const [selectedSchool, setSelectedSchool] = useState("");
-  const [selectedGrade, setSelectedGrade] = useState("");
-  const [searchName, setSearchName] = useState("");
+  const [selectedSchool, setSelectedSchool] = useState<string>("");
+  const [selectedGrade, setSelectedGrade] = useState<string>("");
+  const [searchName, setSearchName] = useState<string>("");
   const [searchResults, setSearchResults] = useState<Student[]>([]);
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
-  const [pin, setPin] = useState<string>(""); // Added state for PIN
-  const [isLoading, setIsLoading] = useState(false);
+  const [pin, setPin] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [csrfToken, setCsrfToken] = useState("");
+  const [csrfToken, setCsrfToken] = useState<string>("");
 
-  const fetchCsrfToken = async (retries = 3): Promise<string | undefined> => {
+  const fetchCsrfToken = async (retries: number = 3): Promise<string | undefined> => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
-        const response = await axios.get(`${API_URL}/get-csrf-token`);
+        const response = await axios.get<{ csrf_token: string }>(`${API_URL}/get-csrf-token`);
         setCsrfToken(response.data.csrf_token);
         return response.data.csrf_token;
-      } catch (err) {
+      } catch (err: any) {
         if (process.env.NODE_ENV === "development") {
           console.error(`CSRF token fetch attempt ${attempt} failed:`, err);
         }
@@ -630,7 +626,7 @@ const AddStudent: React.FC = () => {
     }
   };
 
-  const validateToken = () => {
+  const validateToken = (): string | false => {
     const token = localStorage.getItem("token");
     if (!token) {
       setError("Please log in to continue.");
@@ -647,28 +643,37 @@ const AddStudent: React.FC = () => {
       if (!token) return;
 
       try {
-        const response = await axios.get(`${API_URL}/admin/students`, {
+        const response = await axios.get<{ students: Student[] }>(`${API_URL}/admin/students`, {
           headers: {
             "X-API-KEY": "ykxiPah7Uc327P6sSeZ6KhXqnLwV6nxIYuVjooOInOO3ko26xgbJGz1VG",
           },
         });
-        const uniqueSchools = [...new Set(response.data.students.map((s: Student) => s.school_name))].sort();
-        const uniqueGrades = [...new Set(response.data.students.map((s: Student) => s.grade))].sort();
+        const uniqueSchools = [...new Set(response.data.students.map((s) => s.school_name))].sort();
+        const uniqueGrades = [...new Set(response.data.students.map((s) => s.grade))].sort();
         setSchools(uniqueSchools);
         setGrades(uniqueGrades);
-       
-      // setScannerStatus("stopped");
-    
-      
-      } catch (err) {
-        setError("initializing Data...");
+      } catch (err: any) {
+        setError("Failed to initialize data.");
       } finally {
         setIsLoading(false);
       }
     };
     fetchSchoolsAndGrades();
     fetchCsrfToken();
-  }, []);
+
+    // Handle Android hardware back button
+    const backButtonListener = App.addListener("backButton", () => {
+      if (currentStep > 0) {
+        handlePrev();
+      } else {
+        window.location.assign("/dashboard"); // Refresh and go to dashboard
+      }
+    });
+
+    return () => {
+      backButtonListener.remove();
+    };
+  }, [currentStep]);
 
   const handleSearch = async () => {
     setIsLoading(true);
@@ -676,7 +681,7 @@ const AddStudent: React.FC = () => {
     if (!token) return;
 
     try {
-      const response = await axios.get(`${API_URL}/admin/students`, {
+      const response = await axios.get<{ students: Student[] }>(`${API_URL}/admin/students`, {
         headers: {
           "X-API-KEY": "ykxiPah7Uc327P6sSeZ6KhXqnLwV6nxIYuVjooOInOO3ko26xgbJGz1VG",
         },
@@ -689,7 +694,7 @@ const AddStudent: React.FC = () => {
       );
       setSearchResults(filtered);
       if (filtered.length === 0) setError("No children found.");
-    } catch (err) {
+    } catch (err: any) {
       setError("Search failed. Try again.");
     } finally {
       setIsLoading(false);
@@ -708,9 +713,9 @@ const AddStudent: React.FC = () => {
           },
         }
       );
-      setPin(newPin); // Store the PIN
-      setCurrentStep(3); // Move to confirmation step
-    } catch (err) {
+      setPin(newPin);
+      setCurrentStep(3);
+    } catch (err: any) {
       setError("Failed to set PIN. Try again.");
     } finally {
       setIsLoading(false);
@@ -730,22 +735,25 @@ const AddStudent: React.FC = () => {
         setIsLoading(false);
         return;
       }
-      const parent_data = await axios.get("https://api.kaascan.com/profile", {
-        headers: { Authorization: `Bearer ${token}`, "X-CSRF-Token": csrf },
-      });
+      const parent_data = await axios.get<{ status: string; profile: { phone_number: string } }>(
+        "http://localhost:8001/profile",
+        {
+          headers: { Authorization: `Bearer ${token}`, "X-CSRF-Token": csrf },
+        }
+      );
 
       if (parent_data.data["status"] === "success") {
         let parent_phone = parent_data.data["profile"]["phone_number"];
         console.log(parent_phone);
       }
 
-      const response = await axios.post(
+      const response = await axios.post<{ status: boolean; message?: string }>(
         `https://auto.kaascan.com/webhook/link-student`,
         {
           student_id: selectedStudent.student_id,
           parent_phone: parent_data.data["profile"]["phone_number"] || null,
           parent_id: selectedStudent.parent_id || null,
-          pin, // Include PIN in the linking request
+          pin,
           csrf_token: csrf,
         },
         {
@@ -756,9 +764,7 @@ const AddStudent: React.FC = () => {
       );
 
       if (response.data["status"] === true) {
-        console.log(response.data["status"]);
         setError("Student added successfully.");
-        // Force a refresh of the current page
         window.location.reload();
       } else {
         setError(
@@ -766,16 +772,16 @@ const AddStudent: React.FC = () => {
             ? "Umwana asanzwe ahujwe na account yanyu."
             : "Guhuza umunyeshuri na account ntibishoboye kugenda neza mwongere mugerageze."
         );
-        console.log("Student adding failed");
       }
-    } catch (err) {
-      setError("Initializing data...");
+    } catch (err: any) {
+      setError("Failed to initialize data.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleMethodSelect = (method: "manual" | "qr") => {
+  const handleMethodSelect = (method: "manual" | "qr"): void => {
+    console.log("MethodSelection called with:", method); // Debugging
     setSearchMethod(method);
     setCurrentStep(method === "manual" ? 1 : 2);
     setSearchResults([]);
@@ -783,37 +789,40 @@ const AddStudent: React.FC = () => {
     setSelectedSchool("");
     setSelectedGrade("");
     setError(null);
-    setPin(""); // Reset PIN when changing method
+    setPin("");
   };
 
-  const handleStudentSelect = (student: Student) => {
+  const handleStudentSelect = (student: Student): void => {
     setSelectedStudent(student);
-    setCurrentStep(2); // Move to Set PIN step
+    setCurrentStep(2);
   };
 
-  const handlePrev = () => {
+  const handlePrev = (): void => {
     if (currentStep > 0) {
       if (currentStep === 2 && searchMethod === "qr") {
         setCurrentStep(0);
       } else if (currentStep === 3) {
-        setCurrentStep(2); // Go back to Set PIN
+        setCurrentStep(2);
       } else {
         setCurrentStep(currentStep - 1);
       }
     } else {
-      navigate("/dashboard");
+      window.location.assign("/dashboard"); // Refresh and go to dashboard
     }
   };
+
+  // Debugging to ensure MethodSelection is valid
+  console.log("Rendering AddStudent, MethodSelection:", typeof MethodSelection);
 
   return (
     <ErrorBoundary>
       <div
-        className="min-h-screen bg-brand relative"
-          style={{
-        backgroundImage:
-          "linear-gradient(45deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(0deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(135deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(90deg, rgb(79, 35, 157),rgb(43, 171, 222))",
-        backgroundBlendMode: "overlay,overlay,overlay,normal",
-      }}
+        className="min-h-screen bg-blue-600 relative"
+        style={{
+          backgroundImage:
+            "linear-gradient(45deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(0deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(135deg, rgb(144, 100, 159) 0%, rgb(144, 100, 159) 24%,rgb(112, 112, 163) 24%, rgb(112, 112, 163) 28%,rgb(79, 124, 166) 28%, rgb(79, 124, 166) 40%,rgb(47, 136, 170) 40%, rgb(47, 136, 170) 84%,rgb(14, 148, 173) 84%, rgb(14, 148, 173) 100%),linear-gradient(90deg, rgb(79, 35, 157),rgb(43, 171, 222))",
+          backgroundBlendMode: "overlay,overlay,overlay,normal",
+        }}
       >
         <div className="max-w-4xl mx-auto py-8 px-4">
           <motion.button
@@ -880,7 +889,7 @@ const AddStudent: React.FC = () => {
                 <StudentConfirmation
                   key="confirm"
                   student={selectedStudent}
-                  pin={pin} // Pass PIN to confirmation
+                  pin={pin}
                   onConfirm={handleConfirm}
                   isLoading={isLoading}
                 />
@@ -892,7 +901,7 @@ const AddStudent: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handlePrev}
-              className="p-4 bg-brand text-white rounded-2xl flex items-center gap-2 text-lg"
+              className="p-4 bg-blue-600 text-white rounded-2xl flex items-center gap-2 text-lg"
               aria-label="Back"
             >
               <ArrowLeft size={24} />
@@ -909,4 +918,3 @@ const AddStudent: React.FC = () => {
 };
 
 export default AddStudent;
-

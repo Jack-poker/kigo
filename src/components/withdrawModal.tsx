@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import VercelModal from "./VercelModal";
+import { CheckIcon } from "lucide-react"
+
+import { Badge } from "@/components/ui/badge"
+
 
 const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
@@ -9,6 +13,8 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
   const [error, setError] = useState("");
   const [otpRequested, setOtpRequested] = useState(false);
   const [countdown, setCountdown] = useState(300); // 5 minutes in seconds
+  const [requestLoading, setRequestLoading] = useState(false); // Loading for OTP request
+  const [confirmLoading, setConfirmLoading] = useState(false); // Loading for confirm withdraw
   const inputRefs = useRef([]);
 
   // Handle OTP input changes
@@ -49,6 +55,12 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
     }
   };
 
+  // Get CSRF token
+  const getCsrfToken = async () => {
+    const response = await axios.get("http://localhost:8001/get-csrf-token");
+    return response.data.csrf_token;
+  };
+
   // Request OTP from backend
   const handleRequestOtp = async () => {
     setError("");
@@ -62,10 +74,11 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       return;
     }
     try {
+      setRequestLoading(true);
       const token = localStorage.getItem("token");
       const csrfToken = await getCsrfToken();
       const response = await axios.post(
-        "https://api.kaascan.com/wallet/request-otp",
+        "http://localhost:8001/wallet/request-otp",
         { phone, amount: numericAmount, csrf_token: csrfToken },
         {
           headers: {
@@ -82,13 +95,9 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       }
     } catch (error) {
       setError(error.response?.data?.detail || t("otpRequestFailed"));
+    } finally {
+      setRequestLoading(false);
     }
-  };
-
-  // Get CSRF token
-  const getCsrfToken = async () => {
-    const response = await axios.get("https://api.kaascan.com/get-csrf-token");
-    return response.data.csrf_token;
   };
 
   // Confirm withdrawal
@@ -112,10 +121,11 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       return;
     }
     try {
+      setConfirmLoading(true);
       const token = localStorage.getItem("token");
       const csrfToken = await getCsrfToken();
       const response = await axios.post(
-        "https://api.kaascan.com/wallet/confirm-withdraw",
+        "http://localhost:8001/wallet/confirm-withdraw",
         {
           phone,
           amount: numericAmount,
@@ -136,6 +146,8 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       }
     } catch (error) {
       setError(error.response?.data?.detail || t("withdrawFailed"));
+    } finally {
+      setConfirmLoading(false);
     }
   };
 
@@ -182,7 +194,7 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       title={t("withdraw")}
       onClose={() => setActiveModal(null)}
       onSubmit={onSubmit}
-      isLoading={isLoading}
+      isLoading={isLoading || requestLoading || confirmLoading}
       submitText={otpRequested ? t("confirmWithdraw") : t("requestOtp")}
       data-oid="snicnmw"
     >
@@ -192,15 +204,19 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
             className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
             data-oid="5i6v:te"
           >
-            {t("phoneNumber")}
+            {t("phoneNumber")} <Badge variant="outline" className="gap-1">
+                <CheckIcon className="text-emerald-500" size={12} aria-hidden="true" />
+                Genzura nimero wanditse neza
+              </Badge>
           </label>
+          
           <input
             type="tel"
             name="phone"
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            disabled={otpRequested}
+            disabled={otpRequested || requestLoading || confirmLoading}
             className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50"
             placeholder="078XXXXXXX"
             data-oid="2wj9b40"
@@ -221,9 +237,9 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
             max={balance}
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            disabled={otpRequested}
+            disabled={otpRequested || requestLoading || confirmLoading}
             className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50"
-            placeholder="10,000"
+            placeholder="100"
             data-oid="n8p9qkw"
           />
         </div>
@@ -266,27 +282,30 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
           </>
         )}
         {error && (
-            <div
+          <div
             className={`text-sm mt-2 px-3 py-2 rounded-xl transition-all duration-300 ${
               error
-              ? "bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-white shadow-lg "
-              : "bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white shadow-lg "
+                ? "bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-white shadow-lg"
+                : "bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 text-white shadow-lg"
             }`}
             data-oid="rc4wd7m"
-            >
-            {error
-              ? (
+          >
+            {error ? (
               <>
-                <span role="img" aria-label="alert">⚡</span> {error}
+                <span role="img" aria-label="alert">
+                  ⚡
+                </span>{" "}
+                {error}
               </>
-              )
-              : (
+            ) : (
               <>
-                <span role="img" aria-label="success">🎉</span> {t("allGood")}
+                <span role="img" aria-label="success">
+                  🎉
+                </span>{" "}
+                {t("allGood")}
               </>
-              )
-            }
-            </div>
+            )}
+          </div>
         )}
       </form>
     </VercelModal>

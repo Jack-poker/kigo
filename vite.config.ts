@@ -11,11 +11,21 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       host: "bob",
     },
+    changeOrigin: true,
+    proxy: {
+      // Proxy all API requests starting with /api to the Directus server
+      '/api': {
+        target: 'https://directus.kaascan.com',
+        changeOrigin: true,
+        secure: false, // If using self-signed SSL certs
+        rewrite: (path) =>
+          path.replace(/^\/api/, ''), // Remove /api prefix
+      },
+    },
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === 'development' && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {

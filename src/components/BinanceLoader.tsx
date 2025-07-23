@@ -33,13 +33,13 @@ const BinanceLoader: React.FC<BinanceLoaderProps> = ({ message = "Processing" })
 
       {/* Loading Dots */}
       <div className="flex items-center space-x-1 mb-3">
-        <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"></div>
+        <div className="w-2 h-2 bg-zinc-900 rounded-full animate-bounce"></div>
         <div
-          className="w-2 h-2 bg-zinc-400 rounded-full animate-bounce"
+          className="w-2 h-2 bg-zinc-900 rounded-full animate-bounce"
           style={{ animationDelay: "0.2s" }}
         ></div>
         <div
-          className="w-2 h-2 bg-brand rounded-full animate-bounce"
+          className="w-2 h-2 bg-zinc-900 rounded-full animate-bounce"
           style={{ animationDelay: "0.4s" }}
         ></div>
       </div>

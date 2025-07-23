@@ -144,15 +144,15 @@ const WalletSection = ({
       <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-4">
         <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/10 text-center">
           <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Today</p>
-          <p className="text-sm sm:text-base font-bold text-white">+2.5%</p>
+          {/* <p className="text-sm sm:text-base font-bold text-white">+2.5%</p> */}
         </div>
         <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/10 text-center">
           <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">This Week</p>
-          <p className="text-sm sm:text-base font-bold text-white">+8.1%</p>
+          {/* <p className="text-sm sm:text-base font-bold text-white">+8.1%</p> */}
         </div>
         <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/10 text-center">
           <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">This Month</p>
-          <p className="text-sm sm:text-base font-bold text-white">+15.3%</p>
+          {/* <p className="text-sm sm:text-base font-bold text-white">+15.3%</p> */}
         </div>
       </div>
     </div>

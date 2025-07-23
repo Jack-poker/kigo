@@ -190,28 +190,18 @@ const ModernNavbar = ({
                   onClick={() => setShowProfileDropdown(!showProfileDropdown)}
                   className="flex items-center space-x-2 p-1.5 hover:bg-gray-50 dark:hover:bg-slate-700/50 rounded-xl transition-all duration-200 group"
                 >
-                  <button
-  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-  className="p-1 rounded-full border border-gray-200 border-slate-700 hover:ring-2 hover:ring-brand transition-all duration-200"
->
-  {isMobileMenuOpen ? (
-    <X className="w-6 h-6 text-gray-700 dark:text-white" />
-  ) : (
-    <img
-      src="/assets/young-boy.png" // ← replace with your actual PNG path
-      alt="User Avatar"
-      className="w-12 h-12 rounded-full object-cover"
-    />
-  )}
-</button>
-
+                  <img
+                    src="/assets/young-boy.png"
+                    alt="User Avatar"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 dark:border-slate-700"
+                  />
                 </button>
                 
                 {showProfileDropdown && (
                   <div className="absolute right-0 mt-2 w-72 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20 py-2 z-50 animate-in slide-in-from-top-2 duration-200">
                     <div className="px-4 py-3 border-b border-gray-200/20 dark:border-gray-700/20">
                       <div className="flex items-center space-x-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                        <div className="w-12 h-12 bg-zinc-900 rounded-full flex items-center justify-center shadow-lg">
                           <User className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -219,7 +209,7 @@ const ModernNavbar = ({
                             {t("lovingParent")}
                           </p>
                           <p className="text-sm text-gray-500 dark:text-gray-400">
-                            parent@example.com
+                            parent account
                           </p>
                         </div>
                       </div>
@@ -261,21 +251,20 @@ const ModernNavbar = ({
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-<button
-  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-  className="p-1 rounded-full border border-gray-200 border-slate-700 hover:ring-2 hover:ring-brand transition-all duration-200"
->
-  {isMobileMenuOpen ? (
-    <X className="w-6 h-6 text-gray-700 dark:text-white" />
-  ) : (
-    <img
-      src="/assets/young-boy.png" // ← replace with your actual PNG path
-      alt="User Avatar"
-      className="w-12 h-12 rounded-full object-cover"
-    />
-  )}
-</button>
-
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-1 rounded-full border border-gray-200 dark:border-slate-700 hover:ring-2 hover:ring-brand transition-all duration-200"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6 text-gray-700 dark:text-white" />
+                ) : (
+                  <img
+                    src="/assets/young-boy.png"
+                    alt="User Avatar"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                )}
+              </button>
             </div>
           </div>
         </div>
@@ -284,7 +273,7 @@ const ModernNavbar = ({
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-gray-200/20 dark:border-gray-700/20 shadow-2xl z-40 animate-in slide-in-from-top-2 duration-200">
-          <div className="px-4 py-6 space-y-4">
+          <div className="px-4 py-6 space-y-4 max-h-[80vh] bg-zinc-900 overflow-y-auto">
             
             {/* Mobile Navigation Tabs */}
             <div className="space-y-2">
@@ -299,7 +288,7 @@ const ModernNavbar = ({
                     }}
                     className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                       activeTab === tab.id
-                        ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
+                        ? "bg-zinc-900 text-white shadow-lg"
                         : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700/50"
                     }`}
                   >
@@ -311,7 +300,7 @@ const ModernNavbar = ({
             </div>
 
             {/* Mobile Action Buttons */}
-            <div className="pt-4 border-t border-gray-200/20 dark:border-gray-700/20 space-y-2">
+            <div className="pt-4 border-t border-gray-200/20 dark:border-gray-700/20 space-y-4">
               <button
                 onClick={() => {
                   setIsBalanceVisible(!isBalanceVisible);
@@ -333,6 +322,96 @@ const ModernNavbar = ({
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                 <span>{isDark ? "Light Mode" : "Dark Mode"}</span>
               </button>
+
+              {/* Mobile Language Selection */}
+              <div className="space-y-2">
+                <div className="flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300">
+                  <Globe className="w-5 h-5" />
+                  <span className="font-medium">Language</span>
+                </div>
+                <div className="pl-4 space-y-1">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setLanguage(lang.code);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg text-sm transition-all duration-200 ${
+                        language === lang.code
+                          ? "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                          : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-slate-700/50"
+                      }`}
+                    >
+                      <span className="text-lg">{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile Notifications */}
+              {/* <div className="space-y-2">
+                <div className="flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300">
+                  <Bell className="w-5 h-5" />
+                  <span className="font-medium">{t("notifications")}</span>
+                  <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse ml-auto"></span>
+                </div>
+                <div className="pl-4 space-y-2">
+                  <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded-xl">
+                    <p className="text-sm font-medium text-green-800 dark:text-green-200">
+                      {t("alicePurchase")}
+                    </p>
+                    <p className="text-xs text-green-600 dark:text-green-400 mt-1">
+                      {t("twoMinutesAgo")}
+                    </p>
+                  </div>
+                  <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl">
+                    <p className="text-sm font-medium text-blue-800 dark:text-blue-200">
+                      {t("bobLimitReminder")}
+                    </p>
+                    <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+                      {t("oneHourAgo")}
+                    </p>
+                  </div>
+                </div>
+              </div> */}
+
+              {/* Mobile Profile Options */}
+              <div className="pt-4 border-t border-gray-200/20 dark:border-gray-700/20 space-y-2">
+                <button
+                  onClick={() => {
+                    setActiveModal("profile");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700/50 rounded-xl transition-all duration-200"
+                >
+                  <User className="w-5 h-5" />
+                  <span>{t("profileSettings")}</span>
+                </button>
+                
+                <button
+                  onClick={() => {
+                    setActiveModal("settings");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700/50 rounded-xl transition-all duration-200"
+                >
+                  <Settings className="w-5 h-5" />
+                  <span>{t("settings")}</span>
+                </button>
+                
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full flex items-center space-x-3 px-4 py-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-xl transition-all duration-200"
+                >
+                  <LogOut className="w-5 h-5" />
+                  <span>{t("signOut")}</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -32,6 +32,7 @@ export function LoginForm({
   const { toast } = useToast();
   const navigate = useNavigate();
   const [isLoginComplete, setIsLoginComplete] = useState(false);
+  const [isOtpRequested, setIsOtpRequested] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -46,13 +47,13 @@ export function LoginForm({
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const isPasswordReset = params.get("resetPassword") === "true";
-  const baseUrl = "https://api.kaascan.com";
+  const baseUrl = "http://localhost:8001";
 
   // Validation functions
   const validateForm = () => {
     const newErrors = {};
 
-    const cleanedPhone = phoneNumber;
+    const cleanedPhone = phoneNumber.replace("+250", "").replace("250", "").replace(" ", "");
     if (!cleanedPhone) {
       newErrors.phoneNumber = "Phone number is required";
     }
@@ -65,7 +66,7 @@ export function LoginForm({
       }
     }
 
-    if (isPasswordReset && isLoginComplete) {
+    if (isPasswordReset && isOtpRequested) {
       if (!newPassword) {
         newErrors.newPassword = "New password is required";
       } else if (newPassword.length < 6) {
@@ -132,7 +133,7 @@ export function LoginForm({
     setSubmitted(true);
   }
 
-  // Handle TOTP submission
+  // Handle TOTP submission for login
   async function totpSubmit() {
     const fullTotpCode = totpCode.join("");
     if (fullTotpCode.length !== 4 || !/^\d{4}$/.test(fullTotpCode)) {
@@ -191,7 +192,7 @@ export function LoginForm({
         setNewPassword("");
         setConfirmPassword("");
         setTotpCode(["", "", "", ""]);
-        setIsLoginComplete(false);
+        setIsOtpRequested(false);
         navigate("/login");
       } else {
         throw new Error(data.detail || "Failed to reset password");
@@ -207,9 +208,57 @@ export function LoginForm({
     }
   }
 
-  // Handle login or TOTP verification
+  // Handle OTP request for password reset
+  async function handleRequestOtp(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): Promise<void> {
+    event.preventDefault();
+    if (!validateForm()) return;
+    const cleanedPhone = phoneNumber.replace("+250", "").replace("250", "").replace(" ", "");
+    if (!cleanedPhone || !csrfToken) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Please enter a valid phone number and ensure CSRF token is available.",
+      });
+      return;
+    }
+    setSubmitted(true);
+    try {
+      const response = await fetch(`${baseUrl}/password-reset/request`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken,
+        },
+        body: JSON.stringify({
+          phone_number: cleanedPhone,
+          csrf_token: csrfToken,
+        }),
+      });
+      const data = await response.json();
+      if (response.ok && data.status === "success") {
+        setIsOtpRequested(true);
+        setResendCooldown(60);
+        toast({
+          title: "Success",
+          description: data.message || "OTP sent to your phone.",
+        });
+      } else {
+        throw new Error(data.detail || "Failed to send OTP.");
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: error.message || "Failed to send OTP. Please try again.",
+      });
+    } finally {
+      setSubmitted(false);
+    }
+  }
+
+  // Handle login or TOTP verification (only for login flow)
   useEffect(() => {
-    if (!isSubmitted || !csrfToken) return;
+    if (!isSubmitted || !csrfToken || isPasswordReset) return;
 
     async function login() {
       try {
@@ -229,7 +278,7 @@ export function LoginForm({
               csrf_token: csrfToken,
             }),
           });
-        } else if (!isPasswordReset) {
+        } else {
           response = await fetch(`${baseUrl}/login/parent`, {
             method: "POST",
             headers: {
@@ -251,6 +300,7 @@ export function LoginForm({
           if (!isLoginComplete) {
             setIsLoginComplete(true);
             setSubmitted(false);
+            setResendCooldown(60);
             toast({
               title: "Success",
               description: data.message || "Please enter your OTP code sent to your phone.",
@@ -295,9 +345,9 @@ export function LoginForm({
     totpCode,
     csrfToken,
     isLoginComplete,
-    isPasswordReset,
     toast,
     navigate,
+    isPasswordReset,
   ]);
 
   // Handle TOTP input changes
@@ -311,49 +361,6 @@ export function LoginForm({
       nextInput?.focus();
     }
   };
-
-  async function handleRequestOtp(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): Promise<void> {
-    event.preventDefault();
-    if (!validateForm()) return;
-    const cleanedPhone = phoneNumber.replace("+250", "").replace("250", "").replace(" ", "");
-    if (!cleanedPhone) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Please enter your phone number.",
-      });
-      return;
-    }
-    setSubmitted(true);
-    try {
-      const response = await fetch(`${baseUrl}/password-reset/request`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": csrfToken,
-        },
-        body: JSON.stringify({ phone_number: cleanedPhone, csrf_token: csrfToken }),
-      });
-      const data = await response.json();
-      if (response.ok && data.status === "success") {
-        setIsLoginComplete(true);
-        toast({
-          title: "Success",
-          description: data.message,
-        });
-      } else {
-        throw new Error(data.detail || "Failed to send OTP.");
-      }
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: error.message || "Failed to send OTP.",
-      });
-    } finally {
-      setSubmitted(false);
-    }
-  }
 
   return (
     <div
@@ -383,16 +390,36 @@ export function LoginForm({
               <div className="flex flex-col gap-6" data-oid="_-1zw7:">
                 <div className="flex flex-col items-center text-center" data-oid="8a7cu3w">
                   <h1 className="text-2xl font-bold text-white" data-oid="sgckd8p">
-                    {isLoginComplete ? "Andika Code / Enter Code" : "Reset Password"}
+                    Reset Password
                   </h1>
                   <p className="text-balance text-white" data-oid="tglvch7">
-                    {isLoginComplete
-                      ? "Twakohereje code yo kugusubiza ijambo banga / OTP sent to reset your password"
-                      : "Shyiramo nimero ya telefone kugira ngo usubize ijambo banga / Enter your phone to reset password"}
+                    {isOtpRequested
+                      ? "Enter your OTP code, new password, and confirm password"
+                      : "Enter your phone number to receive an OTP"}
                   </p>
                 </div>
                 <div className="grid gap-4" data-oid="rbkqrru">
-                  {isLoginComplete ? (
+                  <div className="grid gap-2 text-white" data-oid="9mmn_k2">
+                    <Label htmlFor="phone" data-oid="71o_7z4">
+                      Phone number
+                    </Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      placeholder="e.g., 0781234567"
+                      className="bg-white/10 text-white border-amber-400/50 focus:border-amber-400"
+                      required
+                      data-oid="l2rp_sy"
+                    />
+                    {errors.phoneNumber && (
+                      <p className="text-red-400 text-sm" data-oid="phoneerror">
+                        {errors.phoneNumber}
+                      </p>
+                    )}
+                  </div>
+                  {isOtpRequested ? (
                     <>
                       <div className="text-center text-white" data-oid="b:_0yax">
                         <p className="text-sm mb-1" data-oid="9ovby23">
@@ -459,11 +486,24 @@ export function LoginForm({
                           </p>
                         )}
                       </div>
+                      <div className="text-center" data-oid="q7_lle3">
+                        <button
+                          type="button"
+                          className="text-amber-400 text-sm hover:underline mt-2"
+                          onClick={handleRequestOtp}
+                          disabled={resendCooldown > 0 || !phoneNumber}
+                          data-oid="qorj-9d"
+                        >
+                          {resendCooldown > 0
+                            ? `Resend in ${resendCooldown}s`
+                            : "Ntabwo wabonye? Ongera usabe / Didn't receive? Resend"}
+                        </button>
+                      </div>
                       <Button
                         type="button"
                         onClick={handleResetSubmit}
                         className="w-full bg-white hover:bg-white text-brand mt-2"
-                        disabled={isSubmitted}
+                        disabled={isSubmitted || !phoneNumber || totpCode.some(code => !code) || !newPassword || !confirmPassword}
                         data-oid="submitbtn"
                       >
                         {isSubmitted ? (
@@ -473,40 +513,18 @@ export function LoginForm({
                       </Button>
                     </>
                   ) : (
-                    <>
-                      <div className="grid gap-2 text-white" data-oid="9mmn_k2">
-                        <Label htmlFor="phone" data-oid="71o_7z4">
-                          Phone number
-                        </Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          value={phoneNumber}
-                          onChange={(e) => setPhoneNumber(e.target.value)}
-                          placeholder="e.g., 0781234567"
-                          className="bg-white/10 text-white border-amber-400/50 focus:border-amber-400"
-                          required
-                          data-oid="l2rp_sy"
-                        />
-                        {errors.phoneNumber && (
-                          <p className="text-red-400 text-sm" data-oid="phoneerror">
-                            {errors.phoneNumber}
-                          </p>
-                        )}
-                      </div>
-                      <Button
-                        type="button"
-                        onClick={handleRequestOtp}
-                        className="w-full bg-white hover:bg-white text-brand"
-                        disabled={isSubmitted}
-                        data-oid="otpbtn"
-                      >
-                        {isSubmitted ? (
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        ) : null}
-                        Ohereza Code / Send OTP
-                      </Button>
-                    </>
+                    <Button
+                      type="button"
+                      onClick={handleRequestOtp}
+                      className="w-full bg-white hover:bg-white text-brand"
+                      disabled={isSubmitted || !phoneNumber}
+                      data-oid="otpbtn"
+                    >
+                      {isSubmitted ? (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      ) : null}
+                      Ohereza Code / Send OTP
+                    </Button>
                   )}
                 </div>
                 <div className="text-center text-sm text-white" data-oid="lp0trcv">
@@ -543,8 +561,7 @@ export function LoginForm({
                           Andika code yawe ya OTP / Enter your OTP code
                         </p>
                         <p className="text-xs opacity-75" data-oid="n0jd4y9">
-                          Twayohereje kuri WhatsApp na SMS / Sent via WhatsApp and
-                          SMS
+                          Twayohereje kuri WhatsApp na SMS / Sent via WhatsApp and SMS
                         </p>
                       </div>
                       <div
@@ -561,9 +578,7 @@ export function LoginForm({
                             pattern="\d"
                             inputMode="numeric"
                             value={totpCode[index]}
-                            onChange={(e) =>
-                              handleTotpChange(index, e.target.value)
-                            }
+                            onChange={(e) => handleTotpChange(index, e.target.value)}
                             required
                             data-oid="ivy.vj6"
                           />
@@ -577,7 +592,7 @@ export function LoginForm({
                             setIsLoginComplete(false);
                             setSubmitted(true);
                           }}
-                          disabled={resendCooldown > 0}
+                          disabled={resendCooldown > 0 || !phoneNumber || !password}
                           data-oid="qorj-9d"
                         >
                           {resendCooldown > 0
@@ -589,7 +604,7 @@ export function LoginForm({
                         type="button"
                         onClick={totpSubmit}
                         className="w-full bg-white hover:bg-white mt-2 text-brand"
-                        disabled={isSubmitted}
+                        disabled={isSubmitted || !phoneNumber || !password || totpCode.some(code => !code)}
                         data-oid="u7lx01f"
                       >
                         {isSubmitted ? (
@@ -653,7 +668,7 @@ export function LoginForm({
                         type="button"
                         onClick={loginSubmit}
                         className="w-full bg-white hover:bg-white text-brand"
-                        disabled={isSubmitted || !csrfToken}
+                        disabled={isSubmitted || !csrfToken || !phoneNumber || !password}
                         data-oid="wy3oubl"
                       >
                         {isSubmitted ? (

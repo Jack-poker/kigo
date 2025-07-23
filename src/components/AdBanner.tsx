@@ -30,7 +30,7 @@ const AdBanner: React.FC = () => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await axios.get(
-          "https://api.kaascan.com/get-csrf-token",
+          "http://localhost:8001/get-csrf-token",
           {
             withCredentials: true, // Send session_id cookie
           },
@@ -58,15 +58,10 @@ const AdBanner: React.FC = () => {
     if (!csrfToken) return;
     try {
       setLoading(true);
-      const response = await axios.get(
-        "http://localhost:8002/admin/ads/active",
-        {
-          headers: {
-            "X-CSRF-Token": csrfToken,
-          },
-          withCredentials: true, // Send session_id cookie
-        },
-      );
+     const response = await axios.get(
+  "/api/flows/trigger/e2fa0562-8716-4fed-af4c-2ffe6d7c7a25",
+  { headers: { "Content-Type": "application/json" } }
+);
       // Map backend Ad to AdData
       const mappedAds: AdData[] = response.data.map((ad: any) => ({
         src: ad.image_url,
@@ -125,7 +120,8 @@ const AdBanner: React.FC = () => {
   // Dark mode detection
   useEffect(() => {
     const checkDarkMode = () => {
-      setIsDark(document.documentElement.classList.contains("dark"));
+      //remove x to make dark mode work x990
+      setIsDark(document.documentElement.classList.contains("darkxx"));
     };
 
     checkDarkMode();
@@ -152,7 +148,8 @@ const AdBanner: React.FC = () => {
 
   return (
     <div
-      className={`sticky top-0 z-40 transition-all duration-500 ease-in-out px-2 sm:px-4 ${isScrollHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+      className={`sticky top-0 z-40 transition-all duration-500 ease-in-out 
+        px-2 sm:px-4 ${isScrollHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
       data-oid="6cbdpqj"
     >
       <div
@@ -174,7 +171,7 @@ const AdBanner: React.FC = () => {
 
         {/* Glass Reflections */}
         <div
-          className="absolute -inset-[400px] bg-gradient-radial from-emerald-200/20 via-transparent to-transparent blur-2xl transform rotate-45"
+          className="absolute -inset-[400px]  blur-2xl transform rotate-45"
           data-oid="bi.5cy2"
         ></div>
 
@@ -192,23 +189,24 @@ const AdBanner: React.FC = () => {
               className={`text-center text-sm ${isDark ? "text-emerald-200" : "text-emerald-600"}`}
               data-oid="ibw2g6k"
             >
-              Loading ads...
+              ...
             </div>
           ) : ads.length === 0 ? (
             <div
-              className={`flex flex-col items-center justify-center text-center text-sm ${isDark ? "text-white" : "text-white"}`}
+              className={`flex flex-col items-center justify-center  
+              text-center text-sm ${isDark ? "text-white" : "text-white"}`}
               data-oid="dkwz35n"
             >
               <div className="w-32 h-32 mx-auto mb-2" data-oid="vj25qr1">
-                <img
+                {/* <img
                   src="/assets/Wallet-bro.svg"
                   alt="No ads illustration"
                   className="w-full h-full object-contain"
                   draggable={false}
                   data-oid="yl-nrqx"
-                />
+                /> */}
               </div>
-              No active ads
+              {/* No active ads */}
             </div>
           ) : (
             <>
