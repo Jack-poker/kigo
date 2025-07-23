@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 // Props interface
 interface DepositStatusCheckerProps {
   transactionId?: string; // Transaction ID from URL or prop
-  apiUrl: string; // Base API URL (e.g., http://localhost:8001)
+  apiUrl: string; // Base API URL (e.g., https://api.kaascan.com)
   token: string | null; // JWT token from localStorage.getItem('token')
   t: (key: string) => string; // Translation function (e.g., react-i18next)
   onStatusChange: (status: string) => void; // Callback for status updates
@@ -14,7 +14,7 @@ interface DepositStatusCheckerProps {
 
 const DepositStatusChecker: React.FC<DepositStatusCheckerProps> = ({
   transactionId,
-  apiUrl = "http://localhost:8001",
+  apiUrl = "https://api.kaascan.com",
   token = localStorage.getItem("token"),
   t,
   onStatusChange,

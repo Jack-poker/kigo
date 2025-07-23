@@ -107,7 +107,7 @@ const Index = () => {
     );
   }
 
-  const API_URL = "http://localhost:8001";
+  const API_URL = "https://api.kaascan.com";
 
   // Global variable to store parent's phone number
   const [parentPhone, setParentPhone] = useState("");

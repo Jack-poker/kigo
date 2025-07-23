@@ -40,7 +40,7 @@ const LinkedStudents = ({
   const [showPin, setShowPin] = useState(false);
   const [actionInProgress, setActionInProgress] = useState(false);
 
-  const baseUrl = "http://localhost:8001";
+  const baseUrl = "https://api.kaascan.com";
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("rw-RW", {
