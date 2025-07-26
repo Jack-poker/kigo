@@ -60,7 +60,7 @@ const LinkedStudents = ({
   const schools = [
     ...new Set(
       students.map(
-        (student) => student.class?.split(" ")[0] || "Unknown School",
+        (student) => student.grade || "Unknown School",
       ),
     ),
   ];
@@ -71,7 +71,7 @@ const LinkedStudents = ({
       student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       student.studentId.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesSchool =
-      !selectedSchool || student.class?.includes(selectedSchool);
+      !selectedSchool || student.grade?.includes(selectedSchool);
     return matchesSearch && matchesSchool;
   });
 
@@ -300,7 +300,7 @@ const LinkedStudents = ({
                   onChange={(e) => setSelectedSchool(e.target.value)}
                   className="appearance-none bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 >
-                  <option value="">All Schools</option>
+                  <option value="">All Level/Class</option>
                   {schools.map((school) => (
                     <option key={school} value={school}>
                       {school}
@@ -397,23 +397,21 @@ const LinkedStudents = ({
                 </div>
 
                 {/* Spending */}
-                <div className="mb-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Daily Spending</span>
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-900/10 text-zinc-900 font-semibold">
-                      {spendingPercentage.toFixed(0)}% used
-                    </span>
-                  </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                    <div
-                      className={`h-3 rounded-full transition-all duration-300 ${getSpendingColor(spendingPercentage)}`}
-                      style={{ width: `${spendingPercentage}%` }}
-                    ></div>
-                  </div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {formatLimitDisplay(student.todaySpent, student.dailyLimit)}
-                  </p>
-                </div>
+            <div className="mb-6">
+  <div className="flex justify-between items-center mb-1">
+    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Daily Spending</span>
+    <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+      {formatCurrency(student.todaySpent)} / {formatCurrency(student.dailyLimit)}
+    </span>
+  </div>
+
+  <div className="relative w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+    <div
+      className={`absolute top-0 left-0 h-full rounded-full transition-all duration-500 ease-in-out ${getSpendingColor(spendingPercentage)}`}
+      style={{ width: `${spendingPercentage}%` }}
+    ></div>
+  </div>
+</div>
 
                 {/* Transactions */}
                 {/* <div className="mb-6">

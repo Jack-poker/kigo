@@ -141,7 +141,7 @@ const MethodSelection: React.FC<MethodSelectionProps> = ({ onMethodSelect }) => 
           <Search size={28} />
           Search by Name
         </motion.button>
-        <motion.button
+        {/* <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => onMethodSelect("qr")}
@@ -149,7 +149,7 @@ const MethodSelection: React.FC<MethodSelectionProps> = ({ onMethodSelect }) => 
         >
           <Camera size={28} />
           Scan QR Code
-        </motion.button>
+        </motion.button> */}
       </div>
     </motion.div>
   );

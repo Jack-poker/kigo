@@ -19,6 +19,7 @@
     "@capacitor/camera": "^7.0.1",
     "@capacitor/cli": "^7.4.1",
     "@capacitor/core": "^7.4.1",
+    "@capacitor/push-notifications": "^7.0.1",
     "@capacitor/status-bar": "^7.0.1",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
@@ -92,6 +93,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "@chromatic-com/storybook": "^4.0.1",
     "@eslint/js": "^9.9.0",
     "@storybook/addon-a11y": "^9.0.16",

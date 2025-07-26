@@ -5,7 +5,7 @@ import {
   Plus,
   TrendingUp,
   TrendingDown,
-  ShoppingCart,
+
   Eye,
   EyeOff,
   Home,
@@ -209,7 +209,7 @@ const Index = () => {
           studentId: student.student_id,
           grade: student.grade || "N/A",
           class: student.class || "N/A",
-          photo: "/api/placeholder/48/48",
+          photo: student.student_photo_url,
           dailyLimit: student.spending_limit || 0,
           weeklyLimit: (student.spending_limit || 0) * 7,
           monthlyLimit: (student.spending_limit || 0) * 30,
@@ -227,7 +227,7 @@ const Index = () => {
       setTransactions(
         transactionsResponse.data.transactions.map((tx) => ({
           id: tx.transaction_id,
-          type: tx.is_deposit ? "deposit" : "payment",
+          type: tx.type,
           title: tx.description || t("unknownTransaction"),
           student: tx.student_name || null,
           amount: tx.is_deposit ? tx.amount : -tx.amount,
@@ -487,13 +487,13 @@ const Index = () => {
                           data-oid="0sq3hbe"
                         >
                           <div
-                            className={`w-12 h-12 rounded-full border-2 flex items-center
+                            className={`w-12 h-12 rounded-full  flex items-center
                                justify-center shadow-sm ${
                               transaction.type === "deposit"
                                 ? "bg-zinc-900 bg-yellow-400 text-brand text-brand"
-                                : transaction.type === "withdraw"
-                                  ? "bg-red-100 bg-red-900/30 text-red-600 text-red-400"
-                                  : "bg-yellow-400 bg-blue-900/30 text-yellow-400 text-blue-400"
+                                : transaction.type === "withdrawal"
+                                  ? "bg-red-400 bg-red-400 text-red-600 text-red-400"
+                                  : transaction.type === "payment"?"bg-red-400 bg-blue-900/30 text-yellow-400 text-blue-400":"bg-green-400 bg-blue-900/30 text-yellow-400 text-blue-400"
                             }`}
                             data-oid="pg11t:p"
                           >
@@ -502,14 +502,14 @@ const Index = () => {
                                 className="w-5 h-5 bg-[#00000000] text-yellow-400"
                                 data-oid="d_w3v6y"
                               />
-                            ) : transaction.type === "withdraw" ? (
+                            ) : transaction.type === "withdrawal" ? (
                               <TrendingDown
                                 className="w-5 h-5"
                                 data-oid="s72xnhb"
                               />
                             ) : (
-                              <ShoppingCart
-                                className="w-5 h-5 text-zinc-900"
+                              <TrendingUp
+                                className="w-5 h-5 text-red-900"
                                 data-oid="9wsu9r3"
                               />
                             )}
@@ -553,13 +553,13 @@ const Index = () => {
                         <div className="text-right" data-oid="_ozdpwo">
                           <span
                             className={`text-sm font-bold ${
-                              transaction.amount > 0
-                                ? "text-zinc-900 text-yellow-400"
-                                : "text-zinc-900 text-white-400"
+                             transaction.type === "deposit"
+                                ? "text-green-500"
+                                : transaction.type === "payment" ? "text-red-500":"text-red-500"
                             }`}
                             data-oid="oqecucc"
                           >
-                            {transaction.amount > 0 ? "+" : ""}
+                            {transaction.type === "deposit" ? "+" :transaction.type === "payment" ? "-":"-"}
                             {Math.abs(transaction.amount).toLocaleString()} RWF
                           </span>
                           <div
@@ -571,7 +571,7 @@ const Index = () => {
                                 transaction.status === "completed"
                                   ? "bg-green-500"
                                   : transaction.status === "pending"
-                                    ? "bg-yellow-500"
+                                    ? "bg-yellow-300"
                                     : "bg-red-500"
                               }`}
                               data-oid="3bt-x3v"
@@ -738,7 +738,7 @@ const Index = () => {
                     className="p-3 bg-brand rounded-xl bg-brand"
                     data-oid="6yn3qjf"
                   >
-                    <ShoppingCart
+                    <TrendingUp
                       className="w-6 h-6 text-orange-400 text-[#FAF6F6]"
                       data-oid="xec6xx5"
                     />
@@ -1013,8 +1013,8 @@ py-3 px-2 bg-zinc-900
                 className="py-3 block text-sm font-medium text-brand "
                 data-oid="br.huzj"
               >
-                {t("phoneNumber")} <Badge variant="outline" className="gap-1">
-      <CheckIcon className="text-emerald-500" size={12} aria-hidden="true" />
+                {t("phoneNumber")} <Badge variant="outline" className="gap-1 text-brand dark:text-brand">
+      <CheckIcon className="text-brand dark:text-brand" size={12} aria-hidden="true" />
       Gusomwa gusa
     </Badge>
 
@@ -1093,93 +1093,74 @@ py-3 px-2 bg-zinc-900
         </div>
       )}
       {activeModal === "settings" && (
-        <VercelModal
-          title={t("settings")}
-          onClose={() => setActiveModal(null)}
-          onSubmit={() => setActiveModal(null)}
-          isLoading={false}
-          data-oid="vn_xcam"
-        >
-          <div className="space-y-6" data-oid="6f-72_p">
-            <div
-              className="flex items-center justify-between"
-              data-oid="ynq21i8"
-            >
-              <div data-oid="tjk0d39">
-                <h4
-                  className="text-sm font-medium text-white-950 text-white"
-                  data-oid="uk-l_44"
-                >
-                  {t("notifications")}
-                </h4>
-                <p
-                  className="text-sm text-brand0 text-brand"
-                  data-oid="lemr7qh"
-                >
-                  {t("receiveAlerts")}
-                </p>
-              </div>
-              <button
-                className="w-12 h-6 bg-blue-600 rounded-full relative"
-                data-oid="d:8v0z."
-              >
-                <div
-                  className="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5"
-                  data-oid="y3-3e1r"
-                ></div>
-              </button>
-            </div>
-            <div
-              className="flex items-center justify-between"
-              data-oid="83rp64f"
-            >
-              <div data-oid="8c7rmwz">
-                <h4
-                  className="text-sm font-medium text-white-950 text-white"
-                  data-oid="fr:v3lj"
-                >
-                  {t("darkMode")}
-                </h4>
-                <p
-                  className="text-sm text-brand0 text-brand"
-                  data-oid="etm9o09"
-                >
-                  {t("switchTheme")}
-                </p>
-              </div>
-              <button
-                onClick={toggleTheme}
-                className={`w-12 h-6 rounded-full relative transition-colors ${isDark ? "bg-blue-600" : "bg-green-300"}`}
-                data-oid="5:_lkw_"
-              >
-                <div
-                  className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform ${isDark ? "right-0.5" : "left-0.5"}`}
-                  data-oid="saj4su-"
-                ></div>
-              </button>
-            </div>
-            <div className="border-t border-brand pt-4" data-oid="p6fm13k">
-              <h4
-                className="text-sm font-medium text-white-950 text-white mb-2"
-                data-oid="cyi-i2a"
-              >
-                {t("language")}
-              </h4>
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value as any)}
-                className="w-full px-3 py-2 border border-brand border-brand bg-white bg-white-950 text-white-950 text-white rounded-lg"
-                data-oid="ymjse9t"
-              >
-                {languages.map((lang) => (
-                  <option key={lang.code} value={lang.code} data-oid="t8pqd7t">
-                    {lang.flag} {lang.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </VercelModal>
+   <VercelModal
+  title={t("settings")}
+  onClose={() => setActiveModal(null)}
+  onSubmit={() => setActiveModal(null)}
+  isLoading={false}
+  data-oid="vn_xcam"
+>
+  {/* Force light theme regardless of app-wide dark mode */}
+  <div className="space-y-6 bg-white text-black" data-oid="6f-72_p">
+    <div className="flex items-center justify-between" data-oid="ynq21i8">
+      <div data-oid="tjk0d39">
+        <h4 className="text-sm font-medium text-black" data-oid="uk-l_44">
+          {t("notifications")}
+        </h4>
+        <p className="text-sm text-gray-600" data-oid="lemr7qh">
+          {t("receiveAlerts")}
+        </p>
+      </div>
+      <button className="w-12 h-6 bg-blue-600 rounded-full relative" data-oid="d:8v0z.">
+        <div className="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5" data-oid="y3-3e1r"></div>
+      </button>
+    </div>
+
+    <div className="flex items-center justify-between" data-oid="83rp64f">
+      <div data-oid="8c7rmwz">
+        <h4 className="text-sm font-medium text-black" data-oid="fr:v3lj">
+          {t("darkMode")}
+        </h4>
+        <p className="text-sm text-gray-600" data-oid="etm9o09">
+          {t("switchTheme")}
+        </p>
+      </div>
+      <button
+        onClick={toggleTheme}
+        className={`w-12 h-6 rounded-full relative transition-colors ${
+          isDark ? "bg-blue-600" : "bg-green-300"
+        }`}
+        data-oid="5:_lkw_"
+      >
+        <div
+          className={`w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform ${
+            isDark ? "right-0.5" : "left-0.5"
+          }`}
+          data-oid="saj4su-"
+        ></div>
+      </button>
+    </div>
+
+    <div className="border-t border-gray-300 pt-4" data-oid="p6fm13k">
+      <h4 className="text-sm font-medium text-black mb-2" data-oid="cyi-i2a">
+        {t("language")}
+      </h4>
+      <select
+        value={language}
+        onChange={(e) => setLanguage(e.target.value as any)}
+        className="w-full px-3 py-2 border border-gray-300 bg-white text-black rounded-lg"
+        data-oid="ymjse9t"
+      >
+        {languages.map((lang) => (
+          <option key={lang.code} value={lang.code} data-oid="t8pqd7t">
+            {lang.flag} {lang.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
+</VercelModal>
+
       )}
       {activeModal === "spendingLimits" && selectedStudent && (
         <SpendingLimitsModal
@@ -1225,7 +1206,7 @@ py-3 px-2 bg-zinc-900
                       className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                         tx.type === "deposit"
                           ? "bg-green-100 bg-green-900/30 text-green-600 text-green-400"
-                          : tx.type === "withdraw"
+                          : tx.type === "withdrawal"
                             ? "bg-red-100 bg-red-900/30 text-red-600 text-red-400"
                             : "bg-blue-100 bg-blue-900/30 text-blue-600 text-blue-400"
                       }`}
@@ -1233,10 +1214,12 @@ py-3 px-2 bg-zinc-900
                     >
                       {tx.type === "deposit" ? (
                         <TrendingUp className="w-5 h-5" data-oid="yolqn5v" />
-                      ) : tx.type === "withdraw" ? (
+                      ) : tx.type === "withdrawal" ? (
+                        <TrendingDown className="w-5 h-5" data-oid="k:w1c8d" />
+                         ) : tx.type === "payment" ? (
                         <TrendingDown className="w-5 h-5" data-oid="k:w1c8d" />
                       ) : (
-                        <ShoppingCart className="w-5 h-5" data-oid="um5_o8a" />
+                        <TrendingUp className="w-5 h-5" data-oid="um5_o8a" />
                       )}
                     </div>
                     <div className="flex-1" data-oid="tp3xj0p">
@@ -1260,7 +1243,7 @@ py-3 px-2 bg-zinc-900
                       data-oid="18prrt4"
                     >
                       {tx.amount > 0 ? "+" : ""}
-                      {Math.abs(tx.amount).toLocaleString()} RWF
+                      {Math.abs(tx.amount).toLocaleString()} RWFL
                     </span>
                     <div
                       className="flex items-center justify-end mt-1"
@@ -1335,7 +1318,7 @@ py-3 px-2 bg-zinc-900
               <div
                 key={tx.id}
                 className="group flex items-center justify-between p-4 rounded-xl 
-                  bg-zinc-900 transition-all duration-200 border border-transparent hover:border-gray-200 hover:border-gray-600"
+                  bg-zinc-900 transition-all duration-200 border "
                 data-oid="e8qs2a3"
               >
                 <div className="flex items-center space-x-4" data-oid="ksbsbm2">
@@ -1343,7 +1326,7 @@ py-3 px-2 bg-zinc-900
                     className={`w-12 h-12 rounded-full flex items-center justify-center shadow-sm ${
                       tx.type === "deposit"
                         ? "bg-green-100 bg-green-900/30 text-green-600 text-green-400"
-                        : tx.type === "withdraw"
+                        : tx.type === "withdrawal"
                           ? "bg-red-100 bg-red-900/30 text-red-600 text-red-400"
                           : "bg-blue-100 bg-blue-900/30 text-blue-600 text-blue-400"
                     }`}
@@ -1351,10 +1334,10 @@ py-3 px-2 bg-zinc-900
                   >
                     {tx.type === "deposit" ? (
                       <TrendingUp className="w-5 h-5" data-oid="vb-0ff-" />
-                    ) : tx.type === "withdraw" ? (
+                    ) : tx.type === "withdrawal" ? (
                       <TrendingDown className="w-5 h-5" data-oid="91ypfrc" />
                     ) : (
-                      <ShoppingCart className="w-5 h-5" data-oid=":4wmlzp" />
+                      <TrendingUp className="w-5 h-5" data-oid=":4wmlzp" />
                     )}
                   </div>
                   <div className="flex-1" data-oid="l854xe8">

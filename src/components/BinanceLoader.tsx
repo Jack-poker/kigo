@@ -8,10 +8,10 @@ const BinanceLoader: React.FC<BinanceLoaderProps> = ({ message = "Processing" })
   const getDeviceLogo = (): string => {
     if (typeof navigator !== "undefined") {
       const ua = navigator.userAgent.toLowerCase();
-      if (/iphone|ipad|ipod/.test(ua)) return "/assets/ios.png";
-      if (/android/.test(ua)) return "/assets/android.png";
+      if (/iphone|ipad|ipod/.test(ua)) return "/assets/blue_logo.png";
+      if (/android/.test(ua)) return "/assets/blue_logo.png";
     }
-    return "/assets/web.png";
+    return "/assets/blue_logo.png";
   };
 
   return (
@@ -33,13 +33,13 @@ const BinanceLoader: React.FC<BinanceLoaderProps> = ({ message = "Processing" })
 
       {/* Loading Dots */}
       <div className="flex items-center space-x-1 mb-3">
-        <div className="w-2 h-2 bg-zinc-900 rounded-full animate-bounce"></div>
+        <div className="w-2 h-2 bg-brand rounded-full animate-bounce"></div>
         <div
-          className="w-2 h-2 bg-zinc-900 rounded-full animate-bounce"
+          className="w-2 h-2 bg-brand rounded-full animate-bounce"
           style={{ animationDelay: "0.2s" }}
         ></div>
         <div
-          className="w-2 h-2 bg-zinc-900 rounded-full animate-bounce"
+          className="w-2 h-2 bg-brand rounded-full animate-bounce"
           style={{ animationDelay: "0.4s" }}
         ></div>
       </div>

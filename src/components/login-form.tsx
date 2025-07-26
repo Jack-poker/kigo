@@ -9,19 +9,7 @@ import { ToastAction } from "@/components/ui/toast";
 import {
   Phone,
   Lock,
-  Shield,
-  Eye,
-  EyeOff,
   Loader2,
-  CheckCircle,
-  Heart,
-  Star,
-  Users,
-  CreditCard,
-  ArrowRight,
-  RefreshCw,
-  Home,
-  AlertCircle,
 } from "lucide-react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
@@ -40,7 +28,6 @@ export function LoginForm({
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [totpCode, setTotpCode] = useState(["", "", "", ""]);
-  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [resendCooldown, setResendCooldown] = useState(0);
@@ -48,6 +35,42 @@ export function LoginForm({
   const params = new URLSearchParams(search);
   const isPasswordReset = params.get("resetPassword") === "true";
   const baseUrl = "https://api.kaascan.com";
+
+  // Check for valid session on mount
+  useEffect(() => {
+    async function checkSession() {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          setIsLoading(true);
+          const response = await fetch(`https://automation.kaascan.com/webhook/verify`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
+            },
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            if (data.status === "success") {
+              navigate("/dashboard");
+            } else {
+              localStorage.removeItem("token");
+            }
+          } else {
+            localStorage.removeItem("token");
+          }
+
+        } catch (error) {
+          // localStorage.removeItem("token");
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    }
+    checkSession();
+  }, [navigate]);
 
   // Validation functions
   const validateForm = () => {
@@ -361,6 +384,14 @@ export function LoginForm({
       nextInput?.focus();
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader2 className="h-8 w-8 animate-spin text-white" />
+      </div>
+    );
+  }
 
   return (
     <div

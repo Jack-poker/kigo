@@ -201,11 +201,11 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
       <form className="space-y-6" onSubmit={onSubmit} data-oid=".8.5krw">
         <div data-oid="f4nv844">
           <label
-            className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
+            className="block text-sm font-medium text-brand  mb-2"
             data-oid="5i6v:te"
           >
-            {t("phoneNumber")} <Badge variant="outline" className="gap-1">
-                <CheckIcon className="text-emerald-500" size={12} aria-hidden="true" />
+            {t("phoneNumber")} <Badge variant="outline" className="gap-1 text-brand dark:text-brand ">
+                <CheckIcon className="text-brand dark:text-brand " size={12} aria-hidden="true" />
                 Genzura nimero wanditse neza
               </Badge>
           </label>
@@ -217,14 +217,14 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             disabled={otpRequested || requestLoading || confirmLoading}
-            className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50"
+            className="w-full px-4 py-3 rounded-xl border border-brand  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50"
             placeholder="078XXXXXXX"
             data-oid="2wj9b40"
           />
         </div>
         <div data-oid="l19x5w:">
           <label
-            className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
+            className="block text-sm font-medium text-brand  mb-2"
             data-oid="u4p8m_6"
           >
             {t("amount")}
@@ -238,7 +238,7 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             disabled={otpRequested || requestLoading || confirmLoading}
-            className="w-full px-4 py-3 rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50"
+            className="w-full px-4 py-3 rounded-xl border border-brand bg-white  text-white-950  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50"
             placeholder="100"
             data-oid="n8p9qkw"
           />
@@ -247,7 +247,7 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
           <>
             <div data-oid="rld.bbs">
               <label
-                className="block text-sm font-medium text-brand dark:text-green-300 mb-2"
+                className="block text-sm font-medium text-brand  mb-2"
                 data-oid="2kw9hjn"
               >
                 {t("pin")}
@@ -266,7 +266,7 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
                     onChange={(e) => handleOtpChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
                     ref={(el) => (inputRefs.current[index] = el)}
-                    className="w-12 h-12 text-center text-xl rounded-xl border border-brand dark:border-brand bg-white dark:bg-white-950 text-white-950 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-12 h-12 text-center text-xl rounded-xl border border-brand  bg-white  text-white-950  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                     placeholder="0"
                     data-oid="obja_r4"
                   />
@@ -274,7 +274,7 @@ const WithdrawModal = ({ t, setActiveModal, isLoading, balance }) => {
               </div>
             </div>
             <div
-              className="text-sm text-brand dark:text-green-300"
+              className="text-sm text-brand"
               data-oid="3nrx1:d"
             >
               {t("otpExpiresIn")} {formatCountdown()}

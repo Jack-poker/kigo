@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "126393715794",
+    "project_id": "kaascandev",
+    "storage_bucket": "kaascandev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126393715794:android:c0fc006790ed2ae043238b",
+        "android_client_info": {
+          "package_name": "com.kaascan.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfOE98srERmn19OTj2HYUDMrQp-z3AeIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
